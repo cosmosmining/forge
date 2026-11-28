@@ -105,17 +105,27 @@ def main(argv=None):
         extra = ["", "## 3. More seeds on the correct RTL (false-positive check)", "",
                  "Fresh directed + random generation and simulation with each seed; formal is "
                  "seed-independent and reported in section 1.", "",
-                 "| block | seeds | verdicts | source |", "|---|---|---|---|"]
+                 "Coverage per seed is bins hit / bins considered. Without formal (as in these "
+                 "runs) no bin can be proven unreachable, so unreachable bins appear as holes here.",
+                 "",
+                 "| block | seeds | verdicts | coverage per seed | source |", "|---|---|---|---|---|"]
         for name, d in entries:
             p = os.path.join(d, "seeds.json")
             if os.path.exists(p):
                 sres = json.load(open(p))
-                extra.append("| %s | %s | %s | `%s` |" % (
-                    name, ", ".join(str(k) for k in sorted(sres["verdicts"], key=int)),
-                    ", ".join(sres["verdicts"][k] for k in sorted(sres["verdicts"], key=int)),
+                seeds = sorted(sres["verdicts"], key=int)
+                cov = sres.get("coverage") or {}
+                for k in seeds:
+                    if k not in cov:
+                        rp = os.path.join(d, "seeds", "seed%s" % k, "report.json")
+                        if os.path.exists(rp):
+                            cov[k] = _cov_str(json.load(open(rp)))
+                extra.append("| %s | %s | %s | %s | `%s` |" % (
+                    name, ", ".join(seeds), ", ".join(sres["verdicts"][k] for k in seeds),
+                    "; ".join("%s: %s" % (k, cov.get(k, "?")) for k in seeds),
                     os.path.relpath(p, root)))
             else:
-                extra.append("| %s | not yet | | |" % name)
+                extra.append("| %s | not yet | | | |" % name)
         hist_dir = os.path.join(args.out, "history")
         if os.path.isdir(hist_dir):
             extra += ["", "## 4. Earlier runs kept for comparison (before generator/property fixes)", "",
@@ -140,15 +150,22 @@ def main(argv=None):
     return 2
 
 
+def _cov_str(report):
+    c = report.get("coverage") or {}
+    return "%s/%s%s" % (c.get("bins_hit"), c.get("bins_considered"),
+                        (" holes: %s" % ", ".join(c["holes"])) if c.get("holes") else "")
+
+
 def seed_sweep(spec_path, outdir, n):
     """Seeds 2..n+1: new directed/random/closure suites, simulation only."""
-    verdicts, tests = {}, {}
+    verdicts, tests, coverage = {}, {}, {}
     for seed in range(2, n + 2):
         d = os.path.join(outdir, "seeds", "seed%d" % seed)
         report, _ = campaign.run_block(spec_path, d, seed=seed, do_formal=False)
         verdicts[str(seed)] = report["verdict"]
         tests[str(seed)] = report.get("tests")
-    res = {"verdicts": verdicts, "tests": tests}
+        coverage[str(seed)] = _cov_str(report)
+    res = {"verdicts": verdicts, "tests": tests, "coverage": coverage}
     with open(os.path.join(outdir, "seeds.json"), "w") as fh:
         json.dump(res, fh, indent=1)
     return res

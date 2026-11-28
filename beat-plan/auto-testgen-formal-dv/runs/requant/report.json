@@ -77,7 +77,7 @@
    "failed": [],
    "job": "equiv",
    "reached": [],
-   "seconds": 3.42,
+   "seconds": 3.48,
    "status": "PASS",
    "unreached": [],
    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/requant/formal/equiv"
@@ -87,7 +87,7 @@
    "golden_fits_ports",
    "eq_y"
   ],
-  "seconds": 3.4,
+  "seconds": 3.5,
   "verdict": "PROVEN"
  },
  "generation": {
@@ -211,7 +211,7 @@
   "output_fit_proven_by_intervals": true,
   "warnings": []
  },
- "seconds": 4.2,
+ "seconds": 4.3,
  "seed": 1,
  "simulation": {
   "closure": {

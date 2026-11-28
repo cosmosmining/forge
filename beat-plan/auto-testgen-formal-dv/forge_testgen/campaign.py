@@ -408,6 +408,13 @@ def run_block(spec_path, outdir, seed=1, n_random=None, simulator="iverilog", do
     else:
         verdict = "PASS"
     report["verdict"] = verdict
+    report["verdict_note"] = {
+        "PASS": "all generated tests pass; formal %s (BOUNDED(n) = no counterexample within n "
+                "cycles of reset, not a proof)" % fv,
+        "FAIL": "RTL disagrees with the golden or violates a property; see simulation/formal",
+        "INCOMPLETE": "formal returned UNKNOWN",
+        "TOOL-ERROR": "translated golden disagreed with the Python golden",
+    }.get(verdict, "")
     report["seconds"] = round(time.time() - t0, 1)
     _save(outdir, report)
     with open(os.path.join(outdir, "suite.json"), "w") as fh:

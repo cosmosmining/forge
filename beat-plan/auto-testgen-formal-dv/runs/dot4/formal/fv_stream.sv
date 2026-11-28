@@ -16,6 +16,7 @@ module fv_stream (
   wire emit = out_valid && out_ready;
   reg [3:0] f_inflight = 0;
   reg [3:0] f_wait = 0;
+  reg [4:0] f_istall = 0;
   reg f_armed = 1'b0, f_done = 1'b0;
   reg [3:0] f_ahead = 0;
   wire pick_now = !f_armed && acc && f_pick;
@@ -82,8 +83,11 @@ module fv_stream (
   );
   always @(posedge clk) begin
     if (rst_i) begin
-      f_inflight <= 0; f_wait <= 0; f_armed <= 1'b0; f_done <= 1'b0;
+      f_inflight <= 0; f_wait <= 0; f_istall <= 0; f_armed <= 1'b0; f_done <= 1'b0;
     end else begin
+      if (in_valid && !in_ready && out_ready) begin
+        if (f_istall != {5{1'b1}}) f_istall <= f_istall + 1;
+      end else f_istall <= 0;
       f_inflight <= f_inflight + (acc ? 1 : 0) - (emit ? 1 : 0);
       if (emit || f_inflight == 0 || (f_inflight == 1 && emit)) f_wait <= 0;
       else if (out_ready && f_wait != {4{1'b1}}) f_wait <= f_wait + 1;
@@ -115,6 +119,8 @@ module fv_stream (
     a_no_spurious_output: assert (!emit || f_inflight != 0 || acc);
     a_capacity: assert (f_inflight <= 2);
     a_bounded_latency: assert (f_wait <= 3);
+    a_input_progress: assert (f_istall <= 6);
+    a_accepts_below_capacity: assert (!in_valid || in_ready || f_inflight >= 2);
     a_data_matches_golden: assert (!(tracked_out && out_data != f_exp) &&
                                    !(passthru && out_data != exp_now));
     c_output: cover (emit);

@@ -93,7 +93,7 @@ def results_markdown(entries, root, extra_sections=()):
     if reports and reports[0][2]:
         tv = reports[0][2].get("tool_versions", {})
         L.append("Tools (measured, `tool_versions` in each report.json): " + "; ".join(
-            "%s: %s" % (k, v) for k, v in tv.items() if v))
+            "%s: %s" % (k, v.split(" (")[0]) for k, v in tv.items() if v))
         L.append("")
     L.append("## 1. Correct RTL: generated tests + proofs, no false positives")
     L.append("")
@@ -133,7 +133,7 @@ def results_markdown(entries, root, extra_sections=()):
              "equivalent to the original (formal miter) are not bugs and are excluded; "
              "**derived** kill rate = killed / (valid - equivalent - spec-conformant).")
     L.append("")
-    L.append("| block | mutants | stillborn | equivalent (proven / bounded) | spec-conformant | real bugs | killed by sim | killed by formal | killed (any) | survived | directed-only | random-only | source |")
+    L.append("| block | mutants | stillborn | equivalent (proven / bounded) | spec-conformant | real bugs | killed by sim | killed by formal | killed (any) | survived | killed by directed tests alone | killed by random tests alone | source |")
     L.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     for name, d, r, m in reports:
         if not m:
@@ -146,6 +146,9 @@ def results_markdown(entries, root, extra_sections=()):
             s["formal_kill_rate"], s["combined_kill_rate"], s["survived"],
             s["directed_only_kill_rate"], s["random_only_kill_rate"],
             _rel(os.path.join(d, "mutation.json"), root)))
+    L.append("")
+    L.append("Formal check per mutant (measured, `formal_mode` in mutation.json): " + "; ".join(
+        "%s: %s" % (name, m.get("formal_mode", "?")) for name, d, r, m in reports if m) + ".")
     L.append("")
     for name, d, r, m in reports:
         if m and (m.get("survivors") or m.get("conformant")):

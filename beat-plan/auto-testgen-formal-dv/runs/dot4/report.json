@@ -1,0 +1,612 @@
+{
+ "block": {
+  "bins": 34,
+  "constraints": [],
+  "golden": "../golden/dot4.py:dot4",
+  "inputs": [
+   "a:s8x4",
+   "w:s8x4",
+   "bias:s32"
+  ],
+  "kind": "stream",
+  "name": "dot4",
+  "note": "Fixture written in this session to exercise forge_testgen; not Forge RTL.",
+  "outputs": [
+   "y:s32"
+  ],
+  "rtl": [
+   "../rtl/dot4.v"
+  ],
+  "top": "dot4"
+ },
+ "coverage": {
+  "bins_considered": 50,
+  "bins_excluded_unreachable": 0,
+  "bins_hit": 50,
+  "bins_total": 50,
+  "by_kind": {
+   "boundary": "9/9",
+   "data": "34/34",
+   "golden": "2/2",
+   "protocol": "5/5"
+  },
+  "coverage_pct": 100.0,
+  "excluded": {},
+  "first_hit_by": {
+   "boundary.L8.cmp_gt1.eq": "closure.witness:boundary.L8.cmp_gt1.eq",
+   "boundary.L8.cmp_gt1.m1": "closure.witness:boundary.L8.cmp_gt1.m1",
+   "boundary.L8.cmp_gt1.p1": "closure.witness:boundary.L8.cmp_gt1.p1",
+   "boundary.L8.cmp_lt2.eq": "closure.witness:boundary.L8.cmp_lt2.eq",
+   "boundary.L8.cmp_lt2.m1": "closure.witness:boundary.L8.cmp_lt2.m1",
+   "boundary.L8.cmp_lt2.p1": "closure.witness:boundary.L8.cmp_lt2.p1",
+   "boundary.L9.cmp_eq1.eq": "directed.ofat.a",
+   "boundary.L9.cmp_eq1.m1": "random.seed1",
+   "boundary.L9.cmp_eq1.p1": "random.seed1",
+   "golden.int32_wraps": "directed.ofat.bias",
+   "golden.products_cancel": "directed.ofat.w",
+   "in.a.all_equal": "directed.base",
+   "in.a.tie_at_max": "directed.base",
+   "in.a[0].max": "directed.ofat.a",
+   "in.a[0].min": "directed.ofat.a",
+   "in.a[0].zero": "directed.ofat.a",
+   "in.a[1].max": "directed.ofat.a",
+   "in.a[1].min": "directed.ofat.a",
+   "in.a[1].zero": "directed.ofat.a",
+   "in.a[2].max": "directed.ofat.a",
+   "in.a[2].min": "directed.ofat.a",
+   "in.a[2].zero": "directed.ofat.a",
+   "in.a[3].max": "directed.ofat.a",
+   "in.a[3].min": "directed.ofat.a",
+   "in.a[3].zero": "directed.ofat.a",
+   "in.bias.max": "directed.ofat.bias",
+   "in.bias.min": "directed.ofat.bias",
+   "in.bias.zero": "directed.ofat.bias",
+   "in.w.all_equal": "directed.base",
+   "in.w.tie_at_max": "directed.base",
+   "in.w[0].max": "directed.ofat.w",
+   "in.w[0].min": "directed.ofat.w",
+   "in.w[0].zero": "directed.ofat.w",
+   "in.w[1].max": "directed.ofat.w",
+   "in.w[1].min": "directed.ofat.w",
+   "in.w[1].zero": "directed.ofat.w",
+   "in.w[2].max": "directed.ofat.w",
+   "in.w[2].min": "directed.ofat.w",
+   "in.w[2].zero": "directed.ofat.w",
+   "in.w[3].max": "directed.ofat.w",
+   "in.w[3].min": "directed.ofat.w",
+   "in.w[3].zero": "directed.ofat.w",
+   "out.y.max": "closure.witness:boundary.L8.cmp_gt1.eq",
+   "out.y.min": "closure.witness:boundary.L8.cmp_lt2.eq",
+   "out.y.zero": "random.seed1",
+   "proto.b2b_in": "sim:directed.b2b",
+   "proto.b2b_out": "sim:directed.b2b",
+   "proto.backpressure": "sim:directed.long_backpressure",
+   "proto.full": "sim:directed.b2b",
+   "proto.input_stall": "sim:directed.long_backpressure"
+  },
+  "holes": []
+ },
+ "formal": {
+  "cex_trace": null,
+  "covers_reached": [
+   "c_backpressure",
+   "c_full",
+   "c_input_stall",
+   "c_output",
+   "c_tracked_checked"
+  ],
+  "covers_unreached": [],
+  "failed": [],
+  "jobs": [
+   {
+    "engine": "abc pdr",
+    "failed": [],
+    "job": "prove",
+    "reached": [],
+    "seconds": 301.44,
+    "status": "TIMEOUT",
+    "unreached": [],
+    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/dot4/formal/prove"
+   },
+   {
+    "engine": "smtbmc bitwuzla",
+    "failed": [],
+    "job": "bmc",
+    "reached": [],
+    "seconds": 295.39,
+    "status": "PASS",
+    "unreached": [],
+    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/dot4/formal/bmc"
+   },
+   {
+    "engine": "smtbmc bitwuzla",
+    "failed": [],
+    "job": "cover",
+    "reached": [
+     "c_backpressure",
+     "c_full",
+     "c_input_stall",
+     "c_output",
+     "c_tracked_checked"
+    ],
+    "seconds": 0.51,
+    "status": "PASS",
+    "unreached": [],
+    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/dot4/formal/cover"
+   }
+  ],
+  "kind": "stream_properties",
+  "labels": [
+   "a_quiet_after_reset",
+   "a_hold_valid",
+   "a_hold_data",
+   "a_no_spurious_output",
+   "a_capacity",
+   "a_bounded_latency",
+   "a_input_progress",
+   "a_accepts_below_capacity",
+   "a_data_matches_golden"
+  ],
+  "per_property": {
+   "a_accepts_below_capacity": "PASS-by-BOUNDED(16)",
+   "a_bounded_latency": "PASS-by-BOUNDED(16)",
+   "a_capacity": "PASS-by-BOUNDED(16)",
+   "a_data_matches_golden": "PASS-by-BOUNDED(16)",
+   "a_hold_data": "PASS-by-BOUNDED(16)",
+   "a_hold_valid": "PASS-by-BOUNDED(16)",
+   "a_input_progress": "PASS-by-BOUNDED(16)",
+   "a_no_spurious_output": "PASS-by-BOUNDED(16)",
+   "a_quiet_after_reset": "PASS-by-BOUNDED(16)"
+  },
+  "seconds": 597.3,
+  "verdict": "BOUNDED(16)"
+ },
+ "generation": {
+  "after_directed": {
+   "bins_considered": 50,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 34,
+   "bins_total": 50,
+   "by_kind": {
+    "boundary": "1/9",
+    "data": "31/34",
+    "golden": "2/2",
+    "protocol": "0/5"
+   },
+   "coverage_pct": 68.0,
+   "excluded": {},
+   "first_hit_by": {
+    "boundary.L9.cmp_eq1.eq": "directed.ofat.a",
+    "golden.int32_wraps": "directed.ofat.bias",
+    "golden.products_cancel": "directed.ofat.w",
+    "in.a.all_equal": "directed.base",
+    "in.a.tie_at_max": "directed.base",
+    "in.a[0].max": "directed.ofat.a",
+    "in.a[0].min": "directed.ofat.a",
+    "in.a[0].zero": "directed.ofat.a",
+    "in.a[1].max": "directed.ofat.a",
+    "in.a[1].min": "directed.ofat.a",
+    "in.a[1].zero": "directed.ofat.a",
+    "in.a[2].max": "directed.ofat.a",
+    "in.a[2].min": "directed.ofat.a",
+    "in.a[2].zero": "directed.ofat.a",
+    "in.a[3].max": "directed.ofat.a",
+    "in.a[3].min": "directed.ofat.a",
+    "in.a[3].zero": "directed.ofat.a",
+    "in.bias.max": "directed.ofat.bias",
+    "in.bias.min": "directed.ofat.bias",
+    "in.bias.zero": "directed.ofat.bias",
+    "in.w.all_equal": "directed.base",
+    "in.w.tie_at_max": "directed.base",
+    "in.w[0].max": "directed.ofat.w",
+    "in.w[0].min": "directed.ofat.w",
+    "in.w[0].zero": "directed.ofat.w",
+    "in.w[1].max": "directed.ofat.w",
+    "in.w[1].min": "directed.ofat.w",
+    "in.w[1].zero": "directed.ofat.w",
+    "in.w[2].max": "directed.ofat.w",
+    "in.w[2].min": "directed.ofat.w",
+    "in.w[2].zero": "directed.ofat.w",
+    "in.w[3].max": "directed.ofat.w",
+    "in.w[3].min": "directed.ofat.w",
+    "in.w[3].zero": "directed.ofat.w"
+   },
+   "holes": [
+    "out.y.min",
+    "out.y.max",
+    "out.y.zero",
+    "boundary.L8.cmp_gt1.eq",
+    "boundary.L8.cmp_gt1.m1",
+    "boundary.L8.cmp_gt1.p1",
+    "boundary.L8.cmp_lt2.eq",
+    "boundary.L8.cmp_lt2.m1",
+    "boundary.L8.cmp_lt2.p1",
+    "boundary.L9.cmp_eq1.m1",
+    "boundary.L9.cmp_eq1.p1",
+    "proto.backpressure",
+    "proto.input_stall",
+    "proto.b2b_in",
+    "proto.b2b_out",
+    "proto.full"
+   ]
+  },
+  "after_random": {
+   "bins_considered": 50,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 37,
+   "bins_total": 50,
+   "by_kind": {
+    "boundary": "3/9",
+    "data": "32/34",
+    "golden": "2/2",
+    "protocol": "0/5"
+   },
+   "coverage_pct": 74.0,
+   "excluded": {},
+   "first_hit_by": {
+    "boundary.L9.cmp_eq1.eq": "directed.ofat.a",
+    "boundary.L9.cmp_eq1.m1": "random.seed1",
+    "boundary.L9.cmp_eq1.p1": "random.seed1",
+    "golden.int32_wraps": "directed.ofat.bias",
+    "golden.products_cancel": "directed.ofat.w",
+    "in.a.all_equal": "directed.base",
+    "in.a.tie_at_max": "directed.base",
+    "in.a[0].max": "directed.ofat.a",
+    "in.a[0].min": "directed.ofat.a",
+    "in.a[0].zero": "directed.ofat.a",
+    "in.a[1].max": "directed.ofat.a",
+    "in.a[1].min": "directed.ofat.a",
+    "in.a[1].zero": "directed.ofat.a",
+    "in.a[2].max": "directed.ofat.a",
+    "in.a[2].min": "directed.ofat.a",
+    "in.a[2].zero": "directed.ofat.a",
+    "in.a[3].max": "directed.ofat.a",
+    "in.a[3].min": "directed.ofat.a",
+    "in.a[3].zero": "directed.ofat.a",
+    "in.bias.max": "directed.ofat.bias",
+    "in.bias.min": "directed.ofat.bias",
+    "in.bias.zero": "directed.ofat.bias",
+    "in.w.all_equal": "directed.base",
+    "in.w.tie_at_max": "directed.base",
+    "in.w[0].max": "directed.ofat.w",
+    "in.w[0].min": "directed.ofat.w",
+    "in.w[0].zero": "directed.ofat.w",
+    "in.w[1].max": "directed.ofat.w",
+    "in.w[1].min": "directed.ofat.w",
+    "in.w[1].zero": "directed.ofat.w",
+    "in.w[2].max": "directed.ofat.w",
+    "in.w[2].min": "directed.ofat.w",
+    "in.w[2].zero": "directed.ofat.w",
+    "in.w[3].max": "directed.ofat.w",
+    "in.w[3].min": "directed.ofat.w",
+    "in.w[3].zero": "directed.ofat.w",
+    "out.y.zero": "random.seed1"
+   },
+   "holes": [
+    "out.y.min",
+    "out.y.max",
+    "boundary.L8.cmp_gt1.eq",
+    "boundary.L8.cmp_gt1.m1",
+    "boundary.L8.cmp_gt1.p1",
+    "boundary.L8.cmp_lt2.eq",
+    "boundary.L8.cmp_lt2.m1",
+    "boundary.L8.cmp_lt2.p1",
+    "proto.backpressure",
+    "proto.input_stall",
+    "proto.b2b_in",
+    "proto.b2b_out",
+    "proto.full"
+   ]
+  },
+  "closure": [
+   {
+    "bin": "boundary.L8.cmp_lt2.p1",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "boundary.L8.cmp_gt1.m1",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "boundary.L8.cmp_lt2.eq",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "out.y.min",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "boundary.L8.cmp_gt1.eq",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "out.y.max",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "boundary.L8.cmp_gt1.p1",
+    "how": "formal witness (sby cover)"
+   },
+   {
+    "bin": "boundary.L8.cmp_lt2.m1",
+    "how": "formal witness (sby cover)"
+   }
+  ],
+  "directed_dropped_unsat": 0
+ },
+ "golden_translation": {
+  "boundary_bins": 9,
+  "max_width": 34,
+  "multipliers": [
+   "8x8",
+   "8x8",
+   "8x8",
+   "8x8"
+  ],
+  "nodes": 111,
+  "output_fit_proven_by_intervals": true,
+  "warnings": []
+ },
+ "seconds": 598.5,
+ "seed": 1,
+ "simulation": {
+  "closure.b2b": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 7,
+    "b2b_out": 7,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 8
+  },
+  "closure.long_backpressure": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 5,
+    "b2b_out": 6,
+    "bp": 38,
+    "install": 38,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 8
+  },
+  "closure.random_mix": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 1,
+    "b2b_out": 1,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 8
+  },
+  "closure.ready_toggle": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 2,
+    "b2b_out": 0,
+    "bp": 7,
+    "install": 5,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 8
+  },
+  "closure.sparse_valid": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 1,
+    "b2b_out": 1,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 8
+  },
+  "directed.b2b": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 56,
+    "b2b_out": 56,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 57
+  },
+  "directed.long_backpressure": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 45,
+    "b2b_out": 45,
+    "bp": 238,
+    "install": 218,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 57
+  },
+  "directed.random_mix": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 22,
+    "b2b_out": 25,
+    "bp": 23,
+    "install": 7,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 57
+  },
+  "directed.ready_toggle": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 2,
+    "b2b_out": 0,
+    "bp": 56,
+    "install": 54,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 57
+  },
+  "directed.sparse_valid": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 8,
+    "b2b_out": 8,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 57
+  },
+  "random.b2b": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 599,
+    "b2b_out": 599,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.long_backpressure": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 479,
+    "b2b_out": 480,
+    "bp": 2398,
+    "install": 2398,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.random_mix": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 245,
+    "b2b_out": 250,
+    "bp": 266,
+    "install": 120,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.ready_toggle": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 2,
+    "b2b_out": 0,
+    "bp": 599,
+    "install": 597,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.sparse_valid": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 142,
+    "b2b_out": 142,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  }
+ },
+ "simulator": "iverilog",
+ "spec_vs_rtl": [],
+ "tests": {
+  "closure": 8,
+  "directed": 57,
+  "random": 600
+ },
+ "tool_versions": {
+  "bitwuzla": "0.9.1",
+  "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+  "sby": "/nix/var/nix/profiles/default/bin/sby",
+  "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+  "yices-smt2": "Yices 2.7.0",
+  "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.",
+  "z3": "Z3 version 5.4.1 - 64 bit"
+ },
+ "translator_selfcheck_mismatches": 0,
+ "verdict": "PASS"
+}

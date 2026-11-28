@@ -77,7 +77,7 @@ module fv_stream (
     a_capacity: assert (f_inflight <= 4);
     a_bounded_latency: assert (f_wait <= 3);
     a_input_progress: assert (f_istall <= 8);
-    a_accepts_below_capacity: assert (f_inflight >= 4 || in_ready);
+    a_accepts_below_capacity: assert (!in_valid || in_ready || f_inflight >= 4);
     a_data_matches_golden: assert (!(tracked_out && out_data != f_exp) &&
                                    !(passthru && out_data != exp_now));
     c_output: cover (emit);

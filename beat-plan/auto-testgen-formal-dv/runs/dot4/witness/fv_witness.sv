@@ -3,8 +3,14 @@ module fv_witness (
   input  [31:0] i_w,
   input  [31:0] i_bias
 );
+  wire h_out_y_min;
+  wire h_out_y_max;
+  wire h_boundary_L8_cmp_gt1_eq;
   wire h_boundary_L8_cmp_gt1_m1;
   wire h_boundary_L8_cmp_gt1_p1;
+  wire h_boundary_L8_cmp_lt2_eq;
+  wire h_boundary_L8_cmp_lt2_m1;
+  wire h_boundary_L8_cmp_lt2_p1;
   wire r_cok;
   ref_dot4 ref (
     .g_a(i_a),
@@ -46,22 +52,28 @@ module fv_witness (
     .bin_in_w_3__max(),
     .bin_in_w_3__min(),
     .bin_in_w_3__zero(),
-    .bin_out_y_max(),
-    .bin_out_y_min(),
+    .bin_out_y_max(h_out_y_max),
+    .bin_out_y_min(h_out_y_min),
     .bin_out_y_zero(),
-    .bnd_boundary_L8_cmp_gt1_eq(),
+    .bnd_boundary_L8_cmp_gt1_eq(h_boundary_L8_cmp_gt1_eq),
     .bnd_boundary_L8_cmp_gt1_m1(h_boundary_L8_cmp_gt1_m1),
     .bnd_boundary_L8_cmp_gt1_p1(h_boundary_L8_cmp_gt1_p1),
-    .bnd_boundary_L8_cmp_lt2_eq(),
-    .bnd_boundary_L8_cmp_lt2_m1(),
-    .bnd_boundary_L8_cmp_lt2_p1(),
+    .bnd_boundary_L8_cmp_lt2_eq(h_boundary_L8_cmp_lt2_eq),
+    .bnd_boundary_L8_cmp_lt2_m1(h_boundary_L8_cmp_lt2_m1),
+    .bnd_boundary_L8_cmp_lt2_p1(h_boundary_L8_cmp_lt2_p1),
     .bnd_boundary_L9_cmp_eq1_eq(),
     .bnd_boundary_L9_cmp_eq1_m1(),
     .bnd_boundary_L9_cmp_eq1_p1()
   );
   always @* begin
     assume (r_cok);
+    c_out_y_min: cover (h_out_y_min);
+    c_out_y_max: cover (h_out_y_max);
+    c_boundary_L8_cmp_gt1_eq: cover (h_boundary_L8_cmp_gt1_eq);
     c_boundary_L8_cmp_gt1_m1: cover (h_boundary_L8_cmp_gt1_m1);
     c_boundary_L8_cmp_gt1_p1: cover (h_boundary_L8_cmp_gt1_p1);
+    c_boundary_L8_cmp_lt2_eq: cover (h_boundary_L8_cmp_lt2_eq);
+    c_boundary_L8_cmp_lt2_m1: cover (h_boundary_L8_cmp_lt2_m1);
+    c_boundary_L8_cmp_lt2_p1: cover (h_boundary_L8_cmp_lt2_p1);
   end
 endmodule

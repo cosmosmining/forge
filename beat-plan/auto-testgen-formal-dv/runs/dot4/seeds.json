@@ -1,0 +1,35 @@
+{
+ "verdicts": {
+  "2": "PASS",
+  "3": "PASS",
+  "4": "PASS",
+  "5": "PASS",
+  "6": "PASS"
+ },
+ "tests": {
+  "2": {
+   "directed": 57,
+   "random": 600,
+   "closure": 4
+  },
+  "3": {
+   "directed": 57,
+   "random": 600
+  },
+  "4": {
+   "directed": 57,
+   "random": 600,
+   "closure": 3
+  },
+  "5": {
+   "directed": 57,
+   "random": 600,
+   "closure": 2
+  },
+  "6": {
+   "directed": 57,
+   "random": 600,
+   "closure": 5
+  }
+ }
+}

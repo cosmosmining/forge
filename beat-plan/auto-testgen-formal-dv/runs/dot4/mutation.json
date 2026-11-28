@@ -1,0 +1,2072 @@
+{
+ "block": "dot4",
+ "by_class": {
+  "arith": {
+   "equivalent": 0,
+   "killed": 4,
+   "survived": 0,
+   "valid": 4
+  },
+  "condition": {
+   "equivalent": 2,
+   "killed": 13,
+   "survived": 0,
+   "valid": 15
+  },
+  "constant": {
+   "equivalent": 8,
+   "killed": 24,
+   "survived": 0,
+   "valid": 32
+  },
+  "dropped-update": {
+   "equivalent": 0,
+   "killed": 10,
+   "survived": 0,
+   "valid": 10
+  },
+  "logical": {
+   "equivalent": 0,
+   "killed": 2,
+   "survived": 0,
+   "valid": 2
+  },
+  "signedness": {
+   "equivalent": 0,
+   "killed": 2,
+   "survived": 0,
+   "valid": 2
+  },
+  "unary": {
+   "equivalent": 0,
+   "killed": 2,
+   "survived": 0,
+   "valid": 2
+  }
+ },
+ "conformant": [],
+ "formal_mode": "stream: BMC depth 8 per mutant",
+ "mutation_sites_found": 67,
+ "records": [
+  {
+   "class": "logical",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: input refused with 1 of 2 in flight",
+      "step 3: input refused with 1 of 2 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "||",
+   "id": 1,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 22,
+   "seconds": 5.1,
+   "sim_first_message": "PROTO cyc=4 input refused with 1 of 2 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "&&"
+  },
+  {
+   "class": "unary",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: input refused with 1 of 2 in flight",
+      "step 3: input refused with 1 of 2 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "!",
+   "id": 2,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 22,
+   "seconds": 1.0,
+   "sim_first_message": "PROTO cyc=2 input refused with 1 of 2 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": ""
+  },
+  {
+   "class": "logical",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: input refused with 1 of 2 in flight",
+      "step 3: input refused with 1 of 2 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "||",
+   "id": 3,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 23,
+   "seconds": 5.1,
+   "sim_first_message": "PROTO cyc=2 input refused with 1 of 2 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "&&"
+  },
+  {
+   "class": "unary",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: input refused with 1 of 2 in flight",
+      "step 4: input refused with 1 of 2 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "!",
+   "id": 4,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 23,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=1 got=ffffffff exp=fffffe01 cyc=22",
+   "sim_killed": true,
+   "status": "killed",
+   "to": ""
+  },
+  {
+   "class": "signedness",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffff941a != golden {'y': 32026}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "$signed(",
+   "id": 5,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=1 got=00000201 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "$unsigned("
+  },
+  {
+   "class": "signedness",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffff941a != golden {'y': 32026}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "$signed(",
+   "id": 6,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 1.3,
+   "sim_first_message": "MISMATCH txn=1 got=00000201 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "$unsigned("
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 7,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 33,
+   "seconds": 1.0,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(rst)"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 8,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 33,
+   "seconds": 1.2,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 9,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 33,
+   "seconds": 1.3,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1'b0",
+   "id": 10,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 34,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=2",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1'b0",
+   "id": 11,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 34,
+   "seconds": 1.1,
+   "sim_first_message": "XPROP cyc=2 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "v1"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: out_data xxxxxxxx != golden {'y': 2147483519}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1'b0",
+   "id": 12,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 35,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=1",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1'b0",
+   "id": 13,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 35,
+   "seconds": 1.1,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "v2"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv2",
+   "id": 14,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 37,
+   "seconds": 1.0,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(adv2)"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 4: out_data changed while stalled",
+      "step 4: out_data ffffffff != golden {'y': 0}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv2",
+   "id": 15,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 37,
+   "seconds": 2.2,
+   "sim_first_message": "PROTO cyc=4 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv2",
+   "id": 16,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 37,
+   "seconds": 1.0,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "v1",
+   "id": 17,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 38,
+   "seconds": 1.1,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "v2"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 1476321004}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "v1",
+   "id": 18,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(v1)"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "v1",
+   "id": 19,
+   "killed_by_groups": [],
+   "line": 39,
+   "miter": "EQUIVALENT",
+   "seconds": 21.0,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 301973568}",
+      "step 4: out_data xxxxxxxx != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "v1",
+   "id": 20,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "arith",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 000002fe != golden {'y': -13094}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 21,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000003 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "arith",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data e7d5f706 != golden {'y': -405408914}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 22,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000003 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "arith",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 2fffdb17 != golden {'y': 805296793}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 23,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000003 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "arith",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 8000432c != golden {'y': -2147466080}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 24,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000003 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 301973568}",
+      "step 4: out_data xxxxxxxx != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "b1 + p0 + p1 + p2 + p3",
+   "id": 25,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 39,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "s2"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv1",
+   "id": 26,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 41,
+   "seconds": 1.0,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(adv1)"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: out_data 3f121989 != golden {'y': 1061033527}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv1",
+   "id": 27,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 41,
+   "seconds": 3.5,
+   "sim_first_message": "MISMATCH txn=1 got=000001fd exp=fffffe01 cyc=22",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "adv1",
+   "id": 28,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 41,
+   "seconds": 1.2,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: 3 in flight > capacity 2",
+      "step 4: 3 in flight > capacity 2",
+      "step 5: 3 in flight > capacity 2"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid",
+   "id": 29,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 42,
+   "seconds": 1.1,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "v1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 134223412}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid",
+   "id": 30,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 43,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(in_valid)"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "in_valid",
+   "id": 31,
+   "killed_by_groups": [],
+   "line": 43,
+   "miter": "EQUIVALENT",
+   "seconds": 21.9,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 301973572}",
+      "step 4: out_data xxxxxxxx != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid",
+   "id": 32,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 43,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 33,
+   "killed_by_groups": [],
+   "line": 44,
+   "miter": "EQUIVALENT",
+   "seconds": 23.2,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "8"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}",
+      "step 4: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 34,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 44,
+   "seconds": 1.3,
+   "sim_first_message": "MISMATCH txn=1 got=fffffe81 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "6"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 7bffa51d != golden {'y': 2080365129}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 35,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 44,
+   "seconds": 1.3,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 36,
+   "killed_by_groups": [],
+   "line": 44,
+   "miter": "EQUIVALENT",
+   "seconds": 22.7,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "8"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}",
+      "step 4: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 37,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 44,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=26 got=fffffe81 exp=fffffe01 cyc=29",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "6"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 500034f9 != golden {'y': 1342186291}",
+      "step 4: out_data 0000408e != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 38,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 44,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': -1610860511}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "mul8(a[7:0],   w[7:0])",
+   "id": 39,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 44,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "p0"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "15",
+   "id": 40,
+   "killed_by_groups": [],
+   "line": 45,
+   "miter": "EQUIVALENT",
+   "seconds": 21.6,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "16"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}",
+      "step 4: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "15",
+   "id": 41,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=1 got=fffffe81 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "14"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data f7f02436 != golden {'y': -135241689}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8",
+   "id": 42,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "9"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 3a400b69 != golden {'y': 977262025}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8",
+   "id": 43,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "7"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "15",
+   "id": 44,
+   "killed_by_groups": [],
+   "line": 45,
+   "miter": "EQUIVALENT",
+   "seconds": 21.9,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "16"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}",
+      "step 4: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "15",
+   "id": 45,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=26 got=fffffe81 exp=fffffe01 cyc=29",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "14"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data a6ffcdc7 != golden {'y': -1493187825}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8",
+   "id": 46,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "9"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 4f102fa7 != golden {'y': 1326462615}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8",
+   "id": 47,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "7"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': -1879260738}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "mul8(a[15:8],  w[15:8])",
+   "id": 48,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 45,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "p1"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "23",
+   "id": 49,
+   "killed_by_groups": [],
+   "line": 46,
+   "miter": "EQUIVALENT",
+   "seconds": 20.7,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "24"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}",
+      "step 4: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "23",
+   "id": 50,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=1 got=fffffe81 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "22"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 30001327 != golden {'y': 805304875}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "16",
+   "id": 51,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "17"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 3fa7f7de != golden {'y': 1067976867}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "16",
+   "id": 52,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "15"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "23",
+   "id": 53,
+   "killed_by_groups": [],
+   "line": 46,
+   "miter": "EQUIVALENT",
+   "seconds": 20.2,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "24"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 39548c87 != golden {'y': 961856007}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "23",
+   "id": 54,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=26 got=fffffe81 exp=fffffe01 cyc=29",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "22"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 31ff7237 != golden {'y': 838838153}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "16",
+   "id": 55,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "17"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 5a8022f3 != golden {'y': 1518346497}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "16",
+   "id": 56,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "15"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': -2147466813}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "mul8(a[23:16], w[23:16])",
+   "id": 57,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 46,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "p2"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "31",
+   "id": 58,
+   "killed_by_groups": [],
+   "line": 47,
+   "miter": "EQUIVALENT",
+   "seconds": 21.8,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "32"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data ffffff83 != golden {'y': 3}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "31",
+   "id": 59,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=1 got=fffffe81 exp=fffffe01 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "30"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 4d8b6e3a != golden {'y': 1300986698}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "24",
+   "id": 60,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "25"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 0bfff0c9 != golden {'y': 201320919}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "24",
+   "id": 61,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "23"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(8)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "31",
+   "id": 62,
+   "killed_by_groups": [],
+   "line": 47,
+   "miter": "EQUIVALENT",
+   "seconds": 21.8,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "32"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data f800b9bf != golden {'y': -134162625}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "31",
+   "id": 63,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=26 got=fffffe81 exp=fffffe01 cyc=29",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "30"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data c3ff10ad != golden {'y': -1006698010}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "24",
+   "id": 64,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH txn=0 got=00000004 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "25"
+  },
+  {
+   "class": "constant",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 3ea8fc87 != golden {'y': 1051263937}",
+      "step 4: out_data 0000115e != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "24",
+   "id": 65,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=00000006 exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "23"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 813680912}",
+      "step 4: out_data xxxxxxxx != golden {'y': -994}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "mul8(a[31:24], w[31:24])",
+   "id": 66,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 47,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "p3"
+  },
+  {
+   "class": "dropped-update",
+   "file": "dot4.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxxxxxx != golden {'y': 1342180713}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "bias",
+   "id": 67,
+   "killed_by_groups": [
+    "closure",
+    "directed",
+    "random"
+   ],
+   "line": 48,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH txn=0 got=xxxxxxxx exp=00000005 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "b1"
+  }
+ ],
+ "sampled": 67,
+ "seconds": 82.1,
+ "summary": {
+  "bounded_equivalent": 0,
+  "closure_only_kill_rate": "57/57 = 100.0%",
+  "combined_kill_rate": "57/57 = 100.0%",
+  "denominator": 57,
+  "directed_only_kill_rate": "57/57 = 100.0%",
+  "formal_cex_not_confirmed_by_replay": 0,
+  "formal_kill_rate": "57/57 = 100.0%",
+  "killed_any": 57,
+  "killed_by_formal": 57,
+  "killed_by_sim": 57,
+  "mutants_total": 67,
+  "proven_equivalent": 10,
+  "random_only_kill_rate": "57/57 = 100.0%",
+  "sim_kill_rate": "57/57 = 100.0%",
+  "spec_conformant_behavior_change": 0,
+  "stillborn": 0,
+  "survived": 0,
+  "valid": 67
+ },
+ "survivors": []
+}

@@ -26,8 +26,11 @@ Agent instructions: [skill/SKILL.md](skill/SKILL.md).
 
 > **Status (2026-11-28).** Built and verified in a cloud session on four *fixture*
 > blocks written for that purpose (`fixtures/`). They are not Forge Build 6 blocks.
-> The Build 6 RTL, formal tool #4 and conformance pack #5 were not in this session's
-> checkout, so the Build 6 success test is **not yet** run.
+> On them: no false positives across 6 seeds; formal PROVEN for three blocks and
+> BOUNDED(16) for the multiplier pipeline; injected bugs caught 137/137 by simulation
+> and 136/137 by formal, after excluding 21 mutants proven equivalent (numbers and
+> sources in RESULTS.md). The Build 6 RTL, formal tool #4 and conformance pack #5 were
+> not in this session's checkout, so the Build 6 success test is **not yet** run.
 
 ## Quick start
 

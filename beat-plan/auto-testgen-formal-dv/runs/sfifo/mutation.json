@@ -1,0 +1,1370 @@
+{
+ "block": "sfifo",
+ "by_class": {
+  "arith": {
+   "equivalent": 0,
+   "killed": 2,
+   "survived": 0,
+   "valid": 2
+  },
+  "condition": {
+   "equivalent": 0,
+   "killed": 9,
+   "survived": 0,
+   "valid": 9
+  },
+  "constant": {
+   "equivalent": 0,
+   "killed": 19,
+   "survived": 0,
+   "valid": 19
+  },
+  "dropped-update": {
+   "equivalent": 0,
+   "killed": 4,
+   "survived": 0,
+   "valid": 4
+  },
+  "logical": {
+   "equivalent": 0,
+   "killed": 3,
+   "survived": 0,
+   "valid": 3
+  },
+  "relational": {
+   "equivalent": 0,
+   "killed": 3,
+   "survived": 0,
+   "valid": 3
+  },
+  "unary": {
+   "equivalent": 0,
+   "killed": 2,
+   "survived": 0,
+   "valid": 2
+  }
+ },
+ "conformant": [],
+ "formal_mode": "stream: BMC depth 20 per mutant",
+ "mutation_sites_found": 42,
+ "records": [
+  {
+   "class": "relational",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: out_data xxxx != golden {'out_data': 65535}",
+      "step 2: out_data xxxx != golden {'out_data': 65535}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "==",
+   "id": 1,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 17,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH txn=0 got=xxxx exp=0001 cyc=1",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!="
+  },
+  {
+   "class": "relational",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: input refused with 3 of 4 in flight",
+      "step 6: input refused with 3 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "==",
+   "id": 2,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.9,
+   "sim_first_message": "PROTO cyc=5 input refused with 1 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!="
+  },
+  {
+   "class": "relational",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: input refused with 0 of 4 in flight",
+      "step 2: input refused with 0 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "!=",
+   "id": 3,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 3.5,
+   "sim_first_message": "PROTO cyc=1 input refused with 0 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "=="
+  },
+  {
+   "class": "logical",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: input refused with 0 of 4 in flight",
+      "step 2: input refused with 0 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "&&",
+   "id": 4,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 3.3,
+   "sim_first_message": "PROTO cyc=1 input refused with 0 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "||"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: 5 in flight > capacity 4",
+      "step 6: out_data changed while stalled",
+      "step 6: out_data 0000 != golden {'out_data': 1}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 5,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.9,
+   "sim_first_message": "PROTO cyc=6 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "2"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 7: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 6,
+   "killed_by_groups": [
+    "random"
+   ],
+   "line": 18,
+   "seconds": 1.1,
+   "sim_first_message": "PROTO cyc=53 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "0"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 6: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 7,
+   "killed_by_groups": [
+    "random"
+   ],
+   "line": 18,
+   "seconds": 1.2,
+   "sim_first_message": "PROTO cyc=28 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 9: 5 in flight > capacity 4",
+      "step 10: out_data changed while stalled",
+      "step 10: out_data 0000 != golden {'out_data': 65535}",
+      "step 10: 5 in flight > capacity 4",
+      "step 11: out_data 8000 != golden {'out_data': 65535}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 8,
+   "killed_by_groups": [
+    "random"
+   ],
+   "line": 18,
+   "seconds": 2.0,
+   "sim_first_message": "PROTO cyc=28 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "2"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: input refused with 2 of 4 in flight",
+      "step 6: input refused with 2 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 9,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.8,
+   "sim_first_message": "PROTO cyc=14 input refused with 2 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "0"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: input refused with 3 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 10,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.9,
+   "sim_first_message": "PROTO cyc=22 input refused with 3 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid",
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "2",
+   "id": 11,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 6.9,
+   "sim_first_message": "XPROP cyc=1 in_ready is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 4: input refused with 0 of 4 in flight",
+      "step 5: input refused with 0 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "2",
+   "id": 12,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.8,
+   "sim_first_message": "PROTO cyc=6 out_data changed while stalled",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid",
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "2",
+   "id": 13,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 7.0,
+   "sim_first_message": "XPROP cyc=1 in_ready is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 4: input refused with 0 of 4 in flight",
+      "step 5: input refused with 0 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "2",
+   "id": 14,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.8,
+   "sim_first_message": "PROTO cyc=10 input refused with 0 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "unary",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_accepts_below_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: input refused with 0 of 4 in flight",
+      "step 2: input refused with 0 of 4 in flight"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "!",
+   "id": 15,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 19,
+   "seconds": 3.4,
+   "sim_first_message": "PROTO cyc=1 input refused with 0 of 4 in flight",
+   "sim_killed": true,
+   "status": "killed",
+   "to": ""
+  },
+  {
+   "class": "unary",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: out_data xxxx != golden {'out_data': 65535}",
+      "step 2: out_data xxxx != golden {'out_data': 65535}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "!",
+   "id": 16,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 20,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH txn=0 got=xxxx exp=0001 cyc=1",
+   "sim_killed": true,
+   "status": "killed",
+   "to": ""
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [],
+    "verdict": "BOUNDED(20)"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 17,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 21,
+   "seconds": 203.0,
+   "sim_first_message": "MISMATCH txn=4 got=xxxx exp=ffff cyc=6",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "2"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 4: out_data 0000 != golden {'out_data': 128}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1",
+   "id": 18,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 21,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH txn=2 got=0001 exp=7fff cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "0"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data 8000 != golden {'out_data': 0}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 19,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 21,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH txn=1 got=0001 exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 20,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 23,
+   "seconds": 0.7,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(rst)"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_bounded_latency",
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: 5 in flight > capacity 4",
+      "step 5: no output for 4 ready cycles (latency bound 3)",
+      "step 6: 5 in flight > capacity 4",
+      "step 7: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 21,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 23,
+   "seconds": 0.8,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid",
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rst",
+   "id": 22,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 23,
+   "seconds": 8.6,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: out_data xxxx != golden {'out_data': 65535}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd0",
+   "id": 23,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 24,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH txn=0 got=xxxx exp=0001 cyc=1",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd1"
+  },
+  {
+   "class": "dropped-update",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid",
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd0",
+   "id": 24,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 24,
+   "seconds": 8.6,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "wptr"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: out_data xxxx != golden {'out_data': 65535}",
+      "step 2: out_data xxxx != golden {'out_data': 65535}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd0",
+   "id": 25,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 25,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH txn=0 got=xxxx exp=0001 cyc=1",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd1"
+  },
+  {
+   "class": "dropped-update",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 1: X/Z on in_ready/out_valid",
+      "step 2: X/Z on in_ready/out_valid"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd0",
+   "id": 26,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 25,
+   "seconds": 8.6,
+   "sim_first_message": "XPROP cyc=1 out_valid is X/Z",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "rptr"
+  },
+  {
+   "class": "logical",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data 0000 != golden {'out_data': 32768}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "&&",
+   "id": 27,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 27,
+   "seconds": 0.8,
+   "sim_first_message": "EXTRA cyc=7 unexpected output ff42",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "||"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data 0000 != golden {'out_data': 32768}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid && in_ready",
+   "id": 28,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 27,
+   "seconds": 0.8,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(in_valid && in_ready)"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data 0000 != golden {'out_data': 32768}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid && in_ready",
+   "id": 29,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 27,
+   "seconds": 0.9,
+   "sim_first_message": "EXTRA cyc=7 unexpected output ff42",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_bounded_latency",
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: 5 in flight > capacity 4",
+      "step 5: no output for 4 ready cycles (latency bound 3)",
+      "step 6: 5 in flight > capacity 4",
+      "step 7: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "in_valid && in_ready",
+   "id": 30,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 27,
+   "seconds": 0.7,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "arith",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxx != golden {'out_data': 8192}",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 31,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH txn=1 got=xxxx exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxx != golden {'out_data': 0}",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd1",
+   "id": 32,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH txn=1 got=xxxx exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd2"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_bounded_latency",
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: 5 in flight > capacity 4",
+      "step 5: no output for 4 ready cycles (latency bound 3)",
+      "step 6: 5 in flight > capacity 4",
+      "step 7: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd1",
+   "id": 33,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 0.8,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd0"
+  },
+  {
+   "class": "dropped-update",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_bounded_latency",
+     "a_capacity"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 5: 5 in flight > capacity 4",
+      "step 5: no output for 4 ready cycles (latency bound 3)",
+      "step 6: 5 in flight > capacity 4",
+      "step 7: 5 in flight > capacity 4"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "wptr + 3'd1",
+   "id": 34,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 29,
+   "seconds": 0.7,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "wptr"
+  },
+  {
+   "class": "logical",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data xxxx != golden {'out_data': 32769}",
+      "step 3: out_data xxxx != golden {'out_data': 32769}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "&&",
+   "id": 35,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 31,
+   "seconds": 0.8,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "||"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data xxxx != golden {'out_data': 0}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "out_valid && out_ready",
+   "id": 36,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 31,
+   "seconds": 0.7,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!(out_valid && out_ready)"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 2: out_data xxxx != golden {'out_data': 0}",
+      "step 3: out_data xxxx != golden {'out_data': 0}"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "out_valid && out_ready",
+   "id": 37,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 31,
+   "seconds": 0.7,
+   "sim_first_message": "TIMEOUT txn=0 no output for 4 cycles with out_ready high",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "condition",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: output with no accepted input",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "out_valid && out_ready",
+   "id": 38,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 31,
+   "seconds": 4.0,
+   "sim_first_message": "MISMATCH txn=1 got=0001 exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b0"
+  },
+  {
+   "class": "arith",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_data_matches_golden"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: out_data xxxx != golden {'out_data': 0}",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 39,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 32,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH txn=1 got=xxxx exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: output with no accepted input",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd1",
+   "id": 40,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 32,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH txn=1 got=7fff exp=0000 cyc=4",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd2"
+  },
+  {
+   "class": "constant",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: output with no accepted input",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "3'd1",
+   "id": 41,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 32,
+   "seconds": 4.0,
+   "sim_first_message": "MISMATCH txn=1 got=0001 exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "3'd0"
+  },
+  {
+   "class": "dropped-update",
+   "file": "sfifo.v",
+   "formal": {
+    "failed": [
+     "a_no_spurious_output"
+    ],
+    "replay": {
+     "confirmed": true,
+     "violations": [
+      "step 3: output with no accepted input",
+      "step 4: output with no accepted input"
+     ]
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "rptr + 3'd1",
+   "id": 42,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 32,
+   "seconds": 4.0,
+   "sim_first_message": "MISMATCH txn=1 got=0001 exp=0000 cyc=3",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "rptr"
+  }
+ ],
+ "sampled": 42,
+ "seconds": 208.7,
+ "summary": {
+  "bounded_equivalent": 0,
+  "closure_only_kill_rate": "0/42 = 0.0%",
+  "combined_kill_rate": "42/42 = 100.0%",
+  "denominator": 42,
+  "directed_only_kill_rate": "39/42 = 92.9%",
+  "formal_cex_not_confirmed_by_replay": 0,
+  "formal_kill_rate": "41/42 = 97.6%",
+  "killed_any": 42,
+  "killed_by_formal": 41,
+  "killed_by_sim": 42,
+  "mutants_total": 42,
+  "proven_equivalent": 0,
+  "random_only_kill_rate": "42/42 = 100.0%",
+  "sim_kill_rate": "42/42 = 100.0%",
+  "spec_conformant_behavior_change": 0,
+  "stillborn": 0,
+  "survived": 0,
+  "valid": 42
+ },
+ "survivors": []
+}

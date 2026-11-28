@@ -60,7 +60,7 @@
     "failed": [],
     "job": "prove",
     "reached": [],
-    "seconds": 5.38,
+    "seconds": 5.71,
     "status": "PASS",
     "unreached": [],
     "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/sfifo/formal/prove"
@@ -105,7 +105,7 @@
    "a_no_spurious_output": "PASS-by-PROVEN",
    "a_quiet_after_reset": "PASS-by-PROVEN"
   },
-  "seconds": 5.8,
+  "seconds": 6.2,
   "verdict": "PROVEN"
  },
  "generation": {
@@ -174,7 +174,7 @@
   "output_fit_proven_by_intervals": true,
   "warnings": []
  },
- "seconds": 6.2,
+ "seconds": 6.5,
  "seed": 1,
  "simulation": {
   "directed.b2b": {
