@@ -1,0 +1,498 @@
+{
+  "schema": "forge-claimcheck/1",
+  "as_of": "2026-11-27",
+  "note": "Every number has exactly one label (MEASURED, MODELLED, VENDOR-CLAIM; NOT-YET = no number yet), one or more source ids, and a method. Edit this file, then run: python3 -m claimcheck report",
+
+  "sources": [
+    {
+      "id": "SRC-BRIEF",
+      "kind": "founder-brief",
+      "quality": "founder-brief",
+      "title": "Forge feature 6 session brief (prompt of the Claude Code cloud session that built this harness)",
+      "date": "2026-11-27",
+      "location": "Session prompt text, not a file in this checkout",
+      "quotes": [
+        "Forge 474,713 tok/s is ARITHMETIC vs Etched's 500,000 vendor claim, NOT a measurement — never present it as measured."
+      ]
+    },
+    {
+      "id": "SRC-SITE",
+      "kind": "repo-file",
+      "quality": "primary-file",
+      "title": "Forge public site, evidence ledger ('Evidence as of 20 November 2026')",
+      "path": "index.html",
+      "sha256": "1276fc73ea9ef0d95237bf601a38ed59b7a8c25adcbea5c5a795f709aa54c4d5",
+      "git_commit": "0d5ccd8f1e37f14c9cc1075315a438a7fde213b0",
+      "date": "2026-11-20",
+      "note": "The site states Forge's own results. The logs and reports behind them are not in this checkout, so the harness records them as reported and cannot recheck them here."
+    },
+    {
+      "id": "SRC-ETCHED-PRIMARY",
+      "kind": "url",
+      "quality": "primary",
+      "title": "Etched, 'Etched is Making the Biggest Bet in AI' (Sohu announcement)",
+      "url": "https://www.etched.com/announcing-etched",
+      "archive_url": "https://gwern.net/doc/www/www.etched.com/de827f3f96e99801324672b5ad20de1f492133fc.html",
+      "reachable_from_session": false,
+      "access_attempt": "2026-11-27: curl through the session proxy got no response; WebFetch got DNS ENOTFOUND for www.etched.com and for the gwern.net archive copy.",
+      "note": "NOT READ. Until a snapshot of this page is saved under data/sources/ and checked, every Etched wording below comes from search summaries."
+    },
+    {
+      "id": "SRC-SEARCH-ETCHED",
+      "kind": "web-search",
+      "quality": "search-summary",
+      "date": "2026-11-27",
+      "query": "Etched Sohu \"500,000 tokens per second\" Llama 70B 8xSohu replaces 160 H100s",
+      "result_urls": [
+        "https://www.theregister.com/2024/06/26/etched_asic_ai/",
+        "https://www.tomshardware.com/tech-industry/artificial-intelligence/sohu-ai-chip-claimed-to-run-models-20x-faster-and-cheaper-than-nvidia-h100-gpus",
+        "https://www.lesswrong.com/posts/qhpB9NjcCHjdNDsMG/new-fast-transformer-inference-asic-sohu-by-etched",
+        "https://itc.ua/en/news/startup-etched-announces-the-most-powerful-chip-for-ai-sohu-based-on-the-asic-principle-8-of-them-will-supposedly-replace-160-nvidia-h100",
+        "https://www.computerbase.de/2024-06/transformer-models-sohu-asic-von-etched-soll-20x-schneller-als-nvidia-h100-sein/",
+        "https://techradar.com/pro/transformers-would-take-over-the-world-little-known-ai-startup-bet-on-asics-and-claims-it-can-trounce-nvidias-flagship-gpu-the-b200-by-almost-10-times",
+        "https://www.fast.io/resources/etched-ai-review-2026.md",
+        "https://gwern.net/doc/www/www.etched.com/de827f3f96e99801324672b5ad20de1f492133fc.html"
+      ],
+      "summary_quotes": [
+        "Etched says one 8-chip Sohu server can serve over 500,000 Llama 70B tokens per second.",
+        "Benchmarks are for Llama-3 70B in FP8 precision: no sparsity, 8x model parallel, 2048 input/128 output lengths.",
+        "Etched says one 8xSohu server matches 160 H100s.",
+        "Outlets attribute the H100 baseline to roughly 23,000 tokens per second for an eight-GPU Nvidia H100 system.",
+        "One outlet also cites about 45,000 tokens per second for a B200 server.",
+        "One review says the 500,000 tok/s number comes entirely from Etched's own marketing materials and demo videos."
+      ],
+      "note": "Text written by the search engine's summary, not page text read here. Wording and approximate figures are UNVERIFIED until checked against the primary page."
+    },
+    {
+      "id": "SRC-SEARCH-H100",
+      "kind": "web-search",
+      "quality": "search-summary",
+      "date": "2026-11-27",
+      "query": "NVIDIA H100 SXM datasheet FP8 Tensor Core 3,958 teraFLOPS with sparsity GPU memory bandwidth 3.35TB/s",
+      "result_urls": [
+        "https://www.nvidia.com/en-us/data-center/h100/",
+        "https://bxin.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-h100-80-gpu.pdf"
+      ],
+      "summary_quotes": [
+        "FP8 Tensor Core* | 3,958 teraFLOPS | 3,341 teraFLOPS",
+        "Specifications 1/2 lower without sparsity."
+      ],
+      "note": "Search-summary quotes of NVIDIA's product page (first column = H100 SXM) and of an NVIDIA datasheet copy hosted by Cisco. UNVERIFIED wording."
+    },
+    {
+      "id": "SRC-TORCHTUNE",
+      "kind": "package-file",
+      "quality": "package-file",
+      "title": "torchtune 0.6.1 (PyTorch/Meta) model builders, read by parsing without executing",
+      "package": "torchtune==0.6.1",
+      "wheel": "torchtune-0.6.1-py3-none-any.whl",
+      "wheel_sha256": "bcbc4ee9774b5c5829a5ff13df851e0b0e32416c018af8db53faa3472ac256e7",
+      "wheel_sha256_matches_pypi_json": true
+    },
+    {
+      "id": "SRC-LITGPT",
+      "kind": "package-file",
+      "quality": "package-file",
+      "title": "litgpt 0.5.13 (Lightning AI) model configs, read by parsing without executing",
+      "package": "litgpt==0.5.13",
+      "wheel": "litgpt-0.5.13-py3-none-any.whl",
+      "wheel_sha256": "da044b76c52cd44fc0564f6177ed6cf186dde24f711ce8e71e1fd9e9da5f02b2",
+      "wheel_sha256_matches_pypi_json": true
+    },
+    {
+      "id": "SRC-HARNESS",
+      "kind": "tool-output",
+      "quality": "tool-output",
+      "title": "This harness (claimcheck) computing a value from registered inputs",
+      "path": "beat-plan/benchmark-harness/claimcheck/"
+    }
+  ],
+
+  "numbers": [
+    {
+      "id": "forge.beatplan.tokps_474713",
+      "what": "Forge throughput figure used in the beat plan against Etched",
+      "value": 474713,
+      "unit": "tok/s",
+      "label": "MODELLED",
+      "basis": "arithmetic",
+      "label_lock": {
+        "label": "MODELLED",
+        "reason": "Founder brief 2026-11-27: 'ARITHMETIC vs Etched's 500,000 vendor claim, NOT a measurement — never present it as measured.' Only a run record under runs/ that reproduces it can justify a MEASURED number, and that would be a new entry, not this one."
+      },
+      "source": ["SRC-BRIEF"],
+      "method": "Arithmetic projection. The formula, inputs and conditions are reportedly in BEAT_PLAN.md / beat-plan/strategy/ on the founder's laptop and are NOT in this checkout, so the harness cannot reproduce it.",
+      "formula": null,
+      "inputs": {},
+      "aliases": ["474713", "474,713", "474.7k", "474.7 k", "474.713k", "~475k", "475k"],
+      "conditions": {
+        "model": null, "chips": null, "precision": null, "metric_kind": null,
+        "token_counting": null, "s_in": null, "s_out": null, "batch": null
+      }
+    },
+
+    {
+      "id": "forge.site.proof_mismatches",
+      "what": "Engine hardware equals the integer model (Qwen2.5-0.5B-Instruct, real weights): mismatches over 47 token positions x 411 checkpoints per token",
+      "value": 0,
+      "unit": "mismatches",
+      "label": "MEASURED",
+      "measured_on": "RTL simulation",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: the hardware runs real tokens in simulation, and every intermediate value in every layer is compared with the integer model.",
+      "evidence": {"status": "not-in-checkout", "expected": "llm_core proof logs (47 positions x 411 checkpoints)"}
+    },
+    {
+      "id": "forge.site.gate_blocks_pass",
+      "what": "Blocks passing the gate (lint, simulation with coverage, synthesis, timing), plus the top level",
+      "value": 9,
+      "unit": "blocks + top level PASS",
+      "label": "MEASURED",
+      "measured_on": "lint / RTL simulation / synthesis / static timing (45 nm library, pre-layout)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: gate verdict PASS for 9 blocks and the top level.",
+      "evidence": {"status": "not-in-checkout", "expected": "gate reports per block"}
+    },
+    {
+      "id": "forge.site.top_cells",
+      "what": "llm_core top level after synthesis (reduced size), 0 latches",
+      "value": 535000,
+      "display": "~535k",
+      "approx": true,
+      "unit": "cells",
+      "label": "MEASURED",
+      "measured_on": "synthesis (45 nm library, reduced size)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: synthesis cell count, quoted as '535k cells'.",
+      "evidence": {"status": "not-in-checkout", "expected": "synthesis report for llm_core"}
+    },
+    {
+      "id": "forge.site.top_slack_ns",
+      "what": "llm_core worst slack at a 2.0 ns clock (reduced size, pre-layout)",
+      "value": 0.002,
+      "display": "+0.002",
+      "unit": "ns",
+      "label": "MEASURED",
+      "measured_on": "static timing analysis (45 nm library, pre-layout, reduced size)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: timing '+0.002 ns at 2.0 ns'.",
+      "evidence": {"status": "not-in-checkout", "expected": "timing report for llm_core"}
+    },
+    {
+      "id": "forge.site.clock_period_ns",
+      "what": "Clock period at which llm_core met timing (reduced size, pre-layout)",
+      "value": 2.0,
+      "unit": "ns",
+      "label": "MEASURED",
+      "measured_on": "static timing analysis (45 nm library, pre-layout, reduced size)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: timing met at 2.0 ns with +0.002 ns slack. Measured at REDUCED size; the site says the clock is ASSUMED to hold at full size.",
+      "evidence": {"status": "not-in-checkout", "expected": "timing report for llm_core"}
+    },
+    {
+      "id": "forge.site.cycles_per_token_qwen05b",
+      "what": "Cycles per token for Qwen2.5-0.5B in simulation",
+      "value": 580000,
+      "display": "~580,000",
+      "approx": true,
+      "unit": "cycles",
+      "label": "MEASURED",
+      "measured_on": "RTL simulation",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: 'about 580,000 cycles'. Rounded by the site; the context length of the measured token is not stated.",
+      "evidence": {"status": "not-in-checkout", "expected": "simulation log with the per-token cycle count"}
+    },
+    {
+      "id": "forge.site.time_per_token_qwen05b_ms",
+      "what": "Hardware time per token, Qwen2.5-0.5B (site kind 'derived')",
+      "value": 1.16,
+      "unit": "ms",
+      "label": "MODELLED",
+      "basis": "arithmetic",
+      "source": ["SRC-SITE"],
+      "method": "Site arithmetic: cycles x clock period. Assumption (stated on the site): the 2.0 ns clock met at reduced size holds at full size.",
+      "formula": "cycles * period_ns * 1e-6",
+      "inputs": {"cycles": "forge.site.cycles_per_token_qwen05b", "period_ns": "forge.site.clock_period_ns"},
+      "tolerance_rel": 0.005
+    },
+    {
+      "id": "forge.harness.tokps_qwen05b_1engine_b1",
+      "what": "Tokens per second implied by the site's time per token: Qwen2.5-0.5B, one engine, batch 1",
+      "value": null,
+      "unit": "tok/s",
+      "label": "MODELLED",
+      "basis": "arithmetic",
+      "source": ["SRC-HARNESS", "SRC-SITE"],
+      "method": "Computed by this harness as 1000 / (time per token in ms). Inherits the site's assumption that the reduced-size clock holds at full size. Not a measurement: no FPGA or silicon run exists.",
+      "formula": "1000 / t_ms",
+      "inputs": {"t_ms": "forge.site.time_per_token_qwen05b_ms"},
+      "conditions": {
+        "model": "qwen2.5-0.5b", "chips": 1, "precision": "integer (widths not stated on the site)",
+        "metric_kind": "single-stream-decode-rate", "token_counting": "output-only",
+        "s_in": null, "s_out": null, "batch": 1
+      }
+    },
+    {
+      "id": "forge.site.ppl_delta_q8_pct",
+      "what": "Integer Qwen2.5-7B, 8-bit weights: perplexity change vs the float model (95% interval -0.16 to +0.28; 20,440 tokens of wikitext-2)",
+      "value": 0.06,
+      "display": "+0.06",
+      "unit": "%",
+      "label": "MEASURED",
+      "measured_on": "integer-model evaluation (software)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: perplexity on 20,440 tokens of wikitext-2 against the float model.",
+      "evidence": {"status": "not-in-checkout", "expected": "perplexity evaluation logs"}
+    },
+    {
+      "id": "forge.site.ppl_delta_q6_pct",
+      "what": "Integer Qwen2.5-7B, 6-bit weights: perplexity change (95% interval 3.6 to 4.9; same text)",
+      "value": 4.3,
+      "display": "+4.3",
+      "unit": "%",
+      "label": "MEASURED",
+      "measured_on": "integer-model evaluation (software)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger.",
+      "evidence": {"status": "not-in-checkout", "expected": "perplexity evaluation logs"}
+    },
+    {
+      "id": "forge.site.ppl_delta_q4_pct",
+      "what": "Integer Qwen2.5-7B, 4-bit weights with calibrated rounding: perplexity change (site: not good enough, not used)",
+      "value": 13.7,
+      "display": "+13.7",
+      "unit": "%",
+      "label": "MEASURED",
+      "measured_on": "integer-model evaluation (software)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger.",
+      "evidence": {"status": "not-in-checkout", "expected": "perplexity evaluation logs"}
+    },
+    {
+      "id": "forge.site.gpu_int_values_match",
+      "what": "Fast integer engine on a GPU gives the same integers as the integer model (Qwen2.5-7B): intermediate values identical, out of 479",
+      "value": 479,
+      "unit": "of 479 values",
+      "label": "MEASURED",
+      "measured_on": "GPU software run, checked by an independent rerun",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger.",
+      "evidence": {"status": "not-in-checkout", "expected": "GPU rerun comparison log"}
+    },
+    {
+      "id": "forge.site.ws_rows_clock_ns",
+      "what": "Rows with weights stored beside the multipliers: exact results at this clock period (45 nm library, pre-layout)",
+      "value": 0.80,
+      "display": "0.80",
+      "unit": "ns",
+      "label": "MEASURED",
+      "measured_on": "gate (simulation + static timing, 45 nm library, pre-layout)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger.",
+      "evidence": {"status": "not-in-checkout", "expected": "gate report for the weight-stationary rows"}
+    },
+    {
+      "id": "forge.site.energy_pj_per_mac",
+      "what": "Energy of those rows per multiply-accumulate (7 nm predictive library, real activations; a lower bound with no wires and no clock tree)",
+      "value": 0.216,
+      "unit": "pJ/MAC",
+      "label": "MEASURED",
+      "measured_on": "pre-layout power analysis on a predictive 7 nm library (NOT silicon)",
+      "source": ["SRC-SITE"],
+      "method": "Forge site ledger: power tool run beside the gate with real activations. A lower bound.",
+      "evidence": {"status": "not-in-checkout", "expected": "power analysis report"}
+    },
+    {
+      "id": "forge.site.tests_passed",
+      "what": "Tests passing at the last full run of the Forge tool suite",
+      "value": 1845,
+      "unit": "tests",
+      "label": "MEASURED",
+      "measured_on": "test runner",
+      "source": ["SRC-SITE"],
+      "method": "Forge site: 'At the last full run all 1,845 tests passed.'",
+      "evidence": {"status": "not-in-checkout", "expected": "test runner output"}
+    },
+    {
+      "id": "forge.site.proof_qwen7b",
+      "what": "Engine proof on Qwen2.5-7B (full tokens through all 28 layers in simulation)",
+      "value": null,
+      "unit": "mismatches",
+      "label": "NOT-YET",
+      "source": ["SRC-SITE"],
+      "method": "Site status 'running' on 2026-11-20."
+    },
+    {
+      "id": "forge.site.fpga_tokps",
+      "what": "Tokens per second on an FPGA",
+      "value": null,
+      "unit": "tok/s",
+      "label": "NOT-YET",
+      "source": ["SRC-SITE"],
+      "method": "Site status 'no run yet'. See protocol/FPGA_MEASUREMENT_PROTOCOL.md for what a run must record."
+    },
+    {
+      "id": "forge.site.fpga_watts",
+      "what": "Watts on an FPGA",
+      "value": null,
+      "unit": "W",
+      "label": "NOT-YET",
+      "source": ["SRC-SITE"],
+      "method": "Site status 'no run yet'."
+    },
+    {
+      "id": "forge.site.silicon",
+      "what": "Any number measured on Forge silicon",
+      "value": null,
+      "unit": null,
+      "label": "NOT-YET",
+      "source": ["SRC-SITE"],
+      "method": "Site status 'none'."
+    },
+
+    {
+      "id": "etched.sohu.server_tokps",
+      "what": "Etched Sohu: throughput of one 8-chip Sohu server on Llama-3 70B",
+      "value": 500000,
+      "qualifier": "over",
+      "display": ">500,000",
+      "unit": "tok/s",
+      "label": "VENDOR-CLAIM",
+      "claim_type": "performance",
+      "stated_by": "Etched",
+      "source": ["SRC-SEARCH-ETCHED", "SRC-BRIEF", "SRC-ETCHED-PRIMARY"],
+      "quote": "Etched says one 8-chip Sohu server can serve over 500,000 Llama 70B tokens per second.",
+      "quote_status": "search-summary",
+      "method": "Vendor statement. No independent measurement exists in any source reachable here. Etched's own page could not be read from this session; the wording and conditions come from a search summary dated 2026-11-27. The founder brief independently gives 500,000 as Etched's vendor claim.",
+      "aliases": ["500,000", "500000", "500k", "500 k", "0.5M"],
+      "conditions": {
+        "model": "llama-3-70b", "chips": 8, "precision": "FP8",
+        "metric_kind": "aggregate-throughput", "token_counting": null,
+        "s_in": 2048, "s_out": 128, "batch": null
+      },
+      "condition_notes": "From the search summary: 'Llama-3 70B in FP8 precision: no sparsity, 8x model parallel, 2048 input/128 output lengths.' Whether input tokens are counted, the concurrency, and whether the figures were measured or simulated are NOT stated in the available sources."
+    },
+    {
+      "id": "etched.claim.replaces_h100s",
+      "what": "Etched: one 8xSohu server replaces this many H100 GPUs",
+      "value": 160,
+      "unit": "H100 GPUs",
+      "label": "VENDOR-CLAIM",
+      "claim_type": "comparison",
+      "stated_by": "Etched",
+      "source": ["SRC-SEARCH-ETCHED", "SRC-ETCHED-PRIMARY"],
+      "quote": "Etched says one 8xSohu server matches 160 H100s.",
+      "quote_status": "search-summary",
+      "method": "Vendor statement; search-summary wording."
+    },
+    {
+      "id": "etched.claim.h100_server_tokps",
+      "what": "Etched's figure for an 8xH100 server on the same benchmark (as attributed by press coverage)",
+      "value": 23000,
+      "qualifier": "roughly",
+      "display": "~23,000",
+      "unit": "tok/s",
+      "label": "VENDOR-CLAIM",
+      "claim_type": "comparison",
+      "stated_by": "Etched (figure for NVIDIA hardware, as attributed by outlets)",
+      "source": ["SRC-SEARCH-ETCHED"],
+      "quote": "Outlets attribute the H100 baseline to roughly 23,000 tokens per second for an eight-GPU Nvidia H100 system.",
+      "quote_status": "search-summary",
+      "method": "Second-hand: a search summary of press coverage of Etched's chart. Software stack and version not available here.",
+      "conditions": {
+        "model": "llama-3-70b", "chips": 8, "precision": "FP8",
+        "metric_kind": "aggregate-throughput", "token_counting": null,
+        "s_in": 2048, "s_out": 128, "batch": null
+      },
+      "condition_notes": "Assumed to be the same benchmark conditions as the Sohu figure, since both come from one vendor chart (assumption)."
+    },
+    {
+      "id": "etched.claim.b200_server_tokps",
+      "what": "Etched's figure for an 8xB200 server (as attributed by one outlet)",
+      "value": 45000,
+      "qualifier": "about",
+      "display": "~45,000",
+      "unit": "tok/s",
+      "label": "VENDOR-CLAIM",
+      "claim_type": "comparison",
+      "stated_by": "Etched (figure for NVIDIA hardware, as attributed by one outlet)",
+      "source": ["SRC-SEARCH-ETCHED"],
+      "quote": "One outlet also cites about 45,000 tokens per second for a B200 server.",
+      "quote_status": "search-summary",
+      "method": "Second-hand, single outlet. Listed for completeness; not used in any check."
+    },
+    {
+      "id": "nvidia.h100sxm.fp8_sparse_tflops",
+      "what": "NVIDIA H100 SXM peak FP8 Tensor Core throughput, as stated with sparsity",
+      "value": 3958,
+      "unit": "TFLOPS",
+      "label": "VENDOR-CLAIM",
+      "claim_type": "spec",
+      "stated_by": "NVIDIA",
+      "source": ["SRC-SEARCH-H100"],
+      "quote": "FP8 Tensor Core* | 3,958 teraFLOPS | 3,341 teraFLOPS",
+      "quote_status": "search-summary",
+      "method": "Vendor datasheet figure (first column = SXM); the asterisk marks a sparse figure."
+    },
+    {
+      "id": "nvidia.h100sxm.fp8_dense_tflops",
+      "what": "NVIDIA H100 SXM peak dense FP8 throughput (no sparsity)",
+      "value": null,
+      "unit": "TFLOPS",
+      "label": "MODELLED",
+      "basis": "arithmetic",
+      "source": ["SRC-HARNESS", "SRC-SEARCH-H100"],
+      "method": "Vendor sparse figure x 1/2, per the datasheet footnote 'Specifications 1/2 lower without sparsity.' (search-summary wording). Rests on a vendor claim.",
+      "formula": "sparse_tflops / 2",
+      "inputs": {"sparse_tflops": "nvidia.h100sxm.fp8_sparse_tflops"}
+    }
+  ],
+
+  "consistency_checks": [
+    {
+      "id": "CHK-ETCHED-160-H100",
+      "question": "Are Etched's own figures for the 8xSohu server, the 8xH100 server and the number of H100s replaced consistent with each other?",
+      "formula": "sohu_tokps / h100_server_tokps * 8",
+      "inputs": {"sohu_tokps": "etched.sohu.server_tokps", "h100_server_tokps": "etched.claim.h100_server_tokps"},
+      "relation": ">=",
+      "target": "etched.claim.replaces_h100s",
+      "unit": "H100 GPUs",
+      "note": "'Over 500,000' is a lower bound, so the implied H100 count is also a lower bound. Every input is a search-summary vendor claim."
+    }
+  ],
+
+  "comparisons": [
+    {
+      "id": "CMP-474713-VS-ETCHED",
+      "question": "Can the Forge beat-plan throughput figure be compared with Etched's Sohu server figure?",
+      "a": "forge.beatplan.tokps_474713",
+      "b": "etched.sohu.server_tokps"
+    },
+    {
+      "id": "CMP-QWEN-ENGINE-VS-ETCHED",
+      "question": "Can the only Forge tok/s with a recorded basis (Qwen2.5-0.5B, one engine, batch one) be compared with Etched's Sohu server figure?",
+      "a": "forge.harness.tokps_qwen05b_1engine_b1",
+      "b": "etched.sohu.server_tokps"
+    }
+  ],
+
+  "vendor_analyses": [
+    {
+      "id": "VA-ETCHED-SOHU",
+      "claim": "etched.sohu.server_tokps",
+      "arch": "llama-3-70b",
+      "bytes_per_weight": 1,
+      "bytes_per_kv": 1,
+      "byte_assumptions": "FP8 weights per Etched's footnote (search-summary). KV cache ASSUMED FP8 as well (not stated).",
+      "lm_head_on_prefill": false,
+      "baseline": {
+        "claim": "etched.claim.h100_server_tokps",
+        "chips": 8,
+        "peak_per_chip_tflops": "nvidia.h100sxm.fp8_dense_tflops",
+        "sparse_peak_per_chip_tflops": "nvidia.h100sxm.fp8_sparse_tflops",
+        "peak_name": "H100 SXM dense FP8 peak"
+      },
+      "tokens_per_weight_pass": [1, 64, 256, 1024, 4096]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Llama-3-70B",
+  "label": "VENDOR-CLAIM",
+  "claim_type": "spec",
+  "stated_by": "Meta (model publisher)",
+  "method": "Architecture constants read, by parsing the files without executing them, from two independent PyPI transcriptions of the published model definition. Hugging Face (huggingface.co) was unreachable from this session (DNS/proxy blocked, 2026-11-27).",
+  "sources": [
+    {
+      "source_id": "SRC-TORCHTUNE",
+      "file": "torchtune/models/llama3/_model_builders.py",
+      "file_sha256": "fd67ab17509db9d1d5269257e622d57ff3aaa6081d919cee3e30e6db06d0504b",
+      "where": "def llama3_70b() at line 47",
+      "also": "torchtune/models/llama3/_component_builders.py (sha256 4f1fe99422cc7c4a856c77b84cb7a80523d9cf59978b16766f8b2c3e128ddb6a): head_dim = embed_dim // num_heads; q/k/v/output_proj bias=False; separate output_proj (untied)"
+    },
+    {
+      "source_id": "SRC-LITGPT",
+      "file": "litgpt/config.py",
+      "file_sha256": "f89579ef33e3fab8e42f07a8dc651c087d8eae81886041087d448e3fbbd02822",
+      "where": "dict(name=\"Llama-3-70B{}\") at line 795"
+    }
+  ],
+  "fields": {
+    "n_layers": 80,
+    "d_model": 8192,
+    "n_heads": 64,
+    "n_kv_heads": 8,
+    "d_ff": 28672,
+    "vocab": 128256,
+    "tied_embeddings": false,
+    "qkv_bias": false,
+    "gated_mlp": true
+  },
+  "transcriptions": {
+    "torchtune==0.6.1": {
+      "n_layers": 80, "d_model": 8192, "n_heads": 64, "n_kv_heads": 8, "d_ff": 28672,
+      "vocab": 128256, "tied_embeddings": false, "qkv_bias": false, "gated_mlp": true
+    },
+    "litgpt==0.5.13": {
+      "n_layers": 80, "d_model": 8192, "n_heads": 64, "n_kv_heads": 8, "d_ff": 28672,
+      "vocab": 128256, "qkv_bias": false, "gated_mlp": true
+    }
+  },
+  "transcription_notes": [
+    "litgpt: n_layer=80, n_embd=8192, n_head=64, n_query_groups=8, intermediate_size=28672, padded_vocab_size=128256 (vocab_size=128000 is the tokenizer's count; the embedding matrix has 128256 rows), bias=False, mlp_class_name=LLaMAMLP (gated, 3 matrices).",
+    "litgpt records no tied-embedding flag for this entry, so tied_embeddings comes from torchtune alone (separate output_proj Linear)."
+  ]
+}

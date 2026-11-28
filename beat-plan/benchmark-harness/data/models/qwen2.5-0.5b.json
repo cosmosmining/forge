@@ -1,0 +1,47 @@
+{
+  "name": "Qwen2.5-0.5B",
+  "label": "VENDOR-CLAIM",
+  "claim_type": "spec",
+  "stated_by": "Alibaba Qwen team (model publisher)",
+  "method": "Architecture constants read, by parsing the files without executing them, from two independent PyPI transcriptions of the published model definition. Hugging Face (huggingface.co) was unreachable from this session (DNS/proxy blocked, 2026-11-27).",
+  "sources": [
+    {
+      "source_id": "SRC-TORCHTUNE",
+      "file": "torchtune/models/qwen2_5/_model_builders.py",
+      "file_sha256": "c7a701f7a2a75b653da9668eeaaf361272851e84c37c42f44880258e61560003",
+      "where": "def qwen2_5_0_5b() at line 23 (docstring cites https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)",
+      "also": "torchtune/models/qwen2/_component_builders.py (sha256 3cbaaf92b37fee150e55107aea09663b68bf7037d0c3006a880474c9bc2c42ac): head_dim = embed_dim // num_heads; q/k/v_proj bias=True; output_proj bias=False"
+    },
+    {
+      "source_id": "SRC-LITGPT",
+      "file": "litgpt/config.py",
+      "file_sha256": "f89579ef33e3fab8e42f07a8dc651c087d8eae81886041087d448e3fbbd02822",
+      "where": "dict(name=\"Qwen2.5-0.5B{}\") at line 2264"
+    }
+  ],
+  "fields": {
+    "n_layers": 24,
+    "d_model": 896,
+    "n_heads": 14,
+    "n_kv_heads": 2,
+    "d_ff": 4864,
+    "vocab": 151936,
+    "tied_embeddings": true,
+    "qkv_bias": true,
+    "gated_mlp": true
+  },
+  "transcriptions": {
+    "torchtune==0.6.1": {
+      "n_layers": 24, "d_model": 896, "n_heads": 14, "n_kv_heads": 2, "d_ff": 4864,
+      "vocab": 151936, "tied_embeddings": true, "qkv_bias": true, "gated_mlp": true
+    },
+    "litgpt==0.5.13": {
+      "n_layers": 24, "d_model": 896, "n_heads": 14, "n_kv_heads": 2, "d_ff": 4864,
+      "vocab": 151936, "qkv_bias": true, "gated_mlp": true
+    }
+  },
+  "transcription_notes": [
+    "litgpt: n_layer=24, n_embd=896, n_head=14, n_query_groups=2, intermediate_size=4864, padded_vocab_size=151936 (vocab_size=151643 is the tokenizer's count), attn_bias=True, bias=False, mlp_class_name=LLaMAMLP.",
+    "litgpt records no tied-embedding flag for this entry, so tied_embeddings=true comes from torchtune alone (tie_word_embeddings=True in qwen2_5_0_5b())."
+  ]
+}

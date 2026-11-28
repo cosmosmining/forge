@@ -1,0 +1,14 @@
+{
+  "tools": {
+    "python": "Python 3.13.18",
+    "iverilog": "Icarus Verilog version 12.0 (stable) ()",
+    "yosys": "Yosys 0.33 (git sha1 2584903a060)",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "sby": null,
+    "openroad": null
+  },
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "cpu_count": 4,
+  "collected_utc": "2026-11-28T00:05:31Z"
+}
