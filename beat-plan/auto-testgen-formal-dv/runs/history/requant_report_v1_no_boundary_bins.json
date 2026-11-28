@@ -1,0 +1,187 @@
+{
+ "block": {
+  "bins": 15,
+  "constraints": [],
+  "golden": "../golden/requant.py:requant",
+  "inputs": [
+   "acc:s32",
+   "mult:u16",
+   "shift:u5",
+   "zp:s8"
+  ],
+  "kind": "comb",
+  "name": "requant",
+  "note": "Fixture written in this session to exercise forge_testgen; not Forge RTL.",
+  "outputs": [
+   "y:s8"
+  ],
+  "rtl": [
+   "../rtl/requant.v"
+  ],
+  "top": "requant"
+ },
+ "coverage": {
+  "bins_considered": 19,
+  "bins_excluded_unreachable": 0,
+  "bins_hit": 19,
+  "bins_total": 19,
+  "coverage_pct": 100.0,
+  "excluded": {},
+  "first_hit_by": {
+   "bin.max_shift_moves_y": "directed.pairwise",
+   "bin.zero_out_nonzero_acc": "directed.ofat.zp",
+   "golden.neg_round_tie": "directed.ofat.acc",
+   "golden.round_tie": "directed.base",
+   "golden.sat_hi": "directed.ofat.acc",
+   "golden.sat_lo": "directed.ofat.acc",
+   "in.acc.max": "directed.ofat.acc",
+   "in.acc.min": "directed.ofat.acc",
+   "in.acc.zero": "directed.ofat.acc",
+   "in.mult.max": "directed.ofat.mult",
+   "in.mult.min": "directed.ofat.mult",
+   "in.shift.max": "directed.ofat.shift",
+   "in.shift.min": "directed.ofat.shift",
+   "in.zp.max": "directed.ofat.zp",
+   "in.zp.min": "directed.ofat.zp",
+   "in.zp.zero": "directed.ofat.zp",
+   "out.y.max": "directed.ofat.acc",
+   "out.y.min": "directed.ofat.acc",
+   "out.y.zero": "directed.ofat.zp"
+  },
+  "holes": []
+ },
+ "formal": {
+  "failed": [],
+  "job": {
+   "engine": "smtbmc bitwuzla",
+   "failed": [],
+   "job": "equiv",
+   "reached": [],
+   "seconds": 3.05,
+   "status": "PASS",
+   "unreached": [],
+   "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/requant/formal/equiv"
+  },
+  "kind": "comb_equivalence",
+  "properties": [
+   "golden_fits_ports",
+   "eq_y"
+  ],
+  "seconds": 3.1,
+  "verdict": "PROVEN"
+ },
+ "generation": {
+  "after_directed": {
+   "bins_considered": 19,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 19,
+   "bins_total": 19,
+   "coverage_pct": 100.0,
+   "excluded": {},
+   "first_hit_by": {
+    "bin.max_shift_moves_y": "directed.pairwise",
+    "bin.zero_out_nonzero_acc": "directed.ofat.zp",
+    "golden.neg_round_tie": "directed.ofat.acc",
+    "golden.round_tie": "directed.base",
+    "golden.sat_hi": "directed.ofat.acc",
+    "golden.sat_lo": "directed.ofat.acc",
+    "in.acc.max": "directed.ofat.acc",
+    "in.acc.min": "directed.ofat.acc",
+    "in.acc.zero": "directed.ofat.acc",
+    "in.mult.max": "directed.ofat.mult",
+    "in.mult.min": "directed.ofat.mult",
+    "in.shift.max": "directed.ofat.shift",
+    "in.shift.min": "directed.ofat.shift",
+    "in.zp.max": "directed.ofat.zp",
+    "in.zp.min": "directed.ofat.zp",
+    "in.zp.zero": "directed.ofat.zp",
+    "out.y.max": "directed.ofat.acc",
+    "out.y.min": "directed.ofat.acc",
+    "out.y.zero": "directed.ofat.zp"
+   },
+   "holes": []
+  },
+  "after_random": {
+   "bins_considered": 19,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 19,
+   "bins_total": 19,
+   "coverage_pct": 100.0,
+   "excluded": {},
+   "first_hit_by": {
+    "bin.max_shift_moves_y": "directed.pairwise",
+    "bin.zero_out_nonzero_acc": "directed.ofat.zp",
+    "golden.neg_round_tie": "directed.ofat.acc",
+    "golden.round_tie": "directed.base",
+    "golden.sat_hi": "directed.ofat.acc",
+    "golden.sat_lo": "directed.ofat.acc",
+    "in.acc.max": "directed.ofat.acc",
+    "in.acc.min": "directed.ofat.acc",
+    "in.acc.zero": "directed.ofat.acc",
+    "in.mult.max": "directed.ofat.mult",
+    "in.mult.min": "directed.ofat.mult",
+    "in.shift.max": "directed.ofat.shift",
+    "in.shift.min": "directed.ofat.shift",
+    "in.zp.max": "directed.ofat.zp",
+    "in.zp.min": "directed.ofat.zp",
+    "in.zp.zero": "directed.ofat.zp",
+    "out.y.max": "directed.ofat.acc",
+    "out.y.min": "directed.ofat.acc",
+    "out.y.zero": "directed.ofat.zp"
+   },
+   "holes": []
+  },
+  "closure": [],
+  "directed_dropped_unsat": 0
+ },
+ "golden_translation": {
+  "max_width": 48,
+  "multipliers": [
+   "32x17"
+  ],
+  "nodes": 46,
+  "output_fit_proven_by_intervals": true,
+  "warnings": []
+ },
+ "seconds": 3.3,
+ "seed": 1,
+ "simulation": {
+  "directed": {
+   "compiled": true,
+   "cov": {},
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 33
+  },
+  "random": {
+   "compiled": true,
+   "cov": {},
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 2000
+  }
+ },
+ "simulator": "iverilog",
+ "spec_vs_rtl": [],
+ "tests": {
+  "directed": 33,
+  "random": 2000
+ },
+ "tool_versions": {
+  "bitwuzla": "0.9.1",
+  "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+  "sby": "/nix/var/nix/profiles/default/bin/sby",
+  "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+  "yices-smt2": "Yices 2.7.0",
+  "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.",
+  "z3": "Z3 version 5.4.1 - 64 bit"
+ },
+ "translator_selfcheck_mismatches": 0,
+ "verdict": "PASS"
+}

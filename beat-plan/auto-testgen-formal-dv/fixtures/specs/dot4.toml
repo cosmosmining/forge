@@ -1,0 +1,53 @@
+# Spec for the `dot4` FIXTURE (not a Forge Build 6 block).
+[block]
+name   = "dot4"
+top    = "dot4"
+kind   = "stream"
+rtl    = ["../rtl/dot4.v"]
+golden = "../golden/dot4.py:dot4"
+note   = "Fixture written in this session to exercise forge_testgen; not Forge RTL."
+
+[[input]]
+name = "a"
+width = 8
+signed = true
+count = 4
+
+[[input]]
+name = "w"
+width = 8
+signed = true
+count = 4
+
+[[input]]
+name = "bias"
+width = 32
+signed = true
+
+[[output]]
+name = "y"
+width = 32
+signed = true
+
+[stream]
+clk = "clk"
+rst = "rst"
+rst_active = "high"
+in_valid = "in_valid"
+in_ready = "in_ready"
+out_valid = "out_valid"
+out_ready = "out_ready"
+capacity = 2
+max_latency = 3
+accepts_below_capacity = true   # elastic buffer: ready whenever not full
+
+[gen]
+random = 600
+
+[formal]
+depth = 16
+prove_timeout = 300
+
+[mutation]
+formal_depth = 8      # BMC depth used per injected bug (the block proof above uses depth 16)
+miter_timeout = 120

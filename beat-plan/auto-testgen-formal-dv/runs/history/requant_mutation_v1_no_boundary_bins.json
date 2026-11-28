@@ -1,0 +1,1019 @@
+{
+ "block": "requant",
+ "by_class": {
+  "arith": {
+   "equivalent": 0,
+   "killed": 3,
+   "survived": 0,
+   "valid": 3
+  },
+  "constant": {
+   "equivalent": 3,
+   "killed": 15,
+   "survived": 0,
+   "valid": 18
+  },
+  "relational": {
+   "equivalent": 2,
+   "killed": 1,
+   "survived": 0,
+   "valid": 3
+  },
+  "shift": {
+   "equivalent": 1,
+   "killed": 1,
+   "survived": 0,
+   "valid": 2
+  },
+  "signedness": {
+   "equivalent": 0,
+   "killed": 1,
+   "survived": 0,
+   "valid": 1
+  }
+ },
+ "conformant": [],
+ "mutation_sites_found": 27,
+ "records": [
+  {
+   "class": "signedness",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -128
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=80"
+     ],
+     "vector": {
+      "acc": -1073741823,
+      "mult": 32768,
+      "shift": 0,
+      "zp": -2
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "$signed(",
+   "id": 1,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 13,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH vec=1 got=7f exp=80",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "$unsigned("
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 127
+     },
+     "got_bits": 63,
+     "messages": [
+      "MISMATCH vec=0 got=3f exp=7f"
+     ],
+     "vector": {
+      "acc": 1,
+      "mult": 65473,
+      "shift": 0,
+      "zp": 126
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "1'b0",
+   "id": 2,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 13,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH vec=0 got=80 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1'b1"
+  },
+  {
+   "class": "arith",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -123
+     },
+     "got_bits": 135,
+     "messages": [
+      "MISMATCH vec=0 got=87 exp=85"
+     ],
+     "vector": {
+      "acc": 0,
+      "mult": 65280,
+      "shift": 5,
+      "zp": -123
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "-",
+   "id": 3,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.6,
+   "sim_first_message": "MISMATCH vec=0 got=03 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "+"
+  },
+  {
+   "class": "relational",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 64
+     },
+     "got_bits": 63,
+     "messages": [
+      "MISMATCH vec=0 got=3f exp=40"
+     ],
+     "vector": {
+      "acc": -4,
+      "mult": 2,
+      "shift": 6,
+      "zp": 64
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "==",
+   "id": 4,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH vec=0 got=01 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "!="
+  },
+  {
+   "class": "shift",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "<<<",
+   "id": 5,
+   "killed_by_groups": [],
+   "line": 14,
+   "miter": "EQUIVALENT",
+   "seconds": 7.4,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "<<"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -128
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=80"
+     ],
+     "vector": {
+      "acc": -65536,
+      "mult": 1,
+      "shift": 0,
+      "zp": -128
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "5'd0",
+   "id": 6,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.6,
+   "sim_first_message": "MISMATCH vec=0 got=01 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "5'd1"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -66
+     },
+     "got_bits": 191,
+     "messages": [
+      "MISMATCH vec=0 got=bf exp=be"
+     ],
+     "vector": {
+      "acc": 0,
+      "mult": 65535,
+      "shift": 0,
+      "zp": -66
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "49'sd0",
+   "id": 7,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.7,
+   "sim_first_message": "MISMATCH vec=11 got=03 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "49'sd1"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -114
+     },
+     "got_bits": 143,
+     "messages": [
+      "MISMATCH vec=0 got=8f exp=8e"
+     ],
+     "vector": {
+      "acc": -92694,
+      "mult": 32770,
+      "shift": 25,
+      "zp": -23
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "49'sd1",
+   "id": 8,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH vec=4 got=02 exp=01",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "49'sd2"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 32
+     },
+     "got_bits": 31,
+     "messages": [
+      "MISMATCH vec=0 got=1f exp=20"
+     ],
+     "vector": {
+      "acc": -1,
+      "mult": 32768,
+      "shift": 19,
+      "zp": 32
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "49'sd1",
+   "id": 9,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH vec=0 got=01 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "49'sd0"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -31
+     },
+     "got_bits": 224,
+     "messages": [
+      "MISMATCH vec=0 got=e0 exp=e1"
+     ],
+     "vector": {
+      "acc": 100655105,
+      "mult": 1,
+      "shift": 27,
+      "zp": -32
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "5'd1",
+   "id": 10,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 1.0,
+   "sim_first_message": "MISMATCH vec=0 got=7f exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "5'd2"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -99
+     },
+     "got_bits": 158,
+     "messages": [
+      "MISMATCH vec=0 got=9e exp=9d"
+     ],
+     "vector": {
+      "acc": -14,
+      "mult": 65139,
+      "shift": 12,
+      "zp": 124
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "5'd1",
+   "id": 11,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 14,
+   "seconds": 1.5,
+   "sim_first_message": "MISMATCH vec=4 got=02 exp=01",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "5'd0"
+  },
+  {
+   "class": "arith",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 0
+     },
+     "got_bits": 255,
+     "messages": [
+      "MISMATCH vec=0 got=ff exp=00"
+     ],
+     "vector": {
+      "acc": 0,
+      "mult": 0,
+      "shift": 7,
+      "zp": 0
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 12,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 15,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=0 got=01 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "shift",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -61
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=c3"
+     ],
+     "vector": {
+      "acc": -16777216,
+      "mult": 2,
+      "shift": 25,
+      "zp": -60
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": ">>>",
+   "id": 13,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 15,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=1 got=7f exp=80",
+   "sim_killed": true,
+   "status": "killed",
+   "to": ">>"
+  },
+  {
+   "class": "arith",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 64
+     },
+     "got_bits": 192,
+     "messages": [
+      "MISMATCH vec=0 got=c0 exp=40"
+     ],
+     "vector": {
+      "acc": 0,
+      "mult": 0,
+      "shift": 1,
+      "zp": 64
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "+",
+   "id": 14,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 16,
+   "seconds": 0.8,
+   "sim_first_message": "MISMATCH vec=0 got=00 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "-"
+  },
+  {
+   "class": "relational",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": ">",
+   "id": 15,
+   "killed_by_groups": [],
+   "line": 17,
+   "miter": "EQUIVALENT",
+   "seconds": 8.0,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": ">="
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 127
+     },
+     "got_bits": 128,
+     "messages": [
+      "MISMATCH vec=0 got=80 exp=7f"
+     ],
+     "vector": {
+      "acc": 1,
+      "mult": 16384,
+      "shift": 8,
+      "zp": 64
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "50'sd127",
+   "id": 16,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 17,
+   "seconds": 2.5,
+   "sim_first_message": "MISMATCH vec=20 got=80 exp=7f",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "50'sd128"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "50'sd127",
+   "id": 17,
+   "killed_by_groups": [],
+   "line": 17,
+   "miter": "EQUIVALENT",
+   "seconds": 8.6,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "50'sd126"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 127
+     },
+     "got_bits": 128,
+     "messages": [
+      "MISMATCH vec=0 got=80 exp=7f"
+     ],
+     "vector": {
+      "acc": 439801707,
+      "mult": 58924,
+      "shift": 13,
+      "zp": 116
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8'sh7f",
+   "id": 18,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 17,
+   "seconds": 1.2,
+   "sim_first_message": "MISMATCH vec=5 got=80 exp=7f",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "8'sh80"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": 127
+     },
+     "got_bits": 126,
+     "messages": [
+      "MISMATCH vec=0 got=7e exp=7f"
+     ],
+     "vector": {
+      "acc": 6291691,
+      "mult": 65477,
+      "shift": 5,
+      "zp": -31
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8'sh7f",
+   "id": 19,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 17,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=5 got=7e exp=7f",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "8'sh7e"
+  },
+  {
+   "class": "relational",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "<",
+   "id": 20,
+   "killed_by_groups": [],
+   "line": 18,
+   "miter": "EQUIVALENT",
+   "seconds": 8.3,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "<="
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -128
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=80"
+     ],
+     "vector": {
+      "acc": -511,
+      "mult": 22,
+      "shift": 7,
+      "zp": -41
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "50'sd128",
+   "id": 21,
+   "killed_by_groups": [],
+   "line": 18,
+   "seconds": 0.9,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "killed",
+   "to": "50'sd129"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "50'sd128",
+   "id": 22,
+   "killed_by_groups": [],
+   "line": 18,
+   "miter": "EQUIVALENT",
+   "seconds": 8.0,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "50'sd127"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -128
+     },
+     "got_bits": 129,
+     "messages": [
+      "MISMATCH vec=0 got=81 exp=80"
+     ],
+     "vector": {
+      "acc": -8191,
+      "mult": 497,
+      "shift": 16,
+      "zp": -69
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8'sh80",
+   "id": 23,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 1.1,
+   "sim_first_message": "MISMATCH vec=1 got=81 exp=80",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "8'sh81"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -128
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=80"
+     ],
+     "vector": {
+      "acc": -524288,
+      "mult": 1,
+      "shift": 13,
+      "zp": -87
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "8'sh80",
+   "id": 24,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 18,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=1 got=7f exp=80",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "8'sh7f"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [],
+    "verdict": "PROVEN"
+   },
+   "formal_killed": false,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 25,
+   "killed_by_groups": [],
+   "line": 19,
+   "miter": "EQUIVALENT",
+   "seconds": 5.4,
+   "sim_first_message": null,
+   "sim_killed": false,
+   "status": "equivalent",
+   "to": "8"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -64
+     },
+     "got_bits": 64,
+     "messages": [
+      "MISMATCH vec=0 got=40 exp=c0"
+     ],
+     "vector": {
+      "acc": -65536,
+      "mult": 1,
+      "shift": 25,
+      "zp": -64
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "7",
+   "id": 26,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 19,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=15 got=01 exp=81",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "6"
+  },
+  {
+   "class": "constant",
+   "file": "requant.v",
+   "formal": {
+    "failed": [
+     "eq_y"
+    ],
+    "replay": {
+     "confirmed": true,
+     "expected": {
+      "y": -1
+     },
+     "got_bits": 127,
+     "messages": [
+      "MISMATCH vec=0 got=7f exp=ff"
+     ],
+     "vector": {
+      "acc": -65536,
+      "mult": 1,
+      "shift": 25,
+      "zp": -1
+     }
+    },
+    "verdict": "FAIL"
+   },
+   "formal_killed": true,
+   "formal_unconfirmed": false,
+   "from": "0",
+   "id": 27,
+   "killed_by_groups": [
+    "directed",
+    "random"
+   ],
+   "line": 19,
+   "seconds": 0.9,
+   "sim_first_message": "MISMATCH vec=0 got=01 exp=02",
+   "sim_killed": true,
+   "status": "killed",
+   "to": "1"
+  }
+ ],
+ "sampled": 27,
+ "seconds": 17.7,
+ "summary": {
+  "bounded_equivalent": 0,
+  "closure_only_kill_rate": "0/21 = 0.0%",
+  "combined_kill_rate": "21/21 = 100.0%",
+  "denominator": 21,
+  "directed_only_kill_rate": "20/21 = 95.2%",
+  "formal_cex_not_confirmed_by_replay": 0,
+  "formal_kill_rate": "21/21 = 100.0%",
+  "killed_any": 21,
+  "killed_by_formal": 21,
+  "killed_by_sim": 20,
+  "mutants_total": 27,
+  "proven_equivalent": 6,
+  "random_only_kill_rate": "20/21 = 95.2%",
+  "sim_kill_rate": "20/21 = 95.2%",
+  "spec_conformant_behavior_change": 0,
+  "stillborn": 0,
+  "survived": 0,
+  "valid": 27
+ },
+ "survivors": []
+}

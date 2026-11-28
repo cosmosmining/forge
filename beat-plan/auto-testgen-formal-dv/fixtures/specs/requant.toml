@@ -1,0 +1,38 @@
+# Spec for the `requant` FIXTURE (not a Forge Build 6 block).
+[block]
+name   = "requant"
+top    = "requant"
+kind   = "comb"
+rtl    = ["../rtl/requant.v"]
+golden = "../golden/requant.py:requant"
+note   = "Fixture written in this session to exercise forge_testgen; not Forge RTL."
+
+[[input]]
+name = "acc"
+width = 32
+signed = true
+
+[[input]]
+name = "mult"
+width = 16
+
+[[input]]
+name = "shift"
+width = 5
+
+[[input]]
+name = "zp"
+width = 8
+signed = true
+
+[[output]]
+name = "y"
+width = 8
+signed = true
+
+[coverage.bins]
+zero_out_nonzero_acc = "y == 0 and acc != 0"
+max_shift_moves_y    = "shift == 31 and y != zp"
+
+[gen]
+random = 2000

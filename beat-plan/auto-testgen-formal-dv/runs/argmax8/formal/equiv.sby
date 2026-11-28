@@ -1,0 +1,18 @@
+[options]
+mode prove
+depth 1
+timeout 600
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+read -formal argmax8.v
+read -formal ref_argmax8.v
+read -formal fv_equiv.sv
+prep -flatten -top fv_equiv
+
+[files]
+/home/user/forge/beat-plan/auto-testgen-formal-dv/fixtures/rtl/argmax8.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/argmax8/formal/ref_argmax8.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/argmax8/formal/fv_equiv.sv

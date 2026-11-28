@@ -1,0 +1,20 @@
+# Keep reports, generated suites and generated formal wrappers; drop bulky scratch.
+*
+!*/
+!.gitignore
+!*/report.json
+!*/mutation.json
+!*/seeds.json
+!*/suite.json
+!*/formal/
+!*/formal/*.sv
+!*/formal/*.v
+!*/formal/*.sby
+!*/witness/
+!*/witness/*.sv
+!history/
+!history/*.json
+*/mutants/
+*/seeds/
+*/sim/
+*/replay/

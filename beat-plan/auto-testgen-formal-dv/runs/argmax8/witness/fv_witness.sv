@@ -1,0 +1,114 @@
+module fv_witness (
+  input  [63:0] i_x
+);
+  wire h_boundary_L9_cmp_eq1_p1;
+  wire h_boundary_L9_cmp_eq2_p1;
+  wire h_boundary_L9_cmp_eq3_p1;
+  wire h_boundary_L9_cmp_eq4_p1;
+  wire h_boundary_L9_cmp_eq5_p1;
+  wire h_boundary_L9_cmp_eq6_p1;
+  wire h_boundary_L9_cmp_eq7_p1;
+  wire h_boundary_L9_cmp_eq8_p1;
+  wire r_cok;
+  ref_argmax8 ref (
+    .g_x(i_x),
+    .g_idx(),
+    .g_vmax(),
+    .ok(),
+    .constraints_ok(r_cok),
+    .gcov_winner_last(),
+    .gcov_winner_tied(),
+    .bin_in_x_all_equal(),
+    .bin_in_x_tie_at_max(),
+    .bin_in_x_0__max(),
+    .bin_in_x_0__min(),
+    .bin_in_x_0__zero(),
+    .bin_in_x_1__max(),
+    .bin_in_x_1__min(),
+    .bin_in_x_1__zero(),
+    .bin_in_x_2__max(),
+    .bin_in_x_2__min(),
+    .bin_in_x_2__zero(),
+    .bin_in_x_3__max(),
+    .bin_in_x_3__min(),
+    .bin_in_x_3__zero(),
+    .bin_in_x_4__max(),
+    .bin_in_x_4__min(),
+    .bin_in_x_4__zero(),
+    .bin_in_x_5__max(),
+    .bin_in_x_5__min(),
+    .bin_in_x_5__zero(),
+    .bin_in_x_6__max(),
+    .bin_in_x_6__min(),
+    .bin_in_x_6__zero(),
+    .bin_in_x_7__max(),
+    .bin_in_x_7__min(),
+    .bin_in_x_7__zero(),
+    .bin_out_idx_max(),
+    .bin_out_idx_min(),
+    .bin_out_vmax_max(),
+    .bin_out_vmax_min(),
+    .bin_out_vmax_zero(),
+    .bnd_boundary_L10_cmp_eq1_eq(),
+    .bnd_boundary_L10_cmp_eq1_m1(),
+    .bnd_boundary_L7_cmp_gt1_eq(),
+    .bnd_boundary_L7_cmp_gt1_m1(),
+    .bnd_boundary_L7_cmp_gt1_p1(),
+    .bnd_boundary_L7_cmp_gt2_eq(),
+    .bnd_boundary_L7_cmp_gt2_m1(),
+    .bnd_boundary_L7_cmp_gt2_p1(),
+    .bnd_boundary_L7_cmp_gt3_eq(),
+    .bnd_boundary_L7_cmp_gt3_m1(),
+    .bnd_boundary_L7_cmp_gt3_p1(),
+    .bnd_boundary_L7_cmp_gt4_eq(),
+    .bnd_boundary_L7_cmp_gt4_m1(),
+    .bnd_boundary_L7_cmp_gt4_p1(),
+    .bnd_boundary_L7_cmp_gt5_eq(),
+    .bnd_boundary_L7_cmp_gt5_m1(),
+    .bnd_boundary_L7_cmp_gt5_p1(),
+    .bnd_boundary_L7_cmp_gt6_eq(),
+    .bnd_boundary_L7_cmp_gt6_m1(),
+    .bnd_boundary_L7_cmp_gt6_p1(),
+    .bnd_boundary_L7_cmp_gt7_eq(),
+    .bnd_boundary_L7_cmp_gt7_m1(),
+    .bnd_boundary_L7_cmp_gt7_p1(),
+    .bnd_boundary_L9_cmp_eq1_eq(),
+    .bnd_boundary_L9_cmp_eq1_m1(),
+    .bnd_boundary_L9_cmp_eq1_p1(h_boundary_L9_cmp_eq1_p1),
+    .bnd_boundary_L9_cmp_eq2_eq(),
+    .bnd_boundary_L9_cmp_eq2_m1(),
+    .bnd_boundary_L9_cmp_eq2_p1(h_boundary_L9_cmp_eq2_p1),
+    .bnd_boundary_L9_cmp_eq3_eq(),
+    .bnd_boundary_L9_cmp_eq3_m1(),
+    .bnd_boundary_L9_cmp_eq3_p1(h_boundary_L9_cmp_eq3_p1),
+    .bnd_boundary_L9_cmp_eq4_eq(),
+    .bnd_boundary_L9_cmp_eq4_m1(),
+    .bnd_boundary_L9_cmp_eq4_p1(h_boundary_L9_cmp_eq4_p1),
+    .bnd_boundary_L9_cmp_eq5_eq(),
+    .bnd_boundary_L9_cmp_eq5_m1(),
+    .bnd_boundary_L9_cmp_eq5_p1(h_boundary_L9_cmp_eq5_p1),
+    .bnd_boundary_L9_cmp_eq6_eq(),
+    .bnd_boundary_L9_cmp_eq6_m1(),
+    .bnd_boundary_L9_cmp_eq6_p1(h_boundary_L9_cmp_eq6_p1),
+    .bnd_boundary_L9_cmp_eq7_eq(),
+    .bnd_boundary_L9_cmp_eq7_m1(),
+    .bnd_boundary_L9_cmp_eq7_p1(h_boundary_L9_cmp_eq7_p1),
+    .bnd_boundary_L9_cmp_eq8_eq(),
+    .bnd_boundary_L9_cmp_eq8_m1(),
+    .bnd_boundary_L9_cmp_eq8_p1(h_boundary_L9_cmp_eq8_p1),
+    .bnd_boundary_L9_cmp_ge9_eq(),
+    .bnd_boundary_L9_cmp_ge9_m1(),
+    .bnd_boundary_L9_cmp_ge9_p1()
+  );
+  always @* begin
+    assume (r_cok);
+    c_boundary_L9_cmp_eq1_p1: cover (h_boundary_L9_cmp_eq1_p1);
+    c_boundary_L9_cmp_eq2_p1: cover (h_boundary_L9_cmp_eq2_p1);
+    c_boundary_L9_cmp_eq3_p1: cover (h_boundary_L9_cmp_eq3_p1);
+    c_boundary_L9_cmp_eq4_p1: cover (h_boundary_L9_cmp_eq4_p1);
+    c_boundary_L9_cmp_eq5_p1: cover (h_boundary_L9_cmp_eq5_p1);
+    c_boundary_L9_cmp_eq6_p1: cover (h_boundary_L9_cmp_eq6_p1);
+    c_boundary_L9_cmp_eq7_p1: cover (h_boundary_L9_cmp_eq7_p1);
+    c_boundary_L9_cmp_eq8_p1: cover (h_boundary_L9_cmp_eq8_p1);
+  end
+endmodule

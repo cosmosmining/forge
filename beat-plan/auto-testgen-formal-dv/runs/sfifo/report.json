@@ -1,0 +1,358 @@
+{
+ "block": {
+  "bins": 4,
+  "constraints": [],
+  "golden": "../golden/sfifo.py:sfifo",
+  "inputs": [
+   "in_data:u16"
+  ],
+  "kind": "stream",
+  "name": "sfifo",
+  "note": "Fixture written in this session to exercise forge_testgen; not Forge RTL.",
+  "outputs": [
+   "out_data:u16"
+  ],
+  "rtl": [
+   "../rtl/sfifo.v"
+  ],
+  "top": "sfifo"
+ },
+ "coverage": {
+  "bins_considered": 9,
+  "bins_excluded_unreachable": 0,
+  "bins_hit": 9,
+  "bins_total": 9,
+  "by_kind": {
+   "boundary": "0/0",
+   "data": "4/4",
+   "golden": "0/0",
+   "protocol": "5/5"
+  },
+  "coverage_pct": 100.0,
+  "excluded": {},
+  "first_hit_by": {
+   "in.in_data.max": "directed.ofat.in_data",
+   "in.in_data.min": "directed.ofat.in_data",
+   "out.out_data.max": "directed.ofat.in_data",
+   "out.out_data.min": "directed.ofat.in_data",
+   "proto.b2b_in": "sim:directed.b2b",
+   "proto.b2b_out": "sim:directed.b2b",
+   "proto.backpressure": "sim:directed.long_backpressure",
+   "proto.full": "sim:directed.long_backpressure",
+   "proto.input_stall": "sim:directed.long_backpressure"
+  },
+  "holes": []
+ },
+ "formal": {
+  "cex_trace": null,
+  "covers_reached": [
+   "c_backpressure",
+   "c_full",
+   "c_input_stall",
+   "c_output",
+   "c_tracked_checked"
+  ],
+  "covers_unreached": [],
+  "failed": [],
+  "jobs": [
+   {
+    "engine": "abc pdr",
+    "failed": [],
+    "job": "prove",
+    "reached": [],
+    "seconds": 5.38,
+    "status": "PASS",
+    "unreached": [],
+    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/sfifo/formal/prove"
+   },
+   {
+    "engine": "smtbmc bitwuzla",
+    "failed": [],
+    "job": "cover",
+    "reached": [
+     "c_backpressure",
+     "c_full",
+     "c_input_stall",
+     "c_output",
+     "c_tracked_checked"
+    ],
+    "seconds": 0.44,
+    "status": "PASS",
+    "unreached": [],
+    "workdir": "/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/sfifo/formal/cover"
+   }
+  ],
+  "kind": "stream_properties",
+  "labels": [
+   "a_quiet_after_reset",
+   "a_hold_valid",
+   "a_hold_data",
+   "a_no_spurious_output",
+   "a_capacity",
+   "a_bounded_latency",
+   "a_input_progress",
+   "a_accepts_below_capacity",
+   "a_data_matches_golden"
+  ],
+  "per_property": {
+   "a_accepts_below_capacity": "PASS-by-PROVEN",
+   "a_bounded_latency": "PASS-by-PROVEN",
+   "a_capacity": "PASS-by-PROVEN",
+   "a_data_matches_golden": "PASS-by-PROVEN",
+   "a_hold_data": "PASS-by-PROVEN",
+   "a_hold_valid": "PASS-by-PROVEN",
+   "a_input_progress": "PASS-by-PROVEN",
+   "a_no_spurious_output": "PASS-by-PROVEN",
+   "a_quiet_after_reset": "PASS-by-PROVEN"
+  },
+  "seconds": 5.8,
+  "verdict": "PROVEN"
+ },
+ "generation": {
+  "after_directed": {
+   "bins_considered": 9,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 4,
+   "bins_total": 9,
+   "by_kind": {
+    "boundary": "0/0",
+    "data": "4/4",
+    "golden": "0/0",
+    "protocol": "0/5"
+   },
+   "coverage_pct": 44.44,
+   "excluded": {},
+   "first_hit_by": {
+    "in.in_data.max": "directed.ofat.in_data",
+    "in.in_data.min": "directed.ofat.in_data",
+    "out.out_data.max": "directed.ofat.in_data",
+    "out.out_data.min": "directed.ofat.in_data"
+   },
+   "holes": [
+    "proto.backpressure",
+    "proto.input_stall",
+    "proto.b2b_in",
+    "proto.b2b_out",
+    "proto.full"
+   ]
+  },
+  "after_random": {
+   "bins_considered": 9,
+   "bins_excluded_unreachable": 0,
+   "bins_hit": 4,
+   "bins_total": 9,
+   "by_kind": {
+    "boundary": "0/0",
+    "data": "4/4",
+    "golden": "0/0",
+    "protocol": "0/5"
+   },
+   "coverage_pct": 44.44,
+   "excluded": {},
+   "first_hit_by": {
+    "in.in_data.max": "directed.ofat.in_data",
+    "in.in_data.min": "directed.ofat.in_data",
+    "out.out_data.max": "directed.ofat.in_data",
+    "out.out_data.min": "directed.ofat.in_data"
+   },
+   "holes": [
+    "proto.backpressure",
+    "proto.input_stall",
+    "proto.b2b_in",
+    "proto.b2b_out",
+    "proto.full"
+   ]
+  },
+  "closure": [],
+  "directed_dropped_unsat": 0
+ },
+ "golden_translation": {
+  "boundary_bins": 0,
+  "max_width": 17,
+  "multipliers": [],
+  "nodes": 6,
+  "output_fit_proven_by_intervals": true,
+  "warnings": []
+ },
+ "seconds": 6.2,
+ "seed": 1,
+ "simulation": {
+  "directed.b2b": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 4,
+    "b2b_out": 4,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 1
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 5
+  },
+  "directed.long_backpressure": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 3,
+    "b2b_out": 4,
+    "bp": 19,
+    "install": 17,
+    "max_inflight": 4
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 5
+  },
+  "directed.random_mix": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 2,
+    "b2b_out": 2,
+    "bp": 1,
+    "install": 0,
+    "max_inflight": 2
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 5
+  },
+  "directed.ready_toggle": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 4,
+    "b2b_out": 0,
+    "bp": 5,
+    "install": 0,
+    "max_inflight": 3
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 5
+  },
+  "directed.sparse_valid": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 1,
+    "b2b_out": 1,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 1
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 5
+  },
+  "random.b2b": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 599,
+    "b2b_out": 599,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 1
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.long_backpressure": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 479,
+    "b2b_out": 480,
+    "bp": 2399,
+    "install": 2397,
+    "max_inflight": 4
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.random_mix": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 296,
+    "b2b_out": 276,
+    "bp": 267,
+    "install": 16,
+    "max_inflight": 4
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.ready_toggle": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 5,
+    "b2b_out": 0,
+    "bp": 600,
+    "install": 594,
+    "max_inflight": 4
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  },
+  "random.sparse_valid": {
+   "compiled": true,
+   "cov": {
+    "b2b_in": 142,
+    "b2b_out": 142,
+    "bp": 0,
+    "install": 0,
+    "max_inflight": 1
+   },
+   "errors": 0,
+   "messages": [],
+   "ok": true,
+   "recheck_mismatches": 0,
+   "timed_out": false,
+   "vectors": 600
+  }
+ },
+ "simulator": "iverilog",
+ "spec_vs_rtl": [],
+ "tests": {
+  "directed": 5,
+  "random": 600
+ },
+ "tool_versions": {
+  "bitwuzla": "0.9.1",
+  "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+  "sby": "/nix/var/nix/profiles/default/bin/sby",
+  "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+  "yices-smt2": "Yices 2.7.0",
+  "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.",
+  "z3": "Z3 version 5.4.1 - 64 bit"
+ },
+ "translator_selfcheck_mismatches": 0,
+ "verdict": "PASS"
+}

@@ -1,0 +1,26 @@
+# Spec for the `argmax8` FIXTURE (not a Forge Build 6 block).
+[block]
+name   = "argmax8"
+top    = "argmax8"
+kind   = "comb"
+rtl    = ["../rtl/argmax8.v"]
+golden = "../golden/argmax8.py:argmax8"
+note   = "Fixture written in this session to exercise forge_testgen; not Forge RTL."
+
+[[input]]
+name = "x"
+width = 8
+signed = true
+count = 8
+
+[[output]]
+name = "idx"
+width = 3
+
+[[output]]
+name = "vmax"
+width = 8
+signed = true
+
+[gen]
+random = 2000

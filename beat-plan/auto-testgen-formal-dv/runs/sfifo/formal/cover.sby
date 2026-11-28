@@ -1,0 +1,18 @@
+[options]
+mode cover
+depth 20
+timeout 300
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+read -formal sfifo.v
+read -formal ref_sfifo.v
+read -formal fv_stream.sv
+prep -flatten -top fv_stream
+
+[files]
+/home/user/forge/beat-plan/auto-testgen-formal-dv/fixtures/rtl/sfifo.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/sfifo/formal/ref_sfifo.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/sfifo/formal/fv_stream.sv

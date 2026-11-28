@@ -1,0 +1,35 @@
+# Spec for the `sfifo` FIXTURE (not a Forge Build 6 block).
+[block]
+name   = "sfifo"
+top    = "sfifo"
+kind   = "stream"
+rtl    = ["../rtl/sfifo.v"]
+golden = "../golden/sfifo.py:sfifo"
+note   = "Fixture written in this session to exercise forge_testgen; not Forge RTL."
+
+[[input]]
+name = "in_data"
+width = 16
+
+[[output]]
+name = "out_data"
+width = 16
+
+[stream]
+clk = "clk"
+rst = "rst"
+rst_active = "high"
+in_valid = "in_valid"
+in_ready = "in_ready"
+out_valid = "out_valid"
+out_ready = "out_ready"
+capacity = 4
+max_latency = 3
+accepts_below_capacity = true   # elastic buffer: ready whenever not full
+
+[gen]
+random = 600
+
+[formal]
+depth = 20
+prove_timeout = 300

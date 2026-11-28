@@ -1,0 +1,18 @@
+[options]
+mode bmc
+depth 16
+timeout 300
+
+[engines]
+smtbmc bitwuzla
+
+[script]
+read -formal dot4.v
+read -formal ref_dot4.v
+read -formal fv_stream.sv
+prep -flatten -top fv_stream
+
+[files]
+/home/user/forge/beat-plan/auto-testgen-formal-dv/fixtures/rtl/dot4.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/dot4/formal/ref_dot4.v
+/home/user/forge/beat-plan/auto-testgen-formal-dv/runs/dot4/formal/fv_stream.sv
