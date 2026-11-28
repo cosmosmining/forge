@@ -107,7 +107,7 @@ def generate_tb(top, ports, stim, module_name="tb"):
     conns = ["." + n + "(" + n + ")" for (n, d, w) in ports]
     L.append("  %s dut (%s);" % (top, ", ".join(conns)))
     L.append("  integer seed, cycles, cyc, fd, sel;")
-    L.append("  reg [1023:0] tracefile;")
+    L.append("  reg [8*1024-1:0] tracefile;")
     # per-reset state
     resets = [(n, w) for (n, w) in inputs if spec.get(n, {}).get("kind") == "reset"]
     for n, _ in resets:

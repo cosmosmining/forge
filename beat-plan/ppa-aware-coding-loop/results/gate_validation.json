@@ -1,0 +1,21 @@
+{
+ "golden_gcd": {
+  "block": "gcd",
+  "checks_what": "unmodified original RTL",
+  "expected": "PASS",
+  "verdict": "PASS",
+  "as_expected": true,
+  "failed_at": [],
+  "first_problem": "",
+  "sim_known_bits": 3599920,
+  "formal": {
+   "dprove": {
+    "status": "PROVED",
+    "seconds": 0.1
+   },
+   "bmc": null,
+   "strength": "unbounded proof (ABC dprove)"
+  },
+  "seconds": 5.8
+ }
+}

@@ -9,7 +9,7 @@ LOCKED = [
     "gate/gate.py", "gate/tbgen.py", "gate/blocks.json", "gate/make_manifest.py",
     "flow/run_flow.py", "flow/sta_report.tcl", "flow/flow_config.json",
     "targets/measure.py", "targets/combine.py", "targets/targets.json", "targets/calibration.json",
-    "loop/loop.py", "loop/AGENT_PROMPT.md", "make_lock.py",
+    "loop/loop.py", "loop/AGENT_PROMPT.md", "loop/make_prompt.py", "make_lock.py",
 ]
 
 

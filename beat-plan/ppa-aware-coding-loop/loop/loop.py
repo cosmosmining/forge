@@ -95,13 +95,17 @@ def block_dir(arm, block):
     return os.path.join(ROOT, "candidates", arm, block)
 
 
-def cand_rtl(arm, block, cand):
-    return os.path.join(block_dir(arm, block), cand, "rtl")
+def cand_rtl(arm, block, cand, must_exist=True):
+    p = os.path.join(block_dir(arm, block), cand, "rtl")
+    if must_exist and not os.path.isdir(p):
+        sys.exit("no candidate '%s' in arm %s, block %s (create it with 'loop.py new')" % (cand, arm, block))
+    return p
 
 
 def cand_sha(rtl):
     import gate as gate_mod
-    files = sorted(os.path.join(rtl, f) for f in os.listdir(rtl) if os.path.isfile(os.path.join(rtl, f)))
+    files = sorted(os.path.join(rtl, f) for f in os.listdir(rtl)
+                   if os.path.isfile(os.path.join(rtl, f)) and not f.startswith("."))
     return gate_mod.dir_digest(files)
 
 
@@ -218,7 +222,10 @@ def cmd_eval(a, lock):
 def cmd_status(a, lock):
     t = targets()["blocks"][a.block]
     print("block %s | arm %s | T0 %.4f ns | T1 %.4f ns" % (a.block, a.arm, t["T0_ns"], t["T1_ns"]))
+    # each arm sees only the references of the views it is allowed to evaluate
     for mode in ("prelayout", "postroute"):
+        if BUDGET[a.arm][mode] == 0:
+            continue
         r = t["references"][mode]
         print("  %s reference: area %.1f um2, power %.4f mW" % (mode, r["area_ref_um2"], r["power_ref_w"] * 1e3))
     es = ledger_entries(a.arm, a.block)

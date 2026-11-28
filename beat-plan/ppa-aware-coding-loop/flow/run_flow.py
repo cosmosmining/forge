@@ -261,9 +261,9 @@ def feedback_text(block, mode, period, metrics, paths, hold, refs=None, top_n=5)
         L.append("hold WNS %+.4f ns | DRC errors %s" % (metrics["wns_hold"], metrics.get("drc_errors")))
     area, pw = metrics.get("area_um2"), metrics.get("power_total_w")
     if refs:
+        ra, rp = refs["area_ref_um2"], refs["power_ref_w"]
         L.append("area %.1f um2 (reference %.1f, %+.2f %%) | power %.4f mW (reference %.4f, %+.2f %%)"
-                 % (area, refs["area_um2"], 100 * (area / refs["area_um2"] - 1), pw * 1e3,
-                    refs["power_total_w"] * 1e3, 100 * (pw / refs["power_total_w"] - 1)))
+                 % (area, ra, 100 * (area / ra - 1), pw * 1e3, rp * 1e3, 100 * (pw / rp - 1)))
     else:
         L.append("area %.1f um2 | power %.4f mW" % (area, pw * 1e3))
     L.append("cells %s (sequential %s)" % (metrics.get("cells"), metrics.get("seq_cells")))

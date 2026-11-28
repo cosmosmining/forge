@@ -322,9 +322,12 @@ class Gate:
         total_known_bits = 0
         for seed in sim["seeds"]:
             gpath = self.golden_trace(tb, seed, sim["cycles"])
-            cpath = os.path.join(self.out, "cand_s%d.trace" % seed)
-            rc, out, el = run([VVP, "-n", exe, "+seed=%d" % seed, "+cycles=%d" % sim["cycles"], "+trace=" + cpath],
+            cname = "cand_s%d.trace" % seed  # relative to self.out (vvp runs there)
+            cpath = os.path.join(self.out, cname)
+            rc, out, el = run([VVP, "-n", exe, "+seed=%d" % seed, "+cycles=%d" % sim["cycles"], "+trace=" + cname],
                               cwd=self.out, timeout=3600)
+            if rc == 0 and not os.path.exists(cpath):
+                raise RuntimeError("simulation wrote no trace file " + cpath)
             if rc != 0:
                 res["ok"] = False
                 res["problems"].append("candidate simulation failed (seed %d): %s" % (seed, out[-1500:]))
@@ -405,12 +408,16 @@ class Gate:
         rc, out, el = run([abc, "-c", "read_aiger %s; strash; scorr -C 100000 -F 2; print_stats; dprove -T %d"
                            % (aig, min(t_dp // 2, 300))],
                           cwd=fdir, timeout=t_dp, log=os.path.join(fdir, "dprove.log"))
-        low = str(out).lower()
-        if "not equivalent" in low or "was asserted in frame" in low:
+        text = str(out)
+        low = text.lower()
+        # when scorr removes every latch, dprove falls back to combinational CEC and prints
+        # "UNSATISFIABLE" (miter output can never be 1 = proven) or "SATISFIABLE" (counterexample)
+        if ("not equivalent" in low or "was asserted in frame" in low
+                or re.search(r"^SATISFIABLE\b", text, re.M)):
             dp = "COUNTEREXAMPLE"   # checked first: a counterexample always wins
         elif rc == "timeout":
             dp = "TIMEOUT"
-        elif "networks are equivalent" in low:
+        elif "networks are equivalent" in low or re.search(r"^UNSATISFIABLE\b", text, re.M):
             dp = "PROVED"
         else:
             dp = "UNDECIDED"
