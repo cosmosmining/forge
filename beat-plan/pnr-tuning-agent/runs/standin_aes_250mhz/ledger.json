@@ -1,0 +1,213 @@
+{
+ "design": {
+  "name": "standin_aes_250mhz",
+  "top": "aes_cipher_top",
+  "description": "OpenROAD aes_nangate45 netlist at 250 MHz, slow corner (stand-in for a Build 6 block)",
+  "is_standin": true,
+  "target_period_ns": 4.0,
+  "config": "/home/user/forge/beat-plan/pnr-tuning-agent/designs/standin_aes_250mhz.toml",
+  "fingerprint": {
+   "netlist_sha256": "5a933454a2bbce8a2e568a2c4712dc2d3f73cb0da8cd326d1b46eb921b31ae1a",
+   "sdc_sha256": "bad911cfc8111346abdb9eb50221b8edc38f762cadfdf8c47d592e9e2d02601d",
+   "liberty_sha256": "899e4a91977dde6aaca8e99073ae7a02fa546510bb4a393e6bab4a8ee2f98b16",
+   "target_period_ns": 4.0,
+   "sdc_prelude_sha256": "e477186ebfb4b65700796f774940ee61f6e1c3e6e6f69e3ab0688cc4852e54f0"
+  },
+  "floorplan_fixed": true
+ },
+ "tools": {
+  "openroad": "2.0-unstable-2025-03-01_e794373d44ac5421f0633d8dda7e5c59e8fe79bf",
+  "opensta": "2.6.0",
+  "yosys": "Yosys 0.55 (git sha1 60f126cd00c94892782470192d6c9f7abebe7c05, g++ 14.3.0 -fPIC -O3)",
+  "host_cpus": 4
+ },
+ "started": "2026-11-28T00:24:51",
+ "candidates": [],
+ "accepted": [],
+ "rounds": 0,
+ "evaluations": 1,
+ "baseline": {
+  "summary": {
+   "wns_ns": -0.12986145859550788,
+   "tns_ns": -1.3371415464452379,
+   "hold_wns_ns": 0.14394219557045426,
+   "hold_tns_ns": 0.0,
+   "setup_violators": 20,
+   "hold_violators": 0,
+   "drc": 0,
+   "antenna_nets": 0,
+   "routed": true,
+   "drv_violations": 0,
+   "area_um2": 31431.4,
+   "utilization": 0.0350326,
+   "power_w": 0.0471,
+   "wirelength_um": 769698.0,
+   "grt_overflow": 0,
+   "grt_estimate_wns_ns": -0.0958358,
+   "clock_periods_ns": {
+    "clk": 4.0
+   }
+  },
+  "diagnosis": {
+   "wns_ns": -0.12986,
+   "tns_ns": -1.33714,
+   "hold_wns_ns": 0.14394,
+   "setup_violators": 20,
+   "gap_ps": 129.9,
+   "gap_pct_of_period": 3.25,
+   "worst_path": {
+    "startpoint": "_33202_/Q",
+    "endpoint": "_33128_/D",
+    "type": "check",
+    "slack_ns": -0.1299,
+    "stages": 14,
+    "cell_delay_ns": 3.8563,
+    "wire_delay_ns": 0.081,
+    "wire_fraction": 0.021,
+    "launch_latency_ns": 0.6377,
+    "capture_latency_ns": 0.5837,
+    "max_fanout": 24,
+    "max_slew_ns": 0.3727
+   },
+   "tags": {
+    "DEEP_LOGIC": "14 cell stages, cell delay 3.8563 ns",
+    "HIGH_FANOUT": "max fanout 24 on the worst path",
+    "SLOW_SLEWS": "max slew 0.3727 ns on the worst path",
+    "SKEW_PENALTY": "launch latency 0.6377 ns exceeds capture latency 0.5837 ns by 0.0540 ns",
+    "POST_ROUTE_DEGRADATION": "optimizer saw WNS +0.0003 ns on placement parasitics; routed sign-off is -0.1299 ns",
+    "MANY_ENDPOINTS": "20 violating endpoints",
+    "WEAK_DRIVERS": "25 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads"
+   },
+   "weak_drivers": [
+    {
+     "instance": "_32473_",
+     "cell": "NAND4_X1",
+     "to": "NAND4_X2",
+     "out_cap_ff": 4.951,
+     "fanout": 1,
+     "delay_ns": 0.158,
+     "path_endpoint": "_33128_/D"
+    },
+    {
+     "instance": "_32474_",
+     "cell": "OR4_X2",
+     "to": "OR4_X4",
+     "out_cap_ff": 6.513,
+     "fanout": 1,
+     "delay_ns": 0.489,
+     "path_endpoint": "_33128_/D"
+    },
+    {
+     "instance": "_32612_",
+     "cell": "XNOR2_X1",
+     "to": "XNOR2_X2",
+     "out_cap_ff": 4.025,
+     "fanout": 1,
+     "delay_ns": 0.177,
+     "path_endpoint": "_33128_/D"
+    },
+    {
+     "instance": "_32614_",
+     "cell": "XNOR2_X1",
+     "to": "XNOR2_X2",
+     "out_cap_ff": 4.729,
+     "fanout": 1,
+     "delay_ns": 0.088,
+     "path_endpoint": "_33128_/D"
+    },
+    {
+     "instance": "_32615_",
+     "cell": "MUX2_X1",
+     "to": "MUX2_X2",
+     "out_cap_ff": 4.575,
+     "fanout": 1,
+     "delay_ns": 0.252,
+     "path_endpoint": "_33128_/D"
+    },
+    {
+     "instance": "_27798_",
+     "cell": "NOR2_X2",
+     "to": "NOR2_X4",
+     "out_cap_ff": 10.36,
+     "fanout": 3,
+     "delay_ns": 0.08,
+     "path_endpoint": "_33177_/D"
+    },
+    {
+     "instance": "_28892_",
+     "cell": "OAI21_X1",
+     "to": "OAI21_X2",
+     "out_cap_ff": 1.958,
+     "fanout": 1,
+     "delay_ns": 0.133,
+     "path_endpoint": "_33177_/D"
+    },
+    {
+     "instance": "_28895_",
+     "cell": "OAI221_X1",
+     "to": "OAI221_X2",
+     "out_cap_ff": 1.04,
+     "fanout": 1,
+     "delay_ns": 0.094,
+     "path_endpoint": "_33177_/D"
+    }
+   ],
+   "post_route_degradation_ns": 0.13015,
+   "endpoint_mix_top_paths": {
+    "output_port": 0,
+    "input_port_start": 0,
+    "register_to_register": 10
+   }
+  },
+  "recipe": {
+   "fp_core_margin": null,
+   "fp_core_util": null,
+   "fp_aspect_ratio": 1.0,
+   "fp_remove_synth_buffers": true,
+   "resynth_delay_ps": null,
+   "rs_timing": false,
+   "rs_depth_threshold": 16,
+   "rs_slack_threshold": 0.0,
+   "gp_density": 0.3,
+   "gp_routability_driven": true,
+   "gp_timing_driven": false,
+   "gp_td_net_weight_max": null,
+   "gp_td_nets_percentage": null,
+   "gp_pad": 2,
+   "dp_pad": 1,
+   "io_annealing": false,
+   "rd_slew_margin": 0,
+   "rd_cap_margin": 20,
+   "rd_max_wire_length": null,
+   "opt_max_fanout": null,
+   "opt_max_transition": null,
+   "wire_rc_layer": "metal3",
+   "wire_rc_layer_clk": "metal6",
+   "cts_buffer": "BUF_X4",
+   "cts_cluster_diameter": 100,
+   "cts_cluster_size": null,
+   "cts_balance_levels": false,
+   "rt_setup_margin": 0.0,
+   "rt_skip_gate_cloning": true,
+   "rt_skip_pin_swap": false,
+   "rt_skip_last_gasp": false,
+   "rt_repair_tns": null,
+   "rt_max_passes": null,
+   "rt_use_grt_parasitics": false,
+   "grt_layer_adjustment": 0.5,
+   "grt_critical_nets_pct": null,
+   "grt_congestion_iters": 100,
+   "grt_repair_timing": false,
+   "grt_rt_setup_margin": 0.0,
+   "eco_resize": [],
+   "drt_end_iter": null
+  },
+  "runtime_s": {
+   "floorplan": 0.8,
+   "place": 24.5,
+   "cts": 6.5,
+   "grt": 46.2,
+   "drt": 300.8
+  }
+ }
+}

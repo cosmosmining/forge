@@ -1,0 +1,3995 @@
+{
+ "design": {
+  "name": "standin_gcd",
+  "top": "gcd",
+  "description": "OpenROAD gcd_nangate45 reference config (stand-in for a Build 6 block)",
+  "is_standin": true,
+  "target_period_ns": 0.485,
+  "config": "/home/user/forge/beat-plan/pnr-tuning-agent/designs/standin_gcd.toml",
+  "fingerprint": {
+   "netlist_sha256": "a7ac54960562b5bcc012efe899a059b4cc22fda89f64c36da7f14305e1d945f3",
+   "sdc_sha256": "5b2d072132dc40553204448c5a0910450d5a3e8188edd348bba13c3b58186157",
+   "liberty_sha256": "2efd0b32eb580e4e60e72fc0575bb3bc69aac907c91d908442e4ae6d7fe55895",
+   "target_period_ns": 0.485,
+   "sdc_prelude_sha256": "e477186ebfb4b65700796f774940ee61f6e1c3e6e6f69e3ab0688cc4852e54f0"
+  },
+  "floorplan_fixed": true
+ },
+ "tools": {
+  "openroad": "2.0-unstable-2025-03-01_e794373d44ac5421f0633d8dda7e5c59e8fe79bf",
+  "opensta": "2.6.0",
+  "yosys": "Yosys 0.55 (git sha1 60f126cd00c94892782470192d6c9f7abebe7c05, g++ 14.3.0 -fPIC -O3)",
+  "host_cpus": 4
+ },
+ "started": "2026-11-28T00:26:10",
+ "candidates": [
+  {
+   "round": 1,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.0,
+     0.047
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 46.3 ps back. Re-run it to a +47 ps guard-band so it over-fixes what routing costs.",
+   "priority": 1.05,
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS -0.0406 ns on placement parasitics; routed sign-off is -0.0463 ns",
+    "NEAR_MISS: miss is 46.3 ps (9.5% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.04399430944070404,
+    "tns_ns": -0.42021920466062757,
+    "hold_wns_ns": 0.05055471462326967,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 24,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 572.166,
+    "utilization": 0.0894238,
+    "power_w": 0.00232,
+    "wirelength_um": 8208.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0476862,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0506 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "572.2 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 5.3,
+    "grt": 6.6,
+    "drt": 9.1
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 1,
+   "action": "resynthesize_for_delay",
+   "category": "synthesis",
+   "changes": {
+    "resynth_delay_ps": [
+     null,
+     291
+    ]
+   },
+   "rationale": "The worst path is 15 cell stages with only 1% wire delay, so placement and routing cannot recover 46 ps. Re-map the combinational logic with Yosys/ABC to a 291 ps delay target; every register keeps its instance, so the result is proven equivalent to the golden netlist.",
+   "priority": 0.95,
+   "evidence": [
+    "DEEP_LOGIC: 15 cell stages, cell delay 0.3764 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.3428253611361312,
+    "tns_ns": -12.86182396991562,
+    "hold_wns_ns": 0.05046322877400621,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 44,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 535.458,
+    "utilization": 0.0836867,
+    "power_w": 0.00236,
+    "wirelength_um": 7112.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.351276,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0505 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "535.5 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [],
+   "runtime_s": {
+    "floorplan": 0.6,
+    "place": 0.8,
+    "cts": 5.3,
+    "grt": 9.7,
+    "drt": 10.7
+   },
+   "decision": "rejected: no improvement",
+   "note": "action dropped for this run: WNS got far worse"
+  },
+  {
+   "round": 1,
+   "action": "routing_aware_eco_repair",
+   "category": "optimization",
+   "changes": {
+    "grt_repair_timing": [
+     false,
+     true
+    ],
+    "grt_rt_setup_margin": [
+     0.0,
+     0.047
+    ]
+   },
+   "rationale": "Incremental ECO after global routing: repair_timing on global-route parasitics (closer to routed RC than placement estimates), then incremental re-route.",
+   "priority": 0.95,
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS -0.0406 ns on placement parasitics; routed sign-off is -0.0463 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.04270597885091692,
+    "tns_ns": -0.38199749999972243,
+    "hold_wns_ns": 0.05051813277357367,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 583.338,
+    "utilization": 0.0911699,
+    "power_w": 0.00238,
+    "wirelength_um": 7828.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0473425,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0505 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "583.3 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 1.8,
+    "grt": 10.1,
+    "drt": 8.9
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 1,
+   "action": "eco_upsize_worst_paths",
+   "category": "eco",
+   "changes": {
+    "eco_resize": [
+     [],
+     [
+      [
+       "_377_",
+       "INV_X2"
+      ],
+      [
+       "_378_",
+       "NAND2_X2"
+      ],
+      [
+       "_380_",
+       "OAI21_X4"
+      ],
+      [
+       "_384_",
+       "NAND2_X4"
+      ],
+      [
+       "_392_",
+       "NOR2_X4"
+      ],
+      [
+       "_420_",
+       "NOR2_X4"
+      ],
+      [
+       "_475_",
+       "INV_X2"
+      ],
+      [
+       "rebuffer3",
+       "BUF_X2"
+      ]
+     ]
+    ]
+   },
+   "rationale": "Targeted resize of weak drivers on the worst paths: _377_ INV_X1->INV_X2 (7.6 fF), _378_ NAND2_X1->NAND2_X2 (6.6 fF), _380_ OAI21_X2->OAI21_X4 (5.0 fF), _384_ NAND2_X2->NAND2_X4 (7.2 fF), _392_ NOR2_X2->NOR2_X4 (6.9 fF), rebuffer3 BUF_X1->BUF_X2 (4.3 fF), _475_ INV_X1->INV_X2 (4.6 fF), _420_ NOR2_X2->NOR2_X4 (8.0 fF)",
+   "priority": 0.9,
+   "evidence": [
+    "WEAK_DRIVERS: 16 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads"
+   ],
+   "summary": {
+    "wns_ns": -0.047731098202671,
+    "tns_ns": -0.35179982145392813,
+    "hold_wns_ns": 0.050486918158464136,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 556.206,
+    "utilization": 0.0869294,
+    "power_w": 0.00227,
+    "wirelength_um": 7841.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0508503,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0505 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "556.2 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 1.8,
+    "grt": 5.4,
+    "drt": 10.0
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 2,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.0,
+     0.043
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 42.7 ps back. Re-run it to a +43 ps guard-band so it over-fixes what routing costs.",
+   "priority": 0.95,
+   "evidence": [
+    "NEAR_MISS: miss is 42.7 ps (8.8% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.04256337069937058,
+    "tns_ns": -0.4204969547136685,
+    "hold_wns_ns": 0.05041749105354506,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 24,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 577.486,
+    "utilization": 0.0902553,
+    "power_w": 0.00235,
+    "wirelength_um": 8208.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0472231,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0504 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "577.5 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 5.2,
+    "grt": 9.1,
+    "drt": 12.3
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 2,
+   "action": "enable_gate_cloning",
+   "category": "optimization",
+   "changes": {
+    "rt_skip_gate_cloning": [
+     true,
+     false
+    ]
+   },
+   "rationale": "Let repair_timing clone gates to split the load of drivers on critical paths (the reference flow disables it).",
+   "priority": 0.8,
+   "evidence": [
+    "WEAK_DRIVERS: 14 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads"
+   ],
+   "summary": {
+    "wns_ns": -0.042836818638069395,
+    "tns_ns": -0.4299818400814726,
+    "hold_wns_ns": 0.05051542660487461,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 24,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 583.338,
+    "utilization": 0.0911699,
+    "power_w": 0.00239,
+    "wirelength_um": 7875.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0473424,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0505 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "583.3 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 2.4,
+    "grt": 9.4,
+    "drt": 10.2
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 2,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X4",
+     "BUF_X8"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0534 ns) against an ideal-clock output budget; the miss is 0.0427 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.037880560871365224,
+    "tns_ns": -0.44675894803700905,
+    "hold_wns_ns": 0.05637255752315454,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 595.042,
+    "utilization": 0.0929991,
+    "power_w": 0.0026,
+    "wirelength_um": 7849.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.040969,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0564 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "595.0 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 2.6,
+    "grt": 9.8,
+    "drt": 10.6
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 2,
+   "action": "eco_upsize_worst_paths",
+   "category": "eco",
+   "changes": {
+    "eco_resize": [
+     [],
+     [
+      [
+       "_354_",
+       "INV_X2"
+      ],
+      [
+       "_355_",
+       "NAND2_X4"
+      ],
+      [
+       "_356_",
+       "NAND2_X4"
+      ],
+      [
+       "_392_",
+       "NOR2_X4"
+      ],
+      [
+       "_407_",
+       "OAI21_X2"
+      ],
+      [
+       "_475_",
+       "INV_X2"
+      ],
+      [
+       "_479_",
+       "XNOR2_X2"
+      ],
+      [
+       "rebuffer3",
+       "BUF_X2"
+      ]
+     ]
+    ]
+   },
+   "rationale": "Targeted resize of weak drivers on the worst paths: _392_ NOR2_X2->NOR2_X4 (6.3 fF), _407_ OAI21_X1->OAI21_X2 (6.8 fF), rebuffer3 BUF_X1->BUF_X2 (4.1 fF), _475_ INV_X1->INV_X2 (4.6 fF), _479_ XNOR2_X1->XNOR2_X2 (4.4 fF), _354_ INV_X1->INV_X2 (4.9 fF), _355_ NAND2_X2->NAND2_X4 (5.7 fF), _356_ NAND2_X2->NAND2_X4 (9.1 fF)",
+   "priority": 0.65,
+   "evidence": [
+    "WEAK_DRIVERS: 14 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "track record: 1 earlier tries, none improved"
+   ],
+   "summary": {
+    "wns_ns": -0.04666342444526873,
+    "tns_ns": -0.282737508075485,
+    "hold_wns_ns": 0.05065642146354266,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 584.934,
+    "utilization": 0.0914193,
+    "power_w": 0.00238,
+    "wirelength_um": 7847.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0513979,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0507 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "584.9 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 1.8,
+    "grt": 11.9,
+    "drt": 13.1
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 3,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.0,
+     0.038
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 37.9 ps back. Re-run it to a +38 ps guard-band so it over-fixes what routing costs.",
+   "priority": 0.95,
+   "evidence": [
+    "NEAR_MISS: miss is 37.9 ps (7.8% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.035161818896196254,
+    "tns_ns": -0.37370457786044253,
+    "hold_wns_ns": 0.056380502556899206,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 594.776,
+    "utilization": 0.0929575,
+    "power_w": 0.00259,
+    "wirelength_um": 8282.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0388205,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0564 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "594.8 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 4.0,
+    "grt": 11.5,
+    "drt": 10.7
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 3,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X8",
+     "BUF_X16"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0483 ns) against an ideal-clock output budget; the miss is 0.0379 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.03456451889205512,
+    "tns_ns": -0.3834040138338234,
+    "hold_wns_ns": 0.059034293013843706,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 22,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 631.484,
+    "utilization": 0.0986946,
+    "power_w": 0.00302,
+    "wirelength_um": 7984.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0384607,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0590 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "631.5 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 2.3,
+    "grt": 13.7,
+    "drt": 11.3
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 3,
+   "action": "shrink_core_margin",
+   "category": "floorplan",
+   "changes": {
+    "fp_core_margin": [
+     null,
+     2.0
+    ]
+   },
+   "rationale": "Worst paths end/start at ports on the die edge; the core edge sits 9.8 um inside the (fixed) die. Move it to 2 um so boundary cells sit closer to their pins.",
+   "priority": 0.65,
+   "evidence": [
+    "IO_BOUND: 3 of 10 top violating paths end at an output port, 0 start at an input port"
+   ],
+   "summary": {
+    "wns_ns": -0.03775865837981374,
+    "tns_ns": -0.3843779292541444,
+    "hold_wns_ns": 0.05486519033275494,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 22,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 610.204,
+    "utilization": 0.0668026,
+    "power_w": 0.00272,
+    "wirelength_um": 7835.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0419881,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0549 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "610.2 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": true,
+   "reused_stages": [],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 1.0,
+    "cts": 2.3,
+    "grt": 11.4,
+    "drt": 11.1
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 3,
+   "action": "repair_on_route_parasitics",
+   "category": "optimization",
+   "changes": {
+    "rt_use_grt_parasitics": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Post-CTS repair_timing on global-route parasitics instead of placement estimates.",
+   "priority": 0.6,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03827102632016901,
+    "tns_ns": -0.39183571385510635,
+    "hold_wns_ns": 0.05621601954170214,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 588.658,
+    "utilization": 0.0920013,
+    "power_w": 0.0026,
+    "wirelength_um": 7862.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0416819,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0562 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "588.7 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 3.3,
+    "grt": 10.4,
+    "drt": 12.0
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 4,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.038,
+     0.0727
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 35.2 ps back. Re-run it to a +73 ps guard-band so it over-fixes what routing costs.",
+   "priority": 0.95,
+   "evidence": [
+    "NEAR_MISS: miss is 35.2 ps (7.2% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.03508035627946046,
+    "tns_ns": -0.3689510745793448,
+    "hold_wns_ns": 0.05634643952576156,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 595.042,
+    "utilization": 0.0929991,
+    "power_w": 0.0026,
+    "wirelength_um": 8286.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0388205,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0563 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "595.0 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 5.5,
+    "grt": 10.2,
+    "drt": 9.6
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 4,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X8",
+     "BUF_X16"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0480 ns) against an ideal-clock output budget; the miss is 0.0352 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.0350412209167356,
+    "tns_ns": -0.4013744727967041,
+    "hold_wns_ns": 0.05898121047397754,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 611.8,
+    "utilization": 0.0956182,
+    "power_w": 0.00296,
+    "wirelength_um": 8303.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0381665,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0590 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "611.8 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 5.2,
+    "grt": 12.9,
+    "drt": 9.1
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 4,
+   "action": "repair_on_route_parasitics",
+   "category": "optimization",
+   "changes": {
+    "rt_use_grt_parasitics": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Post-CTS repair_timing on global-route parasitics instead of placement estimates.",
+   "priority": 0.6,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03901537536808058,
+    "tns_ns": -0.4480017039703464,
+    "hold_wns_ns": 0.05628879466302454,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 26,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 601.16,
+    "utilization": 0.0939553,
+    "power_w": 0.00265,
+    "wirelength_um": 8232.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0428464,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0563 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "601.2 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.6,
+    "cts": 7.9,
+    "grt": 11.3,
+    "drt": 10.4
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 4,
+   "action": "anneal_io_pins",
+   "category": "floorplan",
+   "changes": {
+    "io_annealing": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Re-place IO pins with simulated annealing against the placed logic.",
+   "priority": 0.55,
+   "evidence": [
+    "IO_BOUND: 3 of 10 top violating paths end at an output port, 0 start at an input port"
+   ],
+   "summary": {
+    "wns_ns": -0.034515058454909237,
+    "tns_ns": -0.36025464187035283,
+    "hold_wns_ns": 0.0568213235601878,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 593.712,
+    "utilization": 0.0927912,
+    "power_w": 0.00258,
+    "wirelength_um": 8185.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0384724,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0568 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "593.7 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 4.0,
+    "grt": 12.3,
+    "drt": 13.7
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 5,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.038,
+     0.0727
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 34.5 ps back. Re-run it to a +73 ps guard-band so it over-fixes what routing costs.",
+   "priority": 0.95,
+   "evidence": [
+    "NEAR_MISS: miss is 34.5 ps (7.1% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.034479781117304056,
+    "tns_ns": -0.35874793040544567,
+    "hold_wns_ns": 0.05682139641857585,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 593.978,
+    "utilization": 0.0928328,
+    "power_w": 0.00259,
+    "wirelength_um": 8190.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0384724,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0568 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "594.0 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 6.1,
+    "grt": 12.1,
+    "drt": 13.1
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 5,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X8",
+     "BUF_X16"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0475 ns) against an ideal-clock output budget; the miss is 0.0345 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.03440464677198761,
+    "tns_ns": -0.3905727518621494,
+    "hold_wns_ns": 0.05961086654130768,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 611.8,
+    "utilization": 0.0956182,
+    "power_w": 0.00295,
+    "wirelength_um": 8221.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0375403,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0596 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "611.8 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.2,
+    "grt": 13.3,
+    "drt": 13.9
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 5,
+   "action": "repair_on_route_parasitics",
+   "category": "optimization",
+   "changes": {
+    "rt_use_grt_parasitics": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Post-CTS repair_timing on global-route parasitics instead of placement estimates.",
+   "priority": 0.6,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03755679207265211,
+    "tns_ns": -0.38954840455950845,
+    "hold_wns_ns": 0.05670577362618501,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 596.904,
+    "utilization": 0.0932901,
+    "power_w": 0.00262,
+    "wirelength_um": 8135.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0417177,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0567 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "596.9 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 6.5,
+    "grt": 10.7,
+    "drt": 11.3
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 5,
+   "action": "enable_gate_cloning",
+   "category": "optimization",
+   "changes": {
+    "rt_skip_gate_cloning": [
+     true,
+     false
+    ]
+   },
+   "rationale": "Let repair_timing clone gates to split the load of drivers on critical paths (the reference flow disables it).",
+   "priority": 0.55,
+   "evidence": [
+    "WEAK_DRIVERS: 7 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "track record: 1 earlier tries, none improved"
+   ],
+   "summary": {
+    "wns_ns": -0.03435299364430607,
+    "tns_ns": -0.2993467225493741,
+    "hold_wns_ns": 0.05668640717275149,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.298,
+    "utilization": 0.0936643,
+    "power_w": 0.00263,
+    "wirelength_um": 8305.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0567 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "599.3 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 4.7,
+    "grt": 11.6,
+    "drt": 15.2
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 6,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.038,
+     0.0727
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 34.4 ps back. Re-run it to a +73 ps guard-band so it over-fixes what routing costs.",
+   "priority": 0.95,
+   "evidence": [
+    "NEAR_MISS: miss is 34.4 ps (7.1% of the period)"
+   ],
+   "summary": {
+    "wns_ns": -0.0345319616009372,
+    "tns_ns": -0.2958622319768887,
+    "hold_wns_ns": 0.056689484572284905,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.564,
+    "utilization": 0.0937058,
+    "power_w": 0.00263,
+    "wirelength_um": 8307.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0567 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "599.6 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.1,
+    "grt": 10.9,
+    "drt": 14.7
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 6,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X8",
+     "BUF_X16"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0476 ns) against an ideal-clock output budget; the miss is 0.0344 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.033864412232926126,
+    "tns_ns": -0.3423927904779277,
+    "hold_wns_ns": 0.059936585169262944,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 31,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 617.652,
+    "utilization": 0.0965328,
+    "power_w": 0.003,
+    "wirelength_um": 8364.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0379355,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0599 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "617.7 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.1,
+    "grt": 11.9,
+    "drt": 10.2
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 6,
+   "action": "repair_on_route_parasitics",
+   "category": "optimization",
+   "changes": {
+    "rt_use_grt_parasitics": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Post-CTS repair_timing on global-route parasitics instead of placement estimates.",
+   "priority": 0.6,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03797431920844649,
+    "tns_ns": -0.3749388960985541,
+    "hold_wns_ns": 0.05659057410633428,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 590.786,
+    "utilization": 0.0923339,
+    "power_w": 0.00261,
+    "wirelength_um": 8297.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0416791,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0566 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "590.8 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.6,
+    "grt": 10.9,
+    "drt": 13.9
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 6,
+   "action": "timing_driven_placement",
+   "category": "placement",
+   "changes": {
+    "gp_timing_driven": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Timing-driven global placement: re-weights critical nets so their cells are pulled together.",
+   "priority": 0.55,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03896913457779716,
+    "tns_ns": -0.38051091132770576,
+    "hold_wns_ns": 0.056581768649721184,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 611.268,
+    "utilization": 0.095535,
+    "power_w": 0.00264,
+    "wirelength_um": 7681.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0436823,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0566 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "611.3 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 1.4,
+    "cts": 5.4,
+    "grt": 14.5,
+    "drt": 9.9
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 7,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X8",
+     "BUF_X16"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "priority": 0.75,
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0476 ns) against an ideal-clock output budget; the miss is 0.0345 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.033864412232926126,
+    "tns_ns": -0.3423927904779277,
+    "hold_wns_ns": 0.059936585169262944,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 31,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 617.652,
+    "utilization": 0.0965328,
+    "power_w": 0.003,
+    "wirelength_um": 8364.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0379355,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0599 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "617.7 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.1,
+    "grt": 11.4,
+    "drt": 9.7
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 7,
+   "action": "repair_on_route_parasitics",
+   "category": "optimization",
+   "changes": {
+    "rt_use_grt_parasitics": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Post-CTS repair_timing on global-route parasitics instead of placement estimates.",
+   "priority": 0.6,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.03797431920844649,
+    "tns_ns": -0.3749388960985541,
+    "hold_wns_ns": 0.05659057410633428,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 590.786,
+    "utilization": 0.0923339,
+    "power_w": 0.00261,
+    "wirelength_um": 8297.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0416791,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0566 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "590.8 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 6.3,
+    "grt": 11.6,
+    "drt": 12.8
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 7,
+   "action": "route_critical_nets_first",
+   "category": "routing",
+   "changes": {
+    "grt_critical_nets_pct": [
+     null,
+     10
+    ]
+   },
+   "rationale": "Timing-driven global routing: route the 10% most critical nets first, on their shortest paths.",
+   "priority": 0.5,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.0345319616009372,
+    "tns_ns": -0.2958622319768887,
+    "hold_wns_ns": 0.056689484572284905,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.564,
+    "utilization": 0.0937058,
+    "power_w": 0.00263,
+    "wirelength_um": 8307.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0567 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "599.6 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.1,
+    "grt": 10.5,
+    "drt": 15.1
+   },
+   "decision": "rejected: no improvement"
+  },
+  {
+   "round": 7,
+   "action": "eco_upsize_worst_paths",
+   "category": "eco",
+   "changes": {
+    "eco_resize": [
+     [],
+     [
+      [
+       "_371_",
+       "NAND2_X4"
+      ],
+      [
+       "_479_",
+       "XNOR2_X2"
+      ],
+      [
+       "rebuffer1",
+       "BUF_X2"
+      ],
+      [
+       "rebuffer60",
+       "BUF_X2"
+      ]
+     ]
+    ]
+   },
+   "rationale": "Targeted resize of weak drivers on the worst paths: _371_ NAND2_X2->NAND2_X4 (6.4 fF), _479_ XNOR2_X1->XNOR2_X2 (4.4 fF), rebuffer1 BUF_X1->BUF_X2 (4.2 fF), rebuffer60 BUF_X1->BUF_X2 (7.4 fF)",
+   "priority": 0.4,
+   "evidence": [
+    "WEAK_DRIVERS: 4 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "track record: 2 earlier tries, none improved"
+   ],
+   "summary": {
+    "wns_ns": -0.03826547520488889,
+    "tns_ns": -0.16688004228617576,
+    "hold_wns_ns": 0.05661952664196716,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 15,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 627.228,
+    "utilization": 0.0980294,
+    "power_w": 0.00273,
+    "wirelength_um": 8301.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0414562,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0566 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "627.2 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.8,
+    "cts": 5.1,
+    "grt": 11.3,
+    "drt": 10.7
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 8,
+   "action": "shrink_core_margin",
+   "category": "floorplan",
+   "changes": {
+    "fp_core_margin": [
+     null,
+     2.0
+    ]
+   },
+   "rationale": "Worst paths end/start at ports on the die edge; the core edge sits 9.8 um inside the (fixed) die. Move it to 2 um so boundary cells sit closer to their pins.",
+   "priority": 0.4,
+   "evidence": [
+    "IO_BOUND: 4 of 10 top violating paths end at an output port, 0 start at an input port",
+    "track record: 1 earlier tries, none improved"
+   ],
+   "summary": {
+    "wns_ns": -0.03805794676014153,
+    "tns_ns": -0.38136087034382166,
+    "hold_wns_ns": 0.05515420568036745,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 34,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 613.396,
+    "utilization": 0.067152,
+    "power_w": 0.00273,
+    "wirelength_um": 8400.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0411861,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0552 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "613.4 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.7,
+    "cts": 4.6,
+    "grt": 8.0,
+    "drt": 8.6
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 8,
+   "action": "raise_placement_density",
+   "category": "placement",
+   "changes": {
+    "gp_density": [
+     0.3,
+     0.45
+    ]
+   },
+   "rationale": "Pack cells more tightly (routing is not congested) to shorten wires.",
+   "priority": 0.35,
+   "evidence": [],
+   "summary": {
+    "wns_ns": -0.032986059262152416,
+    "tns_ns": -0.16203330802394839,
+    "hold_wns_ns": 0.057233976122876826,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 14,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 637.336,
+    "utilization": 0.0996092,
+    "power_w": 0.00278,
+    "wirelength_um": 7713.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0365784,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0572 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "637.3 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": true,
+   "reused_stages": [
+    "floorplan"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 0.7,
+    "cts": 4.3,
+    "grt": 7.3,
+    "drt": 13.2
+   },
+   "decision": "rejected: guardrail"
+  },
+  {
+   "round": 8,
+   "action": "timing_driven_placement",
+   "category": "placement",
+   "changes": {
+    "gp_timing_driven": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Timing-driven global placement: re-weights critical nets so their cells are pulled together.",
+   "priority": 0.3,
+   "evidence": [
+    "track record: 1 earlier tries, none improved"
+   ],
+   "summary": {
+    "wns_ns": -0.03858086181952902,
+    "tns_ns": -0.37691165144680383,
+    "hold_wns_ns": 0.056580408626477556,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 612.864,
+    "utilization": 0.0957845,
+    "power_w": 0.00265,
+    "wirelength_um": 7677.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0436823,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0566 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": false,
+     "detail": "612.9 um2 vs baseline 550.1 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": false,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.4,
+    "place": 1.4,
+    "cts": 5.3,
+    "grt": 10.3,
+    "drt": 7.9
+   },
+   "decision": "rejected: guardrail"
+  }
+ ],
+ "accepted": [
+  {
+   "round": 1,
+   "action": "routing_aware_eco_repair",
+   "category": "optimization",
+   "changes": {
+    "grt_repair_timing": [
+     false,
+     true
+    ],
+    "grt_rt_setup_margin": [
+     0.0,
+     0.047
+    ]
+   },
+   "rationale": "Incremental ECO after global routing: repair_timing on global-route parasitics (closer to routed RC than placement estimates), then incremental re-route.",
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS -0.0406 ns on placement parasitics; routed sign-off is -0.0463 ns"
+   ],
+   "before": {
+    "wns_ns": -0.0462939699678002,
+    "tns_ns": -0.4096222088576038,
+    "hold_wns_ns": 0.05031705056144535,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 22,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 550.088,
+    "utilization": 0.0859732,
+    "power_w": 0.00223,
+    "wirelength_um": 7828.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.049871,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.04270597885091692,
+    "tns_ns": -0.38199749999972243,
+    "hold_wns_ns": 0.05051813277357367,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 583.338,
+    "utilization": 0.0911699,
+    "power_w": 0.00238,
+    "wirelength_um": 7828.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0473425,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  },
+  {
+   "round": 2,
+   "action": "faster_clock_tree",
+   "category": "cts",
+   "changes": {
+    "cts_buffer": [
+     "BUF_X4",
+     "BUF_X8"
+    ]
+   },
+   "rationale": "Output paths start at a flop whose clock arrives late (insertion delay) while the output budget assumes an ideal clock; build the tree from stronger buffers to cut real latency.",
+   "evidence": [
+    "IO_LAUNCH_LATENCY: output-port paths pay the launch flop's clock insertion delay (0.0534 ns) against an ideal-clock output budget; the miss is 0.0427 ns"
+   ],
+   "before": {
+    "wns_ns": -0.04270597885091692,
+    "tns_ns": -0.38199749999972243,
+    "hold_wns_ns": 0.05051813277357367,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 23,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 583.338,
+    "utilization": 0.0911699,
+    "power_w": 0.00238,
+    "wirelength_um": 7828.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0473425,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.037880560871365224,
+    "tns_ns": -0.44675894803700905,
+    "hold_wns_ns": 0.05637255752315454,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 595.042,
+    "utilization": 0.0929991,
+    "power_w": 0.0026,
+    "wirelength_um": 7849.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.040969,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  },
+  {
+   "round": 3,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.0,
+     0.038
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 37.9 ps back. Re-run it to a +38 ps guard-band so it over-fixes what routing costs.",
+   "evidence": [
+    "NEAR_MISS: miss is 37.9 ps (7.8% of the period)"
+   ],
+   "before": {
+    "wns_ns": -0.037880560871365224,
+    "tns_ns": -0.44675894803700905,
+    "hold_wns_ns": 0.05637255752315454,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 595.042,
+    "utilization": 0.0929991,
+    "power_w": 0.0026,
+    "wirelength_um": 7849.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.040969,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.035161818896196254,
+    "tns_ns": -0.37370457786044253,
+    "hold_wns_ns": 0.056380502556899206,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 594.776,
+    "utilization": 0.0929575,
+    "power_w": 0.00259,
+    "wirelength_um": 8282.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0388205,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  },
+  {
+   "round": 4,
+   "action": "anneal_io_pins",
+   "category": "floorplan",
+   "changes": {
+    "io_annealing": [
+     false,
+     true
+    ]
+   },
+   "rationale": "Re-place IO pins with simulated annealing against the placed logic.",
+   "evidence": [
+    "IO_BOUND: 3 of 10 top violating paths end at an output port, 0 start at an input port"
+   ],
+   "before": {
+    "wns_ns": -0.035161818896196254,
+    "tns_ns": -0.37370457786044253,
+    "hold_wns_ns": 0.056380502556899206,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 594.776,
+    "utilization": 0.0929575,
+    "power_w": 0.00259,
+    "wirelength_um": 8282.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0388205,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.034515058454909237,
+    "tns_ns": -0.36025464187035283,
+    "hold_wns_ns": 0.0568213235601878,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 593.712,
+    "utilization": 0.0927912,
+    "power_w": 0.00258,
+    "wirelength_um": 8185.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0384724,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  },
+  {
+   "round": 5,
+   "action": "enable_gate_cloning",
+   "category": "optimization",
+   "changes": {
+    "rt_skip_gate_cloning": [
+     true,
+     false
+    ]
+   },
+   "rationale": "Let repair_timing clone gates to split the load of drivers on critical paths (the reference flow disables it).",
+   "evidence": [
+    "WEAK_DRIVERS: 7 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "track record: 1 earlier tries, none improved"
+   ],
+   "before": {
+    "wns_ns": -0.034515058454909237,
+    "tns_ns": -0.36025464187035283,
+    "hold_wns_ns": 0.0568213235601878,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 21,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 593.712,
+    "utilization": 0.0927912,
+    "power_w": 0.00258,
+    "wirelength_um": 8185.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0384724,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.03435299364430607,
+    "tns_ns": -0.2993467225493741,
+    "hold_wns_ns": 0.05668640717275149,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.298,
+    "utilization": 0.0936643,
+    "power_w": 0.00263,
+    "wirelength_um": 8305.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  },
+  {
+   "round": 6,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.038,
+     0.0727
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 34.4 ps back. Re-run it to a +73 ps guard-band so it over-fixes what routing costs.",
+   "evidence": [
+    "NEAR_MISS: miss is 34.4 ps (7.1% of the period)"
+   ],
+   "before": {
+    "wns_ns": -0.03435299364430607,
+    "tns_ns": -0.2993467225493741,
+    "hold_wns_ns": 0.05668640717275149,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.298,
+    "utilization": 0.0936643,
+    "power_w": 0.00263,
+    "wirelength_um": 8305.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   },
+   "after": {
+    "wns_ns": -0.0345319616009372,
+    "tns_ns": -0.2958622319768887,
+    "hold_wns_ns": 0.056689484572284905,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 19,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 599.564,
+    "utilization": 0.0937058,
+    "power_w": 0.00263,
+    "wirelength_um": 8307.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0389655,
+    "clock_periods_ns": {
+     "core_clock": 0.485
+    }
+   }
+  }
+ ],
+ "rounds": 8,
+ "evaluations": 32,
+ "baseline": {
+  "summary": {
+   "wns_ns": -0.0462939699678002,
+   "tns_ns": -0.4096222088576038,
+   "hold_wns_ns": 0.05031705056144535,
+   "hold_tns_ns": 0.0,
+   "setup_violators": 22,
+   "hold_violators": 0,
+   "drc": 0,
+   "antenna_nets": 0,
+   "routed": true,
+   "drv_violations": 0,
+   "area_um2": 550.088,
+   "utilization": 0.0859732,
+   "power_w": 0.00223,
+   "wirelength_um": 7828.0,
+   "grt_overflow": 0,
+   "grt_estimate_wns_ns": -0.049871,
+   "clock_periods_ns": {
+    "core_clock": 0.485
+   }
+  },
+  "diagnosis": {
+   "wns_ns": -0.04629,
+   "tns_ns": -0.40962,
+   "hold_wns_ns": 0.05032,
+   "setup_violators": 22,
+   "gap_ps": 46.3,
+   "gap_pct_of_period": 9.55,
+   "worst_path": {
+    "startpoint": "_679_/Q",
+    "endpoint": "resp_msg[15]",
+    "type": "output_delay",
+    "slack_ns": -0.04629,
+    "stages": 15,
+    "cell_delay_ns": 0.37639,
+    "wire_delay_ns": 0.0049,
+    "wire_fraction": 0.013,
+    "launch_latency_ns": 0.05301,
+    "capture_latency_ns": 0.0,
+    "max_fanout": 5,
+    "max_slew_ns": 0.02298
+   },
+   "tags": {
+    "IO_BOUND": "6 of 10 top violating paths end at an output port, 0 start at an input port",
+    "IO_LAUNCH_LATENCY": "output-port paths pay the launch flop's clock insertion delay (0.0535 ns) against an ideal-clock output budget; the miss is 0.0463 ns",
+    "DEEP_LOGIC": "15 cell stages, cell delay 0.3764 ns",
+    "POST_ROUTE_DEGRADATION": "optimizer saw WNS -0.0406 ns on placement parasitics; routed sign-off is -0.0463 ns",
+    "MANY_ENDPOINTS": "22 violating endpoints",
+    "WEAK_DRIVERS": "16 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "NEAR_MISS": "miss is 46.3 ps (9.5% of the period)"
+   },
+   "weak_drivers": [
+    {
+     "instance": "_377_",
+     "cell": "INV_X1",
+     "to": "INV_X2",
+     "out_cap_ff": 7.575,
+     "fanout": 4,
+     "delay_ns": 0.0194,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "_378_",
+     "cell": "NAND2_X1",
+     "to": "NAND2_X2",
+     "out_cap_ff": 6.599,
+     "fanout": 2,
+     "delay_ns": 0.027,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "_380_",
+     "cell": "OAI21_X2",
+     "to": "OAI21_X4",
+     "out_cap_ff": 4.987,
+     "fanout": 2,
+     "delay_ns": 0.0229,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "_384_",
+     "cell": "NAND2_X2",
+     "to": "NAND2_X4",
+     "out_cap_ff": 7.23,
+     "fanout": 1,
+     "delay_ns": 0.0202,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "_392_",
+     "cell": "NOR2_X2",
+     "to": "NOR2_X4",
+     "out_cap_ff": 6.869,
+     "fanout": 1,
+     "delay_ns": 0.0304,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "rebuffer3",
+     "cell": "BUF_X1",
+     "to": "BUF_X2",
+     "out_cap_ff": 4.334,
+     "fanout": 1,
+     "delay_ns": 0.0318,
+     "path_endpoint": "resp_msg[12]"
+    },
+    {
+     "instance": "_475_",
+     "cell": "INV_X1",
+     "to": "INV_X2",
+     "out_cap_ff": 4.576,
+     "fanout": 1,
+     "delay_ns": 0.0234,
+     "path_endpoint": "resp_msg[12]"
+    },
+    {
+     "instance": "_420_",
+     "cell": "NOR2_X2",
+     "to": "NOR2_X4",
+     "out_cap_ff": 8.01,
+     "fanout": 2,
+     "delay_ns": 0.0354,
+     "path_endpoint": "_695_/D"
+    }
+   ],
+   "post_route_degradation_ns": 0.00566,
+   "endpoint_mix_top_paths": {
+    "output_port": 6,
+    "input_port_start": 0,
+    "register_to_register": 4
+   }
+  },
+  "recipe": {
+   "fp_core_margin": null,
+   "fp_core_util": null,
+   "fp_aspect_ratio": 1.0,
+   "fp_remove_synth_buffers": true,
+   "resynth_delay_ps": null,
+   "rs_timing": false,
+   "rs_depth_threshold": 16,
+   "rs_slack_threshold": 0.0,
+   "gp_density": 0.3,
+   "gp_routability_driven": true,
+   "gp_timing_driven": false,
+   "gp_td_net_weight_max": null,
+   "gp_td_nets_percentage": null,
+   "gp_pad": 2,
+   "dp_pad": 1,
+   "io_annealing": false,
+   "rd_slew_margin": 0,
+   "rd_cap_margin": 0,
+   "rd_max_wire_length": null,
+   "opt_max_fanout": null,
+   "opt_max_transition": null,
+   "wire_rc_layer": "metal3",
+   "wire_rc_layer_clk": "metal6",
+   "cts_buffer": "BUF_X4",
+   "cts_cluster_diameter": 100,
+   "cts_cluster_size": null,
+   "cts_balance_levels": false,
+   "rt_setup_margin": 0.0,
+   "rt_skip_gate_cloning": true,
+   "rt_skip_pin_swap": false,
+   "rt_skip_last_gasp": false,
+   "rt_repair_tns": null,
+   "rt_max_passes": null,
+   "rt_use_grt_parasitics": false,
+   "grt_layer_adjustment": 0.5,
+   "grt_critical_nets_pct": null,
+   "grt_congestion_iters": 100,
+   "grt_repair_timing": false,
+   "grt_rt_setup_margin": 0.0,
+   "eco_resize": [],
+   "drt_end_iter": null
+  },
+  "runtime_s": {
+   "floorplan": 0.4,
+   "place": 0.6,
+   "cts": 1.8,
+   "grt": 3.9,
+   "drt": 7.2
+  }
+ },
+ "stop_reason": "round budget (8) used",
+ "action_track_record": {
+  "guardband_setup_repair": {
+   "tries": 6,
+   "wins": 5,
+   "dropped": false
+  },
+  "resynthesize_for_delay": {
+   "tries": 1,
+   "wins": 0,
+   "dropped": true
+  },
+  "routing_aware_eco_repair": {
+   "tries": 1,
+   "wins": 1,
+   "dropped": false
+  },
+  "eco_upsize_worst_paths": {
+   "tries": 3,
+   "wins": 0,
+   "dropped": false
+  },
+  "enable_gate_cloning": {
+   "tries": 2,
+   "wins": 1,
+   "dropped": false
+  },
+  "faster_clock_tree": {
+   "tries": 6,
+   "wins": 1,
+   "dropped": false
+  },
+  "shrink_core_margin": {
+   "tries": 2,
+   "wins": 0,
+   "dropped": false
+  },
+  "repair_on_route_parasitics": {
+   "tries": 5,
+   "wins": 1,
+   "dropped": false
+  },
+  "anneal_io_pins": {
+   "tries": 1,
+   "wins": 1,
+   "dropped": false
+  },
+  "timing_driven_placement": {
+   "tries": 2,
+   "wins": 0,
+   "dropped": false
+  },
+  "route_critical_nets_first": {
+   "tries": 1,
+   "wins": 0,
+   "dropped": false
+  },
+  "raise_placement_density": {
+   "tries": 1,
+   "wins": 0,
+   "dropped": false
+  }
+ },
+ "final": {
+  "summary": {
+   "wns_ns": -0.0345319616009372,
+   "tns_ns": -0.2958622319768887,
+   "hold_wns_ns": 0.056689484572284905,
+   "hold_tns_ns": 0.0,
+   "setup_violators": 19,
+   "hold_violators": 0,
+   "drc": 0,
+   "antenna_nets": 0,
+   "routed": true,
+   "drv_violations": 0,
+   "area_um2": 599.564,
+   "utilization": 0.0937058,
+   "power_w": 0.00263,
+   "wirelength_um": 8307.0,
+   "grt_overflow": 0,
+   "grt_estimate_wns_ns": -0.0389655,
+   "clock_periods_ns": {
+    "core_clock": 0.485
+   }
+  },
+  "closed": false,
+  "verdict_detail": "Not closed: sign-off still fails (WNS -0.0345 ns, TNS -0.2959 ns, hold +0.0567 ns). Stop reason: round budget (8) used.",
+  "checks": [
+   {
+    "name": "golden inputs unchanged",
+    "ok": true,
+    "detail": "netlist/SDC/liberty hashes and target period match baseline"
+   },
+   {
+    "name": "clock period unchanged at sign-off",
+    "ok": true,
+    "detail": "sign-off clocks {'core_clock': 0.485}, target 0.485 ns"
+   },
+   {
+    "name": "optimization overlay whitelisted",
+    "ok": true,
+    "detail": "only set_max_fanout/transition/capacitance (or none)"
+   },
+   {
+    "name": "fully routed, zero DRC",
+    "ok": true,
+    "detail": "routed=True drc=0"
+   },
+   {
+    "name": "placement legal",
+    "ok": true,
+    "detail": "check_placement"
+   },
+   {
+    "name": "antenna not worse",
+    "ok": true,
+    "detail": "0 vs baseline 0"
+   },
+   {
+    "name": "no new hold violations",
+    "ok": true,
+    "detail": "hold WNS +0.0567 ns (0 viol) vs baseline +0.0503 ns (0 viol)"
+   },
+   {
+    "name": "no new slew/cap/fanout violations",
+    "ok": true,
+    "detail": "0 vs baseline 0"
+   },
+   {
+    "name": "area growth within limit",
+    "ok": true,
+    "detail": "599.6 um2 vs baseline 550.1 um2 (limit +10%)"
+   }
+  ],
+  "equivalence": {
+   "ok": true,
+   "proven": 54,
+   "unproven": 0,
+   "gold_states": 36,
+   "gate_states": 36,
+   "message": "equivalent: 54 points proven (36 state bits matched by name)",
+   "log": "/tmp/claude-0/-home-user-forge/5ce94ace-2cb9-5c7a-a28a-46f486100577/scratchpad/agent_work_gcd/standin_gcd/equiv/equiv.log"
+  },
+  "reproduction": {
+   "wns_ns": -0.0345319616009372,
+   "tns_ns": -0.2958622319768887,
+   "hold_wns_ns": 0.056689484572284905,
+   "drc": 0,
+   "area_um2": 599.564,
+   "match": true
+  },
+  "recipe": {
+   "fp_core_margin": null,
+   "fp_core_util": null,
+   "fp_aspect_ratio": 1.0,
+   "fp_remove_synth_buffers": true,
+   "resynth_delay_ps": null,
+   "rs_timing": false,
+   "rs_depth_threshold": 16,
+   "rs_slack_threshold": 0.0,
+   "gp_density": 0.3,
+   "gp_routability_driven": true,
+   "gp_timing_driven": false,
+   "gp_td_net_weight_max": null,
+   "gp_td_nets_percentage": null,
+   "gp_pad": 2,
+   "dp_pad": 1,
+   "io_annealing": true,
+   "rd_slew_margin": 0,
+   "rd_cap_margin": 0,
+   "rd_max_wire_length": null,
+   "opt_max_fanout": null,
+   "opt_max_transition": null,
+   "wire_rc_layer": "metal3",
+   "wire_rc_layer_clk": "metal6",
+   "cts_buffer": "BUF_X8",
+   "cts_cluster_diameter": 100,
+   "cts_cluster_size": null,
+   "cts_balance_levels": false,
+   "rt_setup_margin": 0.0727,
+   "rt_skip_gate_cloning": false,
+   "rt_skip_pin_swap": false,
+   "rt_skip_last_gasp": false,
+   "rt_repair_tns": null,
+   "rt_max_passes": null,
+   "rt_use_grt_parasitics": false,
+   "grt_layer_adjustment": 0.5,
+   "grt_critical_nets_pct": null,
+   "grt_congestion_iters": 100,
+   "grt_repair_timing": true,
+   "grt_rt_setup_margin": 0.047,
+   "eco_resize": [],
+   "drt_end_iter": null
+  },
+  "recipe_diff": {
+   "io_annealing": [
+    false,
+    true
+   ],
+   "cts_buffer": [
+    "BUF_X4",
+    "BUF_X8"
+   ],
+   "rt_setup_margin": [
+    0.0,
+    0.0727
+   ],
+   "rt_skip_gate_cloning": [
+    true,
+    false
+   ],
+   "grt_repair_timing": [
+    false,
+    true
+   ],
+   "grt_rt_setup_margin": [
+    0.0,
+    0.047
+   ]
+  },
+  "diagnosis": {
+   "wns_ns": -0.03453,
+   "tns_ns": -0.29586,
+   "hold_wns_ns": 0.05669,
+   "setup_violators": 19,
+   "gap_ps": 34.5,
+   "gap_pct_of_period": 7.12,
+   "worst_path": {
+    "startpoint": "_696_/Q",
+    "endpoint": "resp_msg[15]",
+    "type": "output_delay",
+    "slack_ns": -0.03453,
+    "stages": 14,
+    "cell_delay_ns": 0.37065,
+    "wire_delay_ns": 0.0043,
+    "wire_fraction": 0.011,
+    "launch_latency_ns": 0.04755,
+    "capture_latency_ns": 0.0,
+    "max_fanout": 5,
+    "max_slew_ns": 0.02858
+   },
+   "tags": {
+    "IO_BOUND": "4 of 10 top violating paths end at an output port, 0 start at an input port",
+    "IO_LAUNCH_LATENCY": "output-port paths pay the launch flop's clock insertion delay (0.0476 ns) against an ideal-clock output budget; the miss is 0.0345 ns",
+    "DEEP_LOGIC": "14 cell stages, cell delay 0.3707 ns",
+    "WEAK_DRIVERS": "4 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads",
+    "NEAR_MISS": "miss is 34.5 ps (7.1% of the period)"
+   },
+   "weak_drivers": [
+    {
+     "instance": "_371_",
+     "cell": "NAND2_X2",
+     "to": "NAND2_X4",
+     "out_cap_ff": 6.415,
+     "fanout": 1,
+     "delay_ns": 0.0214,
+     "path_endpoint": "resp_msg[15]"
+    },
+    {
+     "instance": "_479_",
+     "cell": "XNOR2_X1",
+     "to": "XNOR2_X2",
+     "out_cap_ff": 4.388,
+     "fanout": 2,
+     "delay_ns": 0.0445,
+     "path_endpoint": "resp_msg[14]"
+    },
+    {
+     "instance": "rebuffer1",
+     "cell": "BUF_X1",
+     "to": "BUF_X2",
+     "out_cap_ff": 4.242,
+     "fanout": 1,
+     "delay_ns": 0.029,
+     "path_endpoint": "resp_msg[12]"
+    },
+    {
+     "instance": "rebuffer60",
+     "cell": "BUF_X1",
+     "to": "BUF_X2",
+     "out_cap_ff": 7.384,
+     "fanout": 1,
+     "delay_ns": 0.0377,
+     "path_endpoint": "_698_/D"
+    }
+   ],
+   "post_route_degradation_ns": 0.00251,
+   "endpoint_mix_top_paths": {
+    "output_port": 4,
+    "input_port_start": 0,
+    "register_to_register": 6
+   }
+  }
+ },
+ "rtl_proposals": [
+  {
+   "title": "Pipeline or restructure the worst cone",
+   "detail": "Worst path _696_/Q -> resp_msg[15] has 14 cell stages (0.371 ns of cell delay). If physical edits cannot recover 35 ps, split this cone with a register (adds one cycle of latency) or rebalance it in RTL. Must re-pass Forge's gate (sim vs. integer model). (This design config has no RTL, only a netlist, so this stays a proposal.)",
+   "evidence": {
+    "startpoint": "_696_/Q",
+    "endpoint": "resp_msg[15]",
+    "stages": [
+     "_696_:DFF_X2",
+     "_369_:XNOR2_X2",
+     "_371_:NAND2_X2",
+     "_375_:NOR2_X4",
+     "_376_:NAND2_X4",
+     "_393_:NAND2_X4",
+     "_404_:NAND2_X4",
+     "_415_:NAND2_X4",
+     "_421_:NAND2_X4",
+     "_427_:NAND2_X4",
+     "_431_:NAND2_X4",
+     "_433_:NAND2_X2",
+     "_437_:NAND2_X2",
+     "_439_:AND2_X2"
+    ]
+   }
+  }
+ ],
+ "script_diff": "--- baseline/place.tcl\n+++ final/place.tcl\n@@ -52,3 +52,3 @@\n global_placement -routability_driven -density 0.3 -pad_left 2 -pad_right 2\n-place_pins -hor_layers metal3 -ver_layers metal2\n+place_pins -hor_layers metal3 -ver_layers metal2 -annealing\n estimate_parasitics -placement\n--- baseline/cts.tcl\n+++ final/cts.tcl\n@@ -51,3 +51,3 @@\n repair_clock_inverters\n-clock_tree_synthesis -root_buf BUF_X4 -buf_list BUF_X4 -sink_clustering_enable -sink_clustering_max_diameter 100\n+clock_tree_synthesis -root_buf BUF_X8 -buf_list BUF_X8 -sink_clustering_enable -sink_clustering_max_diameter 100\n repair_clock_nets\n@@ -57,3 +57,3 @@\n estimate_parasitics -placement\n-repair_timing -skip_gate_cloning\n+repair_timing -setup_margin 0.0727\n detailed_placement\n--- baseline/grt.tcl\n+++ final/grt.tcl\n@@ -54,2 +54,8 @@\n estimate_parasitics -global_routing\n+global_route -start_incremental\n+repair_timing -setup_margin 0.0470\n+set_placement_padding -global -left 1 -right 1\n+detailed_placement\n+global_route -end_incremental -congestion_report_file {<run>/grt/congestion_eco.rpt}\n+estimate_parasitics -global_routing\n pa_timing_metrics grt",
+ "finished": "2026-11-28T00:30:45",
+ "wall_time_s": 274.9
+}

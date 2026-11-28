@@ -1,0 +1,13 @@
+OpenSTA 2.6.0 GITDIR-NOT Copyright (c) 2025, Parallax Software, Inc.
+License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
+
+This is free software, and you are free to change and redistribute it
+under certain conditions; type `show_copying' for details. 
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
+Warning: gcd_nangate45.sdc line 2, set_input_delay relative to a clock defined on the same port/pin not allowed.
+PA_CLOCK core_clock 0.485000
+PA_WNS_MAX -0.0462939699678002
+PA_WNS_MIN 0.05031705056144535
+PA_TNS_MAX -0.4096222088576038
+PA_TNS_MIN 0.0
+PA_SKEW_SETUP 0.0022277944009008793

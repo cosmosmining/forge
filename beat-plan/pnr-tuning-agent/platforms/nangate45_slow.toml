@@ -1,0 +1,27 @@
+# Nangate45 / FreePDK45 platform, SLOW-corner liberty (SS process, 0.95 V, 125 C),
+# from OpenROAD's test/Nangate45 directory.  Same cells/LEF/RC as nangate45.toml;
+# only the timing library differs.  Used for the 250 MHz-class stand-in.
+[platform]
+name = "nangate45_slow"
+dir = "${PNR_PLATFORM_DIR}"
+tech_lef = "Nangate45_tech.lef"
+std_cell_lef = "Nangate45_stdcell.lef"
+liberty = "Nangate45_slow.lib"
+site = "FreePDK45_38x28_10R_NP_162NW_34O"
+pdn_cfg = "Nangate45.pdn.tcl"
+tracks = "Nangate45.tracks"
+layer_rc = "Nangate45.rc"
+rcx_rules = "Nangate45.rcx_rules"
+io_hor_layer = "metal3"
+io_ver_layer = "metal2"
+tapcell_args = "-distance 120 -tapcell_master TAPCELL_X1 -endcap_master TAPCELL_X1"
+tielo_port = "LOGIC0_X1/Z"
+tiehi_port = "LOGIC1_X1/Z"
+dont_use = ["CLKBUF_*", "AOI211_X1", "OAI211_X1"]
+filler_cells = "FILLCELL*"
+min_routing_layer = "metal2"
+max_routing_layer = "metal10"
+signal_layers = "metal2-metal10"
+clock_layers = "metal6-metal10"
+macro_halo = [22.4, 15.12]
+tie_separation = 5

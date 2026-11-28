@@ -1,0 +1,27 @@
+# STAND-IN, NOT BUILD 6.
+# OpenROAD's own aes_nangate45 regression netlist (aes_cipher_top, ~16.7k
+# instances), unmodified, signed off at the Nangate45 SLOW corner (SS, 0.95 V,
+# 125 C) at exactly 4.0 ns = 250 MHz, Build 6's target.  The only choices made
+# here are the corner and the 250 MHz clock; neither was tuned to produce a
+# particular miss.  With the reference flow it misses by 0.130 ns after routing,
+# about 2.6x the Build 6 gap, because routing adds delay the pre-route
+# optimizer did not see.
+[design]
+name = "standin_aes_250mhz"
+description = "OpenROAD aes_nangate45 netlist at 250 MHz, slow corner (stand-in for a Build 6 block)"
+is_standin = true
+top = "aes_cipher_top"
+platform = "../platforms/nangate45_slow.toml"
+netlist = "${OPENROAD_TEST_DIR}/aes_nangate45.v"
+sdc = "standin_aes_250mhz.sdc"
+sdc_prelude = "openroad_test_sdc_helpers.tcl"
+target_period_ns = 4.0
+die_area = [0, 0, 1020, 920.8]
+core_area = [10, 12, 1010, 911.2]
+floorplan_fixed = true
+max_area_growth = 0.10
+
+[knobs]
+# baseline = OpenROAD reference flow values for aes (test/aes_nangate45.tcl)
+gp_density = 0.3
+rd_cap_margin = 20

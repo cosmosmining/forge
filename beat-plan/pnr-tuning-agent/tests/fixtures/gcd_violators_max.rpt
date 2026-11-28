@@ -1,0 +1,28 @@
+max_delay/setup group core_clock
+
+                                       Required     Actual
+Endpoint                                  Delay      Delay      Slack
+---------------------------------------------------------------------
+resp_msg[15] (output)                   0.38800    0.43429   -0.04629 (VIOLATED)
+resp_msg[12] (output)                   0.38800    0.43008   -0.04208 (VIOLATED)
+_695_/D (DFF_X2)                        0.50796    0.54533   -0.03737 (VIOLATED)
+resp_msg[14] (output)                   0.38800    0.42369   -0.03569 (VIOLATED)
+_701_/D (DFF_X1)                        0.50682    0.54035   -0.03353 (VIOLATED)
+_705_/D (DFF_X1)                        0.50655    0.53800   -0.03144 (VIOLATED)
+_703_/D (DFF_X2)                        0.50783    0.53856   -0.03073 (VIOLATED)
+resp_msg[11] (output)                   0.38800    0.41695   -0.02895 (VIOLATED)
+resp_msg[7] (output)                    0.38800    0.41480   -0.02680 (VIOLATED)
+resp_msg[13] (output)                   0.38800    0.40869   -0.02069 (VIOLATED)
+_698_/D (DFF_X2)                        0.50805    0.51694   -0.00889 (VIOLATED)
+_704_/D (DFF_X2)                        0.50734    0.51614   -0.00880 (VIOLATED)
+_694_/D (DFF_X1)                        0.50724    0.51553   -0.00829 (VIOLATED)
+_700_/D (DFF_X2)                        0.50813    0.51591   -0.00778 (VIOLATED)
+resp_msg[6] (output)                    0.38800    0.39506   -0.00706 (VIOLATED)
+_696_/D (DFF_X2)                        0.50831    0.51521   -0.00690 (VIOLATED)
+_706_/D (DFF_X2)                        0.50950    0.51561   -0.00611 (VIOLATED)
+_702_/D (DFF_X2)                        0.50766    0.51368   -0.00601 (VIOLATED)
+resp_msg[10] (output)                   0.38800    0.39396   -0.00596 (VIOLATED)
+_691_/D (DFF_X1)                        0.50787    0.51374   -0.00587 (VIOLATED)
+_697_/D (DFF_X2)                        0.50832    0.51191   -0.00359 (VIOLATED)
+resp_msg[9] (output)                    0.38800    0.38878   -0.00078 (VIOLATED)
+

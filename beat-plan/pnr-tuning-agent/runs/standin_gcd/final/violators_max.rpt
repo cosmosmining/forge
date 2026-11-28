@@ -1,0 +1,25 @@
+max_delay/setup group core_clock
+
+                                       Required     Actual
+Endpoint                                  Delay      Delay      Slack
+---------------------------------------------------------------------
+resp_msg[15] (output)                   0.38800    0.42253   -0.03453 (VIOLATED)
+resp_msg[14] (output)                   0.38800    0.41211   -0.02411 (VIOLATED)
+resp_msg[12] (output)                   0.38800    0.41030   -0.02230 (VIOLATED)
+_698_/D (DFF_X2)                        0.50206    0.52246   -0.02040 (VIOLATED)
+_694_/D (DFF_X1)                        0.50136    0.52059   -0.01923 (VIOLATED)
+_700_/D (DFF_X2)                        0.50229    0.52047   -0.01818 (VIOLATED)
+_704_/D (DFF_X2)                        0.50222    0.52035   -0.01814 (VIOLATED)
+_696_/D (DFF_X2)                        0.50193    0.52001   -0.01808 (VIOLATED)
+_706_/D (DFF_X2)                        0.50368    0.52103   -0.01735 (VIOLATED)
+resp_msg[11] (output)                   0.38800    0.40488   -0.01688 (VIOLATED)
+_691_/D (DFF_X1)                        0.50202    0.51889   -0.01687 (VIOLATED)
+_702_/D (DFF_X2)                        0.50254    0.51866   -0.01612 (VIOLATED)
+resp_msg[7] (output)                    0.38800    0.40019   -0.01219 (VIOLATED)
+resp_msg[13] (output)                   0.38800    0.39856   -0.01056 (VIOLATED)
+_692_/D (DFF_X2)                        0.50218    0.51161   -0.00943 (VIOLATED)
+_697_/D (DFF_X2)                        0.50229    0.50824   -0.00596 (VIOLATED)
+_693_/D (DFF_X1)                        0.50147    0.50693   -0.00546 (VIOLATED)
+_699_/D (DFF_X2)                        0.50185    0.50711   -0.00526 (VIOLATED)
+_695_/D (DFF_X2)                        0.50212    0.50691   -0.00479 (VIOLATED)
+

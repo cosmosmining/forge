@@ -1,0 +1,36 @@
+# TEMPLATE for one Build 6 block.  Copy to designs/build6_<block>.toml per block
+# and fill in the paths from ~/Desktop/startup.  Build 6 files were NOT available
+# in the cloud session that built this agent, so nothing below is filled in.
+#
+# What the agent needs per block (all of it is "golden": the agent reads it,
+# hashes it, and never edits it):
+#   - the post-synthesis gate-level netlist Build 6 placed and routed
+#   - the SDC Build 6 signed off with (the 250 MHz clock, 4.0 ns)
+#   - the die/core size Build 6 used (kept fixed: a block lives in a parent floorplan)
+#
+# Step 1 is to check that the BASELINE recipe reproduces Build 6's result
+# (about -0.050 ns WNS after routing).  If Build 6 ran through
+# OpenROAD-flow-scripts with different settings, put the equivalent values in
+# [knobs] (e.g. gp_density = PLACE_DENSITY, rd_cap_margin = CAP_MARGIN) until the
+# baseline matches.  Only then is "closed" a statement about Build 6.
+[design]
+name = "build6_BLOCKNAME"
+description = "Build 6 block BLOCKNAME, 0.050 ns short of 250 MHz after routing"
+is_standin = false
+top = "TOP_MODULE_NAME"
+platform = "../platforms/nangate45.toml"        # or nangate45_slow.toml if Build 6 signed off at SS
+netlist = "/Users/YOU/Desktop/startup/PATH/TO/build6/BLOCK/netlist.v"
+sdc = "/Users/YOU/Desktop/startup/PATH/TO/build6/BLOCK/constraints.sdc"
+# sdc_prelude = "..."   # only if the SDC calls helper procs it does not define
+target_period_ns = 4.0
+die_area = [0, 0, 0, 0]      # um: x0 y0 x1 y1, from Build 6's floorplan
+core_area = [0, 0, 0, 0]
+floorplan_fixed = true
+max_area_growth = 0.05       # tighter than the stand-ins: Build 6 blocks are large
+# rtl = ["/Users/YOU/Desktop/startup/.../block.sv"]   # enables RTL proposals to cite files
+
+[knobs]
+# Values that reproduce Build 6's own flow (see step 1).  Defaults are OpenROAD's
+# reference flow (test/flow.tcl).
+gp_density = 0.3
+rd_cap_margin = 0

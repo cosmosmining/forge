@@ -1,0 +1,9 @@
+# flow checkpoints and big intermediates never belong in git
+work/
+*.odb
+*.db
+*.def
+*.spef
+*.guide
+__pycache__/
+.pytest_cache/

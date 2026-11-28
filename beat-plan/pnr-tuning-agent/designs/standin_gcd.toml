@@ -1,0 +1,27 @@
+# STAND-IN, NOT BUILD 6.
+# OpenROAD's own gcd_nangate45 regression design, unmodified: netlist, SDC, die
+# and clock period (0.485 ns) are exactly OpenROAD's reference configuration.
+# With OpenROAD's reference flow it misses timing after routing by ~0.05 ns,
+# the same size of miss as the Build 6 blocks (0.050 ns at 250 MHz).
+# The period was NOT chosen by us.
+[design]
+name = "standin_gcd"
+description = "OpenROAD gcd_nangate45 reference config (stand-in for a Build 6 block)"
+is_standin = true
+top = "gcd"
+platform = "../platforms/nangate45.toml"
+netlist = "${OPENROAD_TEST_DIR}/gcd_nangate45.v"
+sdc = "${OPENROAD_TEST_DIR}/gcd_nangate45.sdc"
+sdc_prelude = "openroad_test_sdc_helpers.tcl"
+target_period_ns = 0.485
+die_area = [0, 0, 100.13, 100.8]
+core_area = [10.07, 11.2, 90.25, 91]
+# The die is treated as fixed (as a block inside a parent floorplan would be):
+# the agent may move the core edge inside it, but may not grow the die.
+floorplan_fixed = true
+max_area_growth = 0.10
+
+[knobs]
+# baseline = OpenROAD reference flow values for this design (test/gcd_nangate45.tcl)
+gp_density = 0.3
+rd_cap_margin = 0
