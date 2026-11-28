@@ -22,10 +22,501 @@
   "host_cpus": 4
  },
  "started": "2026-11-28T00:24:51",
- "candidates": [],
- "accepted": [],
- "rounds": 0,
- "evaluations": 1,
+ "candidates": [
+  {
+   "round": 1,
+   "action": "guardband_setup_repair",
+   "category": "optimization",
+   "changes": {
+    "rt_setup_margin": [
+     0.0,
+     0.13
+    ]
+   },
+   "rationale": "Post-CTS repair_timing stops at zero slack on placement parasitics, then routing takes 129.9 ps back. Re-run it to a +130 ps guard-band so it over-fixes what routing costs.",
+   "priority": 1.0,
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS +0.0003 ns on placement parasitics; routed sign-off is -0.1299 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.06125011782242182,
+    "tns_ns": -0.10166001661559826,
+    "hold_wns_ns": 0.14522450320016245,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 2,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 31490.7,
+    "utilization": 0.0350987,
+    "power_w": 0.0472,
+    "wirelength_um": 770345.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0107381,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'clk': 4.0}, target 4.0 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.1452 ns (0 viol) vs baseline +0.1439 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "31490.7 um2 vs baseline 31431.4 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place"
+   ],
+   "runtime_s": {
+    "floorplan": 0.8,
+    "place": 24.5,
+    "cts": 7.3,
+    "grt": 47.3,
+    "drt": 296.7
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 1,
+   "action": "resynthesize_for_delay",
+   "category": "synthesis",
+   "changes": {
+    "resynth_delay_ps": [
+     null,
+     2400
+    ]
+   },
+   "rationale": "The worst path is 14 cell stages with only 2% wire delay, so placement and routing cannot recover 130 ps. Re-map the combinational logic with Yosys/ABC to a 2400 ps delay target; every register keeps its instance, so the result is proven equivalent to the golden netlist.",
+   "priority": 0.95,
+   "evidence": [
+    "DEEP_LOGIC: 14 cell stages, cell delay 3.8563 ns"
+   ],
+   "summary": {
+    "wns_ns": -0.08025003111400114,
+    "tns_ns": -0.278846287286425,
+    "hold_wns_ns": 0.04991851517880309,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 5,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 30739.2,
+    "utilization": 0.0342612,
+    "power_w": 0.0476,
+    "wirelength_um": 774354.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0457558,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'clk': 4.0}, target 4.0 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.0499 ns (0 viol) vs baseline +0.1439 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "30739.2 um2 vs baseline 31431.4 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [],
+   "runtime_s": {
+    "floorplan": 1.0,
+    "place": 24.4,
+    "cts": 6.6,
+    "grt": 48.1,
+    "drt": 317.0
+   },
+   "decision": "valid, not best this round"
+  },
+  {
+   "round": 1,
+   "action": "routing_aware_eco_repair",
+   "category": "optimization",
+   "changes": {
+    "grt_repair_timing": [
+     false,
+     true
+    ],
+    "grt_rt_setup_margin": [
+     0.0,
+     0.13
+    ]
+   },
+   "rationale": "Incremental ECO after global routing: repair_timing on global-route parasitics (closer to routed RC than placement estimates), then incremental re-route.",
+   "priority": 0.95,
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS +0.0003 ns on placement parasitics; routed sign-off is -0.1299 ns"
+   ],
+   "summary": {
+    "wns_ns": 0.0411768408802781,
+    "tns_ns": 0.0,
+    "hold_wns_ns": 0.14444179594566525,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 0,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 31573.9,
+    "utilization": 0.0351915,
+    "power_w": 0.0473,
+    "wirelength_um": 769698.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": 0.102983,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'clk': 4.0}, target 4.0 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.1444 ns (0 viol) vs baseline +0.1439 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "31573.9 um2 vs baseline 31431.4 um2 (limit +10%)"
+    }
+   ],
+   "valid": true,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.8,
+    "place": 24.5,
+    "cts": 6.5,
+    "grt": 53.3,
+    "drt": 304.6
+   },
+   "decision": "ACCEPTED"
+  },
+  {
+   "round": 1,
+   "action": "eco_upsize_worst_paths",
+   "category": "eco",
+   "changes": {
+    "eco_resize": [
+     [],
+     [
+      [
+       "_27798_",
+       "NOR2_X4"
+      ],
+      [
+       "_28892_",
+       "OAI21_X2"
+      ],
+      [
+       "_28895_",
+       "OAI221_X2"
+      ],
+      [
+       "_32473_",
+       "NAND4_X2"
+      ],
+      [
+       "_32474_",
+       "OR4_X4"
+      ],
+      [
+       "_32612_",
+       "XNOR2_X2"
+      ],
+      [
+       "_32614_",
+       "XNOR2_X2"
+      ],
+      [
+       "_32615_",
+       "MUX2_X2"
+      ]
+     ]
+    ]
+   },
+   "rationale": "Targeted resize of weak drivers on the worst paths: _32473_ NAND4_X1->NAND4_X2 (5.0 fF), _32474_ OR4_X2->OR4_X4 (6.5 fF), _32612_ XNOR2_X1->XNOR2_X2 (4.0 fF), _32614_ XNOR2_X1->XNOR2_X2 (4.7 fF), _32615_ MUX2_X1->MUX2_X2 (4.6 fF), _27798_ NOR2_X2->NOR2_X4 (10.4 fF), _28892_ OAI21_X1->OAI21_X2 (2.0 fF), _28895_ OAI221_X1->OAI221_X2 (1.0 fF)",
+   "priority": 0.9,
+   "evidence": [
+    "WEAK_DRIVERS: 25 X1/X2 drivers on the worst paths drive >=4 fF or >=3 loads"
+   ],
+   "summary": {
+    "wns_ns": -0.10705703293554411,
+    "tns_ns": -1.097097554966866,
+    "hold_wns_ns": 0.14659263107210133,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 20,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 1,
+    "area_um2": 31439.9,
+    "utilization": 0.0350421,
+    "power_w": 0.0472,
+    "wirelength_um": 769624.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0819718,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   },
+   "checks": [
+    {
+     "name": "golden inputs unchanged",
+     "ok": true,
+     "detail": "netlist/SDC/liberty hashes and target period match baseline"
+    },
+    {
+     "name": "clock period unchanged at sign-off",
+     "ok": true,
+     "detail": "sign-off clocks {'clk': 4.0}, target 4.0 ns"
+    },
+    {
+     "name": "optimization overlay whitelisted",
+     "ok": true,
+     "detail": "only set_max_fanout/transition/capacitance (or none)"
+    },
+    {
+     "name": "fully routed, zero DRC",
+     "ok": true,
+     "detail": "routed=True drc=0"
+    },
+    {
+     "name": "placement legal",
+     "ok": true,
+     "detail": "check_placement"
+    },
+    {
+     "name": "antenna not worse",
+     "ok": true,
+     "detail": "0 vs baseline 0"
+    },
+    {
+     "name": "no new hold violations",
+     "ok": true,
+     "detail": "hold WNS +0.1466 ns (0 viol) vs baseline +0.1439 ns (0 viol)"
+    },
+    {
+     "name": "no new slew/cap/fanout violations",
+     "ok": false,
+     "detail": "1 vs baseline 0"
+    },
+    {
+     "name": "area growth within limit",
+     "ok": true,
+     "detail": "31439.9 um2 vs baseline 31431.4 um2 (limit +10%)"
+    }
+   ],
+   "valid": false,
+   "improves": true,
+   "reused_stages": [
+    "floorplan",
+    "place",
+    "cts"
+   ],
+   "runtime_s": {
+    "floorplan": 0.8,
+    "place": 24.5,
+    "cts": 6.5,
+    "grt": 48.8,
+    "drt": 341.0
+   },
+   "decision": "rejected: guardrail"
+  }
+ ],
+ "accepted": [
+  {
+   "round": 1,
+   "action": "routing_aware_eco_repair",
+   "category": "optimization",
+   "changes": {
+    "grt_repair_timing": [
+     false,
+     true
+    ],
+    "grt_rt_setup_margin": [
+     0.0,
+     0.13
+    ]
+   },
+   "rationale": "Incremental ECO after global routing: repair_timing on global-route parasitics (closer to routed RC than placement estimates), then incremental re-route.",
+   "evidence": [
+    "POST_ROUTE_DEGRADATION: optimizer saw WNS +0.0003 ns on placement parasitics; routed sign-off is -0.1299 ns"
+   ],
+   "before": {
+    "wns_ns": -0.12986145859550788,
+    "tns_ns": -1.3371415464452379,
+    "hold_wns_ns": 0.14394219557045426,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 20,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 31431.4,
+    "utilization": 0.0350326,
+    "power_w": 0.0471,
+    "wirelength_um": 769698.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": -0.0958358,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   },
+   "after": {
+    "wns_ns": 0.0411768408802781,
+    "tns_ns": 0.0,
+    "hold_wns_ns": 0.14444179594566525,
+    "hold_tns_ns": 0.0,
+    "setup_violators": 0,
+    "hold_violators": 0,
+    "drc": 0,
+    "antenna_nets": 0,
+    "routed": true,
+    "drv_violations": 0,
+    "area_um2": 31573.9,
+    "utilization": 0.0351915,
+    "power_w": 0.0473,
+    "wirelength_um": 769698.0,
+    "grt_overflow": 0,
+    "grt_estimate_wns_ns": 0.102983,
+    "clock_periods_ns": {
+     "clk": 4.0
+    }
+   }
+  }
+ ],
+ "rounds": 1,
+ "evaluations": 5,
  "baseline": {
   "summary": {
    "wns_ns": -0.12986145859550788,
