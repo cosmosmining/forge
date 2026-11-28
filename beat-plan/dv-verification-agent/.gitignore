@@ -1,0 +1,8 @@
+# DV agent: local run output and caches (evidence that is kept lives under results/)
+__pycache__/
+*.pyc
+dv_runs/
+dv_campaigns/
+dv_bugs/
+dv_equiv/
+dv_tb_*/

@@ -1,0 +1,50 @@
+# Hand-injected bugs (must FAIL) and behaviour-preserving rewrites (must PASS) for fx_dot4.
+
+[[bug]]
+id = "lane1-slice-low"
+file = "rtl/fx_dot4.sv"
+find = "assign a1 = {{8{a[15]}}, a[15:8]};"
+replace = "assign a1 = {{8{a[15]}}, a[14:7]};"
+why = "lane 1 of a sliced one bit low"
+
+[[bug]]
+id = "lane3-zero-extended"
+file = "rtl/fx_dot4.sv"
+find = "assign b3 = {{8{b[31]}}, b[31:24]};"
+replace = "assign b3 = {8'd0, b[31:24]};"
+why = "lane 3 of b zero-extended"
+
+[[bug]]
+id = "valid-one-stage-short"
+file = "rtl/fx_dot4.sv"
+find = "out_valid <= v1_q;"
+replace = "out_valid <= in_valid;"
+why = "valid pipeline one stage shorter than the data pipeline"
+
+[[bug]]
+id = "bias-not-registered"
+file = "rtl/fx_dot4.sv"
+find = "y <= bias_q + {{16{p0[15]}}, p0}"
+replace = "y <= bias + {{16{p0[15]}}, p0}"
+why = "bias read from the live input instead of the stage-1 register"
+
+[[bug]]
+id = "lane2-wrong-weight"
+file = "rtl/fx_dot4.sv"
+find = "p2     <= a2 * b2;"
+replace = "p2     <= a2 * b3;"
+why = "lane 2 multiplies the wrong lane of b"
+
+[[benign]]
+id = "stage1-ungated"
+file = "rtl/fx_dot4.sv"
+find = "if (in_valid) begin"
+replace = "if (1'b1) begin"
+why = "stage 1 captures every cycle; only valid beats reach the output, so behaviour is unchanged"
+
+[[benign]]
+id = "sum-reordered"
+file = "rtl/fx_dot4.sv"
+find = "y <= bias_q + {{16{p0[15]}}, p0} + {{16{p1[15]}}, p1}"
+replace = "y <= {{16{p1[15]}}, p1} + {{16{p0[15]}}, p0} + bias_q"
+why = "same sum in a different order"

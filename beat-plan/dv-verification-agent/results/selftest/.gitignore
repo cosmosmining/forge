@@ -1,0 +1,10 @@
+# Keep the evidence (summaries and reports); drop build products, vectors and RTL copies.
+*
+!*/
+!.gitignore
+!summary.json
+!summary.md
+!report.json
+!report.md
+!bugs.json
+!campaign.json

@@ -1,0 +1,22 @@
+# DV-agent self-test fixture (NOT Forge RTL, NOT Build 6).
+[block]
+name = "fx_pwl"
+top = "fx_pwl"
+rtl = ["rtl/fx_pwl.sv"]
+
+[interface]
+protocol = "pipe"
+clock = "clk"
+latency = 1
+
+[golden]
+model = "golden.py:pwl"
+style = "map"
+
+[stimulus]
+exhaustive_max = 65536
+
+[checks]
+waivers = [
+  { code = "UNUSEDSIGNAL", match = "'sum'[22:16]", reason = "by construction |base| + |prod>>>8| < 2**15, so sum[22:16] are copies of the sign bit and only sum[15:0] is needed" },
+]

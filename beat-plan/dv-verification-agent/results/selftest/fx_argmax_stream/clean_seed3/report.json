@@ -1,0 +1,183 @@
+{
+  "block": "fx_argmax_stream",
+  "top": "fx_argmax_stream",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_argmax_stream/manifest.toml",
+  "seed": 3,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_argmax_stream/rtl/fx_argmax_stream.sv",
+      "sha256": "5abb930cd95d724117dd255fc44ab4e5d6a0d151490130ecc08ea1b8a1f470ac"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.05,
+        "tb_result": {
+          "outputs": 244,
+          "expected": 244,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 2113,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/clean_seed3/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 244,
+          "observed_beats": 244,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 4.6,
+        "tb_result": {
+          "outputs": 244,
+          "expected": 244,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 2113,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/clean_seed3/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 244,
+          "observed_beats": 244,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      }
+    },
+    "coverage": {
+      "available": true,
+      "line": {
+        "hit": 11,
+        "total": 11,
+        "ratio": 1.0
+      },
+      "branch": {
+        "hit": 0,
+        "total": 0,
+        "ratio": null
+      },
+      "toggle": {
+        "hit": 145,
+        "total": 166,
+        "ratio": 0.8734939759036144
+      },
+      "uncovered": []
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "244 of 244",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "244 of 244",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    },
+    {
+      "name": "DUT line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "detail": "11/11 points",
+      "kind": "measured",
+      "source": "verilator coverage.dat"
+    },
+    {
+      "name": "DUT toggle coverage",
+      "value": 87.3,
+      "unit": "%",
+      "detail": "145/166 points",
+      "kind": "measured",
+      "source": "verilator coverage.dat"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:argmax",
+    "style": "stream",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 11,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 2113,
+    "output_beats": 244,
+    "sources": {
+      "corner_packets": 44,
+      "random_small_packets": 39,
+      "random_corner_packets": 54,
+      "random_uniform_packets": 85,
+      "random_repeat_packets": 22
+    },
+    "idle_cycles": 1921,
+    "stall_cycles": 4249,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/clean_seed3/tb/tb.sv"
+  },
+  "verdict": "PASS",
+  "reasons": []
+}

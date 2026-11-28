@@ -1,0 +1,50 @@
+# Hand-injected bugs (must FAIL) and behaviour-preserving rewrites (must PASS) for fx_argmax_stream.
+
+[[bug]]
+id = "ties-pick-latest"
+file = "rtl/fx_argmax_stream.sv"
+find = "(x > best_q)"
+replace = "(x >= best_q)"
+why = "ties take the latest index instead of the earliest"
+
+[[bug]]
+id = "unsigned-compare"
+file = "rtl/fx_argmax_stream.sv"
+find = "(x > best_q)"
+replace = "($unsigned(x) > $unsigned(best_q))"
+why = "comparison done unsigned: negative values beat positive ones"
+
+[[bug]]
+id = "count-not-reset"
+file = "rtl/fx_argmax_stream.sv"
+find = "          cnt_q     <= '0;"
+replace = ""
+why = "position counter not reset at the end of a packet"
+
+[[bug]]
+id = "first-flag-not-set"
+file = "rtl/fx_argmax_stream.sv"
+find = "          first_q   <= 1'b1;"
+replace = ""
+why = "next packet compares against the previous packet's maximum"
+
+[[bug]]
+id = "max-ignores-last-beat"
+file = "rtl/fx_argmax_stream.sv"
+find = "max_val   <= better ? x : best_q;"
+replace = "max_val   <= best_q;"
+why = "the last beat can win the index but not the value"
+
+[[benign]]
+id = "compare-flipped"
+file = "rtl/fx_argmax_stream.sv"
+find = "assign better   = first_q || (x > best_q);"
+replace = "assign better   = first_q | (best_q < x);"
+why = "same comparison written the other way round"
+
+[[benign]]
+id = "increment-as-subtract"
+file = "rtl/fx_argmax_stream.sv"
+find = "cnt_q   <= cnt_q + 1'b1;"
+replace = "cnt_q   <= cnt_q - {IDX_W{1'b1}};"
+why = "adding 1 equals subtracting all-ones modulo 2**IDX_W"

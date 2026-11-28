@@ -1,0 +1,1017 @@
+{
+  "block": "fx_mac_stream",
+  "top": "fx_mac_stream",
+  "seed": 1,
+  "simulators": [
+    "iverilog"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "baseline_verdict": "PASS",
+  "baseline_reasons": [],
+  "run": 43,
+  "stillborn": 0,
+  "errors": 0,
+  "compiled": 43,
+  "killed": 34,
+  "killed_functional": 33,
+  "killed_lint_only": 1,
+  "survived": 9,
+  "survivor_classes": {
+    "equivalent": 8,
+    "timing-only": 1
+  },
+  "escapes": 0,
+  "unexplained": 0,
+  "score": 0.9714,
+  "by_operator": {
+    "SGN": {
+      "total": 6,
+      "stillborn": 0,
+      "killed": 0,
+      "survived": 6
+    },
+    "STMT": {
+      "total": 13,
+      "stillborn": 0,
+      "killed": 12,
+      "survived": 1
+    },
+    "CR": {
+      "total": 12,
+      "stillborn": 0,
+      "killed": 11,
+      "survived": 1
+    },
+    "AOR": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "UOD": {
+      "total": 2,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 0
+    },
+    "LOR": {
+      "total": 3,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 1
+    },
+    "EDGE": {
+      "total": 2,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 0
+    },
+    "IFN": {
+      "total": 4,
+      "stillborn": 0,
+      "killed": 4,
+      "survived": 0
+    }
+  },
+  "generated": 43,
+  "secs": 22.9,
+  "mutants": [
+    {
+      "id": "SGN-fx_mac_stream.sv-L14-0843c042",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 14,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L14-0843c042",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L14-0843c042/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_mac_stream.sv-L15-1eda003e",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 15,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L15-1eda003e",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L15-1eda003e/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_mac_stream.sv-L19-a1afa796",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 19,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L19-a1afa796",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L19-a1afa796/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_mac_stream.sv-L21-7269f551",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 21,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L21-7269f551",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L21-7269f551/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_mac_stream.sv-L22-b86860fe",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 22,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.18,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L22-b86860fe",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L22-b86860fe/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_mac_stream.sv-L23-e1b91b48",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 23,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/SGN-fx_mac_stream.sv-L23-e1b91b48",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/SGN-fx_mac_stream.sv-L23-e1b91b48/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L27-e58a1f13",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 27,
+      "col": 3,
+      "old": "assign prod     = {{8{a[7]}}, a} * {{8{b[7]}}, b};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_mac_stream.sv:22: Signal is not driven: 'prod'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\prod [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\prod [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\prod [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L27-e58a1f13"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L27-6a77a86f",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 27,
+      "col": 27,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 159 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L27-6a77a86f"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L27-1077fd09",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 27,
+      "col": 27,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "verilator risk SELRANGE fx_mac_stream.sv:27: Selection index out of range: 8:8 outside 7:0",
+        "iverilog: 288 of 288 output beats differ from the golden model",
+        "iverilog: 288 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L27-1077fd09"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L27-b654296c",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 27,
+      "col": 44,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 165 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L27-b654296c"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L27-be27819a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 27,
+      "col": 44,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk SELRANGE fx_mac_stream.sv:27: Selection index out of range: 8:8 outside 7:0",
+        "iverilog: 288 of 288 output beats differ from the golden model",
+        "iverilog: 288 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L27-be27819a"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L28-5ccf4395",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 28,
+      "col": 3,
+      "old": "assign sum      = acc_q + {{16{prod[15]}}, prod};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_mac_stream.sv:23: Signal is not driven: 'sum'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\sum [31] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\sum [30] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\sum [29] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L28-5ccf4395"
+    },
+    {
+      "id": "AOR-fx_mac_stream.sv-L28-85006705",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 28,
+      "col": 27,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 280 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/AOR-fx_mac_stream.sv-L28-85006705"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L28-76be7797",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 28,
+      "col": 39,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 1 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L28-76be7797"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L28-df563322",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 28,
+      "col": 39,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk SELRANGE fx_mac_stream.sv:28: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 288 of 288 output beats differ from the golden model",
+        "iverilog: 288 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L28-df563322"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L29-01cdb778",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 29,
+      "col": 3,
+      "old": "assign in_ready = !out_valid || out_ready;",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.53,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_mac_stream.sv:13: Signal is not driven: 'in_ready'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\in_ready is used but has no driver.",
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L29-01cdb778"
+    },
+    {
+      "id": "UOD-fx_mac_stream.sv-L29-89ee79d8",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 29,
+      "col": 21,
+      "old": "!",
+      "new": "",
+      "desc": "delete unary '!'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.92,
+      "reasons": [
+        "iverilog: 247 of 288 output beats differ from the golden model",
+        "iverilog: 23 expected output beats never appeared",
+        "iverilog: testbench cycle timeout",
+        "iverilog: output protocol broken in 23 cycles (out_valid dropped or data changed before out_ready)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/UOD-fx_mac_stream.sv-L29-89ee79d8"
+    },
+    {
+      "id": "LOR-fx_mac_stream.sv-L29-9cf93e01",
+      "op": "LOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 29,
+      "col": 32,
+      "old": "||",
+      "new": "&&",
+      "desc": "'||' -> '&&'",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/LOR-fx_mac_stream.sv-L29-9cf93e01",
+      "formal": {
+        "yosys_equiv": "unproven",
+        "cycle": {
+          "status": "cex",
+          "mode": "bmc",
+          "depth": 20,
+          "detail": null,
+          "sby": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/LOR-fx_mac_stream.sv-L29-9cf93e01/sby_cycle/eq.sby"
+        },
+        "trace": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/LOR-fx_mac_stream.sv-L29-9cf93e01/sby_cycle/eq/engine_0/trace.vcd",
+        "class": "timing-only",
+        "method": "sby cycle bmc + replay + extra seeds",
+        "note": "cycle-level difference (formal trace); transactions equal on the replayed trace and on 8 extra random seeds"
+      }
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L30-1f97568e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 30,
+      "col": 3,
+      "old": "assign fire_in  = in_valid && in_ready;",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.85,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_mac_stream.sv:24: Signal is not driven: 'fire_in'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\fire_in is used but has no driver.",
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L30-1f97568e"
+    },
+    {
+      "id": "LOR-fx_mac_stream.sv-L30-9291e366",
+      "op": "LOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 30,
+      "col": 30,
+      "old": "&&",
+      "new": "||",
+      "desc": "'&&' -> '||'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.13,
+      "reasons": [
+        "iverilog: 287 of 288 output beats differ from the golden model",
+        "iverilog: 11 extra output beats",
+        "iverilog: output protocol broken in 15 cycles (out_valid dropped or data changed before out_ready)",
+        "iverilog: DUT accepted 639 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/LOR-fx_mac_stream.sv-L30-9291e366"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L31-b89f0365",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 31,
+      "col": 3,
+      "old": "assign fire_out = out_valid && out_ready;",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.13,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_mac_stream.sv:25: Signal is not driven: 'fire_out'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_mac_stream.\\fire_out is used but has no driver.",
+        "iverilog: 287 of 288 output beats differ from the golden model",
+        "iverilog: 25 extra output beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L31-b89f0365"
+    },
+    {
+      "id": "LOR-fx_mac_stream.sv-L31-55343738",
+      "op": "LOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 31,
+      "col": 31,
+      "old": "&&",
+      "new": "||",
+      "desc": "'&&' -> '||'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.92,
+      "reasons": [
+        "iverilog: 132 of 288 output beats differ from the golden model",
+        "iverilog: 151 expected output beats never appeared",
+        "iverilog: testbench cycle timeout",
+        "iverilog: output protocol broken in 151 cycles (out_valid dropped or data changed before out_ready)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/LOR-fx_mac_stream.sv-L31-55343738"
+    },
+    {
+      "id": "EDGE-fx_mac_stream.sv-L33-312d1432",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 33,
+      "col": 15,
+      "old": "posedge",
+      "new": "negedge",
+      "desc": "posedge -> negedge",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 110 of 288 output beats differ from the golden model",
+        "iverilog: output protocol broken in 200 cycles (out_valid dropped or data changed before out_ready)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/EDGE-fx_mac_stream.sv-L33-312d1432"
+    },
+    {
+      "id": "EDGE-fx_mac_stream.sv-L33-c5c07618",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 33,
+      "col": 30,
+      "old": "negedge",
+      "new": "posedge",
+      "desc": "negedge -> posedge",
+      "status": "killed",
+      "killed_by": [
+        "structural"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "yosys error ERROR: Async reset \\rst_n yields non-constant value 1'm for signal \\out_valid."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/EDGE-fx_mac_stream.sv-L33-c5c07618"
+    },
+    {
+      "id": "IFN-fx_mac_stream.sv-L34-6811e64d",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 34,
+      "col": 8,
+      "old": "(!rst_n)",
+      "new": "(!(!rst_n))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.92,
+      "reasons": [
+        "yosys error ERROR: Async reset \\rst_n yields non-constant value 1'm for signal \\out_valid.",
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout",
+        "iverilog: X on handshake outputs in 1 cycles"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/IFN-fx_mac_stream.sv-L34-6811e64d"
+    },
+    {
+      "id": "UOD-fx_mac_stream.sv-L34-ab004eec",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 34,
+      "col": 9,
+      "old": "!",
+      "new": "",
+      "desc": "delete unary '!'",
+      "status": "killed",
+      "killed_by": [
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.86,
+      "reasons": [
+        "yosys error ERROR: Async reset \\rst_n yields non-constant value 1'm for signal \\out_valid.",
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout",
+        "iverilog: X on handshake outputs in 1 cycles"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/UOD-fx_mac_stream.sv-L34-ab004eec"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L35-39a7bfc6",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 35,
+      "col": 7,
+      "old": "acc_q     <= '0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 1 of 288 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L35-39a7bfc6"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L35-46a02d7b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 35,
+      "col": 20,
+      "old": "'0",
+      "new": "'1",
+      "desc": "'0 -> '1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 1 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L35-46a02d7b"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L36-f382c132",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 36,
+      "col": 7,
+      "old": "acc_out   <= '0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L36-f382c132",
+      "formal": {
+        "yosys_equiv": "unproven",
+        "cycle": {
+          "status": "bounded",
+          "mode": "bmc",
+          "depth": 20,
+          "detail": null,
+          "sby": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/STMT-fx_mac_stream.sv-L36-f382c132/sby_cycle/eq.sby"
+        },
+        "prove": {
+          "status": "proven",
+          "mode": "prove",
+          "engine": "abc pdr",
+          "detail": null
+        },
+        "class": "equivalent",
+        "method": "sby abc pdr (unbounded)"
+      }
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L36-2f1e8d96",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 36,
+      "col": 20,
+      "old": "'0",
+      "new": "'1",
+      "desc": "'0 -> '1",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L36-2f1e8d96",
+      "formal": {
+        "yosys_equiv": "unproven",
+        "cycle": {
+          "status": "bounded",
+          "mode": "bmc",
+          "depth": 20,
+          "detail": null,
+          "sby": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/CR-fx_mac_stream.sv-L36-2f1e8d96/sby_cycle/eq.sby"
+        },
+        "prove": {
+          "status": "proven",
+          "mode": "prove",
+          "engine": "abc pdr",
+          "detail": null
+        },
+        "class": "equivalent",
+        "method": "sby abc pdr (unbounded)"
+      }
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L37-6e834f1e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 37,
+      "col": 7,
+      "old": "out_valid <= 1'b0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: X on handshake outputs in 1 cycles"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L37-6e834f1e"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L37-8eb56f3e",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 37,
+      "col": 20,
+      "old": "1'b0",
+      "new": "1'b1",
+      "desc": "constant 1'b0 -> 1'b1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 285 of 288 output beats differ from the golden model",
+        "iverilog: 1 extra output beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L37-8eb56f3e"
+    },
+    {
+      "id": "IFN-fx_mac_stream.sv-L39-51cf679a",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 39,
+      "col": 10,
+      "old": "(fire_out)",
+      "new": "(!(fire_out))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "iverilog: 270 of 288 output beats differ from the golden model",
+        "iverilog: 3 extra output beats",
+        "iverilog: output protocol broken in 232 cycles (out_valid dropped or data changed before out_ready)",
+        "iverilog: DUT accepted 2219 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/IFN-fx_mac_stream.sv-L39-51cf679a"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L39-8ae503f5",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 39,
+      "col": 21,
+      "old": "out_valid <= 1'b0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.13,
+      "reasons": [
+        "iverilog: 287 of 288 output beats differ from the golden model",
+        "iverilog: 25 extra output beats",
+        "iverilog: DUT accepted 202 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L39-8ae503f5"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L39-8f0cfff2",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 39,
+      "col": 34,
+      "old": "1'b0",
+      "new": "1'b1",
+      "desc": "constant 1'b0 -> 1'b1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.12,
+      "reasons": [
+        "iverilog: 287 of 288 output beats differ from the golden model",
+        "iverilog: 25 extra output beats",
+        "iverilog: DUT accepted 202 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L39-8f0cfff2"
+    },
+    {
+      "id": "IFN-fx_mac_stream.sv-L40-f28d368f",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 40,
+      "col": 10,
+      "old": "(fire_in)",
+      "new": "(!(fire_in))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.14,
+      "reasons": [
+        "iverilog: 288 of 288 output beats differ from the golden model",
+        "iverilog: 8 extra output beats",
+        "iverilog: output protocol broken in 85 cycles (out_valid dropped or data changed before out_ready)",
+        "iverilog: DUT accepted 842 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/IFN-fx_mac_stream.sv-L40-f28d368f"
+    },
+    {
+      "id": "IFN-fx_mac_stream.sv-L41-27bab7fc",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 41,
+      "col": 12,
+      "old": "(in_last)",
+      "new": "(!(in_last))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.13,
+      "reasons": [
+        "iverilog: 288 of 288 output beats differ from the golden model",
+        "iverilog: 17 extra output beats",
+        "iverilog: DUT accepted 347 of 2536 input beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/IFN-fx_mac_stream.sv-L41-27bab7fc"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L42-08030e71",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 42,
+      "col": 11,
+      "old": "acc_out   <= sum;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 280 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L42-08030e71"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L43-32dbdd29",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 43,
+      "col": 11,
+      "old": "out_valid <= 1'b1;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.84,
+      "reasons": [
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L43-32dbdd29"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L43-230e00fd",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 43,
+      "col": 24,
+      "old": "1'b1",
+      "new": "1'b0",
+      "desc": "constant 1'b1 -> 1'b0",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.91,
+      "reasons": [
+        "iverilog: 288 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L43-230e00fd"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L44-4bb6b462",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 44,
+      "col": 11,
+      "old": "acc_q     <= '0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 286 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L44-4bb6b462"
+    },
+    {
+      "id": "CR-fx_mac_stream.sv-L44-e847da46",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 44,
+      "col": 24,
+      "old": "'0",
+      "new": "'1",
+      "desc": "'0 -> '1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 287 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/CR-fx_mac_stream.sv-L44-e847da46"
+    },
+    {
+      "id": "STMT-fx_mac_stream.sv-L46-a97ebdf2",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/rtl/fx_mac_stream.sv",
+      "line": 46,
+      "col": 11,
+      "old": "acc_q <= sum;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 214 of 288 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/STMT-fx_mac_stream.sv-L46-a97ebdf2"
+    }
+  ]
+}

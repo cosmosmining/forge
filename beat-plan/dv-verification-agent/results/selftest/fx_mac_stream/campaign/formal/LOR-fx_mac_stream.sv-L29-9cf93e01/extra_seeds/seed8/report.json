@@ -1,0 +1,83 @@
+{
+  "block": "fx_mac_stream",
+  "top": "fx_mac_stream",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_mac_stream/manifest.toml",
+  "seed": 8,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/mutants/LOR-fx_mac_stream.sv-L29-9cf93e01/rtl/fx_mac_stream.sv",
+      "sha256": "900e170269ad713a01d8f37dca4327e3b55bb5c3c89cef13908488f7f6066219"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.08,
+        "tb_result": {
+          "outputs": 288,
+          "expected": 288,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 2494,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/LOR-fx_mac_stream.sv-L29-9cf93e01/extra_seeds/seed8/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 288,
+          "observed_beats": 288,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "288 of 288",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:mac",
+    "style": "stream"
+  },
+  "stimulus": {
+    "input_beats": 2494,
+    "output_beats": 288,
+    "sources": {
+      "corner_packets": 88,
+      "random_uniform_packets": 70,
+      "random_small_packets": 49,
+      "random_repeat_packets": 33,
+      "random_corner_packets": 48
+    },
+    "idle_cycles": 2060,
+    "stall_cycles": 4985,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_mac_stream/campaign/formal/LOR-fx_mac_stream.sv-L29-9cf93e01/extra_seeds/seed8_tb/tb.sv"
+  },
+  "verdict": "PASS",
+  "reasons": []
+}

@@ -1,0 +1,28 @@
+# DV-agent self-test fixture (NOT Forge RTL, NOT Build 6).
+[block]
+name = "fx_dot4"
+top = "fx_dot4"
+rtl = ["rtl/fx_dot4.sv"]
+
+[interface]
+protocol = "pipe"
+clock = "clk"
+reset = "rst_n"
+reset_active_low = true
+in_valid = "in_valid"
+out_valid = "out_valid"
+
+[ports.a]
+lanes = 4
+lane_signed = true
+
+[ports.b]
+lanes = 4
+lane_signed = true
+
+[golden]
+model = "golden.py:dot4"
+style = "map"
+
+[stimulus]
+vectors = 3000

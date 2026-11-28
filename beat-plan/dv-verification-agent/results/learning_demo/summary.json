@@ -1,0 +1,141 @@
+{
+  "result": "PASS",
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "blocks": {
+    "weak_mac": {
+      "campaign": {
+        "run": 43,
+        "compiled": 43,
+        "killed": 31,
+        "survived": 12,
+        "survivor_classes": {
+          "equivalent": 8,
+          "escape": 2,
+          "timing-only": 2
+        },
+        "escapes": 2,
+        "score": 0.8857
+      },
+      "learning": {
+        "escapes_before": 2,
+        "learned_inputs": 3,
+        "clean_with_learned": "PASS",
+        "escapes_killed_after_learning": 2,
+        "rerun": [
+          {
+            "id": "CR-fx_mac_stream.sv-L28-76be7797",
+            "verdict": "FAIL"
+          },
+          {
+            "id": "STMT-fx_mac_stream.sv-L44-4bb6b462",
+            "verdict": "FAIL"
+          }
+        ]
+      },
+      "escapes": [
+        {
+          "id": "CR-fx_mac_stream.sv-L28-76be7797",
+          "op": "CR",
+          "line": 28,
+          "old": "15",
+          "new": "14",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        },
+        {
+          "id": "STMT-fx_mac_stream.sv-L44-4bb6b462",
+          "op": "STMT",
+          "line": 44,
+          "old": "acc_q     <= '0;",
+          "new": ";",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        }
+      ]
+    },
+    "weak_requant": {
+      "campaign": {
+        "run": 55,
+        "compiled": 55,
+        "killed": 37,
+        "survived": 18,
+        "survivor_classes": {
+          "equivalent": 14,
+          "escape": 4
+        },
+        "escapes": 4,
+        "score": 0.9024
+      },
+      "learning": {
+        "escapes_before": 4,
+        "learned_inputs": 4,
+        "clean_with_learned": "PASS",
+        "escapes_killed_after_learning": 4,
+        "rerun": [
+          {
+            "id": "CR-fx_requant.sv-L30-9ad8610e",
+            "verdict": "FAIL"
+          },
+          {
+            "id": "CR-fx_requant.sv-L30-f775e1ea",
+            "verdict": "FAIL"
+          },
+          {
+            "id": "CR-fx_requant.sv-L33-422ba740",
+            "verdict": "FAIL"
+          },
+          {
+            "id": "CR-fx_requant.sv-L35-44824734",
+            "verdict": "FAIL"
+          }
+        ]
+      },
+      "escapes": [
+        {
+          "id": "CR-fx_requant.sv-L30-9ad8610e",
+          "op": "CR",
+          "line": 30,
+          "old": "49'sd0",
+          "new": "49'sd1",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        },
+        {
+          "id": "CR-fx_requant.sv-L30-f775e1ea",
+          "op": "CR",
+          "line": 30,
+          "old": "49'sd1",
+          "new": "49'sd0",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        },
+        {
+          "id": "CR-fx_requant.sv-L33-422ba740",
+          "op": "CR",
+          "line": 33,
+          "old": "50'sd127",
+          "new": "50'sd128",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        },
+        {
+          "id": "CR-fx_requant.sv-L35-44824734",
+          "op": "CR",
+          "line": 35,
+          "old": "50'sd128",
+          "new": "50'sd129",
+          "note": "functional difference the random tests missed; the replayed trace kills it",
+          "method": "sby cycle bmc + replay"
+        }
+      ]
+    }
+  }
+}

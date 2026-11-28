@@ -1,0 +1,158 @@
+{
+  "block": "fx_pwl",
+  "seed": 1,
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "entries": [
+    {
+      "kind": "bug",
+      "id": "table-entry-off-by-one",
+      "why": "one table base value off by one",
+      "file": "rtl/fx_pwl.sv",
+      "find": "3'd5:    begin base = -16'sd18064;",
+      "replace": "3'd5:    begin base = -16'sd18063;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model",
+        "verilator: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 8192 y expected -18064 got 0xb971 (off by one: rounding constant, rounding direction or truncation)"
+    },
+    {
+      "kind": "bug",
+      "id": "fraction-sign-extended",
+      "why": "unsigned fraction treated as signed",
+      "file": "rtl/fx_pwl.sv",
+      "find": "assign frac_x  = {10'd0, frac};",
+      "replace": "assign frac_x  = {{10{frac[12]}}, frac};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 32768 of 65536 output beats differ from the golden model",
+        "verilator: 32768 of 65536 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 4096 y expected -18032 got 0xb9d0 (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "shift-seven",
+      "why": "slope product scaled by 2**-7 instead of 2**-8",
+      "file": "rtl/fx_pwl.sv",
+      "find": "(prod >>> 8)",
+      "replace": "(prod >>> 7)",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 65403 of 65536 output beats differ from the golden model",
+        "verilator: 65403 of 65536 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 65 y expected -18001 got 0xb9ae (off by one: rounding constant, rounding direction or truncation)"
+    },
+    {
+      "kind": "bug",
+      "id": "segment-bits",
+      "why": "segment index taken from the wrong bits",
+      "file": "rtl/fx_pwl.sv",
+      "find": "assign seg     = x[15:13];",
+      "replace": "assign seg     = x[14:12];",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 57344 of 65536 output beats differ from the golden model",
+        "verilator: 57344 of 65536 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -18000 got 0x0000 (output is zero: not updated, cleared too early, or wrong select)"
+    },
+    {
+      "kind": "bug",
+      "id": "unsigned-concat",
+      "why": "the bug the agent found on its first run: an unsigned concat makes >>> a logical shift",
+      "file": "rtl/fx_pwl.sv",
+      "find": "sum  = $signed({{7{base[15]}}, base}) + (prod >>> 8);",
+      "replace": "sum  = {{7{base[15]}}, base} + (prod >>> 8);",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model",
+        "verilator: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 1 y expected -18001 got 0x39af (only the sign bit differs: signedness or sign extension)"
+    },
+    {
+      "kind": "benign",
+      "id": "explicit-last-segment",
+      "why": "last segment named explicitly; the default is unreachable",
+      "file": "rtl/fx_pwl.sv",
+      "find": "default: begin base = -16'sd16048; slope = 8'sd100; end",
+      "replace": "3'd7:    begin base = -16'sd16048; slope = 8'sd100; end\n      default: begin base = 16'sd0;      slope = 8'sd0;   end",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    },
+    {
+      "kind": "benign",
+      "id": "shift-as-slice",
+      "why": "arithmetic shift written as a sign-extended slice",
+      "file": "rtl/fx_pwl.sv",
+      "find": "sum  = $signed({{7{base[15]}}, base}) + (prod >>> 8);",
+      "replace": "sum  = $signed({{7{base[15]}}, base}) + $signed({{8{prod[22]}}, prod[22:8]});",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    }
+  ],
+  "bugs_total": 5,
+  "bugs_caught": 5,
+  "benign_total": 2,
+  "benign_passed": 2
+}

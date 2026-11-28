@@ -1,0 +1,350 @@
+{
+  "block": "fx_requant",
+  "top": "fx_requant",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/manifest.toml",
+  "seed": 1,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/bugs/bug/zero-point-zero-extended/rtl/fx_requant.sv",
+      "sha256": "642dfa3936a44b33ec4db784010c27cbc451cf1b19115396cd2727ce7e1e72ab"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.05,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 494,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/bugs/bug/zero-point-zero-extended/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 494,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 4,
+              "port": "y",
+              "expected": -127,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xfe",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -16,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x8f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 24,
+              "port": "y",
+              "expected": -32,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 38,
+              "port": "y",
+              "expected": -30,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9d",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 42,
+              "port": "y",
+              "expected": -128,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xff",
+              "hint": "golden value is saturated: check clamp bounds and overflow detection"
+            },
+            {
+              "idx": 45,
+              "port": "y",
+              "expected": -86,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xd5",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 58,
+              "port": "y",
+              "expected": -32,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 72,
+              "port": "y",
+              "expected": -31,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9e",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 78,
+              "port": "y",
+              "expected": -31,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9e",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 79,
+              "port": "y",
+              "expected": -63,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xbe",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 7.92,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 494,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/bugs/bug/zero-point-zero-extended/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 494,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 4,
+              "port": "y",
+              "expected": -127,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xfe",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -16,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x8f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 24,
+              "port": "y",
+              "expected": -32,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 38,
+              "port": "y",
+              "expected": -30,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9d",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 42,
+              "port": "y",
+              "expected": -128,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xff",
+              "hint": "golden value is saturated: check clamp bounds and overflow detection"
+            },
+            {
+              "idx": 45,
+              "port": "y",
+              "expected": -86,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xd5",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 58,
+              "port": "y",
+              "expected": -32,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9f",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 72,
+              "port": "y",
+              "expected": -31,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9e",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 78,
+              "port": "y",
+              "expected": -31,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0x9e",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 79,
+              "port": "y",
+              "expected": -63,
+              "expected_hex": null,
+              "got": "7f",
+              "got_int": 127,
+              "xor_hex": "0xbe",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "3530 of 4024",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "3530 of 4024",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:requant",
+    "style": "map",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 12,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 4024,
+    "output_beats": 4024,
+    "sources": {
+      "directed": 0,
+      "formal_counterexample": 0,
+      "corner_sample": 1024,
+      "random_mix": 3000
+    },
+    "idle_cycles": 0,
+    "stall_cycles": 0,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/bugs/tb/tb.sv"
+  },
+  "verdict": "FAIL",
+  "reasons": [
+    "iverilog: 494 of 4024 output beats differ from the golden model",
+    "verilator: 494 of 4024 output beats differ from the golden model"
+  ]
+}

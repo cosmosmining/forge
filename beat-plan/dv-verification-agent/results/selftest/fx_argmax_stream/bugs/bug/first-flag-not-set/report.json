@@ -1,0 +1,353 @@
+{
+  "block": "fx_argmax_stream",
+  "top": "fx_argmax_stream",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_argmax_stream/manifest.toml",
+  "seed": 1,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/bugs/bug/first-flag-not-set/rtl/fx_argmax_stream.sv",
+      "sha256": "e7b1494e83af3aa35e3e0e1fc7c00ccf91bb723338ca083217bed7427990abac"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.04,
+        "tb_result": {
+          "outputs": 244,
+          "expected": 244,
+          "mismatches": 199,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 2167,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/bugs/bug/first-flag-not-set/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 244,
+          "observed_beats": 244,
+          "mismatch_beats": 199,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 44,
+              "port": "max_val",
+              "expected": 9,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x7ff6",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 45,
+              "port": "idx",
+              "expected": 1,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x1",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 45,
+              "port": "max_val",
+              "expected": 30932,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x72b",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 46,
+              "port": "max_val",
+              "expected": -2,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x8001",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 47,
+              "port": "max_val",
+              "expected": 29992,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0xad7",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 48,
+              "port": "idx",
+              "expected": 9,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x9",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 48,
+              "port": "max_val",
+              "expected": 32116,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x28b",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 49,
+              "port": "idx",
+              "expected": 2,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x2",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 49,
+              "port": "max_val",
+              "expected": 679,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x7d58",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 50,
+              "port": "max_val",
+              "expected": 21845,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x2aaa",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 7.99,
+        "tb_result": {
+          "outputs": 244,
+          "expected": 244,
+          "mismatches": 199,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 2167,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/bugs/bug/first-flag-not-set/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 244,
+          "observed_beats": 244,
+          "mismatch_beats": 199,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 44,
+              "port": "max_val",
+              "expected": 9,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x7ff6",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 45,
+              "port": "idx",
+              "expected": 1,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x1",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 45,
+              "port": "max_val",
+              "expected": 30932,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x72b",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 46,
+              "port": "max_val",
+              "expected": -2,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x8001",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 47,
+              "port": "max_val",
+              "expected": 29992,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0xad7",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 48,
+              "port": "idx",
+              "expected": 9,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x9",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 48,
+              "port": "max_val",
+              "expected": 32116,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x28b",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 49,
+              "port": "idx",
+              "expected": 2,
+              "expected_hex": null,
+              "got": "00",
+              "got_int": 0,
+              "xor_hex": "0x2",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 49,
+              "port": "max_val",
+              "expected": 679,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x7d58",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            },
+            {
+              "idx": 50,
+              "port": "max_val",
+              "expected": 21845,
+              "expected_hex": null,
+              "got": "7fff",
+              "got_int": 32767,
+              "xor_hex": "0x2aaa",
+              "hint": "RTL saturated but golden did not: clamp bound or compare wrong"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "45 of 244",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "45 of 244",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:argmax",
+    "style": "stream",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 11,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 2167,
+    "output_beats": 244,
+    "sources": {
+      "corner_packets": 44,
+      "random_repeat_packets": 21,
+      "random_uniform_packets": 81,
+      "random_small_packets": 55,
+      "random_corner_packets": 43
+    },
+    "idle_cycles": 1920,
+    "stall_cycles": 4416,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_argmax_stream/bugs/tb/tb.sv"
+  },
+  "verdict": "FAIL",
+  "reasons": [
+    "iverilog: 199 of 244 output beats differ from the golden model",
+    "verilator: 199 of 244 output beats differ from the golden model"
+  ]
+}

@@ -1,0 +1,50 @@
+# Hand-injected bugs (must FAIL) and behaviour-preserving rewrites (must PASS) for fx_pwl.
+
+[[bug]]
+id = "table-entry-off-by-one"
+file = "rtl/fx_pwl.sv"
+find = "3'd5:    begin base = -16'sd18064;"
+replace = "3'd5:    begin base = -16'sd18063;"
+why = "one table base value off by one"
+
+[[bug]]
+id = "fraction-sign-extended"
+file = "rtl/fx_pwl.sv"
+find = "assign frac_x  = {10'd0, frac};"
+replace = "assign frac_x  = {{10{frac[12]}}, frac};"
+why = "unsigned fraction treated as signed"
+
+[[bug]]
+id = "shift-seven"
+file = "rtl/fx_pwl.sv"
+find = "(prod >>> 8)"
+replace = "(prod >>> 7)"
+why = "slope product scaled by 2**-7 instead of 2**-8"
+
+[[bug]]
+id = "segment-bits"
+file = "rtl/fx_pwl.sv"
+find = "assign seg     = x[15:13];"
+replace = "assign seg     = x[14:12];"
+why = "segment index taken from the wrong bits"
+
+[[bug]]
+id = "unsigned-concat"
+file = "rtl/fx_pwl.sv"
+find = "sum  = $signed({{7{base[15]}}, base}) + (prod >>> 8);"
+replace = "sum  = {{7{base[15]}}, base} + (prod >>> 8);"
+why = "the bug the agent found on its first run: an unsigned concat makes >>> a logical shift"
+
+[[benign]]
+id = "explicit-last-segment"
+file = "rtl/fx_pwl.sv"
+find = "default: begin base = -16'sd16048; slope = 8'sd100; end"
+replace = "3'd7:    begin base = -16'sd16048; slope = 8'sd100; end\n      default: begin base = 16'sd0;      slope = 8'sd0;   end"
+why = "last segment named explicitly; the default is unreachable"
+
+[[benign]]
+id = "shift-as-slice"
+file = "rtl/fx_pwl.sv"
+find = "sum  = $signed({{7{base[15]}}, base}) + (prod >>> 8);"
+replace = "sum  = $signed({{7{base[15]}}, base}) + $signed({{8{prod[22]}}, prod[22:8]});"
+why = "arithmetic shift written as a sign-extended slice"

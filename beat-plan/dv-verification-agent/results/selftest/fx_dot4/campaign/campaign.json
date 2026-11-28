@@ -1,0 +1,1624 @@
+{
+  "block": "fx_dot4",
+  "top": "fx_dot4",
+  "seed": 1,
+  "simulators": [
+    "iverilog"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "baseline_verdict": "PASS",
+  "baseline_reasons": [],
+  "run": 75,
+  "stillborn": 0,
+  "errors": 0,
+  "compiled": 75,
+  "killed": 68,
+  "killed_functional": 68,
+  "killed_lint_only": 0,
+  "survived": 7,
+  "survivor_classes": {
+    "equivalent": 6,
+    "needs-review": 1
+  },
+  "escapes": 0,
+  "unexplained": 0,
+  "score": 0.9855,
+  "by_operator": {
+    "SGN": {
+      "total": 6,
+      "stillborn": 0,
+      "killed": 0,
+      "survived": 6
+    },
+    "STMT": {
+      "total": 18,
+      "stillborn": 0,
+      "killed": 18,
+      "survived": 0
+    },
+    "CR": {
+      "total": 26,
+      "stillborn": 0,
+      "killed": 26,
+      "survived": 0
+    },
+    "SLICE": {
+      "total": 14,
+      "stillborn": 0,
+      "killed": 14,
+      "survived": 0
+    },
+    "EDGE": {
+      "total": 3,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 1
+    },
+    "IFN": {
+      "total": 3,
+      "stillborn": 0,
+      "killed": 3,
+      "survived": 0
+    },
+    "UOD": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "AOR": {
+      "total": 4,
+      "stillborn": 0,
+      "killed": 4,
+      "survived": 0
+    }
+  },
+  "generated": 75,
+  "secs": 6.3,
+  "mutants": [
+    {
+      "id": "SGN-fx_dot4.sv-L14-f7da71fb",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 14,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.23,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L14-f7da71fb",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L14-f7da71fb/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_dot4.sv-L16-bb382f1c",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 16,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.19,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L16-bb382f1c",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L16-bb382f1c/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_dot4.sv-L18-21e226ee",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 18,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.2,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L18-21e226ee",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L18-21e226ee/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_dot4.sv-L19-3a74c0bf",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 19,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.21,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L19-3a74c0bf",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L19-3a74c0bf/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_dot4.sv-L20-53d86093",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 20,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.21,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L20-53d86093",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L20-53d86093/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_dot4.sv-L21-58ed5773",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 21,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.22,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SGN-fx_dot4.sv-L21-58ed5773",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/formal/SGN-fx_dot4.sv-L21-58ed5773/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L24-5927bf54",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 24,
+      "col": 3,
+      "old": "assign a0 = {{8{a[7]}},  a[7:0]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:18: Signal is not driven: 'a0'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a0 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a0 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a0 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L24-5927bf54"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L24-802cf63e",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 24,
+      "col": 21,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.24,
+      "reasons": [
+        "iverilog: 1196 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L24-802cf63e"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L24-bf085a9d",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 24,
+      "col": 21,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 1921 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L24-bf085a9d"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L24-26f6629a",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 24,
+      "col": 29,
+      "old": "[7:0]",
+      "new": "[8:1]",
+      "desc": "part-select [7:0] -> [8:1]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3616 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L24-26f6629a"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L25-de19b53d",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 25,
+      "col": 3,
+      "old": "assign a1 = {{8{a[15]}}, a[15:8]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.23,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:18: Signal is not driven: 'a1'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a1 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a1 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a1 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L25-de19b53d"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L25-df7eb856",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 25,
+      "col": 21,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.22,
+      "reasons": [
+        "iverilog: 1156 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L25-df7eb856"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L25-2081ace9",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 25,
+      "col": 21,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 1944 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L25-2081ace9"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L25-fa6dbaaa",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 25,
+      "col": 29,
+      "old": "[15:8]",
+      "new": "[14:7]",
+      "desc": "part-select [15:8] -> [14:7]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 3642 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L25-fa6dbaaa"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L25-4f91ea63",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 25,
+      "col": 29,
+      "old": "[15:8]",
+      "new": "[16:9]",
+      "desc": "part-select [15:8] -> [16:9]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3630 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L25-4f91ea63"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L26-3612c861",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 26,
+      "col": 3,
+      "old": "assign a2 = {{8{a[23]}}, a[23:16]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:18: Signal is not driven: 'a2'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a2 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a2 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a2 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L26-3612c861"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L26-507bf30c",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 26,
+      "col": 21,
+      "old": "23",
+      "new": "22",
+      "desc": "constant 23 -> 22",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.26,
+      "reasons": [
+        "iverilog: 1240 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L26-507bf30c"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L26-b8b1e70b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 26,
+      "col": 21,
+      "old": "23",
+      "new": "24",
+      "desc": "constant 23 -> 24",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.26,
+      "reasons": [
+        "iverilog: 1939 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L26-b8b1e70b"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L26-a07ccf2f",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 26,
+      "col": 29,
+      "old": "[23:16]",
+      "new": "[22:15]",
+      "desc": "part-select [23:16] -> [22:15]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.22,
+      "reasons": [
+        "iverilog: 3655 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L26-a07ccf2f"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L26-8f36558e",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 26,
+      "col": 29,
+      "old": "[23:16]",
+      "new": "[24:17]",
+      "desc": "part-select [23:16] -> [24:17]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3627 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L26-8f36558e"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L27-438151e8",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 27,
+      "col": 3,
+      "old": "assign a3 = {{8{a[31]}}, a[31:24]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.25,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:18: Signal is not driven: 'a3'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a3 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a3 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\a3 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L27-438151e8"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L27-2c04ea4b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 27,
+      "col": 21,
+      "old": "31",
+      "new": "30",
+      "desc": "constant 31 -> 30",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.26,
+      "reasons": [
+        "iverilog: 1182 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L27-2c04ea4b"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L27-4b8e3e39",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 27,
+      "col": 21,
+      "old": "31",
+      "new": "32",
+      "desc": "constant 31 -> 32",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.26,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:27: Selection index out of range: 32:32 outside 31:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L27-4b8e3e39"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L27-ebe75865",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 27,
+      "col": 29,
+      "old": "[31:24]",
+      "new": "[30:23]",
+      "desc": "part-select [31:24] -> [30:23]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.23,
+      "reasons": [
+        "iverilog: 3618 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L27-ebe75865"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L27-c9a83798",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 27,
+      "col": 29,
+      "old": "[31:24]",
+      "new": "[32:25]",
+      "desc": "part-select [31:24] -> [32:25]",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:27: Selection index out of range: 32:25 outside 31:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L27-c9a83798"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L28-d742895c",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 28,
+      "col": 3,
+      "old": "assign b0 = {{8{b[7]}},  b[7:0]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:19: Signal is not driven: 'b0'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b0 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b0 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b0 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L28-d742895c"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L28-be472b82",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 28,
+      "col": 21,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 1222 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L28-be472b82"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L28-a3676588",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 28,
+      "col": 21,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.22,
+      "reasons": [
+        "iverilog: 1962 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L28-a3676588"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L28-7ba61aca",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 28,
+      "col": 29,
+      "old": "[7:0]",
+      "new": "[8:1]",
+      "desc": "part-select [7:0] -> [8:1]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 3621 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L28-7ba61aca"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L29-a24746b1",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 29,
+      "col": 3,
+      "old": "assign b1 = {{8{b[15]}}, b[15:8]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:19: Signal is not driven: 'b1'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b1 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b1 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b1 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L29-a24746b1"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L29-3f018bca",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 29,
+      "col": 21,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 1222 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L29-3f018bca"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L29-aef25ae9",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 29,
+      "col": 21,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 1948 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L29-aef25ae9"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L29-7ff258ce",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 29,
+      "col": 29,
+      "old": "[15:8]",
+      "new": "[14:7]",
+      "desc": "part-select [15:8] -> [14:7]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.22,
+      "reasons": [
+        "iverilog: 3635 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L29-7ff258ce"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L29-f97301e5",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 29,
+      "col": 29,
+      "old": "[15:8]",
+      "new": "[16:9]",
+      "desc": "part-select [15:8] -> [16:9]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3630 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L29-f97301e5"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L30-695f19f0",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 30,
+      "col": 3,
+      "old": "assign b2 = {{8{b[23]}}, b[23:16]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:19: Signal is not driven: 'b2'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b2 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b2 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b2 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L30-695f19f0"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L30-fcb223cc",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 30,
+      "col": 21,
+      "old": "23",
+      "new": "22",
+      "desc": "constant 23 -> 22",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 1229 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L30-fcb223cc"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L30-d036d768",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 30,
+      "col": 21,
+      "old": "23",
+      "new": "24",
+      "desc": "constant 23 -> 24",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 1925 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L30-d036d768"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L30-cd2a9603",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 30,
+      "col": 29,
+      "old": "[23:16]",
+      "new": "[22:15]",
+      "desc": "part-select [23:16] -> [22:15]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 3650 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L30-cd2a9603"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L30-921ab7d1",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 30,
+      "col": 29,
+      "old": "[23:16]",
+      "new": "[24:17]",
+      "desc": "part-select [23:16] -> [24:17]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 3641 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L30-921ab7d1"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L31-49c1b749",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 31,
+      "col": 3,
+      "old": "assign b3 = {{8{b[31]}}, b[31:24]};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:19: Signal is not driven: 'b3'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b3 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b3 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\b3 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L31-49c1b749"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L31-733ff798",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 31,
+      "col": 21,
+      "old": "31",
+      "new": "30",
+      "desc": "constant 31 -> 30",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 1233 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L31-733ff798"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L31-c19ac32a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 31,
+      "col": 21,
+      "old": "31",
+      "new": "32",
+      "desc": "constant 31 -> 32",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:31: Selection index out of range: 32:32 outside 31:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L31-c19ac32a"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L31-d210ef5e",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 31,
+      "col": 29,
+      "old": "[31:24]",
+      "new": "[30:23]",
+      "desc": "part-select [31:24] -> [30:23]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 3598 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L31-d210ef5e"
+    },
+    {
+      "id": "SLICE-fx_dot4.sv-L31-55a1fa5d",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 31,
+      "col": 29,
+      "old": "[31:24]",
+      "new": "[32:25]",
+      "desc": "part-select [31:24] -> [32:25]",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:31: Selection index out of range: 32:25 outside 31:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/SLICE-fx_dot4.sv-L31-55a1fa5d"
+    },
+    {
+      "id": "EDGE-fx_dot4.sv-L33-fa219c82",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 33,
+      "col": 15,
+      "old": "posedge",
+      "new": "negedge",
+      "desc": "posedge -> negedge",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/EDGE-fx_dot4.sv-L33-fa219c82"
+    },
+    {
+      "id": "EDGE-fx_dot4.sv-L33-ad28c71d",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 33,
+      "col": 30,
+      "old": "negedge",
+      "new": "posedge",
+      "desc": "negedge -> posedge",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.19,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/EDGE-fx_dot4.sv-L33-ad28c71d",
+      "formal": {
+        "class": "needs-review",
+        "method": "none",
+        "note": "clock/reset edge change; cycle-based formal cannot judge it and the testbench did not catch it - review by hand"
+      }
+    },
+    {
+      "id": "IFN-fx_dot4.sv-L34-aa96b7ab",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 34,
+      "col": 8,
+      "old": "(!rst_n)",
+      "new": "(!(!rst_n))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "iverilog: 4024 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/IFN-fx_dot4.sv-L34-aa96b7ab"
+    },
+    {
+      "id": "UOD-fx_dot4.sv-L34-318f905f",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 34,
+      "col": 9,
+      "old": "!",
+      "new": "",
+      "desc": "delete unary '!'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "iverilog: 4024 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/UOD-fx_dot4.sv-L34-318f905f"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L35-70239335",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 35,
+      "col": 7,
+      "old": "v1_q      <= 1'b0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: X on handshake outputs in 1 cycles"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L35-70239335"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L35-6261d085",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 35,
+      "col": 20,
+      "old": "1'b0",
+      "new": "1'b1",
+      "desc": "constant 1'b0 -> 1'b1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z",
+        "iverilog: 1 extra output beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L35-6261d085"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L36-c51522a1",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 36,
+      "col": 7,
+      "old": "out_valid <= 1'b0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: X on handshake outputs in 1 cycles"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L36-c51522a1"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L36-84e1dfe2",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 36,
+      "col": 20,
+      "old": "1'b0",
+      "new": "1'b1",
+      "desc": "constant 1'b0 -> 1'b1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z",
+        "iverilog: 1 extra output beats"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L36-84e1dfe2"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L38-bfcf0ce2",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 38,
+      "col": 7,
+      "old": "v1_q      <= in_valid;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "iverilog: 4024 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L38-bfcf0ce2"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L39-e80c803b",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 39,
+      "col": 7,
+      "old": "out_valid <= v1_q;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.98,
+      "reasons": [
+        "iverilog: 4024 expected output beats never appeared",
+        "iverilog: testbench cycle timeout"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L39-e80c803b"
+    },
+    {
+      "id": "EDGE-fx_dot4.sv-L43-1a449fd5",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 43,
+      "col": 15,
+      "old": "posedge",
+      "new": "negedge",
+      "desc": "posedge -> negedge",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 2789 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/EDGE-fx_dot4.sv-L43-1a449fd5"
+    },
+    {
+      "id": "IFN-fx_dot4.sv-L44-e634624e",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 44,
+      "col": 8,
+      "old": "(in_valid)",
+      "new": "(!(in_valid))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/IFN-fx_dot4.sv-L44-e634624e"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L45-2ba47d9a",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 45,
+      "col": 7,
+      "old": "p0     <= a0 * b0;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:20: Signal is not driven: 'p0'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p0 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p0 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p0 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L45-2ba47d9a"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L46-5d4f5329",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 46,
+      "col": 7,
+      "old": "p1     <= a1 * b1;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:20: Signal is not driven: 'p1'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p1 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p1 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p1 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L46-5d4f5329"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L47-a3efbdf4",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 47,
+      "col": 7,
+      "old": "p2     <= a2 * b2;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:20: Signal is not driven: 'p2'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p2 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p2 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p2 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L47-a3efbdf4"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L48-51692dd7",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 48,
+      "col": 7,
+      "old": "p3     <= a3 * b3;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:20: Signal is not driven: 'p3'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p3 [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p3 [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\p3 [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L48-51692dd7"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L49-575992ad",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 49,
+      "col": 7,
+      "old": "bias_q <= bias;",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:21: Signal is not driven: 'bias_q'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\bias_q [31] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\bias_q [30] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\bias_q [29] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L49-575992ad"
+    },
+    {
+      "id": "IFN-fx_dot4.sv-L51-398d535c",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 51,
+      "col": 8,
+      "old": "(v1_q)",
+      "new": "(!(v1_q))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 6 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/IFN-fx_dot4.sv-L51-398d535c"
+    },
+    {
+      "id": "STMT-fx_dot4.sv-L52-93663c6e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 7,
+      "old": "y <= bias_q + {{16{p0[15]}}, p0} + {{16{p1[15]}}, p1}\n                  + {{16{p2[15]}}, p2} + {{16{p3[15]}}, p3};",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_dot4.sv:16: Signal is not driven: 'y'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\y [31] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\y [30] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_dot4.\\y [29] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/STMT-fx_dot4.sv-L52-93663c6e"
+    },
+    {
+      "id": "AOR-fx_dot4.sv-L52-e65e20e6",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 19,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3666 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/AOR-fx_dot4.sv-L52-e65e20e6"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L52-0e169cec",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 29,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.23,
+      "reasons": [
+        "iverilog: 6 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L52-0e169cec"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L52-77d4aa30",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 29,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:52: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L52-77d4aa30"
+    },
+    {
+      "id": "AOR-fx_dot4.sv-L52-0fdcb2f5",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 40,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 3690 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/AOR-fx_dot4.sv-L52-0fdcb2f5"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L52-c77173c7",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 50,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 5 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L52-c77173c7"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L52-82aa09ff",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 52,
+      "col": 50,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:52: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L52-82aa09ff"
+    },
+    {
+      "id": "AOR-fx_dot4.sv-L53-7c647763",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 19,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 3690 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/AOR-fx_dot4.sv-L53-7c647763"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L53-d0c6402f",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 29,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 6 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L53-d0c6402f"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L53-364cc24c",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 29,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:53: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L53-364cc24c"
+    },
+    {
+      "id": "AOR-fx_dot4.sv-L53-062b4caf",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 40,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 3648 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/AOR-fx_dot4.sv-L53-062b4caf"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L53-3b6ddeb4",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 50,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.21,
+      "reasons": [
+        "iverilog: 5 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L53-3b6ddeb4"
+    },
+    {
+      "id": "CR-fx_dot4.sv-L53-b222bbcd",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/rtl/fx_dot4.sv",
+      "line": 53,
+      "col": 50,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "verilator risk SELRANGE fx_dot4.sv:53: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/campaign/mutants/CR-fx_dot4.sv-L53-b222bbcd"
+    }
+  ]
+}

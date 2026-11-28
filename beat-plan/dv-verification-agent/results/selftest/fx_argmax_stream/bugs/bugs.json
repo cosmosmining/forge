@@ -1,0 +1,158 @@
+{
+  "block": "fx_argmax_stream",
+  "seed": 1,
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "entries": [
+    {
+      "kind": "bug",
+      "id": "ties-pick-latest",
+      "why": "ties take the latest index instead of the earliest",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "(x > best_q)",
+      "replace": "(x >= best_q)",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 52 of 244 output beats differ from the golden model",
+        "verilator: 52 of 244 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 1 idx expected 0 got 0x0f (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "unsigned-compare",
+      "why": "comparison done unsigned: negative values beat positive ones",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "(x > best_q)",
+      "replace": "($unsigned(x) > $unsigned(best_q))",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 138 of 244 output beats differ from the golden model",
+        "verilator: 138 of 244 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 45 idx expected 1 got 0x00 (output is zero: not updated, cleared too early, or wrong select)"
+    },
+    {
+      "kind": "bug",
+      "id": "count-not-reset",
+      "why": "position counter not reset at the end of a packet",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "          cnt_q     <= '0;",
+      "replace": "",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 242 of 244 output beats differ from the golden model",
+        "verilator: 242 of 244 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 2 idx expected 0 got 0x0f (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "first-flag-not-set",
+      "why": "next packet compares against the previous packet's maximum",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "          first_q   <= 1'b1;",
+      "replace": "",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 199 of 244 output beats differ from the golden model",
+        "verilator: 199 of 244 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 44 max_val expected 9 got 0x7fff (RTL saturated but golden did not: clamp bound or compare wrong)"
+    },
+    {
+      "kind": "bug",
+      "id": "max-ignores-last-beat",
+      "why": "the last beat can win the index but not the value",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "max_val   <= better ? x : best_q;",
+      "replace": "max_val   <= best_q;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 70 of 244 output beats differ from the golden model",
+        "verilator: 70 of 244 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 max_val expected -32768 got 0x0000 (output is zero: not updated, cleared too early, or wrong select)"
+    },
+    {
+      "kind": "benign",
+      "id": "compare-flipped",
+      "why": "same comparison written the other way round",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "assign better   = first_q || (x > best_q);",
+      "replace": "assign better   = first_q | (best_q < x);",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    },
+    {
+      "kind": "benign",
+      "id": "increment-as-subtract",
+      "why": "adding 1 equals subtracting all-ones modulo 2**IDX_W",
+      "file": "rtl/fx_argmax_stream.sv",
+      "find": "cnt_q   <= cnt_q + 1'b1;",
+      "replace": "cnt_q   <= cnt_q - {IDX_W{1'b1}};",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    }
+  ],
+  "bugs_total": 5,
+  "bugs_caught": 5,
+  "benign_total": 2,
+  "benign_passed": 2
+}

@@ -1,0 +1,159 @@
+{
+  "block": "fx_dot4",
+  "seed": 1,
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "entries": [
+    {
+      "kind": "bug",
+      "id": "lane1-slice-low",
+      "why": "lane 1 of a sliced one bit low",
+      "file": "rtl/fx_dot4.sv",
+      "find": "assign a1 = {{8{a[15]}}, a[15:8]};",
+      "replace": "assign a1 = {{8{a[15]}}, a[14:7]};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 3642 of 4024 output beats differ from the golden model",
+        "verilator: 3642 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xaaaaa0fa (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "lane3-zero-extended",
+      "why": "lane 3 of b zero-extended",
+      "file": "rtl/fx_dot4.sv",
+      "find": "assign b3 = {{8{b[31]}}, b[31:24]};",
+      "replace": "assign b3 = {8'd0, b[31:24]};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 1784 of 4024 output beats differ from the golden model",
+        "verilator: 1784 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xaaaab2ea (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "valid-one-stage-short",
+      "why": "valid pipeline one stage shorter than the data pipeline",
+      "file": "rtl/fx_dot4.sv",
+      "find": "out_valid <= v1_q;",
+      "replace": "out_valid <= in_valid;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z",
+        "verilator: 4024 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xxxxxxxxx (X/Z on output: uninitialised state, missing reset, or undriven logic)"
+    },
+    {
+      "kind": "bug",
+      "id": "bias-not-registered",
+      "why": "bias read from the live input instead of the stage-1 register",
+      "file": "rtl/fx_dot4.sv",
+      "find": "y <= bias_q + {{16{p0[15]}}, p0}",
+      "replace": "y <= bias + {{16{p0[15]}}, p0}",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 3978 of 4024 output beats differ from the golden model",
+        "verilator: 3978 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0x1ffff83f (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "lane2-wrong-weight",
+      "why": "lane 2 multiplies the wrong lane of b",
+      "file": "rtl/fx_dot4.sv",
+      "find": "p2     <= a2 * b2;",
+      "replace": "p2     <= a2 * b3;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 2796 of 4024 output beats differ from the golden model",
+        "verilator: 2796 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 1024 y expected 536883363 got 0x20002313 (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "benign",
+      "id": "stage1-ungated",
+      "why": "stage 1 captures every cycle; only valid beats reach the output, so behaviour is unchanged",
+      "file": "rtl/fx_dot4.sv",
+      "find": "if (in_valid) begin",
+      "replace": "if (1'b1) begin",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    },
+    {
+      "kind": "benign",
+      "id": "sum-reordered",
+      "why": "same sum in a different order",
+      "file": "rtl/fx_dot4.sv",
+      "find": "y <= bias_q + {{16{p0[15]}}, p0} + {{16{p1[15]}}, p1}",
+      "replace": "y <= {{16{p1[15]}}, p1} + {{16{p0[15]}}, p0} + bias_q",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    }
+  ],
+  "bugs_total": 5,
+  "bugs_caught": 5,
+  "benign_total": 2,
+  "benign_passed": 2
+}

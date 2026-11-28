@@ -1,0 +1,1215 @@
+{
+  "block": "fx_requant",
+  "top": "fx_requant",
+  "seed": 1,
+  "simulators": [
+    "iverilog"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "baseline_verdict": "PASS",
+  "baseline_reasons": [],
+  "run": 55,
+  "stillborn": 0,
+  "errors": 0,
+  "compiled": 55,
+  "killed": 41,
+  "killed_functional": 41,
+  "killed_lint_only": 0,
+  "survived": 14,
+  "survivor_classes": {
+    "equivalent": 14
+  },
+  "escapes": 0,
+  "unexplained": 0,
+  "score": 1.0,
+  "by_operator": {
+    "SGN": {
+      "total": 11,
+      "stillborn": 0,
+      "killed": 3,
+      "survived": 8
+    },
+    "STMT": {
+      "total": 10,
+      "stillborn": 0,
+      "killed": 10,
+      "survived": 0
+    },
+    "CR": {
+      "total": 21,
+      "stillborn": 0,
+      "killed": 18,
+      "survived": 3
+    },
+    "ROR": {
+      "total": 3,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 2
+    },
+    "TERN": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "AOR": {
+      "total": 3,
+      "stillborn": 0,
+      "killed": 3,
+      "survived": 0
+    },
+    "SOR": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "IFN": {
+      "total": 2,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 0
+    },
+    "UOD": {
+      "total": 2,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 1
+    },
+    "SLICE": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    }
+  },
+  "generated": 55,
+  "secs": 7.5,
+  "mutants": [
+    {
+      "id": "SGN-fx_requant.sv-L10-c044ffdb",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 10,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L10-c044ffdb",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L10-c044ffdb/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L13-d54d06fe",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 13,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.19,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L13-d54d06fe",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L13-d54d06fe/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L14-5c250bc8",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 14,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.18,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L14-5c250bc8",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L14-5c250bc8/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L16-c2446f3c",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 16,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.18,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L16-c2446f3c",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L16-c2446f3c/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L17-b34ff357",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 17,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L17-b34ff357",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L17-b34ff357/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L18-840f96f6",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 18,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 1464 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L18-840f96f6"
+    },
+    {
+      "id": "SGN-fx_requant.sv-L19-66562a71",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 19,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 1464 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L19-66562a71"
+    },
+    {
+      "id": "SGN-fx_requant.sv-L20-f0e65aed",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 20,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L20-f0e65aed",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L20-f0e65aed/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L21-a1e75f44",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 21,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.18,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L21-a1e75f44",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L21-a1e75f44/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_requant.sv-L22-f69180d6",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 22,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 2474 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L22-f69180d6"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L24-ed9e3bed",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 24,
+      "col": 3,
+      "old": "assign acc_x  = {{17{acc[31]}}, acc};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:16: Signal is not driven: 'acc_x'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\acc_x [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\acc_x [47] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\acc_x [46] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L24-ed9e3bed"
+    },
+    {
+      "id": "CR-fx_requant.sv-L24-a9a62dec",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 24,
+      "col": 28,
+      "old": "31",
+      "new": "30",
+      "desc": "constant 31 -> 30",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 1151 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L24-a9a62dec"
+    },
+    {
+      "id": "CR-fx_requant.sv-L24-bb8c4a94",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 24,
+      "col": 28,
+      "old": "31",
+      "new": "32",
+      "desc": "constant 31 -> 32",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "verilator risk SELRANGE fx_requant.sv:24: Selection index out of range: 32:32 outside 31:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L24-bb8c4a94"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L25-8d8143f2",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 25,
+      "col": 3,
+      "old": "assign mult_x = {33'd0, mult};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:17: Signal is not driven: 'mult_x'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\mult_x [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\mult_x [47] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\mult_x [46] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L25-8d8143f2"
+    },
+    {
+      "id": "CR-fx_requant.sv-L25-cc2ac487",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 25,
+      "col": 20,
+      "old": "33'd0",
+      "new": "33'd1",
+      "desc": "constant 33'd0 -> 33'd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 619 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L25-cc2ac487"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L26-3091571c",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 26,
+      "col": 3,
+      "old": "assign zp_x   = {{42{zp[7]}}, zp};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:21: Signal is not driven: 'zp_x'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\zp_x [49] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\zp_x [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\zp_x [47] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L26-3091571c"
+    },
+    {
+      "id": "CR-fx_requant.sv-L26-228b780e",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 26,
+      "col": 27,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 314 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L26-228b780e"
+    },
+    {
+      "id": "CR-fx_requant.sv-L26-f399cddc",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 26,
+      "col": 27,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "verilator risk SELRANGE fx_requant.sv:26: Selection index out of range: 8:8 outside 7:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L26-f399cddc"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L29-9cab6b10",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 29,
+      "col": 5,
+      "old": "prod    = acc_x * mult_x;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:18: Signal is not driven: 'prod'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\prod [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\prod [47] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\prod [46] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L29-9cab6b10"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L30-f170e68a",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 5,
+      "old": "rnd     = (shift == 5'd0) ? 49'sd0 : (49'sd1 <<< (shift - 5'd1));",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:19: Signal is not driven: 'rnd'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\rnd [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\rnd [47] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\rnd [46] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L30-f170e68a"
+    },
+    {
+      "id": "ROR-fx_requant.sv-L30-cf8169f6",
+      "op": "ROR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 22,
+      "old": "==",
+      "new": "!=",
+      "desc": "'==' -> '!='",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 408 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/ROR-fx_requant.sv-L30-cf8169f6"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-968cc28b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 25,
+      "old": "5'd0",
+      "new": "5'd1",
+      "desc": "constant 5'd0 -> 5'd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 123 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-968cc28b"
+    },
+    {
+      "id": "TERN-fx_requant.sv-L30-430601ae",
+      "op": "TERN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 31,
+      "old": "? 49'sd0 : (49'sd1 <<< (shift - 5'd1))",
+      "new": "? (49'sd1 <<< (shift - 5'd1)) : 49'sd0",
+      "desc": "swap ?: arms",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 408 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/TERN-fx_requant.sv-L30-430601ae"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-9ad8610e",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 33,
+      "old": "49'sd0",
+      "new": "49'sd1",
+      "desc": "constant 49'sd0 -> 49'sd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 38 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-9ad8610e"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-f775e1ea",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 43,
+      "old": "49'sd1",
+      "new": "49'sd0",
+      "desc": "constant 49'sd1 -> 49'sd0",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 289 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-f775e1ea"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-4d23bc2b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 43,
+      "old": "49'sd1",
+      "new": "49'sd2",
+      "desc": "constant 49'sd1 -> 49'sd2",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 586 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-4d23bc2b"
+    },
+    {
+      "id": "AOR-fx_requant.sv-L30-84f887bb",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 61,
+      "old": "-",
+      "new": "+",
+      "desc": "binary '-' -> '+'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 810 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/AOR-fx_requant.sv-L30-84f887bb"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-75f17c6e",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 63,
+      "old": "5'd1",
+      "new": "5'd0",
+      "desc": "constant 5'd1 -> 5'd0",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 586 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-75f17c6e"
+    },
+    {
+      "id": "CR-fx_requant.sv-L30-edb30ad3",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 30,
+      "col": 63,
+      "old": "5'd1",
+      "new": "5'd2",
+      "desc": "constant 5'd1 -> 5'd2",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 182 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L30-edb30ad3"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L31-c987c44d",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 31,
+      "col": 5,
+      "old": "shifted = (prod + rnd) >>> shift;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:20: Signal is not driven: 'shifted'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\shifted [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\shifted [47] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\shifted [46] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L31-c987c44d"
+    },
+    {
+      "id": "AOR-fx_requant.sv-L31-4b6c7d0f",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 31,
+      "col": 21,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.2,
+      "reasons": [
+        "iverilog: 877 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/AOR-fx_requant.sv-L31-4b6c7d0f"
+    },
+    {
+      "id": "SOR-fx_requant.sv-L31-7576d2d7",
+      "op": "SOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 31,
+      "col": 28,
+      "old": ">>>",
+      "new": ">>",
+      "desc": "'>>>' -> '>>'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 1464 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SOR-fx_requant.sv-L31-7576d2d7"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L32-53e51f1e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 32,
+      "col": 5,
+      "old": "biased  = $signed({shifted[48], shifted}) + zp_x;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_requant.sv:22: Signal is not driven: 'biased'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\biased [49] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\biased [48] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_requant.\\biased [47] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L32-53e51f1e"
+    },
+    {
+      "id": "SGN-fx_requant.sv-L32-b5ed45a3",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 32,
+      "col": 15,
+      "old": "$signed",
+      "new": "",
+      "desc": "delete $signed",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.2,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SGN-fx_requant.sv-L32-b5ed45a3",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/SGN-fx_requant.sv-L32-b5ed45a3/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L32-298d4b5a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 32,
+      "col": 32,
+      "old": "48",
+      "new": "47",
+      "desc": "constant 48 -> 47",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L32-298d4b5a",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/CR-fx_requant.sv-L32-298d4b5a/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L32-06c5d7b4",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 32,
+      "col": 32,
+      "old": "48",
+      "new": "49",
+      "desc": "constant 48 -> 49",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "verilator risk SELRANGE fx_requant.sv:32: Selection index out of range: 49:49 outside 48:0",
+        "iverilog: 4024 of 4024 output beats differ from the golden model",
+        "iverilog: 4024 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L32-06c5d7b4"
+    },
+    {
+      "id": "AOR-fx_requant.sv-L32-37d9930f",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 32,
+      "col": 47,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 933 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/AOR-fx_requant.sv-L32-37d9930f"
+    },
+    {
+      "id": "IFN-fx_requant.sv-L33-cde992f5",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 33,
+      "col": 8,
+      "old": "(biased > 50'sd127)",
+      "new": "(!(biased > 50'sd127))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 3986 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/IFN-fx_requant.sv-L33-cde992f5"
+    },
+    {
+      "id": "ROR-fx_requant.sv-L33-9d3746cf",
+      "op": "ROR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 33,
+      "col": 16,
+      "old": ">",
+      "new": ">=",
+      "desc": "'>' -> '>='",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/ROR-fx_requant.sv-L33-9d3746cf",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/ROR-fx_requant.sv-L33-9d3746cf/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L33-093d6b1d",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 33,
+      "col": 18,
+      "old": "50'sd127",
+      "new": "50'sd126",
+      "desc": "constant 50'sd127 -> 50'sd126",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L33-093d6b1d",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/CR-fx_requant.sv-L33-093d6b1d/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L33-422ba740",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 33,
+      "col": 18,
+      "old": "50'sd127",
+      "new": "50'sd128",
+      "desc": "constant 50'sd127 -> 50'sd128",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 5 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L33-422ba740"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L34-ce0713af",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 34,
+      "col": 7,
+      "old": "y = 8'sd127;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk LATCH fx_requant.sv:28: Latch inferred for signal 'y' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_requant.\\y [6:0]",
+        "iverilog: 1536 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L34-ce0713af"
+    },
+    {
+      "id": "CR-fx_requant.sv-L34-929c6987",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 34,
+      "col": 11,
+      "old": "8'sd127",
+      "new": "8'sd126",
+      "desc": "constant 8'sd127 -> 8'sd126",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 1550 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L34-929c6987"
+    },
+    {
+      "id": "CR-fx_requant.sv-L34-4eccacc3",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 34,
+      "col": 11,
+      "old": "8'sd127",
+      "new": "8'sd128",
+      "desc": "constant 8'sd127 -> 8'sd128",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 1550 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L34-4eccacc3"
+    },
+    {
+      "id": "IFN-fx_requant.sv-L35-8b078eea",
+      "op": "IFN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 35,
+      "col": 13,
+      "old": "(biased < -50'sd128)",
+      "new": "(!(biased < -50'sd128))",
+      "desc": "negate if condition",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.18,
+      "reasons": [
+        "iverilog: 2442 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/IFN-fx_requant.sv-L35-8b078eea"
+    },
+    {
+      "id": "ROR-fx_requant.sv-L35-94383878",
+      "op": "ROR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 35,
+      "col": 21,
+      "old": "<",
+      "new": "<=",
+      "desc": "'<' -> '<='",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.17,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/ROR-fx_requant.sv-L35-94383878",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/ROR-fx_requant.sv-L35-94383878/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "UOD-fx_requant.sv-L35-1a63cdfb",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 35,
+      "col": 23,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 913 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/UOD-fx_requant.sv-L35-1a63cdfb"
+    },
+    {
+      "id": "CR-fx_requant.sv-L35-3f05d993",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 35,
+      "col": 24,
+      "old": "50'sd128",
+      "new": "50'sd127",
+      "desc": "constant 50'sd128 -> 50'sd127",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.19,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L35-3f05d993",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/CR-fx_requant.sv-L35-3f05d993/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L35-44824734",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 35,
+      "col": 24,
+      "old": "50'sd128",
+      "new": "50'sd129",
+      "desc": "constant 50'sd128 -> 50'sd129",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 3 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L35-44824734"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L36-a170b9da",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 36,
+      "col": 7,
+      "old": "y = -8'sd128;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "verilator risk LATCH fx_requant.sv:28: Latch inferred for signal 'y' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_requant.\\y [6:0]",
+        "iverilog: 1538 of 4024 output beats differ from the golden model",
+        "iverilog: 1 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L36-a170b9da"
+    },
+    {
+      "id": "UOD-fx_requant.sv-L36-f549acb5",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 36,
+      "col": 11,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.16,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/UOD-fx_requant.sv-L36-f549acb5",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/formal/UOD-fx_requant.sv-L36-f549acb5/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "CR-fx_requant.sv-L36-cb0030af",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 36,
+      "col": 12,
+      "old": "8'sd128",
+      "new": "8'sd127",
+      "desc": "constant 8'sd128 -> 8'sd127",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.19,
+      "reasons": [
+        "iverilog: 1544 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L36-cb0030af"
+    },
+    {
+      "id": "CR-fx_requant.sv-L36-ea7e8516",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 36,
+      "col": 12,
+      "old": "8'sd128",
+      "new": "8'sd129",
+      "desc": "constant 8'sd128 -> 8'sd129",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.17,
+      "reasons": [
+        "iverilog: 1544 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/CR-fx_requant.sv-L36-ea7e8516"
+    },
+    {
+      "id": "STMT-fx_requant.sv-L38-6d3b380c",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 38,
+      "col": 7,
+      "old": "y = biased[7:0];",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.15,
+      "reasons": [
+        "verilator risk LATCH fx_requant.sv:28: Latch inferred for signal 'y' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_requant.\\y",
+        "iverilog: 921 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/STMT-fx_requant.sv-L38-6d3b380c"
+    },
+    {
+      "id": "SLICE-fx_requant.sv-L38-bed4ba45",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "line": 38,
+      "col": 17,
+      "old": "[7:0]",
+      "new": "[8:1]",
+      "desc": "part-select [7:0] -> [8:1]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.16,
+      "reasons": [
+        "iverilog: 854 of 4024 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/campaign/mutants/SLICE-fx_requant.sv-L38-bed4ba45"
+    }
+  ]
+}

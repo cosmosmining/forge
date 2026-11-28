@@ -1,0 +1,147 @@
+{
+  "block": "fx_dot4",
+  "top": "fx_dot4",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/manifest.toml",
+  "seed": 1,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/benign/sum-reordered/rtl/fx_dot4.sv",
+      "sha256": "994a1917443ee13c7a78981eaf14f62124234f7e6cb12a648c06956f4e791792"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.11,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/benign/sum-reordered/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 8.14,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/benign/sum-reordered/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "4024 of 4024",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "4024 of 4024",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:dot4",
+    "style": "map",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 4,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 4024,
+    "output_beats": 4024,
+    "sources": {
+      "directed": 0,
+      "formal_counterexample": 0,
+      "corner_sample": 1024,
+      "random_mix": 3000
+    },
+    "idle_cycles": 3621,
+    "stall_cycles": 0,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/tb/tb.sv"
+  },
+  "verdict": "PASS",
+  "reasons": []
+}

@@ -1,0 +1,370 @@
+{
+  "block": "fx_pwl",
+  "top": "fx_pwl",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/manifest.toml",
+  "seed": 1,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/bug/segment-bits/rtl/fx_pwl.sv",
+      "sha256": "381090c24699bb7910c1cb32d16e8a8cf90052302d27075466d6e42f405ed603"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 1,
+      "waived": 1,
+      "issues": [
+        {
+          "tool": "verilator",
+          "code": "UNUSEDSIGNAL",
+          "severity": "style",
+          "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/bug/segment-bits/rtl/fx_pwl.sv",
+          "line": 10,
+          "msg": "Bits of signal are not used: 'x'[15]",
+          "waived": null
+        },
+        {
+          "tool": "verilator",
+          "code": "UNUSEDSIGNAL",
+          "severity": "style",
+          "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/bug/segment-bits/rtl/fx_pwl.sv",
+          "line": 20,
+          "msg": "Bits of signal are not used: 'sum'[22:16]",
+          "waived": "by construction |base| + |prod>>>8| < 2**15, so sum[22:16] are copies of the sign bit and only sum[15:0] is needed"
+        }
+      ]
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.62,
+        "tb_result": {
+          "outputs": 65536,
+          "expected": 65536,
+          "mismatches": 57344,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 65536,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/bug/segment-bits/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 65536,
+          "observed_beats": 65536,
+          "mismatch_beats": 57344,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 0,
+              "port": "y",
+              "expected": -18000,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9b0",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 1,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 2,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 3,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 4,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 6,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 7,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 8,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 9,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 8.25,
+        "tb_result": {
+          "outputs": 65536,
+          "expected": 65536,
+          "mismatches": 57344,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 65536,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/bug/segment-bits/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 65536,
+          "observed_beats": 65536,
+          "mismatch_beats": 57344,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 0,
+              "port": "y",
+              "expected": -18000,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9b0",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 1,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 2,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 3,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 4,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 6,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 7,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 8,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            },
+            {
+              "idx": 9,
+              "port": "y",
+              "expected": -18001,
+              "expected_hex": null,
+              "got": "0000",
+              "got_int": 0,
+              "xor_hex": "0xb9af",
+              "hint": "output is zero: not updated, cleared too early, or wrong select"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "8192 of 65536",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "8192 of 65536",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:pwl",
+    "style": "map",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 5,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 65536,
+    "output_beats": 65536,
+    "sources": {
+      "directed": 0,
+      "formal_counterexample": 0,
+      "exhaustive": 65536
+    },
+    "idle_cycles": 0,
+    "stall_cycles": 0,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/bugs/tb/tb.sv"
+  },
+  "verdict": "FAIL",
+  "reasons": [
+    "iverilog: 57344 of 65536 output beats differ from the golden model",
+    "verilator: 57344 of 65536 output beats differ from the golden model"
+  ]
+}

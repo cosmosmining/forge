@@ -1,0 +1,180 @@
+{
+  "block": "fx_requant",
+  "top": "fx_requant",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/manifest.toml",
+  "seed": 3,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_requant/rtl/fx_requant.sv",
+      "sha256": "cb9967f16b1455e4575f6b05127cb6efc369cc3515f33da3366c7846d9f9f528"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.05,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/clean_seed3/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 4.75,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 0,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/clean_seed3/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 0,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": []
+        },
+        "tb_python_agree": true,
+        "bit_exact": true,
+        "status": "pass"
+      }
+    },
+    "coverage": {
+      "available": true,
+      "line": {
+        "hit": 4,
+        "total": 4,
+        "ratio": 1.0
+      },
+      "branch": {
+        "hit": 0,
+        "total": 0,
+        "ratio": null
+      },
+      "toggle": {
+        "hit": 726,
+        "total": 828,
+        "ratio": 0.8768115942028986
+      },
+      "uncovered": []
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "4024 of 4024",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "4024 of 4024",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    },
+    {
+      "name": "DUT line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "detail": "4/4 points",
+      "kind": "measured",
+      "source": "verilator coverage.dat"
+    },
+    {
+      "name": "DUT toggle coverage",
+      "value": 87.7,
+      "unit": "%",
+      "detail": "726/828 points",
+      "kind": "measured",
+      "source": "verilator coverage.dat"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:requant",
+    "style": "map",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 12,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 4024,
+    "output_beats": 4024,
+    "sources": {
+      "directed": 0,
+      "formal_counterexample": 0,
+      "corner_sample": 1024,
+      "random_mix": 3000
+    },
+    "idle_cycles": 0,
+    "stall_cycles": 0,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_requant/clean_seed3/tb/tb.sv"
+  },
+  "verdict": "PASS",
+  "reasons": []
+}

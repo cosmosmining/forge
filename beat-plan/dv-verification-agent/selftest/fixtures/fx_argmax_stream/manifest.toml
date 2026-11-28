@@ -1,0 +1,25 @@
+# DV-agent self-test fixture (NOT Forge RTL, NOT Build 6).
+[block]
+name = "fx_argmax_stream"
+top = "fx_argmax_stream"
+rtl = ["rtl/fx_argmax_stream.sv"]
+parameters = { IDX_W = 8 }
+
+[interface]
+protocol = "stream"
+clock = "clk"
+reset = "rst_n"
+reset_active_low = true
+in_valid = "in_valid"
+in_ready = "in_ready"
+out_valid = "out_valid"
+out_ready = "out_ready"
+in_last = "in_last"
+
+[golden]
+model = "golden.py:argmax"
+style = "stream"
+
+[stimulus]
+packets = 200
+max_packet = 16

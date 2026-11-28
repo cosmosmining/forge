@@ -1,0 +1,162 @@
+{
+  "block": "fx_mac_stream",
+  "seed": 1,
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "entries": [
+    {
+      "kind": "bug",
+      "id": "accumulator-not-cleared",
+      "why": "accumulator not cleared after the last beat: packets leak into each other",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "out_valid <= 1'b1;\n          acc_q     <= '0;",
+      "replace": "out_valid <= 1'b1;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 286 of 288 output beats differ from the golden model",
+        "verilator: 286 of 288 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 2 acc_out expected -13589 got 0x00001ceb (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "ready-ignores-backpressure",
+      "why": "input accepted while the output slot is full: results are overwritten",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "assign in_ready = !out_valid || out_ready;",
+      "replace": "assign in_ready = 1'b1;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 242 of 288 output beats differ from the golden model",
+        "iverilog: 43 expected output beats never appeared",
+        "iverilog: testbench cycle timeout",
+        "iverilog: output protocol broken in 43 cycles (out_valid dropped or data changed before out_ready)"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 3 acc_out expected -5207 got 0xffffe77a (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "last-beat-not-added",
+      "why": "the last beat's product is not added",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "acc_out   <= sum;",
+      "replace": "acc_out   <= acc_q;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 267 of 288 output beats differ from the golden model",
+        "verilator: 267 of 288 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 acc_out expected 12288 got 0x00000000 (output is zero: not updated, cleared too early, or wrong select)"
+    },
+    {
+      "kind": "bug",
+      "id": "valid-never-cleared",
+      "why": "out_valid stays high after the handshake: duplicate outputs",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "if (fire_out) out_valid <= 1'b0;",
+      "replace": "",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 287 of 288 output beats differ from the golden model",
+        "iverilog: 25 extra output beats",
+        "iverilog: DUT accepted 202 of 2536 input beats",
+        "verilator: 287 of 288 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 1 acc_out expected 22272 got 0x00003000 (value differs: check the datapath against the golden model)"
+    },
+    {
+      "kind": "bug",
+      "id": "product-zero-extended",
+      "why": "negative products zero-extended into the accumulator",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "assign sum      = acc_q + {{16{prod[15]}}, prod};",
+      "replace": "assign sum      = acc_q + {16'd0, prod};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 225 of 288 output beats differ from the golden model",
+        "verilator: 225 of 288 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 1 acc_out expected 22272 got 0x00065700 (only high bits differ: sign extension, overflow width or carry)"
+    },
+    {
+      "kind": "benign",
+      "id": "ready-de-morgan",
+      "why": "same ready logic by De Morgan",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "assign in_ready = !out_valid || out_ready;",
+      "replace": "assign in_ready = ~(out_valid & ~out_ready);",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    },
+    {
+      "kind": "benign",
+      "id": "fire-operands-swapped",
+      "why": "same handshake, operands swapped",
+      "file": "rtl/fx_mac_stream.sv",
+      "find": "assign fire_in  = in_valid && in_ready;",
+      "replace": "assign fire_in  = in_ready && in_valid;",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    }
+  ],
+  "bugs_total": 5,
+  "bugs_caught": 5,
+  "benign_total": 2,
+  "benign_passed": 2
+}

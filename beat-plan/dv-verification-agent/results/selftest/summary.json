@@ -1,0 +1,1699 @@
+{
+  "started": "2026-11-28T01:00:05",
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "formal": true,
+  "fixtures": {
+    "fx_argmax_stream": {
+      "clean": [
+        {
+          "seed": 1,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 244,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9216867469879518,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 2,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 244,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9819277108433735,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 3,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 244,
+          "line_cov": 1.0,
+          "toggle_cov": 0.8734939759036144,
+          "golden_cov": 1.0
+        }
+      ],
+      "bugs": {
+        "bugs_total": 5,
+        "bugs_caught": 5,
+        "benign_total": 2,
+        "benign_passed": 2,
+        "entries": [
+          {
+            "kind": "bug",
+            "id": "ties-pick-latest",
+            "why": "ties take the latest index instead of the earliest",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 1 idx expected 0 got 0x0f (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 52 of 244 output beats differ from the golden model",
+              "verilator: 52 of 244 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "unsigned-compare",
+            "why": "comparison done unsigned: negative values beat positive ones",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 45 idx expected 1 got 0x00 (output is zero: not updated, cleared too early, or wrong select)",
+            "reasons": [
+              "iverilog: 138 of 244 output beats differ from the golden model",
+              "verilator: 138 of 244 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "count-not-reset",
+            "why": "position counter not reset at the end of a packet",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 2 idx expected 0 got 0x0f (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 242 of 244 output beats differ from the golden model",
+              "verilator: 242 of 244 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "first-flag-not-set",
+            "why": "next packet compares against the previous packet's maximum",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 44 max_val expected 9 got 0x7fff (RTL saturated but golden did not: clamp bound or compare wrong)",
+            "reasons": [
+              "iverilog: 199 of 244 output beats differ from the golden model",
+              "verilator: 199 of 244 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "max-ignores-last-beat",
+            "why": "the last beat can win the index but not the value",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 max_val expected -32768 got 0x0000 (output is zero: not updated, cleared too early, or wrong select)",
+            "reasons": [
+              "iverilog: 70 of 244 output beats differ from the golden model",
+              "verilator: 70 of 244 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "benign",
+            "id": "compare-flipped",
+            "why": "same comparison written the other way round",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          },
+          {
+            "kind": "benign",
+            "id": "increment-as-subtract",
+            "why": "adding 1 equals subtracting all-ones modulo 2**IDX_W",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          }
+        ]
+      },
+      "campaign": {
+        "baseline_verdict": "PASS",
+        "generated": 54,
+        "run": 54,
+        "stillborn": 0,
+        "compiled": 54,
+        "killed": 44,
+        "killed_functional": 43,
+        "killed_lint_only": 1,
+        "survived": 10,
+        "survivor_classes": {
+          "equivalent": 9,
+          "timing-only": 1
+        },
+        "escapes": 0,
+        "unexplained": 0,
+        "score": 0.9778,
+        "secs": 19.5,
+        "by_operator": {
+          "SGN": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 1
+          },
+          "STMT": {
+            "total": 21,
+            "stillborn": 0,
+            "killed": 17,
+            "survived": 4
+          },
+          "LOR": {
+            "total": 4,
+            "stillborn": 0,
+            "killed": 3,
+            "survived": 1
+          },
+          "ROR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "UOD": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "EDGE": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "IFN": {
+            "total": 5,
+            "stillborn": 0,
+            "killed": 5,
+            "survived": 0
+          },
+          "CR": {
+            "total": 13,
+            "stillborn": 0,
+            "killed": 9,
+            "survived": 4
+          },
+          "TERN": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "AOR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          }
+        },
+        "survivors": [
+          {
+            "id": "SGN-fx_argmax_stream.sv-L20-528a2305",
+            "op": "SGN",
+            "line": 20,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "LOR-fx_argmax_stream.sv-L31-a6b787ce",
+            "op": "LOR",
+            "line": 31,
+            "old": "||",
+            "new": "&&",
+            "desc": "'||' -> '&&'",
+            "class": "timing-only",
+            "method": "sby cycle bmc + replay + extra seeds",
+            "note": "cycle-level difference (formal trace); transactions equal on the replayed trace and on 8 extra random seeds"
+          },
+          {
+            "id": "STMT-fx_argmax_stream.sv-L38-901fe045",
+            "op": "STMT",
+            "line": 38,
+            "old": "best_idx_q <= '0;",
+            "new": ";",
+            "desc": "delete nba statement",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "CR-fx_argmax_stream.sv-L38-318133cd",
+            "op": "CR",
+            "line": 38,
+            "old": "'0",
+            "new": "'1",
+            "desc": "'0 -> '1",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "STMT-fx_argmax_stream.sv-L39-a2163def",
+            "op": "STMT",
+            "line": 39,
+            "old": "best_q     <= '0;",
+            "new": ";",
+            "desc": "delete nba statement",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "CR-fx_argmax_stream.sv-L39-99571033",
+            "op": "CR",
+            "line": 39,
+            "old": "'0",
+            "new": "'1",
+            "desc": "'0 -> '1",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "STMT-fx_argmax_stream.sv-L42-a667198e",
+            "op": "STMT",
+            "line": 42,
+            "old": "idx        <= '0;",
+            "new": ";",
+            "desc": "delete nba statement",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "CR-fx_argmax_stream.sv-L42-c1805749",
+            "op": "CR",
+            "line": 42,
+            "old": "'0",
+            "new": "'1",
+            "desc": "'0 -> '1",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "STMT-fx_argmax_stream.sv-L43-30b5b4c3",
+            "op": "STMT",
+            "line": 43,
+            "old": "max_val    <= '0;",
+            "new": ";",
+            "desc": "delete nba statement",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "CR-fx_argmax_stream.sv-L43-a079291e",
+            "op": "CR",
+            "line": 43,
+            "old": "'0",
+            "new": "'1",
+            "desc": "'0 -> '1",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          }
+        ]
+      },
+      "learning": {
+        "escapes_before": 0
+      }
+    },
+    "fx_dot4": {
+      "clean": [
+        {
+          "seed": 1,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9985994397759104,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 2,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9985994397759104,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 3,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9985994397759104,
+          "golden_cov": 1.0
+        }
+      ],
+      "bugs": {
+        "bugs_total": 5,
+        "bugs_caught": 5,
+        "benign_total": 2,
+        "benign_passed": 2,
+        "entries": [
+          {
+            "kind": "bug",
+            "id": "lane1-slice-low",
+            "why": "lane 1 of a sliced one bit low",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xaaaaa0fa (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 3642 of 4024 output beats differ from the golden model",
+              "verilator: 3642 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "lane3-zero-extended",
+            "why": "lane 3 of b zero-extended",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xaaaab2ea (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 1784 of 4024 output beats differ from the golden model",
+              "verilator: 1784 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "valid-one-stage-short",
+            "why": "valid pipeline one stage shorter than the data pipeline",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0xxxxxxxxx (X/Z on output: uninitialised state, missing reset, or undriven logic)",
+            "reasons": [
+              "iverilog: 4024 of 4024 output beats differ from the golden model",
+              "iverilog: 1 output beats contain X/Z",
+              "verilator: 4024 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "bias-not-registered",
+            "why": "bias read from the live input instead of the stage-1 register",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -1431657750 got 0x1ffff83f (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 3978 of 4024 output beats differ from the golden model",
+              "verilator: 3978 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "lane2-wrong-weight",
+            "why": "lane 2 multiplies the wrong lane of b",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 1024 y expected 536883363 got 0x20002313 (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 2796 of 4024 output beats differ from the golden model",
+              "verilator: 2796 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "benign",
+            "id": "stage1-ungated",
+            "why": "stage 1 captures every cycle; only valid beats reach the output, so behaviour is unchanged",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          },
+          {
+            "kind": "benign",
+            "id": "sum-reordered",
+            "why": "same sum in a different order",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          }
+        ]
+      },
+      "campaign": {
+        "baseline_verdict": "PASS",
+        "generated": 75,
+        "run": 75,
+        "stillborn": 0,
+        "compiled": 75,
+        "killed": 68,
+        "killed_functional": 68,
+        "killed_lint_only": 0,
+        "survived": 7,
+        "survivor_classes": {
+          "equivalent": 6,
+          "needs-review": 1
+        },
+        "escapes": 0,
+        "unexplained": 0,
+        "score": 0.9855,
+        "secs": 6.3,
+        "by_operator": {
+          "SGN": {
+            "total": 6,
+            "stillborn": 0,
+            "killed": 0,
+            "survived": 6
+          },
+          "STMT": {
+            "total": 18,
+            "stillborn": 0,
+            "killed": 18,
+            "survived": 0
+          },
+          "CR": {
+            "total": 26,
+            "stillborn": 0,
+            "killed": 26,
+            "survived": 0
+          },
+          "SLICE": {
+            "total": 14,
+            "stillborn": 0,
+            "killed": 14,
+            "survived": 0
+          },
+          "EDGE": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 1
+          },
+          "IFN": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 3,
+            "survived": 0
+          },
+          "UOD": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "AOR": {
+            "total": 4,
+            "stillborn": 0,
+            "killed": 4,
+            "survived": 0
+          }
+        },
+        "survivors": [
+          {
+            "id": "SGN-fx_dot4.sv-L14-f7da71fb",
+            "op": "SGN",
+            "line": 14,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_dot4.sv-L16-bb382f1c",
+            "op": "SGN",
+            "line": 16,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_dot4.sv-L18-21e226ee",
+            "op": "SGN",
+            "line": 18,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_dot4.sv-L19-3a74c0bf",
+            "op": "SGN",
+            "line": 19,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_dot4.sv-L20-53d86093",
+            "op": "SGN",
+            "line": 20,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_dot4.sv-L21-58ed5773",
+            "op": "SGN",
+            "line": 21,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "EDGE-fx_dot4.sv-L33-ad28c71d",
+            "op": "EDGE",
+            "line": 33,
+            "old": "negedge",
+            "new": "posedge",
+            "desc": "negedge -> posedge",
+            "class": "needs-review",
+            "method": "none",
+            "note": "clock/reset edge change; cycle-based formal cannot judge it and the testbench did not catch it - review by hand"
+          }
+        ]
+      },
+      "learning": {
+        "escapes_before": 0
+      }
+    },
+    "fx_mac_stream": {
+      "clean": [
+        {
+          "seed": 1,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 288,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9963503649635036,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 2,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 288,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9963503649635036,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 3,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 288,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9963503649635036,
+          "golden_cov": 1.0
+        }
+      ],
+      "bugs": {
+        "bugs_total": 5,
+        "bugs_caught": 5,
+        "benign_total": 2,
+        "benign_passed": 2,
+        "entries": [
+          {
+            "kind": "bug",
+            "id": "accumulator-not-cleared",
+            "why": "accumulator not cleared after the last beat: packets leak into each other",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 2 acc_out expected -13589 got 0x00001ceb (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 286 of 288 output beats differ from the golden model",
+              "verilator: 286 of 288 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "ready-ignores-backpressure",
+            "why": "input accepted while the output slot is full: results are overwritten",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 3 acc_out expected -5207 got 0xffffe77a (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 242 of 288 output beats differ from the golden model",
+              "iverilog: 43 expected output beats never appeared",
+              "iverilog: testbench cycle timeout",
+              "iverilog: output protocol broken in 43 cycles (out_valid dropped or data changed before out_ready)"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "last-beat-not-added",
+            "why": "the last beat's product is not added",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 acc_out expected 12288 got 0x00000000 (output is zero: not updated, cleared too early, or wrong select)",
+            "reasons": [
+              "iverilog: 267 of 288 output beats differ from the golden model",
+              "verilator: 267 of 288 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "valid-never-cleared",
+            "why": "out_valid stays high after the handshake: duplicate outputs",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 1 acc_out expected 22272 got 0x00003000 (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 287 of 288 output beats differ from the golden model",
+              "iverilog: 25 extra output beats",
+              "iverilog: DUT accepted 202 of 2536 input beats",
+              "verilator: 287 of 288 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "product-zero-extended",
+            "why": "negative products zero-extended into the accumulator",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 1 acc_out expected 22272 got 0x00065700 (only high bits differ: sign extension, overflow width or carry)",
+            "reasons": [
+              "iverilog: 225 of 288 output beats differ from the golden model",
+              "verilator: 225 of 288 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "benign",
+            "id": "ready-de-morgan",
+            "why": "same ready logic by De Morgan",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          },
+          {
+            "kind": "benign",
+            "id": "fire-operands-swapped",
+            "why": "same handshake, operands swapped",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          }
+        ]
+      },
+      "campaign": {
+        "baseline_verdict": "PASS",
+        "generated": 43,
+        "run": 43,
+        "stillborn": 0,
+        "compiled": 43,
+        "killed": 34,
+        "killed_functional": 33,
+        "killed_lint_only": 1,
+        "survived": 9,
+        "survivor_classes": {
+          "equivalent": 8,
+          "timing-only": 1
+        },
+        "escapes": 0,
+        "unexplained": 0,
+        "score": 0.9714,
+        "secs": 22.9,
+        "by_operator": {
+          "SGN": {
+            "total": 6,
+            "stillborn": 0,
+            "killed": 0,
+            "survived": 6
+          },
+          "STMT": {
+            "total": 13,
+            "stillborn": 0,
+            "killed": 12,
+            "survived": 1
+          },
+          "CR": {
+            "total": 12,
+            "stillborn": 0,
+            "killed": 11,
+            "survived": 1
+          },
+          "AOR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "UOD": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "LOR": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 1
+          },
+          "EDGE": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "IFN": {
+            "total": 4,
+            "stillborn": 0,
+            "killed": 4,
+            "survived": 0
+          }
+        },
+        "survivors": [
+          {
+            "id": "SGN-fx_mac_stream.sv-L14-0843c042",
+            "op": "SGN",
+            "line": 14,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_mac_stream.sv-L15-1eda003e",
+            "op": "SGN",
+            "line": 15,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_mac_stream.sv-L19-a1afa796",
+            "op": "SGN",
+            "line": 19,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_mac_stream.sv-L21-7269f551",
+            "op": "SGN",
+            "line": 21,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_mac_stream.sv-L22-b86860fe",
+            "op": "SGN",
+            "line": 22,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_mac_stream.sv-L23-e1b91b48",
+            "op": "SGN",
+            "line": 23,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "LOR-fx_mac_stream.sv-L29-9cf93e01",
+            "op": "LOR",
+            "line": 29,
+            "old": "||",
+            "new": "&&",
+            "desc": "'||' -> '&&'",
+            "class": "timing-only",
+            "method": "sby cycle bmc + replay + extra seeds",
+            "note": "cycle-level difference (formal trace); transactions equal on the replayed trace and on 8 extra random seeds"
+          },
+          {
+            "id": "STMT-fx_mac_stream.sv-L36-f382c132",
+            "op": "STMT",
+            "line": 36,
+            "old": "acc_out   <= '0;",
+            "new": ";",
+            "desc": "delete nba statement",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          },
+          {
+            "id": "CR-fx_mac_stream.sv-L36-2f1e8d96",
+            "op": "CR",
+            "line": 36,
+            "old": "'0",
+            "new": "'1",
+            "desc": "'0 -> '1",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          }
+        ]
+      },
+      "learning": {
+        "escapes_before": 0
+      }
+    },
+    "fx_pwl": {
+      "clean": [
+        {
+          "seed": 1,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 65536,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9151515151515152,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 2,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 65536,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9151515151515152,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 3,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 65536,
+          "line_cov": 1.0,
+          "toggle_cov": 0.9151515151515152,
+          "golden_cov": 1.0
+        }
+      ],
+      "bugs": {
+        "bugs_total": 5,
+        "bugs_caught": 5,
+        "benign_total": 2,
+        "benign_passed": 2,
+        "entries": [
+          {
+            "kind": "bug",
+            "id": "table-entry-off-by-one",
+            "why": "one table base value off by one",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 8192 y expected -18064 got 0xb971 (off by one: rounding constant, rounding direction or truncation)",
+            "reasons": [
+              "iverilog: 8192 of 65536 output beats differ from the golden model",
+              "verilator: 8192 of 65536 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "fraction-sign-extended",
+            "why": "unsigned fraction treated as signed",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 4096 y expected -18032 got 0xb9d0 (value differs: check the datapath against the golden model)",
+            "reasons": [
+              "iverilog: 32768 of 65536 output beats differ from the golden model",
+              "verilator: 32768 of 65536 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "shift-seven",
+            "why": "slope product scaled by 2**-7 instead of 2**-8",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 65 y expected -18001 got 0xb9ae (off by one: rounding constant, rounding direction or truncation)",
+            "reasons": [
+              "iverilog: 65403 of 65536 output beats differ from the golden model",
+              "verilator: 65403 of 65536 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "segment-bits",
+            "why": "segment index taken from the wrong bits",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -18000 got 0x0000 (output is zero: not updated, cleared too early, or wrong select)",
+            "reasons": [
+              "iverilog: 57344 of 65536 output beats differ from the golden model",
+              "verilator: 57344 of 65536 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "unsigned-concat",
+            "why": "the bug the agent found on its first run: an unsigned concat makes >>> a logical shift",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 1 y expected -18001 got 0x39af (only the sign bit differs: signedness or sign extension)",
+            "reasons": [
+              "iverilog: 8191 of 65536 output beats differ from the golden model",
+              "verilator: 8191 of 65536 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "benign",
+            "id": "explicit-last-segment",
+            "why": "last segment named explicitly; the default is unreachable",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          },
+          {
+            "kind": "benign",
+            "id": "shift-as-slice",
+            "why": "arithmetic shift written as a sign-extended slice",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          }
+        ]
+      },
+      "campaign": {
+        "baseline_verdict": "PASS",
+        "generated": 95,
+        "run": 95,
+        "stillborn": 0,
+        "compiled": 95,
+        "killed": 87,
+        "killed_functional": 87,
+        "killed_lint_only": 0,
+        "survived": 8,
+        "survivor_classes": {
+          "equivalent": 8
+        },
+        "escapes": 0,
+        "unexplained": 0,
+        "score": 1.0,
+        "secs": 26.3,
+        "by_operator": {
+          "SGN": {
+            "total": 9,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 7
+          },
+          "STMT": {
+            "total": 23,
+            "stillborn": 0,
+            "killed": 23,
+            "survived": 0
+          },
+          "SLICE": {
+            "total": 4,
+            "stillborn": 0,
+            "killed": 4,
+            "survived": 0
+          },
+          "CR": {
+            "total": 51,
+            "stillborn": 0,
+            "killed": 50,
+            "survived": 1
+          },
+          "UOD": {
+            "total": 5,
+            "stillborn": 0,
+            "killed": 5,
+            "survived": 0
+          },
+          "AOR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "SOR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "EDGE": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          }
+        },
+        "survivors": [
+          {
+            "id": "SGN-fx_pwl.sv-L10-2e96bac4",
+            "op": "SGN",
+            "line": 10,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L11-de1ccc74",
+            "op": "SGN",
+            "line": 11,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L15-0a17e4c5",
+            "op": "SGN",
+            "line": 15,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L16-4e2e5085",
+            "op": "SGN",
+            "line": 16,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L17-195448bf",
+            "op": "SGN",
+            "line": 17,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L18-17cbe832",
+            "op": "SGN",
+            "line": 18,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_pwl.sv-L20-505b8752",
+            "op": "SGN",
+            "line": 20,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "CR-fx_pwl.sv-L39-5e8d19b9",
+            "op": "CR",
+            "line": 39,
+            "old": "15",
+            "new": "14",
+            "desc": "constant 15 -> 14",
+            "class": "equivalent",
+            "method": "sby abc pdr (unbounded)",
+            "note": null
+          }
+        ]
+      },
+      "learning": {
+        "escapes_before": 0
+      }
+    },
+    "fx_requant": {
+      "clean": [
+        {
+          "seed": 1,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.8768115942028986,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 2,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.8768115942028986,
+          "golden_cov": 1.0
+        },
+        {
+          "seed": 3,
+          "verdict": "PASS",
+          "reasons": [],
+          "beats": 4024,
+          "line_cov": 1.0,
+          "toggle_cov": 0.8768115942028986,
+          "golden_cov": 1.0
+        }
+      ],
+      "bugs": {
+        "bugs_total": 6,
+        "bugs_caught": 6,
+        "benign_total": 2,
+        "benign_passed": 2,
+        "entries": [
+          {
+            "kind": "bug",
+            "id": "round-constant-position",
+            "why": "rounding constant one bit too high: 2**shift instead of 2**(shift-1)",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 5 y expected -16 got 0xf1 (off by one: rounding constant, rounding direction or truncation)",
+            "reasons": [
+              "iverilog: 586 of 4024 output beats differ from the golden model",
+              "verilator: 586 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "logical-shift",
+            "why": "logical instead of arithmetic shift: negative values lose their sign",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 0 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)",
+            "reasons": [
+              "iverilog: 1464 of 4024 output beats differ from the golden model",
+              "verilator: 1464 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "clamp-high-bound",
+            "why": "upper clamp off by one: 128 wraps to -128",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 561 y expected 127 got 0x80 (golden value is saturated: check clamp bounds and overflow detection)",
+            "reasons": [
+              "iverilog: 5 of 4024 output beats differ from the golden model",
+              "verilator: 5 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "zero-point-zero-extended",
+            "why": "negative zero points become large positive offsets",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 4 y expected -127 got 0x7f (RTL saturated but golden did not: clamp bound or compare wrong)",
+            "reasons": [
+              "iverilog: 494 of 4024 output beats differ from the golden model",
+              "verilator: 494 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "shift-zero-not-special",
+            "why": "shift = 0 not special-cased: rounding term wraps to 2**31",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 13 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)",
+            "reasons": [
+              "iverilog: 119 of 4024 output beats differ from the golden model",
+              "verilator: 119 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "bug",
+            "id": "multiplier-sign-extended",
+            "why": "unsigned multiplier treated as signed",
+            "expected": "FAIL",
+            "verdict": "FAIL",
+            "ok": true,
+            "caught_by": [
+              "sim:iverilog",
+              "sim:verilator"
+            ],
+            "first_mismatch": "iverilog: beat 8 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)",
+            "reasons": [
+              "iverilog: 1116 of 4024 output beats differ from the golden model",
+              "verilator: 1116 of 4024 output beats differ from the golden model"
+            ]
+          },
+          {
+            "kind": "benign",
+            "id": "clamp-low-rewritten",
+            "why": "same lower clamp, written differently",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          },
+          {
+            "kind": "benign",
+            "id": "round-mux-inverted",
+            "why": "same mux with the condition inverted",
+            "expected": "PASS",
+            "verdict": "PASS",
+            "ok": true,
+            "caught_by": [],
+            "first_mismatch": null,
+            "reasons": []
+          }
+        ]
+      },
+      "campaign": {
+        "baseline_verdict": "PASS",
+        "generated": 55,
+        "run": 55,
+        "stillborn": 0,
+        "compiled": 55,
+        "killed": 41,
+        "killed_functional": 41,
+        "killed_lint_only": 0,
+        "survived": 14,
+        "survivor_classes": {
+          "equivalent": 14
+        },
+        "escapes": 0,
+        "unexplained": 0,
+        "score": 1.0,
+        "secs": 7.5,
+        "by_operator": {
+          "SGN": {
+            "total": 11,
+            "stillborn": 0,
+            "killed": 3,
+            "survived": 8
+          },
+          "STMT": {
+            "total": 10,
+            "stillborn": 0,
+            "killed": 10,
+            "survived": 0
+          },
+          "CR": {
+            "total": 21,
+            "stillborn": 0,
+            "killed": 18,
+            "survived": 3
+          },
+          "ROR": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 2
+          },
+          "TERN": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "AOR": {
+            "total": 3,
+            "stillborn": 0,
+            "killed": 3,
+            "survived": 0
+          },
+          "SOR": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          },
+          "IFN": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 2,
+            "survived": 0
+          },
+          "UOD": {
+            "total": 2,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 1
+          },
+          "SLICE": {
+            "total": 1,
+            "stillborn": 0,
+            "killed": 1,
+            "survived": 0
+          }
+        },
+        "survivors": [
+          {
+            "id": "SGN-fx_requant.sv-L10-c044ffdb",
+            "op": "SGN",
+            "line": 10,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L13-d54d06fe",
+            "op": "SGN",
+            "line": 13,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L14-5c250bc8",
+            "op": "SGN",
+            "line": 14,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L16-c2446f3c",
+            "op": "SGN",
+            "line": 16,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L17-b34ff357",
+            "op": "SGN",
+            "line": 17,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L20-f0e65aed",
+            "op": "SGN",
+            "line": 20,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L21-a1e75f44",
+            "op": "SGN",
+            "line": 21,
+            "old": "signed",
+            "new": "",
+            "desc": "delete 'signed' keyword",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "SGN-fx_requant.sv-L32-b5ed45a3",
+            "op": "SGN",
+            "line": 32,
+            "old": "$signed",
+            "new": "",
+            "desc": "delete $signed",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "CR-fx_requant.sv-L32-298d4b5a",
+            "op": "CR",
+            "line": 32,
+            "old": "48",
+            "new": "47",
+            "desc": "constant 48 -> 47",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "ROR-fx_requant.sv-L33-9d3746cf",
+            "op": "ROR",
+            "line": 33,
+            "old": ">",
+            "new": ">=",
+            "desc": "'>' -> '>='",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "CR-fx_requant.sv-L33-093d6b1d",
+            "op": "CR",
+            "line": 33,
+            "old": "50'sd127",
+            "new": "50'sd126",
+            "desc": "constant 50'sd127 -> 50'sd126",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "ROR-fx_requant.sv-L35-94383878",
+            "op": "ROR",
+            "line": 35,
+            "old": "<",
+            "new": "<=",
+            "desc": "'<' -> '<='",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "CR-fx_requant.sv-L35-3f05d993",
+            "op": "CR",
+            "line": 35,
+            "old": "50'sd128",
+            "new": "50'sd127",
+            "desc": "constant 50'sd128 -> 50'sd127",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          },
+          {
+            "id": "UOD-fx_requant.sv-L36-f549acb5",
+            "op": "UOD",
+            "line": 36,
+            "old": "-",
+            "new": "",
+            "desc": "delete unary '-'",
+            "class": "equivalent",
+            "method": "yosys equiv_simple/equiv_induct",
+            "note": null
+          }
+        ]
+      },
+      "learning": {
+        "escapes_before": 0
+      }
+    }
+  },
+  "note": "fixtures are stand-ins written to exercise the agent; not Forge RTL, not Build 6",
+  "secs": 251.0,
+  "result": "PASS"
+}

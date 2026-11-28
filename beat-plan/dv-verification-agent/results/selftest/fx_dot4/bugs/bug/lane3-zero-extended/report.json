@@ -1,0 +1,352 @@
+{
+  "block": "fx_dot4",
+  "top": "fx_dot4",
+  "manifest": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_dot4/manifest.toml",
+  "seed": 1,
+  "rtl": [
+    {
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/bug/lane3-zero-extended/rtl/fx_dot4.sv",
+      "sha256": "8037312ac9d6f37299270edfe5bfd18108b876864f2dffc0d3da5d73bb7cd042"
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "checks": {
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "structural": {
+      "status": "pass",
+      "errors": 0,
+      "risk_warnings": 0,
+      "style_warnings": 0,
+      "waived": 0,
+      "issues": []
+    },
+    "sim": {
+      "iverilog": {
+        "simulator": "iverilog",
+        "compiled": true,
+        "finished": true,
+        "secs": 0.13,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 1784,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/bug/lane3-zero-extended/run_iverilog/iverilog_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 1784,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 0,
+              "port": "y",
+              "expected": -1431657750,
+              "expected_hex": null,
+              "got": "aaaab2ea",
+              "got_int": -1431653654,
+              "xor_hex": "0x1000",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 2,
+              "port": "y",
+              "expected": -2147461634,
+              "expected_hex": null,
+              "got": "7ffffffe",
+              "got_int": 2147483646,
+              "xor_hex": "0xffffaa00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -2147475520,
+              "expected_hex": null,
+              "got": "7fffa0c0",
+              "got_int": 2147459264,
+              "xor_hex": "0xffffbf00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 9,
+              "port": "y",
+              "expected": -2147483392,
+              "expected_hex": null,
+              "got": "7fffff00",
+              "got_int": 2147483392,
+              "xor_hex": "0xfffffe00",
+              "hint": "sign flipped: negation or subtract/add swapped"
+            },
+            {
+              "idx": 10,
+              "port": "y",
+              "expected": -536870399,
+              "expected_hex": null,
+              "got": "dfff8201",
+              "got_int": -536903167,
+              "xor_hex": "0x3fff8000",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 12,
+              "port": "y",
+              "expected": 536849239,
+              "expected_hex": null,
+              "got": "1fffea57",
+              "got_int": 536865367,
+              "xor_hex": "0x4100",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 14,
+              "port": "y",
+              "expected": -65788,
+              "expected_hex": null,
+              "got": "ffff3e04",
+              "got_int": -49660,
+              "xor_hex": "0x1c100",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 16,
+              "port": "y",
+              "expected": -2147467394,
+              "expected_hex": null,
+              "got": "7fffc07e",
+              "got_int": 2147467390,
+              "xor_hex": "0xffffff00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 19,
+              "port": "y",
+              "expected": 536902916,
+              "expected_hex": null,
+              "got": "20003e04",
+              "got_int": 536886788,
+              "xor_hex": "0x4300",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 21,
+              "port": "y",
+              "expected": 536860371,
+              "expected_hex": null,
+              "got": "20002bd3",
+              "got_int": 536882131,
+              "xor_hex": "0x3ffffd00",
+              "hint": "value differs: check the datapath against the golden model"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      },
+      "verilator": {
+        "simulator": "verilator",
+        "compiled": true,
+        "finished": true,
+        "secs": 8.22,
+        "tb_result": {
+          "outputs": 4024,
+          "expected": 4024,
+          "mismatches": 1784,
+          "extra": 0,
+          "missing": 0,
+          "timeout": 0,
+          "xctl": 0,
+          "consumed": 4024,
+          "proto": 0
+        },
+        "out_file": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/bug/lane3-zero-extended/run_verilator/verilator_out.txt",
+        "compare": {
+          "expected_beats": 4024,
+          "observed_beats": 4024,
+          "mismatch_beats": 1784,
+          "x_beats": 0,
+          "missing": 0,
+          "extra": 0,
+          "first_mismatches": [
+            {
+              "idx": 0,
+              "port": "y",
+              "expected": -1431657750,
+              "expected_hex": null,
+              "got": "aaaab2ea",
+              "got_int": -1431653654,
+              "xor_hex": "0x1000",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 2,
+              "port": "y",
+              "expected": -2147461634,
+              "expected_hex": null,
+              "got": "7ffffffe",
+              "got_int": 2147483646,
+              "xor_hex": "0xffffaa00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 5,
+              "port": "y",
+              "expected": -2147475520,
+              "expected_hex": null,
+              "got": "7fffa0c0",
+              "got_int": 2147459264,
+              "xor_hex": "0xffffbf00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 9,
+              "port": "y",
+              "expected": -2147483392,
+              "expected_hex": null,
+              "got": "7fffff00",
+              "got_int": 2147483392,
+              "xor_hex": "0xfffffe00",
+              "hint": "sign flipped: negation or subtract/add swapped"
+            },
+            {
+              "idx": 10,
+              "port": "y",
+              "expected": -536870399,
+              "expected_hex": null,
+              "got": "dfff8201",
+              "got_int": -536903167,
+              "xor_hex": "0x3fff8000",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 12,
+              "port": "y",
+              "expected": 536849239,
+              "expected_hex": null,
+              "got": "1fffea57",
+              "got_int": 536865367,
+              "xor_hex": "0x4100",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 14,
+              "port": "y",
+              "expected": -65788,
+              "expected_hex": null,
+              "got": "ffff3e04",
+              "got_int": -49660,
+              "xor_hex": "0x1c100",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 16,
+              "port": "y",
+              "expected": -2147467394,
+              "expected_hex": null,
+              "got": "7fffc07e",
+              "got_int": 2147467390,
+              "xor_hex": "0xffffff00",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 19,
+              "port": "y",
+              "expected": 536902916,
+              "expected_hex": null,
+              "got": "20003e04",
+              "got_int": 536886788,
+              "xor_hex": "0x4300",
+              "hint": "value differs: check the datapath against the golden model"
+            },
+            {
+              "idx": 21,
+              "port": "y",
+              "expected": 536860371,
+              "expected_hex": null,
+              "got": "20002bd3",
+              "got_int": 536882131,
+              "xor_hex": "0x3ffffd00",
+              "hint": "value differs: check the datapath against the golden model"
+            }
+          ]
+        },
+        "tb_python_agree": true,
+        "bit_exact": false,
+        "status": "fail"
+      }
+    }
+  },
+  "numbers": [
+    {
+      "name": "golden model line coverage",
+      "value": 100.0,
+      "unit": "%",
+      "kind": "measured",
+      "source": "sys.settrace over golden model"
+    },
+    {
+      "name": "iverilog: output beats bit-exact",
+      "value": "2240 of 4024",
+      "kind": "measured",
+      "source": "run_iverilog/iverilog_out.txt"
+    },
+    {
+      "name": "verilator: output beats bit-exact",
+      "value": "2240 of 4024",
+      "kind": "measured",
+      "source": "run_verilator/verilator_out.txt"
+    }
+  ],
+  "golden": {
+    "model": "golden.py:dot4",
+    "style": "map",
+    "coverage": {
+      "ratio": 1.0,
+      "covered_lines": 4,
+      "uncovered_lines": [],
+      "functions_never_called": []
+    }
+  },
+  "stimulus": {
+    "input_beats": 4024,
+    "output_beats": 4024,
+    "sources": {
+      "directed": 0,
+      "formal_counterexample": 0,
+      "corner_sample": 1024,
+      "random_mix": 3000
+    },
+    "idle_cycles": 3621,
+    "stall_cycles": 0,
+    "testbench": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_dot4/bugs/tb/tb.sv"
+  },
+  "verdict": "FAIL",
+  "reasons": [
+    "iverilog: 1784 of 4024 output beats differ from the golden model",
+    "verilator: 1784 of 4024 output beats differ from the golden model"
+  ]
+}

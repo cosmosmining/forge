@@ -1,0 +1,26 @@
+# Learning-loop demo: the fx_mac_stream self-test fixture with a deliberately WEAK stimulus
+# (3 random packets, no corner packets). Not Forge RTL, not Build 6.
+[block]
+name = "weak_mac"
+top = "fx_mac_stream"
+rtl = ["../../fixtures/fx_mac_stream/rtl/fx_mac_stream.sv"]
+
+[interface]
+protocol = "stream"
+clock = "clk"
+reset = "rst_n"
+reset_active_low = true
+in_valid = "in_valid"
+in_ready = "in_ready"
+out_valid = "out_valid"
+out_ready = "out_ready"
+in_last = "in_last"
+
+[golden]
+model = "../../fixtures/fx_mac_stream/golden.py:mac"
+style = "stream"
+
+[stimulus]
+packets = 3
+max_packet = 4
+corner_packets = false

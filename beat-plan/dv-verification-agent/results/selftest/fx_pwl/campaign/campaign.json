@@ -1,0 +1,2060 @@
+{
+  "block": "fx_pwl",
+  "top": "fx_pwl",
+  "seed": 1,
+  "simulators": [
+    "iverilog"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "baseline_verdict": "PASS",
+  "baseline_reasons": [],
+  "run": 95,
+  "stillborn": 0,
+  "errors": 0,
+  "compiled": 95,
+  "killed": 87,
+  "killed_functional": 87,
+  "killed_lint_only": 0,
+  "survived": 8,
+  "survivor_classes": {
+    "equivalent": 8
+  },
+  "escapes": 0,
+  "unexplained": 0,
+  "score": 1.0,
+  "by_operator": {
+    "SGN": {
+      "total": 9,
+      "stillborn": 0,
+      "killed": 2,
+      "survived": 7
+    },
+    "STMT": {
+      "total": 23,
+      "stillborn": 0,
+      "killed": 23,
+      "survived": 0
+    },
+    "SLICE": {
+      "total": 4,
+      "stillborn": 0,
+      "killed": 4,
+      "survived": 0
+    },
+    "CR": {
+      "total": 51,
+      "stillborn": 0,
+      "killed": 50,
+      "survived": 1
+    },
+    "UOD": {
+      "total": 5,
+      "stillborn": 0,
+      "killed": 5,
+      "survived": 0
+    },
+    "AOR": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "SOR": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    },
+    "EDGE": {
+      "total": 1,
+      "stillborn": 0,
+      "killed": 1,
+      "survived": 0
+    }
+  },
+  "generated": 95,
+  "secs": 26.3,
+  "mutants": [
+    {
+      "id": "SGN-fx_pwl.sv-L10-2e96bac4",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 10,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 1.02,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L10-2e96bac4",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L10-2e96bac4/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L11-de1ccc74",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 11,
+      "col": 16,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 1.05,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L11-de1ccc74",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L11-de1ccc74/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L15-0a17e4c5",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 15,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 1.05,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L15-0a17e4c5",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L15-0a17e4c5/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L16-4e2e5085",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 16,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 1.05,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L16-4e2e5085",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L16-4e2e5085/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L17-195448bf",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 17,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.97,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L17-195448bf",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L17-195448bf/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L18-17cbe832",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 18,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.97,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L18-17cbe832",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L18-17cbe832/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L19-e0e47cab",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 19,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.99,
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L19-e0e47cab"
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L20-505b8752",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 20,
+      "col": 9,
+      "old": "signed",
+      "new": "",
+      "desc": "delete 'signed' keyword",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 1.02,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L20-505b8752",
+      "formal": {
+        "class": "equivalent",
+        "method": "yosys equiv_simple/equiv_induct",
+        "script": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/SGN-fx_pwl.sv-L20-505b8752/equiv/equiv.ys"
+      }
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L22-0e1ba999",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 22,
+      "col": 3,
+      "old": "assign seg     = x[15:13];",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.92,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:13: Signal is not driven: 'seg'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\seg [2] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\seg [1] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\seg [0] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L22-0e1ba999"
+    },
+    {
+      "id": "SLICE-fx_pwl.sv-L22-1b96c2d8",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 22,
+      "col": 21,
+      "old": "[15:13]",
+      "new": "[14:12]",
+      "desc": "part-select [15:13] -> [14:12]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.82,
+      "reasons": [
+        "iverilog: 57344 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SLICE-fx_pwl.sv-L22-1b96c2d8"
+    },
+    {
+      "id": "SLICE-fx_pwl.sv-L22-1a73decd",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 22,
+      "col": 21,
+      "old": "[15:13]",
+      "new": "[16:14]",
+      "desc": "part-select [15:13] -> [16:14]",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.91,
+      "reasons": [
+        "verilator risk SELRANGE fx_pwl.sv:22: Selection index out of range: 16:14 outside 15:0",
+        "iverilog: 57344 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SLICE-fx_pwl.sv-L22-1a73decd"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L23-2e3bf61f",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 23,
+      "col": 3,
+      "old": "assign frac    = x[12:0];",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.58,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:14: Signal is not driven: 'frac'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [12] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [11] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [10] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L23-2e3bf61f"
+    },
+    {
+      "id": "SLICE-fx_pwl.sv-L23-2662c347",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 23,
+      "col": 21,
+      "old": "[12:0]",
+      "new": "[13:1]",
+      "desc": "part-select [12:0] -> [13:1]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.88,
+      "reasons": [
+        "iverilog: 65278 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SLICE-fx_pwl.sv-L23-2662c347"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L24-37e33446",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 24,
+      "col": 3,
+      "old": "assign slope_x = {{15{slope[7]}}, slope};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.84,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:17: Signal is not driven: 'slope_x'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\slope_x [22] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\slope_x [21] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\slope_x [20] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L24-37e33446"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L24-c869f120",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 24,
+      "col": 31,
+      "old": "7",
+      "new": "6",
+      "desc": "constant 7 -> 6",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.79,
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L24-c869f120"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L24-a76761e8",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 24,
+      "col": 31,
+      "old": "7",
+      "new": "8",
+      "desc": "constant 7 -> 8",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.85,
+      "reasons": [
+        "verilator risk SELRANGE fx_pwl.sv:24: Selection index out of range: 8:8 outside 7:0",
+        "iverilog: 65536 of 65536 output beats differ from the golden model",
+        "iverilog: 65536 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L24-a76761e8"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L25-849c5a2e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 25,
+      "col": 3,
+      "old": "assign frac_x  = {10'd0, frac};",
+      "new": "",
+      "desc": "delete assign statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.8,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:18: Signal is not driven: 'frac_x'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [22] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [21] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\frac_x [20] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L25-849c5a2e"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L25-67f0b091",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 25,
+      "col": 21,
+      "old": "10'd0",
+      "new": "10'd1",
+      "desc": "constant 10'd0 -> 10'd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.89,
+      "reasons": [
+        "iverilog: 65536 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L25-67f0b091"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L29-893c4854",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 7,
+      "old": "3'd0",
+      "new": "3'd1",
+      "desc": "constant 3'd0 -> 3'd1",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.79,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:30: Case conditions overlap",
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L29-893c4854"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L29-ae681998",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 22,
+      "old": "base = 16'sd0;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.83,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L29-ae681998"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L29-a838bffc",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 29,
+      "old": "16'sd0",
+      "new": "16'sd1",
+      "desc": "constant 16'sd0 -> 16'sd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L29-a838bffc"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L29-bcc46bec",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 42,
+      "old": "slope = 8'sd24;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.73,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L29-bcc46bec"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L29-3777d76a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 50,
+      "old": "8'sd24",
+      "new": "8'sd23",
+      "desc": "constant 8'sd24 -> 8'sd23",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.89,
+      "reasons": [
+        "iverilog: 8067 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L29-3777d76a"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L29-2551693d",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 29,
+      "col": 50,
+      "old": "8'sd24",
+      "new": "8'sd25",
+      "desc": "constant 8'sd24 -> 8'sd25",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.89,
+      "reasons": [
+        "iverilog: 8060 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L29-2551693d"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-efc74023",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 7,
+      "old": "3'd1",
+      "new": "3'd0",
+      "desc": "constant 3'd1 -> 3'd0",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.19,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:30: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-efc74023"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-f310d00a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 7,
+      "old": "3'd1",
+      "new": "3'd2",
+      "desc": "constant 3'd1 -> 3'd2",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.93,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:31: Case conditions overlap",
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-f310d00a"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L30-d035f06f",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 22,
+      "old": "base = 16'sd768;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L30-d035f06f"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-ab64c7f5",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 29,
+      "old": "16'sd768",
+      "new": "16'sd767",
+      "desc": "constant 16'sd768 -> 16'sd767",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.94,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-ab64c7f5"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-bfd1009c",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 29,
+      "old": "16'sd768",
+      "new": "16'sd769",
+      "desc": "constant 16'sd768 -> 16'sd769",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-bfd1009c"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L30-309f472d",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 42,
+      "old": "slope = 8'sd30;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.92,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L30-309f472d"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-138d937c",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 50,
+      "old": "8'sd30",
+      "new": "8'sd29",
+      "desc": "constant 8'sd30 -> 8'sd29",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.74,
+      "reasons": [
+        "iverilog: 8064 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-138d937c"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L30-58868785",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 30,
+      "col": 50,
+      "old": "8'sd30",
+      "new": "8'sd31",
+      "desc": "constant 8'sd30 -> 8'sd31",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.99,
+      "reasons": [
+        "iverilog: 8063 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L30-58868785"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-24a35500",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 7,
+      "old": "3'd2",
+      "new": "3'd1",
+      "desc": "constant 3'd2 -> 3'd1",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.02,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:31: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-24a35500"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-d140aaa7",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 7,
+      "old": "3'd2",
+      "new": "3'd3",
+      "desc": "constant 3'd2 -> 3'd3",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.99,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:32: Case conditions overlap",
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-d140aaa7"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L31-1f83d1d7",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 22,
+      "old": "base = 16'sd1728;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L31-1f83d1d7"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-99c42206",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 29,
+      "old": "16'sd1728",
+      "new": "16'sd1727",
+      "desc": "constant 16'sd1728 -> 16'sd1727",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.01,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-99c42206"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-0c52b788",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 29,
+      "old": "16'sd1728",
+      "new": "16'sd1729",
+      "desc": "constant 16'sd1728 -> 16'sd1729",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-0c52b788"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L31-6d7cb353",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 42,
+      "old": "slope = 8'sd31;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L31-6d7cb353"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-4bfd0596",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 50,
+      "old": "8'sd31",
+      "new": "8'sd30",
+      "desc": "constant 8'sd31 -> 8'sd30",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "iverilog: 8063 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-4bfd0596"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L31-07edb580",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 31,
+      "col": 50,
+      "old": "8'sd31",
+      "new": "8'sd32",
+      "desc": "constant 8'sd31 -> 8'sd32",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "iverilog: 8079 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L31-07edb580"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-0d15d7e9",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 7,
+      "old": "3'd3",
+      "new": "3'd2",
+      "desc": "constant 3'd3 -> 3'd2",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:32: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-0d15d7e9"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-47baa802",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 7,
+      "old": "3'd3",
+      "new": "3'd4",
+      "desc": "constant 3'd3 -> 3'd4",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:33: Case conditions overlap",
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-47baa802"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L32-8179e23b",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 22,
+      "old": "base = 16'sd2720;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.94,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L32-8179e23b"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-32ac267d",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 29,
+      "old": "16'sd2720",
+      "new": "16'sd2719",
+      "desc": "constant 16'sd2720 -> 16'sd2719",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-32ac267d"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-eb18cf9b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 29,
+      "old": "16'sd2720",
+      "new": "16'sd2721",
+      "desc": "constant 16'sd2720 -> 16'sd2721",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.1,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-eb18cf9b"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L32-6327f98e",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 42,
+      "old": "slope = 8'sd32;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 1.02,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L32-6327f98e"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-1a9cff08",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 50,
+      "old": "8'sd32",
+      "new": "8'sd31",
+      "desc": "constant 8'sd32 -> 8'sd31",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.05,
+      "reasons": [
+        "iverilog: 8079 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-1a9cff08"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L32-6ac4054d",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 32,
+      "col": 50,
+      "old": "8'sd32",
+      "new": "8'sd33",
+      "desc": "constant 8'sd32 -> 8'sd33",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.08,
+      "reasons": [
+        "iverilog: 8048 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L32-6ac4054d"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-ac756882",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 7,
+      "old": "3'd4",
+      "new": "3'd3",
+      "desc": "constant 3'd4 -> 3'd3",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.87,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:33: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-ac756882"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-85cba82a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 7,
+      "old": "3'd4",
+      "new": "3'd5",
+      "desc": "constant 3'd4 -> 3'd5",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.06,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:34: Case conditions overlap",
+        "iverilog: 16299 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-85cba82a"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L33-4f694e08",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 22,
+      "old": "base = -16'sd18000;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 1.03,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L33-4f694e08"
+    },
+    {
+      "id": "UOD-fx_pwl.sv-L33-daa27c26",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 29,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.02,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/UOD-fx_pwl.sv-L33-daa27c26"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-9a057243",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 30,
+      "old": "16'sd18000",
+      "new": "16'sd17999",
+      "desc": "constant 16'sd18000 -> 16'sd17999",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.04,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-9a057243"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-1e8584fd",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 30,
+      "old": "16'sd18000",
+      "new": "16'sd18001",
+      "desc": "constant 16'sd18000 -> 16'sd18001",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-1e8584fd"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L33-61690fe8",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 42,
+      "old": "slope = -8'sd2;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.9,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope [6:0]"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L33-61690fe8"
+    },
+    {
+      "id": "UOD-fx_pwl.sv-L33-3eada1dc",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 50,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.84,
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/UOD-fx_pwl.sv-L33-3eada1dc"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-aa0ae0c0",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 51,
+      "old": "8'sd2",
+      "new": "8'sd1",
+      "desc": "constant 8'sd2 -> 8'sd1",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.06,
+      "reasons": [
+        "iverilog: 8063 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-aa0ae0c0"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L33-7eb5efc9",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 33,
+      "col": 51,
+      "old": "8'sd2",
+      "new": "8'sd3",
+      "desc": "constant 8'sd2 -> 8'sd3",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.01,
+      "reasons": [
+        "iverilog: 8064 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L33-7eb5efc9"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-34f7226a",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 7,
+      "old": "3'd5",
+      "new": "3'd4",
+      "desc": "constant 3'd5 -> 3'd4",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:34: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-34f7226a"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-2fc10024",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 7,
+      "old": "3'd5",
+      "new": "3'd6",
+      "desc": "constant 3'd5 -> 3'd6",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.98,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:35: Case conditions overlap",
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-2fc10024"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L34-134bcfc4",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 22,
+      "old": "base = -16'sd18064;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 1.04,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L34-134bcfc4"
+    },
+    {
+      "id": "UOD-fx_pwl.sv-L34-eb417fc0",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 29,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.98,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/UOD-fx_pwl.sv-L34-eb417fc0"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-1b906abc",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 30,
+      "old": "16'sd18064",
+      "new": "16'sd18063",
+      "desc": "constant 16'sd18064 -> 16'sd18063",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-1b906abc"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-0b0d1fd0",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 30,
+      "old": "16'sd18064",
+      "new": "16'sd18065",
+      "desc": "constant 16'sd18064 -> 16'sd18065",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.68,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-0b0d1fd0"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L34-f46ed083",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 42,
+      "old": "slope = 8'sd3;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.8,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L34-f46ed083"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-ce254283",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 50,
+      "old": "8'sd3",
+      "new": "8'sd2",
+      "desc": "constant 8'sd3 -> 8'sd2",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.93,
+      "reasons": [
+        "iverilog: 8063 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-ce254283"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L34-52d48f2f",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 34,
+      "col": 50,
+      "old": "8'sd3",
+      "new": "8'sd4",
+      "desc": "constant 8'sd3 -> 8'sd4",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "iverilog: 8065 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L34-52d48f2f"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-e9fef2f0",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 7,
+      "old": "3'd6",
+      "new": "3'd5",
+      "desc": "constant 3'd6 -> 3'd5",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.93,
+      "reasons": [
+        "verilator risk CASEOVERLAP fx_pwl.sv:35: Case conditions overlap",
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-e9fef2f0"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-4ae1bcda",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 7,
+      "old": "3'd6",
+      "new": "3'd7",
+      "desc": "constant 3'd6 -> 3'd7",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.76,
+      "reasons": [
+        "iverilog: 16384 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-4ae1bcda"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L35-c48a4127",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 22,
+      "old": "base = -16'sd17968;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.94,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L35-c48a4127"
+    },
+    {
+      "id": "UOD-fx_pwl.sv-L35-d9c3c3ee",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 29,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.94,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/UOD-fx_pwl.sv-L35-d9c3c3ee"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-39d434c5",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 30,
+      "old": "16'sd17968",
+      "new": "16'sd17967",
+      "desc": "constant 16'sd17968 -> 16'sd17967",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.94,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-39d434c5"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-1f1b1b83",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 30,
+      "old": "16'sd17968",
+      "new": "16'sd17969",
+      "desc": "constant 16'sd17968 -> 16'sd17969",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.9,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-1f1b1b83"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L35-52d1c096",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 42,
+      "old": "slope = 8'sd60;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L35-52d1c096"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-5f29e693",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 50,
+      "old": "8'sd60",
+      "new": "8'sd59",
+      "desc": "constant 8'sd60 -> 8'sd59",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "iverilog: 8065 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-5f29e693"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L35-cf28f913",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 35,
+      "col": 50,
+      "old": "8'sd60",
+      "new": "8'sd61",
+      "desc": "constant 8'sd60 -> 8'sd61",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "iverilog: 8062 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L35-cf28f913"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L36-2adfc78a",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 22,
+      "old": "base = -16'sd16048;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.98,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.base' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\base [3:0]"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L36-2adfc78a"
+    },
+    {
+      "id": "UOD-fx_pwl.sv-L36-b092bf2a",
+      "op": "UOD",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 29,
+      "old": "-",
+      "new": "",
+      "desc": "delete unary '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.66,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/UOD-fx_pwl.sv-L36-b092bf2a"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L36-61d15b42",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 30,
+      "old": "16'sd16048",
+      "new": "16'sd16047",
+      "desc": "constant 16'sd16048 -> 16'sd16047",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L36-61d15b42"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L36-ae3c9562",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 30,
+      "old": "16'sd16048",
+      "new": "16'sd16049",
+      "desc": "constant 16'sd16048 -> 16'sd16049",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.95,
+      "reasons": [
+        "iverilog: 8192 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L36-ae3c9562"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L36-72cf8d0a",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 42,
+      "old": "slope = 8'sd100;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 1.02,
+      "reasons": [
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.slope' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.prod' (not all control paths of combinational always assign a value)",
+        "verilator risk LATCH fx_pwl.sv:27: Latch inferred for signal 'fx_pwl.sum' (not all control paths of combinational always assign a value)",
+        "yosys risk LATCH: latch inferred for \\fx_pwl.\\slope"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L36-72cf8d0a"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L36-5bf523bd",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 50,
+      "old": "8'sd100",
+      "new": "8'sd101",
+      "desc": "constant 8'sd100 -> 8'sd101",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "iverilog: 8062 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L36-5bf523bd"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L36-db61316b",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 36,
+      "col": 50,
+      "old": "8'sd100",
+      "new": "8'sd99",
+      "desc": "constant 8'sd100 -> 8'sd99",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.0,
+      "reasons": [
+        "iverilog: 8065 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L36-db61316b"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L38-f3abd75a",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 38,
+      "col": 5,
+      "old": "prod = slope_x * frac_x;",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.73,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:19: Signal is not driven: 'prod'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\prod [22] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\prod [21] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\prod [20] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L38-f3abd75a"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L39-06ab7414",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 5,
+      "old": "sum  = $signed({{7{base[15]}}, base}) + (prod >>> 8);",
+      "new": ";",
+      "desc": "delete blocking statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.96,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:20: Bits of signal are not driven: 'sum'[15:0]",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\sum [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\sum [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\sum [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L39-06ab7414"
+    },
+    {
+      "id": "SGN-fx_pwl.sv-L39-ee94ed8f",
+      "op": "SGN",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 12,
+      "old": "$signed",
+      "new": "",
+      "desc": "delete $signed",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.91,
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SGN-fx_pwl.sv-L39-ee94ed8f"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L39-5e8d19b9",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 29,
+      "old": "15",
+      "new": "14",
+      "desc": "constant 15 -> 14",
+      "status": "survived",
+      "killed_by": [],
+      "secs": 0.87,
+      "reasons": [],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L39-5e8d19b9",
+      "formal": {
+        "yosys_equiv": "unproven",
+        "cycle": {
+          "status": "bounded",
+          "mode": "bmc",
+          "depth": 20,
+          "detail": null,
+          "sby": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/formal/CR-fx_pwl.sv-L39-5e8d19b9/sby_cycle/eq.sby"
+        },
+        "prove": {
+          "status": "proven",
+          "mode": "prove",
+          "engine": "abc pdr",
+          "detail": null
+        },
+        "class": "equivalent",
+        "method": "sby abc pdr (unbounded)"
+      }
+    },
+    {
+      "id": "CR-fx_pwl.sv-L39-eb48fd20",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 29,
+      "old": "15",
+      "new": "16",
+      "desc": "constant 15 -> 16",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "sim:iverilog"
+      ],
+      "secs": 0.9,
+      "reasons": [
+        "verilator risk SELRANGE fx_pwl.sv:39: Selection index out of range: 16:16 outside 15:0",
+        "iverilog: 65536 of 65536 output beats differ from the golden model",
+        "iverilog: 65536 output beats contain X/Z"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L39-eb48fd20"
+    },
+    {
+      "id": "AOR-fx_pwl.sv-L39-6aedd6c3",
+      "op": "AOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 43,
+      "old": "+",
+      "new": "-",
+      "desc": "binary '+' -> '-'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.03,
+      "reasons": [
+        "iverilog: 65404 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/AOR-fx_pwl.sv-L39-6aedd6c3"
+    },
+    {
+      "id": "SOR-fx_pwl.sv-L39-71aa0e9b",
+      "op": "SOR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 51,
+      "old": ">>>",
+      "new": ">>",
+      "desc": "'>>>' -> '>>'",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.97,
+      "reasons": [
+        "iverilog: 8191 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SOR-fx_pwl.sv-L39-71aa0e9b"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L39-745b9042",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 55,
+      "old": "8",
+      "new": "7",
+      "desc": "constant 8 -> 7",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 1.01,
+      "reasons": [
+        "iverilog: 65403 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L39-745b9042"
+    },
+    {
+      "id": "CR-fx_pwl.sv-L39-05153215",
+      "op": "CR",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 39,
+      "col": 55,
+      "old": "8",
+      "new": "9",
+      "desc": "constant 8 -> 9",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.98,
+      "reasons": [
+        "iverilog: 65276 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/CR-fx_pwl.sv-L39-05153215"
+    },
+    {
+      "id": "EDGE-fx_pwl.sv-L42-acccf35f",
+      "op": "EDGE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 42,
+      "col": 15,
+      "old": "posedge",
+      "new": "negedge",
+      "desc": "posedge -> negedge",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.86,
+      "reasons": [
+        "iverilog: 9024 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/EDGE-fx_pwl.sv-L42-acccf35f"
+    },
+    {
+      "id": "STMT-fx_pwl.sv-L42-2d3541f0",
+      "op": "STMT",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 42,
+      "col": 28,
+      "old": "y <= sum[15:0];",
+      "new": ";",
+      "desc": "delete nba statement",
+      "status": "killed",
+      "killed_by": [
+        "lint",
+        "structural",
+        "sim:iverilog"
+      ],
+      "secs": 0.71,
+      "reasons": [
+        "verilator risk UNDRIVEN fx_pwl.sv:11: Signal is not driven: 'y'",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\y [15] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\y [14] is used but has no driver.",
+        "yosys risk UNDRIVEN: Warning: Wire fx_pwl.\\y [13] is used but has no driver."
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/STMT-fx_pwl.sv-L42-2d3541f0"
+    },
+    {
+      "id": "SLICE-fx_pwl.sv-L42-0536b97a",
+      "op": "SLICE",
+      "file": "/home/user/forge/beat-plan/dv-verification-agent/selftest/fixtures/fx_pwl/rtl/fx_pwl.sv",
+      "line": 42,
+      "col": 36,
+      "old": "[15:0]",
+      "new": "[16:1]",
+      "desc": "part-select [15:0] -> [16:1]",
+      "status": "killed",
+      "killed_by": [
+        "sim:iverilog"
+      ],
+      "secs": 0.85,
+      "reasons": [
+        "iverilog: 65525 of 65536 output beats differ from the golden model"
+      ],
+      "work": "/home/user/forge/beat-plan/dv-verification-agent/results/selftest/fx_pwl/campaign/mutants/SLICE-fx_pwl.sv-L42-0536b97a"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "block": "fx_requant",
+  "seed": 1,
+  "simulators": [
+    "iverilog",
+    "verilator"
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71+post (git sha1 v0.71, Release, GNU /nix/store/ii6p6kc1brz3vycqg88q4zb4xd2dmqwp-gcc-wrapper-16.2.0/bin/g++ 16.2.0)",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+    "verilator": "Verilator 5.054 2026-11-01 rev v5.054",
+    "sby": "/nix/var/nix/profiles/default/bin/sby",
+    "yices-smt2": "Yices 2.7.0",
+    "z3": "Z3 version 5.4.1 - 64 bit",
+    "bitwuzla": "0.9.1"
+  },
+  "entries": [
+    {
+      "kind": "bug",
+      "id": "round-constant-position",
+      "why": "rounding constant one bit too high: 2**shift instead of 2**(shift-1)",
+      "file": "rtl/fx_requant.sv",
+      "find": "(49'sd1 <<< (shift - 5'd1))",
+      "replace": "(49'sd1 <<< shift)",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 586 of 4024 output beats differ from the golden model",
+        "verilator: 586 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 5 y expected -16 got 0xf1 (off by one: rounding constant, rounding direction or truncation)"
+    },
+    {
+      "kind": "bug",
+      "id": "logical-shift",
+      "why": "logical instead of arithmetic shift: negative values lose their sign",
+      "file": "rtl/fx_requant.sv",
+      "find": "shifted = (prod + rnd) >>> shift;",
+      "replace": "shifted = (prod + rnd) >> shift;",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 1464 of 4024 output beats differ from the golden model",
+        "verilator: 1464 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 0 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)"
+    },
+    {
+      "kind": "bug",
+      "id": "clamp-high-bound",
+      "why": "upper clamp off by one: 128 wraps to -128",
+      "file": "rtl/fx_requant.sv",
+      "find": "if (biased > 50'sd127)",
+      "replace": "if (biased > 50'sd128)",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 5 of 4024 output beats differ from the golden model",
+        "verilator: 5 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 561 y expected 127 got 0x80 (golden value is saturated: check clamp bounds and overflow detection)"
+    },
+    {
+      "kind": "bug",
+      "id": "zero-point-zero-extended",
+      "why": "negative zero points become large positive offsets",
+      "file": "rtl/fx_requant.sv",
+      "find": "assign zp_x   = {{42{zp[7]}}, zp};",
+      "replace": "assign zp_x   = {42'd0, zp};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 494 of 4024 output beats differ from the golden model",
+        "verilator: 494 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 4 y expected -127 got 0x7f (RTL saturated but golden did not: clamp bound or compare wrong)"
+    },
+    {
+      "kind": "bug",
+      "id": "shift-zero-not-special",
+      "why": "shift = 0 not special-cased: rounding term wraps to 2**31",
+      "file": "rtl/fx_requant.sv",
+      "find": "rnd     = (shift == 5'd0) ? 49'sd0 : (49'sd1 <<< (shift - 5'd1));",
+      "replace": "rnd     = 49'sd1 <<< (shift - 5'd1);",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 119 of 4024 output beats differ from the golden model",
+        "verilator: 119 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 13 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)"
+    },
+    {
+      "kind": "bug",
+      "id": "multiplier-sign-extended",
+      "why": "unsigned multiplier treated as signed",
+      "file": "rtl/fx_requant.sv",
+      "find": "assign mult_x = {33'd0, mult};",
+      "replace": "assign mult_x = {{33{mult[15]}}, mult};",
+      "verdict": "FAIL",
+      "status": "killed",
+      "caught_by": [
+        "sim:iverilog",
+        "sim:verilator"
+      ],
+      "reasons": [
+        "iverilog: 1116 of 4024 output beats differ from the golden model",
+        "verilator: 1116 of 4024 output beats differ from the golden model"
+      ],
+      "expected": "FAIL",
+      "ok": true,
+      "first_mismatch": "iverilog: beat 8 y expected -128 got 0x7f (golden value is saturated: check clamp bounds and overflow detection)"
+    },
+    {
+      "kind": "benign",
+      "id": "clamp-low-rewritten",
+      "why": "same lower clamp, written differently",
+      "file": "rtl/fx_requant.sv",
+      "find": "else if (biased < -50'sd128)",
+      "replace": "else if (biased <= -50'sd129)",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    },
+    {
+      "kind": "benign",
+      "id": "round-mux-inverted",
+      "why": "same mux with the condition inverted",
+      "file": "rtl/fx_requant.sv",
+      "find": "rnd     = (shift == 5'd0) ? 49'sd0 : (49'sd1 <<< (shift - 5'd1));",
+      "replace": "rnd     = (shift != 5'd0) ? (49'sd1 <<< (shift - 5'd1)) : 49'sd0;",
+      "verdict": "PASS",
+      "status": "survived",
+      "caught_by": [],
+      "reasons": [],
+      "expected": "PASS",
+      "ok": true,
+      "first_mismatch": null
+    }
+  ],
+  "bugs_total": 6,
+  "bugs_caught": 6,
+  "benign_total": 2,
+  "benign_passed": 2
+}

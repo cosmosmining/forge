@@ -1,0 +1,15 @@
+# DV-agent self-test fixture (NOT Forge RTL, NOT Build 6).
+[block]
+name = "fx_requant"
+top = "fx_requant"
+rtl = ["rtl/fx_requant.sv"]
+
+[interface]
+protocol = "comb"
+
+[golden]
+model = "golden.py:requant"
+style = "map"
+
+[stimulus]
+vectors = 3000

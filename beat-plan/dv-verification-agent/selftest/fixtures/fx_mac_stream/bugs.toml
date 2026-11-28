@@ -1,0 +1,50 @@
+# Hand-injected bugs (must FAIL) and behaviour-preserving rewrites (must PASS) for fx_mac_stream.
+
+[[bug]]
+id = "accumulator-not-cleared"
+file = "rtl/fx_mac_stream.sv"
+find = "out_valid <= 1'b1;\n          acc_q     <= '0;"
+replace = "out_valid <= 1'b1;"
+why = "accumulator not cleared after the last beat: packets leak into each other"
+
+[[bug]]
+id = "ready-ignores-backpressure"
+file = "rtl/fx_mac_stream.sv"
+find = "assign in_ready = !out_valid || out_ready;"
+replace = "assign in_ready = 1'b1;"
+why = "input accepted while the output slot is full: results are overwritten"
+
+[[bug]]
+id = "last-beat-not-added"
+file = "rtl/fx_mac_stream.sv"
+find = "acc_out   <= sum;"
+replace = "acc_out   <= acc_q;"
+why = "the last beat's product is not added"
+
+[[bug]]
+id = "valid-never-cleared"
+file = "rtl/fx_mac_stream.sv"
+find = "if (fire_out) out_valid <= 1'b0;"
+replace = ""
+why = "out_valid stays high after the handshake: duplicate outputs"
+
+[[bug]]
+id = "product-zero-extended"
+file = "rtl/fx_mac_stream.sv"
+find = "assign sum      = acc_q + {{16{prod[15]}}, prod};"
+replace = "assign sum      = acc_q + {16'd0, prod};"
+why = "negative products zero-extended into the accumulator"
+
+[[benign]]
+id = "ready-de-morgan"
+file = "rtl/fx_mac_stream.sv"
+find = "assign in_ready = !out_valid || out_ready;"
+replace = "assign in_ready = ~(out_valid & ~out_ready);"
+why = "same ready logic by De Morgan"
+
+[[benign]]
+id = "fire-operands-swapped"
+file = "rtl/fx_mac_stream.sv"
+find = "assign fire_in  = in_valid && in_ready;"
+replace = "assign fire_in  = in_ready && in_valid;"
+why = "same handshake, operands swapped"

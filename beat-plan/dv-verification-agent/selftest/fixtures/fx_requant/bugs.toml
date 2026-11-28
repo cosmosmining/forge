@@ -1,0 +1,58 @@
+# Hand-injected bugs (each must FAIL) and behaviour-preserving rewrites (each must PASS)
+# for the fx_requant self-test fixture. One find/replace each, applied to a copy.
+
+[[bug]]
+id = "round-constant-position"
+file = "rtl/fx_requant.sv"
+find = "(49'sd1 <<< (shift - 5'd1))"
+replace = "(49'sd1 <<< shift)"
+why = "rounding constant one bit too high: 2**shift instead of 2**(shift-1)"
+
+[[bug]]
+id = "logical-shift"
+file = "rtl/fx_requant.sv"
+find = "shifted = (prod + rnd) >>> shift;"
+replace = "shifted = (prod + rnd) >> shift;"
+why = "logical instead of arithmetic shift: negative values lose their sign"
+
+[[bug]]
+id = "clamp-high-bound"
+file = "rtl/fx_requant.sv"
+find = "if (biased > 50'sd127)"
+replace = "if (biased > 50'sd128)"
+why = "upper clamp off by one: 128 wraps to -128"
+
+[[bug]]
+id = "zero-point-zero-extended"
+file = "rtl/fx_requant.sv"
+find = "assign zp_x   = {{42{zp[7]}}, zp};"
+replace = "assign zp_x   = {42'd0, zp};"
+why = "negative zero points become large positive offsets"
+
+[[bug]]
+id = "shift-zero-not-special"
+file = "rtl/fx_requant.sv"
+find = "rnd     = (shift == 5'd0) ? 49'sd0 : (49'sd1 <<< (shift - 5'd1));"
+replace = "rnd     = 49'sd1 <<< (shift - 5'd1);"
+why = "shift = 0 not special-cased: rounding term wraps to 2**31"
+
+[[bug]]
+id = "multiplier-sign-extended"
+file = "rtl/fx_requant.sv"
+find = "assign mult_x = {33'd0, mult};"
+replace = "assign mult_x = {{33{mult[15]}}, mult};"
+why = "unsigned multiplier treated as signed"
+
+[[benign]]
+id = "clamp-low-rewritten"
+file = "rtl/fx_requant.sv"
+find = "else if (biased < -50'sd128)"
+replace = "else if (biased <= -50'sd129)"
+why = "same lower clamp, written differently"
+
+[[benign]]
+id = "round-mux-inverted"
+file = "rtl/fx_requant.sv"
+find = "rnd     = (shift == 5'd0) ? 49'sd0 : (49'sd1 <<< (shift - 5'd1));"
+replace = "rnd     = (shift != 5'd0) ? (49'sd1 <<< (shift - 5'd1)) : 49'sd0;"
+why = "same mux with the condition inverted"

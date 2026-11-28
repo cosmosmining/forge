@@ -1,0 +1,76 @@
+# Block manifest template for the Forge DV agent. Copy next to a block's golden.py.
+# Paths are relative to this file. `./dv introspect RTL... --top TOP --draft manifest.toml`
+# writes a draft with the ports filled in; check every line.
+
+[block]
+name = "my_block"                 # report name
+top = "my_block"                  # top module
+rtl = ["../rtl/my_block.sv"]      # every file the top needs, in compile order
+include_dirs = []
+defines = {}                      # e.g. { SYNTHESIS = 1 }
+parameters = {}                   # top-level overrides, e.g. { LANES = 16 }
+
+[interface]
+protocol = "stream"               # comb | pipe | stream
+clock = "clk"
+reset = "rst_n"
+reset_active_low = true
+reset_cycles = 3
+in_valid = "in_valid"             # omit for blocks that take a beat every cycle
+in_ready = "in_ready"             # stream only
+out_valid = "out_valid"           # omit for fixed-latency pipes, then set `latency`
+out_ready = "out_ready"           # stream only
+in_last = "in_last"               # only with golden.style = "stream"
+# latency = 2                     # pipes without out_valid: clock edges from capture to sample
+# timeout_cycles = 0              # 0 = automatic
+
+# Per-port stimulus (inputs). Anything not listed gets the full range of its type.
+# [ports.shift]
+# range = [0, 31]                 # legal values only; also used as formal assumptions
+# [ports.act]
+# lanes = 16                      # packed lanes, lane 0 in the LSBs
+# lane_signed = true
+# lane_range = [-127, 127]
+# [ports.mode]
+# values = [0, 1, 3]
+# [ports.zp]
+# corners = [-1, 0, 1]            # extra corner values worth hitting
+# [ports.scale]
+# hold = true                     # keep the last value while in_valid is low (config-like inputs)
+# signed = true                   # override the RTL's signedness for stimulus/compare
+
+[golden]
+model = "golden.py:my_model"      # file.py:function
+style = "map"                     # map: f(beat)->outputs ; stream: f(all beats)->output beats
+
+[stimulus]
+vectors = 2000                    # map style: random beats besides corners and directed ones
+packets = 150                     # stream style with in_last
+max_packet = 16
+exhaustive_max = 65536            # enumerate all inputs when the domain is this small
+in_gap_prob = 0.3                 # idle cycles before input beats
+out_stall_prob = 0.3              # out_ready low
+junk_when_idle = true             # random data while in_valid is low
+corner_cross_max = 4096           # map style: cross product of port corner values up to this size
+corner_packets = true             # stream style: a packet for every corner value of every port
+# directed = "directed.json"      # extra beats (map) or packets (stream), e.g. learned from formal
+
+[checks]
+simulators = ["iverilog", "verilator"]
+lint = true
+lint_strict = false               # true: style warnings fail too
+structural = true
+coverage = true
+min_line_coverage = 0.0           # >0: below -> INCOMPLETE
+min_toggle_coverage = 0.0
+min_golden_coverage = 0.0
+output_protocol = true            # valid/data must hold until ready
+# Every waiver needs a reason that explains why the warning cannot change behaviour.
+waivers = []
+# waivers = [ { code = "UNUSEDSIGNAL", match = "'dbg'", reason = "debug bus, not connected in silicon" } ]
+
+[formal]
+depth = 20                        # BMC depth (cycles) when classifying surviving mutants
+engine = "smtbmc bitwuzla"
+prove_engine = "abc pdr"
+txn_check = false                 # transaction-level BMC: sound but slow; opt in per block

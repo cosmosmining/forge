@@ -1,0 +1,18 @@
+# Learning-loop demo: the fx_requant self-test fixture with a deliberately WEAK stimulus
+# (16 random vectors, no corner cross), so some injected bugs escape the random test and
+# formal has to find them. Not Forge RTL, not Build 6.
+[block]
+name = "weak_requant"
+top = "fx_requant"
+rtl = ["../../fixtures/fx_requant/rtl/fx_requant.sv"]
+
+[interface]
+protocol = "comb"
+
+[golden]
+model = "../../fixtures/fx_requant/golden.py:requant"
+style = "map"
+
+[stimulus]
+vectors = 16
+corner_cross_max = 0
