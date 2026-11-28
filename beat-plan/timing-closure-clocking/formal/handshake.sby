@@ -1,0 +1,34 @@
+# handshake.sby -- cdc_handshake, two unrelated clocks, metastability model on.
+#   prove_s2 / prove_s3   every word delivered once, in order, unchanged   expect PASS
+#   mut_no_ack_wait       source does not wait for the acknowledge        expect FAIL
+#   cover_s2              three words delivered                           expect PASS
+[tasks]
+prove_s2 proof s2
+prove_s3 proof s3
+mut_no_ack_wait mutfail s2
+cover_s2 cov s2
+
+[options]
+proof: mode prove
+mutfail: mode prove
+mutfail: expect fail
+cov: mode cover
+cov: depth 60
+multiclock on
+
+[engines]
+proof: abc pdr
+mutfail: abc pdr
+cov: smtbmc yices
+
+[script]
+read -formal -DFORMAL_META cdc_sync_bit.sv
+mutfail: read -formal -DCDC_MUTANT_NO_ACK_WAIT cdc_handshake.sv
+~mutfail: read -formal cdc_handshake.sv
+s2: chparam -set WIDTH 4 -set STAGES 2 cdc_handshake
+s3: chparam -set WIDTH 4 -set STAGES 3 cdc_handshake
+prep -top cdc_handshake
+
+[files]
+../rtl/cdc_sync_bit.sv
+../rtl/cdc_handshake.sv

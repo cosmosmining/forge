@@ -1,0 +1,34 @@
+# pulse_sync.sby -- cdc_pulse_sync, two unrelated clocks, metastability model on.
+#   prove_s2 / prove_s3   accepted events == delivered events (+ at most 1 in flight)  expect PASS
+#   mut_no_busy           acknowledge ignored                                        expect FAIL
+#   cover_s2              three events delivered                                     expect PASS
+[tasks]
+prove_s2 proof s2
+prove_s3 proof s3
+mut_no_busy mutfail s2
+cover_s2 cov s2
+
+[options]
+proof: mode prove
+mutfail: mode prove
+mutfail: expect fail
+cov: mode cover
+cov: depth 60
+multiclock on
+
+[engines]
+proof: abc pdr
+mutfail: abc pdr
+cov: smtbmc yices
+
+[script]
+read -formal -DFORMAL_META cdc_sync_bit.sv
+mutfail: read -formal -DCDC_MUTANT_NO_BUSY cdc_pulse_sync.sv
+~mutfail: read -formal cdc_pulse_sync.sv
+s2: chparam -set STAGES 2 cdc_pulse_sync
+s3: chparam -set STAGES 3 cdc_pulse_sync
+prep -top cdc_pulse_sync
+
+[files]
+../rtl/cdc_sync_bit.sv
+../rtl/cdc_pulse_sync.sv

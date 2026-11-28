@@ -1,0 +1,43 @@
+# async_fifo.sby -- cdc_async_fifo, two unrelated clocks (multiclock), unbounded proofs.
+# Tasks (sby strips one tag prefix per [script] line, so each variant has its own tag):
+#   prove_d4_s2_meta   DEPTH=4, STAGES=2, metastability model on      expect PASS
+#   prove_d8_s3_meta   DEPTH=8, STAGES=3, metastability model on      expect PASS
+#   mut_binptr_meta    binary pointers cross, metastability model on  expect FAIL
+#   mut_binptr_nometa  binary pointers cross, model off               expect PASS (control:
+#                      without the model the bug is invisible, as it is in RTL simulation)
+#   mut_full_noinv     wrong full comparison                          expect FAIL
+#   cover_d4           reach full, then drain to empty                expect PASS
+[tasks]
+prove_d4_s2_meta proof meta d4s2 fifook
+prove_d8_s3_meta proof meta d8s3 fifook
+mut_binptr_meta mutfail meta d4s2 binptr
+mut_binptr_nometa proof nometa d4s2 binptr
+mut_full_noinv mutfail meta d4s2 fullnoinv
+cover_d4 cov meta d4s2 fifook
+
+[options]
+proof: mode prove
+mutfail: mode prove
+mutfail: expect fail
+cov: mode cover
+cov: depth 40
+multiclock on
+
+[engines]
+proof: abc pdr
+mutfail: abc pdr
+cov: smtbmc yices
+
+[script]
+meta: read -formal -DFORMAL_META cdc_sync_bit.sv
+nometa: read -formal cdc_sync_bit.sv
+binptr: read -formal -DCDC_MUTANT_BINPTR cdc_async_fifo.sv
+fullnoinv: read -formal -DCDC_MUTANT_FULL_NOINV cdc_async_fifo.sv
+fifook: read -formal cdc_async_fifo.sv
+d4s2: chparam -set WIDTH 4 -set DEPTH 4 -set STAGES 2 cdc_async_fifo
+d8s3: chparam -set WIDTH 4 -set DEPTH 8 -set STAGES 3 cdc_async_fifo
+prep -top cdc_async_fifo
+
+[files]
+../rtl/cdc_sync_bit.sv
+../rtl/cdc_async_fifo.sv

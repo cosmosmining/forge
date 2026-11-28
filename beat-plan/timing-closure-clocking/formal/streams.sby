@@ -1,0 +1,51 @@
+# streams.sby -- single-clock valid/ready blocks, unbounded proofs.
+#   skid_prove              skid_buffer: no loss/dup/reorder/corruption, hold rule,
+#                           full throughput                                        expect PASS
+#   skid_mut_no_bp          skid_buffer always ready                               expect FAIL
+#   slr_f1b1d4 / slr_f2b2d8 / slr_f3b2d8
+#                           slr_crossing: never pushes a full FIFO, no loss/dup/
+#                           reorder/corruption, occupancy accounting               expect PASS
+#   slr_tput_f2b2d8         slr_crossing: producer always valid + consumer always
+#                           ready -> s_ready high every cycle after BWD_STAGES     expect PASS
+#   slr_mut_skid_short      SKID = FWD+BWD-1 (one entry short)                     expect FAIL
+#   slr_cover_f2b2d8        receive FIFO reaches full                              expect PASS
+[tasks]
+skid_prove proof skid skidok
+skid_mut_no_bp mutfail skid skidmut
+slr_f1b1d4 proof slr slrok f1b1d4
+slr_f2b2d8 proof slr slrok f2b2d8
+slr_f3b2d8 proof slr slrok f3b2d8
+slr_tput_f2b2d8 proof slr slrtput f2b2d8
+slr_mut_skid_short mutfail slr slrmut f2b2d8
+slr_cover_f2b2d8 cov slr slrok f2b2d8
+
+[options]
+proof: mode prove
+mutfail: mode prove
+mutfail: expect fail
+cov: mode cover
+cov: depth 30
+
+[engines]
+proof: abc pdr
+mutfail: abc pdr
+cov: smtbmc yices
+
+[script]
+skidmut: read -formal -DCDC_MUTANT_SKID_NO_BACKPRESSURE skid_buffer.sv
+skidok: read -formal skid_buffer.sv
+skid: chparam -set WIDTH 4 skid_buffer
+skid: prep -top skid_buffer
+slr: read -formal sync_fifo_lutram.sv
+slrmut: read -formal -DCDC_MUTANT_SLR_SKID_SHORT slr_crossing.sv
+slrtput: read -formal -DSLR_THROUGHPUT slr_crossing.sv
+slrok: read -formal slr_crossing.sv
+f1b1d4: chparam -set WIDTH 4 -set FWD_STAGES 1 -set BWD_STAGES 1 -set FIFO_DEPTH 4 slr_crossing
+f2b2d8: chparam -set WIDTH 4 -set FWD_STAGES 2 -set BWD_STAGES 2 -set FIFO_DEPTH 8 slr_crossing
+f3b2d8: chparam -set WIDTH 4 -set FWD_STAGES 3 -set BWD_STAGES 2 -set FIFO_DEPTH 8 slr_crossing
+slr: prep -top slr_crossing
+
+[files]
+../rtl/skid_buffer.sv
+../rtl/sync_fifo_lutram.sv
+../rtl/slr_crossing.sv

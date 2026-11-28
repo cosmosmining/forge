@@ -1,0 +1,4 @@
+build/
+_tmp_yosys-abc-*
+__pycache__/
+*.pyc
