@@ -1,0 +1,26 @@
+{
+ "_doc": "Locked flow settings. Platform nangate45 (FreePDK45 + Nangate Open Cell Library, typical corner) through OpenROAD-flow-scripts 26Q3. One set of settings per block; every candidate of a block, in both arms, uses exactly these settings. 'clock_latency_ns' is the ideal latency given to the real and the virtual IO clock (ORFS SDC style); gcd and aes keep the values ORFS ships for nangate45, the other four were measured once on the original RTL (see targets/calibration.json) before any loop ran. aes drops ORFS's SWAP_ARITH_OPERATORS/OPENROAD_HIERARCHICAL so that all six blocks are synthesized with the same ABC speed script (which buffers high-fanout nets); with SWAP_ARITH_OPERATORS ORFS uses a gate-only ABC script that leaves fanouts of 144 unbuffered and makes pre-layout timing meaningless.",
+ "platform": "nangate45",
+ "clk_io_pct": 0.2,
+ "num_cores": 2,
+ "common": {
+  "PLACE_DENSITY_LB_ADDON": "0.20",
+  "TNS_END_PERCENT": "100",
+  "SYNTH_REPEATABLE_BUILD": "1",
+  "PDN_TCL": "$(DESIGN_HOME)/nangate45/gcd/grid_strategy-M1-M4-M7.tcl"
+ },
+ "blocks": {
+  "gcd":            {"nickname": "gcd",      "top": "gcd",            "clock_port": "clk", "clock_latency_ns": 0.070,
+                     "vars": {"CORE_UTILIZATION": "55", "ABC_AREA": "1", "ADDER_MAP_FILE": ""}},
+  "aes_cipher_top": {"nickname": "aes",      "top": "aes_cipher_top", "clock_port": "clk", "clock_latency_ns": 0.210,
+                     "vars": {"CORE_UTILIZATION": "40", "SKIP_INCREMENTAL_REPAIR": "1"}},
+  "riscv":          {"nickname": "riscv32i", "top": "riscv",          "clock_port": "clk", "clock_latency_ns": null,
+                     "vars": {"CORE_UTILIZATION": "45"}},
+  "dct_mac":        {"nickname": "dct_mac",  "top": "dct_mac",        "clock_port": "clk", "clock_latency_ns": null,
+                     "vars": {"CORE_UTILIZATION": "50"}},
+  "dctub":          {"nickname": "dctub",    "top": "dctub",          "clock_port": "clk", "clock_latency_ns": null,
+                     "vars": {"CORE_UTILIZATION": "50"}},
+  "jpeg_qnr":       {"nickname": "jpeg_qnr", "top": "jpeg_qnr",       "clock_port": "clk", "clock_latency_ns": null,
+                     "vars": {"CORE_UTILIZATION": "50"}}
+ }
+}

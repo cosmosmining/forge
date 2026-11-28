@@ -1,0 +1,345 @@
+{
+ "orfs_commit": "adeb389e7fbf06ef6a939a895c014f69e6f7aa00",
+ "blocks": {
+  "gcd": {
+   "top": "gcd",
+   "golden_files": [
+    "flow/designs/src/gcd/gcd.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "reset": {
+      "kind": "reset",
+      "active": 1,
+      "type": "sync",
+      "init_cycles": 3,
+      "p": 0.0005
+     },
+     "req_val": {
+      "kind": "bit",
+      "p1": 0.5
+     },
+     "resp_rdy": {
+      "kind": "bit",
+      "p1": 0.7
+     },
+     "req_msg": {
+      "kind": "data",
+      "fields": [
+       16,
+       16
+      ],
+      "corner_pct": 45
+     }
+    }
+   },
+   "sim": {
+    "cycles": 40000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "formal": {
+    "depth": 40
+   },
+   "golden_sha256": {
+    "flow/designs/src/gcd/gcd.v": "5009f224876d39e5e77e59ee1528cb0d2a03697251f0971b77cf3e8b0426dd3e"
+   }
+  },
+  "aes_cipher_top": {
+   "top": "aes_cipher_top",
+   "golden_files": [
+    "flow/designs/src/aes/aes_cipher_top.v",
+    "flow/designs/src/aes/aes_key_expand_128.v",
+    "flow/designs/src/aes/aes_rcon.v",
+    "flow/designs/src/aes/aes_sbox.v",
+    "flow/designs/src/aes/timescale.v"
+   ],
+   "include_only": [
+    "timescale.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "rst": {
+      "kind": "reset",
+      "active": 0,
+      "type": "sync",
+      "init_cycles": 3,
+      "p": 0.0005
+     },
+     "ld": {
+      "kind": "bit",
+      "p1": 0.07
+     },
+     "key": {
+      "kind": "data",
+      "corner_pct": 10
+     },
+     "text_in": {
+      "kind": "data",
+      "corner_pct": 10
+     }
+    }
+   },
+   "sim": {
+    "cycles": 30000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "formal": {
+    "depth": 14
+   },
+   "golden_sha256": {
+    "flow/designs/src/aes/aes_cipher_top.v": "ab39a4a094dc8cfde90fcaa4c1aaf7dc9bf75b57ed762e11a985b88f6b23996c",
+    "flow/designs/src/aes/aes_key_expand_128.v": "bf06921c6fe80a69674f8b38160e8d677e1c4cc1a96befee2ac136bed3fe48c6",
+    "flow/designs/src/aes/aes_rcon.v": "1e8a0d1f8c3da8d382adb94e98bacfab455683ca3bca282b982179c0f7607e8e",
+    "flow/designs/src/aes/aes_sbox.v": "7f4fe4173d58017eb2520fb130b3b779d63a373463cb0198bd66c4371184d7fb",
+    "flow/designs/src/aes/timescale.v": "0833b736793bc11f640ed66357614c0f5cf30a548a7e515333b1e46438b2cb6b"
+   }
+  },
+  "riscv": {
+   "top": "riscv",
+   "golden_files": [
+    "flow/designs/src/riscv32i/adder.v",
+    "flow/designs/src/riscv32i/alu.v",
+    "flow/designs/src/riscv32i/aludec.v",
+    "flow/designs/src/riscv32i/controller.v",
+    "flow/designs/src/riscv32i/datapath.v",
+    "flow/designs/src/riscv32i/flopenr.v",
+    "flow/designs/src/riscv32i/flopens.v",
+    "flow/designs/src/riscv32i/flopr.v",
+    "flow/designs/src/riscv32i/magcompare2b.v",
+    "flow/designs/src/riscv32i/magcompare2c.v",
+    "flow/designs/src/riscv32i/magcompare32.v",
+    "flow/designs/src/riscv32i/maindec.v",
+    "flow/designs/src/riscv32i/mux2.v",
+    "flow/designs/src/riscv32i/mux3.v",
+    "flow/designs/src/riscv32i/mux4.v",
+    "flow/designs/src/riscv32i/mux5.v",
+    "flow/designs/src/riscv32i/mux8.v",
+    "flow/designs/src/riscv32i/regfile.v",
+    "flow/designs/src/riscv32i/riscv.v",
+    "flow/designs/src/riscv32i/shifter.v",
+    "flow/designs/src/riscv32i/signext.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "reset": {
+      "kind": "reset",
+      "active": 1,
+      "type": "async",
+      "init_cycles": 3,
+      "p": 0.0003,
+      "p_glitch": 0.0003
+     },
+     "instr": {
+      "kind": "riscv_instr"
+     },
+     "readdata": {
+      "kind": "data",
+      "corner_pct": 30
+     }
+    }
+   },
+   "sim": {
+    "cycles": 30000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "formal": {
+    "depth": 8
+   },
+   "golden_sha256": {
+    "flow/designs/src/riscv32i/adder.v": "20681ea424d82c9d11680418d2d58eabdb0b4aa18c01581ecbf352acc0888de3",
+    "flow/designs/src/riscv32i/alu.v": "a08b4aa61ed7991e4dcf72275e2432767baf8cbfbb71f03c3f18b94c5024f78d",
+    "flow/designs/src/riscv32i/aludec.v": "2bb6239a4122dd5d4c722901ad1685e8a6ead2ee8317d7619cf5f86dde899445",
+    "flow/designs/src/riscv32i/controller.v": "69a5508d860fd5105a90c51bf190fcd077ab1b37f2941316107fb4dde8e92a55",
+    "flow/designs/src/riscv32i/datapath.v": "7e7e6857f8c7c6020dd4fc825c043dd99353ba84e9ca24da356d3d8e4918f7f1",
+    "flow/designs/src/riscv32i/flopenr.v": "9040e09513926fec2b8d966d71591f26655f8406d9533ce98077a37e60a755af",
+    "flow/designs/src/riscv32i/flopens.v": "35a0872ddce7ed9e8afdfd8889c252b354f7b7aa2a4fb16c2ddfdb3b067543ad",
+    "flow/designs/src/riscv32i/flopr.v": "e2a7bf1da9fb92d7c1867d82b5238446ef844c2c54d84aff56c5745dbdfd30c0",
+    "flow/designs/src/riscv32i/magcompare2b.v": "48e1ee5c1bb22c01a5523ef2712e9ef31b4419cf27334303785180e098b73107",
+    "flow/designs/src/riscv32i/magcompare2c.v": "576a182747438ed8da609864d411aec1d7d903311e82f1c326206adde27d604a",
+    "flow/designs/src/riscv32i/magcompare32.v": "0e65874c5e3b60c16489032468fabe0ad6e5f52aad817cfeaaf858fa65f849a4",
+    "flow/designs/src/riscv32i/maindec.v": "9dc78ed97cbb659a122e35681eb8a700b32871838e37e0b26ffe54d9779c1da5",
+    "flow/designs/src/riscv32i/mux2.v": "e2f555835360a572f139f6f77327ce4c5fb55146bf03065c150e32f5f1d3398f",
+    "flow/designs/src/riscv32i/mux3.v": "24ef807cd5352f6812db60ad158222f96f220fa29f9ea49a07ae998aa29a0355",
+    "flow/designs/src/riscv32i/mux4.v": "e51409e35a5742dc181a0edc1a1724cf0895fbf65b2c30ebe615c0f27e721652",
+    "flow/designs/src/riscv32i/mux5.v": "a5b42325af48158a557c3f7844a7c9a1ff236b6e22148ec4c62ca6d18d4ac330",
+    "flow/designs/src/riscv32i/mux8.v": "17e4e6a7c94a89c39b3631def77e5329bb4f90cee030d859a2c296f06a6b473c",
+    "flow/designs/src/riscv32i/regfile.v": "19febdc9499d51d1760144cb3c13a4b27173567dcd4f7ea12771a90e05e246a2",
+    "flow/designs/src/riscv32i/riscv.v": "da4bfcb3536eb268a518cfb5b2bc83f06879334fbe33ac38e779390cbb36456b",
+    "flow/designs/src/riscv32i/shifter.v": "9a07c9f89706e7601b3c49e30547f00970228a7869b95fbd4c5f1e39468eccaa",
+    "flow/designs/src/riscv32i/signext.v": "b68730567bb8630e37f1f92058c512e0a9de73cc3719a8a8d17a906d0047f6bd"
+   }
+  },
+  "dct_mac": {
+   "top": "dct_mac",
+   "golden_files": [
+    "flow/designs/src/jpeg/dct_mac.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "ena": {
+      "kind": "bit",
+      "p1": 0.85
+     },
+     "dclr": {
+      "kind": "bit",
+      "p1": 0.15
+     },
+     "din": {
+      "kind": "data",
+      "corner_pct": 30
+     },
+     "coef": {
+      "kind": "data",
+      "corner_pct": 30
+     }
+    }
+   },
+   "sim": {
+    "cycles": 50000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "formal": {
+    "depth": 12
+   },
+   "golden_sha256": {
+    "flow/designs/src/jpeg/dct_mac.v": "20a2dd3183e10c482fe00ff67cf32e3d28f373623b85e3602f62c6467b32e979"
+   }
+  },
+  "dctub": {
+   "top": "dctub",
+   "golden_files": [
+    "flow/designs/src/jpeg/dctub.v",
+    "flow/designs/src/jpeg/dctu.v",
+    "flow/designs/src/jpeg/dct_mac.v",
+    "flow/designs/src/jpeg/include/dct_cos_table.v"
+   ],
+   "include_only": [
+    "dct_cos_table.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "ena": {
+      "kind": "bit",
+      "p1": 0.85
+     },
+     "ddgo": {
+      "kind": "bit",
+      "p1": 0.1
+     },
+     "x": {
+      "kind": "data",
+      "corner_pct": 10
+     },
+     "y": {
+      "kind": "data",
+      "corner_pct": 10
+     },
+     "ddin": {
+      "kind": "data",
+      "corner_pct": 30
+     }
+    }
+   },
+   "sim": {
+    "cycles": 30000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "formal": {
+    "depth": 10
+   },
+   "golden_sha256": {
+    "flow/designs/src/jpeg/dctub.v": "e166bc0b7e6b28f1db158112c6faa297bb571c231923d37a842855e7d4e67fe0",
+    "flow/designs/src/jpeg/dctu.v": "f712db1be4c2c69588d774533eaffcb02e31165b48e755bfdddd62237844ecb7",
+    "flow/designs/src/jpeg/dct_mac.v": "20a2dd3183e10c482fe00ff67cf32e3d28f373623b85e3602f62c6467b32e979",
+    "flow/designs/src/jpeg/include/dct_cos_table.v": "6947d6a05bc8de1cd6dd544d0494ccccea623291cba8e28c57e59d7b28a1f53b"
+   }
+  },
+  "jpeg_qnr": {
+   "top": "jpeg_qnr",
+   "golden_files": [
+    "flow/designs/src/jpeg/jpeg_qnr.v",
+    "flow/designs/src/jpeg/div_su.v",
+    "flow/designs/src/jpeg/div_uu.v"
+   ],
+   "stim": {
+    "clock": "clk",
+    "inputs": {
+     "rst": {
+      "kind": "reset",
+      "active": 0,
+      "type": "async",
+      "init_cycles": 3,
+      "p": 0.0005,
+      "p_glitch": 0.0005
+     },
+     "ena": {
+      "kind": "bit",
+      "p1": 0.9
+     },
+     "dstrb": {
+      "kind": "bit",
+      "p1": 0.03
+     },
+     "din": {
+      "kind": "data",
+      "corner_pct": 30
+     },
+     "qnt_val": {
+      "kind": "data",
+      "corner_pct": 30
+     }
+    }
+   },
+   "sim": {
+    "cycles": 50000,
+    "seeds": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "formal": {
+    "depth": 24
+   },
+   "golden_sha256": {
+    "flow/designs/src/jpeg/jpeg_qnr.v": "13e55023f54e88c573c58bb73298847871494aec6f38cd0d25bd2f383099cca0",
+    "flow/designs/src/jpeg/div_su.v": "506aaf4dce537cfe3ac06dde93fd0a941debe7ae0f155a9c1bb38444a84172cc",
+    "flow/designs/src/jpeg/div_uu.v": "ee5d9e04457e6cadf96b352827248f4e8a3a092d0b4378ff00638c7b43b83691"
+   }
+  }
+ }
+}
