@@ -45,7 +45,7 @@ ROWS = [
     ("Slew/cap/fanout violations", "drv_violations", "{}"),
     ("Cell area (um^2)", "area_um2", "{:.1f}"),
     ("Total power (W, default activity)", "power_w", "{:.4e}"),
-    ("Routed wirelength, GRT (um)", "wirelength_um", "{:.0f}"),
+    ("Global-route wirelength, before any ECO re-route (um)", "wirelength_um", "{:.0f}"),
 ]
 
 
@@ -62,7 +62,7 @@ def write_markdown(record: dict, path: Path) -> None:
              f"netlist sha256 `{d['fingerprint']['netlist_sha256'][:16]}...`")
     L.append(f"- Tools: {record['tools']['openroad']} / {record['tools']['opensta']} / {record['tools']['yosys']}")
     L.append(f"- Started {record['started']}, finished {record['finished']}; "
-             f"{record['evaluations']} flow evaluations, {record['rounds']} rounds")
+             f"{record['evaluations']} flow evaluations, {record['rounds']} round(s)")
     verdict = "**CLOSED**" if record["final"]["closed"] else "**NOT CLOSED**"
     L.append(f"\n## Verdict: {verdict}\n")
     L.append(record["final"]["verdict_detail"])

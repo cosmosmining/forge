@@ -4,7 +4,7 @@
 
 - Target clock: **0.485 ns** (2061.9 MHz), fixed. Golden SDC sha256 `5b2d072132dc4055...`, netlist sha256 `a7ac54960562b5bc...`
 - Tools: 2.0-unstable-2025-03-01_e794373d44ac5421f0633d8dda7e5c59e8fe79bf / 2.6.0 / Yosys 0.55 (git sha1 60f126cd00c94892782470192d6c9f7abebe7c05, g++ 14.3.0 -fPIC -O3)
-- Started 2026-11-28T00:26:10, finished 2026-11-28T00:30:45; 32 flow evaluations, 8 rounds
+- Started 2026-11-28T00:26:10, finished 2026-11-28T00:30:45; 32 flow evaluations, 8 round(s)
 
 ## Verdict: **NOT CLOSED**
 
@@ -22,7 +22,7 @@ Not closed: sign-off still fails (WNS -0.0345 ns, TNS -0.2959 ns, hold +0.0567 n
 | Slew/cap/fanout violations | 0 | 0 |
 | Cell area (um^2) | 550.1 | 599.6 |
 | Total power (W, default activity) | 2.2300e-03 | 2.6300e-03 |
-| Routed wirelength, GRT (um) | 7828 | 8307 |
+| Global-route wirelength, before any ECO re-route (um) | 7828 | 8307 |
 
 - Logic equivalence, golden netlist vs routed netlist (Yosys): **PASS**, equivalent: 54 points proven (36 state bits matched by name)
 - Reproduced from an empty cache with the final recipe: **yes** (WNS -0.0345 ns, TNS -0.2959 ns, hold +0.0567 ns)
@@ -73,11 +73,11 @@ Not closed: sign-off still fails (WNS -0.0345 ns, TNS -0.2959 ns, hold +0.0567 n
 | 1 | guardband_setup_repair | optimization | `rt_setup_margin=0.047` | -0.0440 | -0.4202 | +0.0506 | 0 | 572.2 | ok | valid, not best this round |
 | 1 | resynthesize_for_delay | synthesis | `resynth_delay_ps=291` | -0.3428 | -12.8618 | +0.0505 | 0 | 535.5 | ok | rejected: no improvement |
 | 1 | routing_aware_eco_repair | optimization | `grt_repair_timing=True; grt_rt_setup_margin=0.047` | -0.0427 | -0.3820 | +0.0505 | 0 | 583.3 | ok | ACCEPTED |
-| 1 | eco_upsize_worst_paths | eco | `eco_resize=(('_377_', 'INV_X2'), ('_378_', 'NAND2_X2'), ('_380_', 'OAI21_X4'), ('_384_'...` | -0.0477 | -0.3518 | +0.0505 | 0 | 556.2 | ok | rejected: no improvement |
+| 1 | eco_upsize_worst_paths | eco | `eco_resize=[['_377_', 'INV_X2'], ['_378_', 'NAND2_X2'], ['_380_', 'OAI21_X4'], ['_384_'...` | -0.0477 | -0.3518 | +0.0505 | 0 | 556.2 | ok | rejected: no improvement |
 | 2 | guardband_setup_repair | optimization | `rt_setup_margin=0.043` | -0.0426 | -0.4205 | +0.0504 | 0 | 577.5 | ok | rejected: no improvement |
 | 2 | enable_gate_cloning | optimization | `rt_skip_gate_cloning=False` | -0.0428 | -0.4300 | +0.0505 | 0 | 583.3 | ok | rejected: no improvement |
 | 2 | faster_clock_tree | cts | `cts_buffer='BUF_X8'` | -0.0379 | -0.4468 | +0.0564 | 0 | 595.0 | ok | ACCEPTED |
-| 2 | eco_upsize_worst_paths | eco | `eco_resize=(('_354_', 'INV_X2'), ('_355_', 'NAND2_X4'), ('_356_', 'NAND2_X4'), ('_392_'...` | -0.0467 | -0.2827 | +0.0507 | 0 | 584.9 | ok | rejected: no improvement |
+| 2 | eco_upsize_worst_paths | eco | `eco_resize=[['_354_', 'INV_X2'], ['_355_', 'NAND2_X4'], ['_356_', 'NAND2_X4'], ['_392_'...` | -0.0467 | -0.2827 | +0.0507 | 0 | 584.9 | ok | rejected: no improvement |
 | 3 | guardband_setup_repair | optimization | `rt_setup_margin=0.038` | -0.0352 | -0.3737 | +0.0564 | 0 | 594.8 | ok | ACCEPTED |
 | 3 | faster_clock_tree | cts | `cts_buffer='BUF_X16'` | -0.0346 | -0.3834 | +0.0590 | 0 | 631.5 | area growth within limit | rejected: guardrail |
 | 3 | shrink_core_margin | floorplan | `fp_core_margin=2.0` | -0.0378 | -0.3844 | +0.0549 | 0 | 610.2 | area growth within limit | rejected: guardrail |
@@ -97,7 +97,7 @@ Not closed: sign-off still fails (WNS -0.0345 ns, TNS -0.2959 ns, hold +0.0567 n
 | 7 | faster_clock_tree | cts | `cts_buffer='BUF_X16'` | -0.0339 | -0.3424 | +0.0599 | 0 | 617.7 | area growth within limit | rejected: guardrail |
 | 7 | repair_on_route_parasitics | optimization | `rt_use_grt_parasitics=True` | -0.0380 | -0.3749 | +0.0566 | 0 | 590.8 | ok | rejected: no improvement |
 | 7 | route_critical_nets_first | routing | `grt_critical_nets_pct=10` | -0.0345 | -0.2959 | +0.0567 | 0 | 599.6 | ok | rejected: no improvement |
-| 7 | eco_upsize_worst_paths | eco | `eco_resize=(('_371_', 'NAND2_X4'), ('_479_', 'XNOR2_X2'), ('rebuffer1', 'BUF_X2'), ('re...` | -0.0383 | -0.1669 | +0.0566 | 0 | 627.2 | area growth within limit | rejected: guardrail |
+| 7 | eco_upsize_worst_paths | eco | `eco_resize=[['_371_', 'NAND2_X4'], ['_479_', 'XNOR2_X2'], ['rebuffer1', 'BUF_X2'], ['re...` | -0.0383 | -0.1669 | +0.0566 | 0 | 627.2 | area growth within limit | rejected: guardrail |
 | 8 | shrink_core_margin | floorplan | `fp_core_margin=2.0` | -0.0381 | -0.3814 | +0.0552 | 0 | 613.4 | area growth within limit | rejected: guardrail |
 | 8 | raise_placement_density | placement | `gp_density=0.45` | -0.0330 | -0.1620 | +0.0572 | 0 | 637.3 | area growth within limit | rejected: guardrail |
 | 8 | timing_driven_placement | placement | `gp_timing_driven=True` | -0.0386 | -0.3769 | +0.0566 | 0 | 612.9 | area growth within limit | rejected: guardrail |

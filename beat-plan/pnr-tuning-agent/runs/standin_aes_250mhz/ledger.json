@@ -700,5 +700,202 @@
    "grt": 46.2,
    "drt": 300.8
   }
- }
+ },
+ "stop_reason": "closed",
+ "action_track_record": {
+  "guardband_setup_repair": {
+   "tries": 1,
+   "wins": 1,
+   "dropped": false
+  },
+  "resynthesize_for_delay": {
+   "tries": 1,
+   "wins": 1,
+   "dropped": false
+  },
+  "routing_aware_eco_repair": {
+   "tries": 1,
+   "wins": 1,
+   "dropped": false
+  },
+  "eco_upsize_worst_paths": {
+   "tries": 1,
+   "wins": 0,
+   "dropped": false
+  }
+ },
+ "final": {
+  "summary": {
+   "wns_ns": 0.0411768408802781,
+   "tns_ns": 0.0,
+   "hold_wns_ns": 0.14444179594566525,
+   "hold_tns_ns": 0.0,
+   "setup_violators": 0,
+   "hold_violators": 0,
+   "drc": 0,
+   "antenna_nets": 0,
+   "routed": true,
+   "drv_violations": 0,
+   "area_um2": 31573.9,
+   "utilization": 0.0351915,
+   "power_w": 0.0473,
+   "wirelength_um": 769698.0,
+   "grt_overflow": 0,
+   "grt_estimate_wns_ns": 0.102983,
+   "clock_periods_ns": {
+    "clk": 4.0
+   }
+  },
+  "closed": true,
+  "verdict_detail": "Setup and hold met at 4.0 ns with the golden SDC: WNS -0.1299 -> +0.0412 ns, TNS -1.3371 -> +0.0000 ns, 1 accepted edit(s), routed with 0 DRC, logic proven equivalent.",
+  "checks": [
+   {
+    "name": "golden inputs unchanged",
+    "ok": true,
+    "detail": "netlist/SDC/liberty hashes and target period match baseline"
+   },
+   {
+    "name": "clock period unchanged at sign-off",
+    "ok": true,
+    "detail": "sign-off clocks {'clk': 4.0}, target 4.0 ns"
+   },
+   {
+    "name": "optimization overlay whitelisted",
+    "ok": true,
+    "detail": "only set_max_fanout/transition/capacitance (or none)"
+   },
+   {
+    "name": "fully routed, zero DRC",
+    "ok": true,
+    "detail": "routed=True drc=0"
+   },
+   {
+    "name": "placement legal",
+    "ok": true,
+    "detail": "check_placement"
+   },
+   {
+    "name": "antenna not worse",
+    "ok": true,
+    "detail": "0 vs baseline 0"
+   },
+   {
+    "name": "no new hold violations",
+    "ok": true,
+    "detail": "hold WNS +0.1444 ns (0 viol) vs baseline +0.1439 ns (0 viol)"
+   },
+   {
+    "name": "no new slew/cap/fanout violations",
+    "ok": true,
+    "detail": "0 vs baseline 0"
+   },
+   {
+    "name": "area growth within limit",
+    "ok": true,
+    "detail": "31573.9 um2 vs baseline 31431.4 um2 (limit +10%)"
+   }
+  ],
+  "equivalence": {
+   "ok": true,
+   "proven": 694,
+   "unproven": 0,
+   "gold_states": 565,
+   "gate_states": 565,
+   "message": "equivalent: 694 points proven (565 state bits matched by name)",
+   "log": "/tmp/claude-0/-home-user-forge/5ce94ace-2cb9-5c7a-a28a-46f486100577/scratchpad/agent_work_aes/standin_aes_250mhz/equiv/equiv.log"
+  },
+  "reproduction": {
+   "wns_ns": 0.0411768408802781,
+   "tns_ns": 0.0,
+   "hold_wns_ns": 0.14444179594566525,
+   "drc": 0,
+   "area_um2": 31573.9,
+   "match": true
+  },
+  "recipe": {
+   "fp_core_margin": null,
+   "fp_core_util": null,
+   "fp_aspect_ratio": 1.0,
+   "fp_remove_synth_buffers": true,
+   "resynth_delay_ps": null,
+   "rs_timing": false,
+   "rs_depth_threshold": 16,
+   "rs_slack_threshold": 0.0,
+   "gp_density": 0.3,
+   "gp_routability_driven": true,
+   "gp_timing_driven": false,
+   "gp_td_net_weight_max": null,
+   "gp_td_nets_percentage": null,
+   "gp_pad": 2,
+   "dp_pad": 1,
+   "io_annealing": false,
+   "rd_slew_margin": 0,
+   "rd_cap_margin": 20,
+   "rd_max_wire_length": null,
+   "opt_max_fanout": null,
+   "opt_max_transition": null,
+   "wire_rc_layer": "metal3",
+   "wire_rc_layer_clk": "metal6",
+   "cts_buffer": "BUF_X4",
+   "cts_cluster_diameter": 100,
+   "cts_cluster_size": null,
+   "cts_balance_levels": false,
+   "rt_setup_margin": 0.0,
+   "rt_skip_gate_cloning": true,
+   "rt_skip_pin_swap": false,
+   "rt_skip_last_gasp": false,
+   "rt_repair_tns": null,
+   "rt_max_passes": null,
+   "rt_use_grt_parasitics": false,
+   "grt_layer_adjustment": 0.5,
+   "grt_critical_nets_pct": null,
+   "grt_congestion_iters": 100,
+   "grt_repair_timing": true,
+   "grt_rt_setup_margin": 0.13,
+   "eco_resize": [],
+   "drt_end_iter": null
+  },
+  "recipe_diff": {
+   "grt_repair_timing": [
+    false,
+    true
+   ],
+   "grt_rt_setup_margin": [
+    0.0,
+    0.13
+   ]
+  },
+  "diagnosis": {
+   "wns_ns": 0.04118,
+   "tns_ns": 0.0,
+   "hold_wns_ns": 0.14444,
+   "setup_violators": 0,
+   "gap_ps": 0.0,
+   "gap_pct_of_period": 0.0,
+   "worst_path": {
+    "startpoint": "_33231_/Q",
+    "endpoint": "_33165_/D",
+    "type": "check",
+    "slack_ns": 0.04118,
+    "stages": 14,
+    "cell_delay_ns": 3.7659,
+    "wire_delay_ns": 0.088,
+    "wire_fraction": 0.023,
+    "launch_latency_ns": 0.5901,
+    "capture_latency_ns": 0.5923,
+    "max_fanout": 21,
+    "max_slew_ns": 0.352
+   },
+   "tags": {
+    "CLOSED": "setup and hold met at sign-off"
+   },
+   "weak_drivers": [],
+   "post_route_degradation_ns": 0.0,
+   "endpoint_mix_top_paths": {}
+  }
+ },
+ "rtl_proposals": [],
+ "script_diff": "--- baseline/grt.tcl\n+++ final/grt.tcl\n@@ -54,2 +54,8 @@\n estimate_parasitics -global_routing\n+global_route -start_incremental\n+repair_timing -setup_margin 0.1300 -skip_gate_cloning\n+set_placement_padding -global -left 1 -right 1\n+detailed_placement\n+global_route -end_incremental -congestion_report_file {<run>/grt/congestion_eco.rpt}\n+estimate_parasitics -global_routing\n pa_timing_metrics grt",
+ "finished": "2026-11-28T00:45:33",
+ "wall_time_s": 1242.4
 }

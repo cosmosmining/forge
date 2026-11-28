@@ -10,8 +10,17 @@ the before/after timing.
 > cloud workspace (the repo only held the website; the laptop folder was not
 > attached; attaching other repos was refused). So the success test, "closes the
 > Build 6 blocks that are 0.050 ns short of 250 MHz", has **not been run**. The
-> agent was built and verified on two labeled stand-ins instead. See
-> [RESULTS.md](RESULTS.md). To run it on Build 6, see "Running it on Build 6" below.
+> agent was built and verified on two labeled stand-ins instead
+> ([RESULTS.md](RESULTS.md), [runs/SUMMARY.md](runs/SUMMARY.md)):
+>
+> - **aes at 250 MHz, slow corner** (misses by 0.130 ns, 2.6x Build 6's gap): **closed**.
+>   WNS -0.1299 -> +0.0412 ns and TNS -1.337 -> 0 with one routing-aware ECO,
+>   +0.45% area. Proven equivalent and reproduced from an empty cache.
+> - **gcd at OpenROAD's 0.485 ns reference** (misses by 0.046 ns, 9.5% of its
+>   period): **improved, not closed**, -0.0463 -> -0.0345 ns. Deep-logic path;
+>   the ledger leaves an RTL proposal.
+>
+> To run it on Build 6, see "Running it on Build 6" below.
 
 ## The loop
 
@@ -112,6 +121,11 @@ claims its numbers transfer to ASIC.
 ```bash
 bash scripts/setup_tools.sh          # Nix: openroad, yosys, iverilog, verilator (pinned)
 ```
+
+The setup script was run on x86_64 Linux. On a Mac, OpenROAD from nixpkgs may
+not have a prebuilt binary; use a Linux machine or VM, OpenROAD-flow-scripts'
+Docker image (then set `OPENROAD_TEST_DIR`/`PNR_PLATFORM_DIR` by hand), or a
+cloud session with the Build 6 files attached.
 
 ```bash
 source scripts/env.sh                 # PATH + OPENROAD_TEST_DIR + PNR_PLATFORM_DIR
