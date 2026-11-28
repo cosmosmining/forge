@@ -17,5 +17,62 @@
    "strength": "unbounded proof (ABC dprove)"
   },
   "seconds": 5.8
+ },
+ "golden_aes_cipher_top": {
+  "block": "aes_cipher_top",
+  "checks_what": "unmodified original RTL",
+  "expected": "PASS",
+  "verdict": "PASS",
+  "as_expected": true,
+  "failed_at": [],
+  "first_problem": "",
+  "sim_known_bits": 15475260,
+  "formal": {
+   "dprove": {
+    "status": "PROVED",
+    "seconds": 1.1
+   },
+   "bmc": null,
+   "strength": "unbounded proof (ABC dprove)"
+  },
+  "seconds": 63.1
+ },
+ "golden_riscv": {
+  "block": "riscv",
+  "checks_what": "unmodified original RTL",
+  "expected": "PASS",
+  "verdict": "PASS",
+  "as_expected": true,
+  "failed_at": [],
+  "first_problem": "",
+  "sim_known_bits": 11402327,
+  "formal": {
+   "dprove": {
+    "status": "PROVED",
+    "seconds": 2.6
+   },
+   "bmc": null,
+   "strength": "unbounded proof (ABC dprove)"
+  },
+  "seconds": 40.3
+ },
+ "golden_dct_mac": {
+  "block": "dct_mac",
+  "checks_what": "unmodified original RTL",
+  "expected": "PASS",
+  "verdict": "PASS",
+  "as_expected": true,
+  "failed_at": [],
+  "first_problem": "",
+  "sim_known_bits": 6749244,
+  "formal": {
+   "dprove": {
+    "status": "PROVED",
+    "seconds": 62.3
+   },
+   "bmc": null,
+   "strength": "unbounded proof (ABC dprove)"
+  },
+  "seconds": 72.3
  }
 }

@@ -1,0 +1,32 @@
+{
+ "what": "golden gcd, post-route at 0.46 ns, same RTL and settings, two independent ORFS 26Q3 runs (NUM_CORES=2)",
+ "runs": {
+  "run1": {
+   "status": "OK",
+   "period_ns": 0.46,
+   "wns_setup": 0.014545,
+   "tns_setup": 0.0,
+   "wns_hold": 0.111261,
+   "area_um2": 696.654,
+   "power_total_w": 0.002459407,
+   "drc_errors": 0,
+   "cells": 1083,
+   "seq_cells": 35,
+   "flow_seconds": 98.6
+  },
+  "run2": {
+   "status": "OK",
+   "period_ns": 0.46,
+   "wns_setup": 0.014545,
+   "tns_setup": 0.0,
+   "wns_hold": 0.111261,
+   "area_um2": 696.654,
+   "power_total_w": 0.002459407,
+   "drc_errors": 0,
+   "cells": 1083,
+   "seq_cells": 35,
+   "flow_seconds": 88.3
+  }
+ },
+ "identical": true
+}
