@@ -1,0 +1,68 @@
+SBY  0:25:49 [cover] Removing directory '<work>/cover'.
+SBY  0:25:49 [cover] Copy '<work>/src/rtl0_syncfifo_w8_d4.v' to '<work>/cover/src/rtl0_syncfifo_w8_d4.v'.
+SBY  0:25:49 [cover] Copy '<work>/src/forge_harness.sv' to '<work>/cover/src/forge_harness.sv'.
+SBY  0:25:49 [cover] engine_0: smtbmc z3
+SBY  0:25:49 [cover] base: starting process "cd cover/src; /opt/forge-oss-eda/bin/yowasp-yosys -ql ../model/design.log ../model/design.ys"
+SBY  0:25:49 [cover] base: finished (returncode=0)
+SBY  0:25:49 [cover] prep: starting process "cd cover/model; /opt/forge-oss-eda/bin/yowasp-yosys -ql design_prep.log design_prep.ys"
+SBY  0:25:49 [cover] prep: finished (returncode=0)
+SBY  0:25:49 [cover] smt2: starting process "cd cover/model; /opt/forge-oss-eda/bin/yowasp-yosys -ql design_smt2.log design_smt2.ys"
+SBY  0:25:49 [cover] smt2: finished (returncode=0)
+SBY  0:25:49 [cover] engine_0: starting process "cd cover; /opt/forge-oss-eda/bin/yowasp-yosys-smtbmc -s z3 --presat -c --noprogress -t 16  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Solver: z3
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Reached cover statement in step 2 at forge_harness: c_read_write_same_cycle
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Reached cover statement in step 3 at forge_harness: c_tracked_delivered
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Reached cover statement in step 5 at forge_harness: c_full
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Reached cover statement in step 5 at forge_harness: c_tracked_behind_three
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Checking cover reachability in step 9..
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Reached cover statement in step 9 at forge_harness: c_drained_after_full
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY  0:25:49 [cover] engine_0: ##   0:00:00  Status: passed
+SBY  0:25:49 [cover] engine_0: finished (returncode=0)
+SBY  0:25:49 [cover] engine_0: Status returned by engine: pass
+SBY  0:25:49 [cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  0:25:49 [cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  0:25:49 [cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  0:25:49 [cover] summary: cover trace: cover/engine_0/trace0.vcd
+SBY  0:25:49 [cover] summary:   reached cover statement forge_harness.c_read_write_same_cycle at forge_harness.sv:108.31-108.93 step 2
+SBY  0:25:49 [cover] summary: cover trace: cover/engine_0/trace1.vcd
+SBY  0:25:49 [cover] summary:   reached cover statement forge_harness.c_tracked_delivered at forge_harness.sv:111.31-111.69 step 3
+SBY  0:25:49 [cover] summary: cover trace: cover/engine_0/trace2.vcd
+SBY  0:25:49 [cover] summary:   reached cover statement forge_harness.c_full at forge_harness.sv:107.31-107.59 step 5
+SBY  0:25:49 [cover] summary: cover trace: cover/engine_0/trace3.vcd
+SBY  0:25:49 [cover] summary:   reached cover statement forge_harness.c_tracked_behind_three at forge_harness.sv:110.31-110.97 step 5
+SBY  0:25:49 [cover] summary: cover trace: cover/engine_0/trace4.vcd
+SBY  0:25:49 [cover] summary:   reached cover statement forge_harness.c_drained_after_full at forge_harness.sv:109.31-109.88 step 9
+SBY  0:25:49 [cover] DONE (PASS, rc=0)

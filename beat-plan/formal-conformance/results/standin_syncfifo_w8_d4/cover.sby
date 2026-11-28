@@ -1,0 +1,20 @@
+[options]
+mode cover
+depth 16
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal -sv rtl0_syncfifo_w8_d4.v
+proc syncfifo_w8_d4
+memory -nomap syncfifo_w8_d4
+memory_map syncfifo_w8_d4
+opt_clean syncfifo_w8_d4
+expose syncfifo_w8_d4/w:produce syncfifo_w8_d4/w:consume syncfifo_w8_d4/w:storage*
+read_verilog -formal -sv forge_harness.sv
+prep -top forge_harness
+
+[files]
+src/rtl0_syncfifo_w8_d4.v
+src/forge_harness.sv

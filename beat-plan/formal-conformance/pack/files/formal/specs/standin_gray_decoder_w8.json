@@ -1,0 +1,21 @@
+{
+  "schema": "forge.formal.spec/v1",
+  "block": "standin_gray_decoder_w8",
+  "standin": true,
+  "description": "Amaranth GrayDecoder(8), generated RTL (stand-in, not a Forge block).",
+  "rtl": ["../../standins/rtl/gray_decoder_w8.v"],
+  "instances": [{"name": "dut", "module": "gray_decoder_w8"}],
+  "properties": [
+    {"id": "p_inverse_of_reflected_binary", "type": "assert", "expr": "(o ^ (o >> 1)) == i",
+     "source": "GrayDecoder doc: decode Gray code to natural binary, so re-encoding o must give back i"}
+  ],
+  "covers": [
+    {"id": "c_all_ones_out", "expr": "o == 8'hff"},
+    {"id": "c_top_bit_only_in", "expr": "i == 8'h80"}
+  ],
+  "bit_exact": {
+    "claim": "decoded output re-encodes to the input for every 8-bit Gray code input",
+    "method": "formal: SMT proof over all 2^8 inputs"
+  },
+  "mutation": {"module": "gray_decoder_w8", "count": 30, "seed": 1, "depth": 1}
+}

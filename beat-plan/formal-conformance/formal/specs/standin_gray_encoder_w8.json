@@ -1,0 +1,26 @@
+{
+  "schema": "forge.formal.spec/v1",
+  "block": "standin_gray_encoder_w8",
+  "standin": true,
+  "description": "Amaranth GrayEncoder(8), generated RTL (stand-in, not a Forge block). Two copies: enc1 sees enc0's input plus one, to check the unit-distance property.",
+  "rtl": ["../../standins/rtl/gray_encoder_w8.v"],
+  "instances": [
+    {"name": "enc0", "module": "gray_encoder_w8"},
+    {"name": "enc1", "module": "gray_encoder_w8", "connect": {"i": "enc0.i + 8'd1"}}
+  ],
+  "properties": [
+    {"id": "p_reflected_binary", "type": "assert", "expr": "enc0.o == (enc0.i ^ (enc0.i >> 1))",
+     "source": "GrayEncoder doc: encode natural binary to Gray code; binary-reflected Gray code g(n) = n XOR (n >> 1)"},
+    {"id": "p_unit_distance", "type": "assert", "expr": "$countones(enc0.o ^ enc1.o) == 1",
+     "source": "Gray code property: consecutive values (mod 2^8, including 255 -> 0) differ in exactly one bit"}
+  ],
+  "covers": [
+    {"id": "c_top_code", "expr": "enc0.o == 8'h80"},
+    {"id": "c_wraparound", "expr": "enc0.i == 8'hff"}
+  ],
+  "bit_exact": {
+    "claim": "output equals n XOR (n >> 1) for every 8-bit input n",
+    "method": "formal: SMT proof over all 2^8 inputs"
+  },
+  "mutation": {"module": "gray_encoder_w8", "count": 30, "seed": 1, "depth": 1}
+}

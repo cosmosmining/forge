@@ -1,0 +1,136 @@
+{
+  "schema": "forge.formal.verdict/v1",
+  "block": "standin_gray_decoder_w8",
+  "standin": true,
+  "control": false,
+  "description": "Amaranth GrayDecoder(8), generated RTL (stand-in, not a Forge block).",
+  "verdict": "PASS",
+  "reasons": [
+    "all assertions proven by k-induction; all covers reached"
+  ],
+  "kind": "measured",
+  "inputs": {
+    "spec": {
+      "file": "formal/specs/standin_gray_decoder_w8.json",
+      "sha256": "196c7f6b29d9a19de61df0ea567eee0a45b18bf50864e972793d8f9d5730a369"
+    },
+    "rtl": [
+      {
+        "file": "standins/rtl/gray_decoder_w8.v",
+        "sha256": "8f4ef3daca7664848feec0380cbc92e348a4a55c6d194b8db9a6a704541e11dd"
+      }
+    ],
+    "harness_sha256": "5d5c672aebfbc957db1cb49f97549481aaa51a185e2d7beb4b895c15a8549fac"
+  },
+  "structure": {
+    "status": "PASS",
+    "modules": {
+      "gray_decoder_w8": "PASS"
+    }
+  },
+  "tasks": {
+    "prove": {
+      "status": "PASS",
+      "mode": "prove",
+      "depth": 1,
+      "elapsed_s": 1.02,
+      "k_induction": true,
+      "failed": [],
+      "induction_failed": [],
+      "cex_traces": []
+    },
+    "cover": {
+      "status": "PASS",
+      "mode": "cover",
+      "depth": 1,
+      "elapsed_s": 0.92,
+      "reached": [
+        {
+          "cover": "c_all_ones_out",
+          "step": 0
+        },
+        {
+          "cover": "c_top_bit_only_in",
+          "step": 0
+        }
+      ],
+      "unreached": [],
+      "cover_traces": [
+        "results/standin_gray_decoder_w8/traces/cover_trace0.vcd"
+      ]
+    }
+  },
+  "properties": [
+    {
+      "id": "p_inverse_of_reflected_binary",
+      "type": "assert",
+      "role": "contract",
+      "status": "proven",
+      "source": "GrayDecoder doc: decode Gray code to natural binary, so re-encoding o must give back i"
+    }
+  ],
+  "covers": [
+    {
+      "id": "c_all_ones_out",
+      "status": "reached",
+      "step": 0,
+      "source": ""
+    },
+    {
+      "id": "c_top_bit_only_in",
+      "status": "reached",
+      "step": 0,
+      "source": ""
+    }
+  ],
+  "counts": {
+    "asserts": 1,
+    "asserts_proven": 1,
+    "contract_asserts_proven": 1,
+    "assumes": 0,
+    "covers": 2,
+    "covers_reached": 2
+  },
+  "tools": {
+    "yosys": "Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0)",
+    "sby": "SymbiYosys bundled with YoWASP yosys (Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0))",
+    "solver": "Z3 version 4.15.4 - 64 bit",
+    "engine": "smtbmc z3"
+  },
+  "evidence": [
+    {
+      "file": "results/standin_gray_decoder_w8/harness.sv",
+      "sha256": "5d5c672aebfbc957db1cb49f97549481aaa51a185e2d7beb4b895c15a8549fac"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/structure_gray_decoder_w8.log",
+      "sha256": "5b18406035e4a765806112c29271071ebbf0f546b43e285a7ad31ccba263ccab"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/prove.sby",
+      "sha256": "7121bd6b7e4e913c38b60ea9b221a5e1c52ad45fc7db3736eb3f1bfdd48bee7d"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/prove.log",
+      "sha256": "900c1a20805c73e2c56f74c64bdcc957d3a4743bf40c0cce707a393b8d8a6c5c"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/cover.sby",
+      "sha256": "e47bba51d4d7d1eafc3cdcc920bd6d39e9c5ac133225d945595681299f881f53"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/cover.log",
+      "sha256": "eb04e0519e6a8aa81ef20d8da47fff8e2a03125327c11a896a02064ad7a375e6"
+    },
+    {
+      "file": "results/standin_gray_decoder_w8/traces/cover_trace0.vcd",
+      "sha256": "fb19e2c0a84dfb8d3deeaafb1d7943114c7fdf3e3959df465bc3af4a8b6d79a2"
+    }
+  ],
+  "bit_exact": {
+    "claim": "decoded output re-encodes to the input for every 8-bit Gray code input",
+    "method": "formal: SMT proof over all 2^8 inputs",
+    "status": "proven",
+    "counterexamples": 0
+  }
+}

@@ -1,0 +1,30 @@
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port B -portbit 5 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0 -src rtl0_gray_encoder_w8.v:8.15-8.16 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0 -src rtl0_gray_encoder_w8.v:8.15-8.16 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0 -src rtl0_gray_encoder_w8.v:8.15-8.16 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -wire o -wirebit 7 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 0 -wire o -wirebit 0 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -ctrlbit 5 -wire i -wirebit 0 -src rtl0_gray_encoder_w8.v:8.15-8.16 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -wire o -wirebit 5 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -ctrlbit 7 -wire i -wirebit 0 -src rtl0_gray_encoder_w8.v:8.15-8.16 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -ctrlbit 0 -wire o -wirebit 4 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 3 -ctrlbit 2 -wire o -wirebit 3 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -ctrlbit 6 -wire o -wirebit 5 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -ctrlbit 0 -wire o -wirebit 2 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 3 -wire o -wirebit 3 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -wire o -wirebit 5 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -ctrlbit 4 -wire o -wirebit 7 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode cnot1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -ctrlbit 6 -wire o -wirebit 5 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34
+mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -wire o -wirebit 7 -src rtl0_gray_encoder_w8.v:6.16-6.17 -src rtl0_gray_encoder_w8.v:10.14-10.34

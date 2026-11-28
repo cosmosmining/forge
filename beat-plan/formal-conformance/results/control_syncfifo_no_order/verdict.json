@@ -1,0 +1,231 @@
+{
+  "schema": "forge.formal.verdict/v1",
+  "block": "control_syncfifo_no_order",
+  "standin": true,
+  "control": true,
+  "description": "CONTROL for the mutation method, not a result about any design: the stand-in FIFO spec with its ordering property (and that property's induction helpers) removed. Same RTL, same 40 mutants; its kill rate must come out below the full spec's.",
+  "verdict": "PASS",
+  "reasons": [
+    "all assertions proven by k-induction; all covers reached"
+  ],
+  "kind": "measured",
+  "inputs": {
+    "spec": {
+      "file": "formal/controls/control_syncfifo_no_order.json",
+      "sha256": "b681daa21abdecb3816de7b58044952de0a17928044d244b560c454157542428"
+    },
+    "rtl": [
+      {
+        "file": "standins/rtl/syncfifo_w8_d4.v",
+        "sha256": "1fe1e2aacae78ff90032e716b66c218eeb83266f9ef1a006aabc280c601648f9"
+      }
+    ],
+    "harness_sha256": "d3da2e98acd359b4f34380dac9f7366a37b71a7d50f8bafc6ce45fdb61f9519e",
+    "spec_base": {
+      "file": "formal/specs/standin_syncfifo_w8_d4.json",
+      "sha256": "81ae5076910180cb9da26526466c2ae5e9a57164af40b2e1fe210fca229b133a",
+      "dropped_properties": [
+        "p_fifo_order",
+        "s_trk_ahead_lt_level",
+        "s_trk_word"
+      ]
+    }
+  },
+  "structure": {
+    "status": "PASS",
+    "modules": {
+      "syncfifo_w8_d4": "PASS"
+    }
+  },
+  "tasks": {
+    "prove": {
+      "status": "PASS",
+      "mode": "prove",
+      "depth": 8,
+      "elapsed_s": 1.07,
+      "k_induction": true,
+      "failed": [],
+      "induction_failed": [],
+      "cex_traces": []
+    },
+    "cover": {
+      "status": "PASS",
+      "mode": "cover",
+      "depth": 16,
+      "elapsed_s": 1.12,
+      "reached": [
+        {
+          "cover": "c_read_write_same_cycle",
+          "step": 2
+        },
+        {
+          "cover": "c_tracked_delivered",
+          "step": 3
+        },
+        {
+          "cover": "c_full",
+          "step": 5
+        },
+        {
+          "cover": "c_tracked_behind_three",
+          "step": 5
+        },
+        {
+          "cover": "c_drained_after_full",
+          "step": 9
+        }
+      ],
+      "unreached": [],
+      "cover_traces": [
+        "results/control_syncfifo_no_order/traces/cover_trace0.vcd",
+        "results/control_syncfifo_no_order/traces/cover_trace1.vcd",
+        "results/control_syncfifo_no_order/traces/cover_trace2.vcd",
+        "results/control_syncfifo_no_order/traces/cover_trace3.vcd",
+        "results/control_syncfifo_no_order/traces/cover_trace4.vcd"
+      ]
+    }
+  },
+  "properties": [
+    {
+      "id": "p_empty_after_reset",
+      "type": "assert_after_reset",
+      "role": "contract",
+      "status": "proven",
+      "source": "SyncFIFO.level = number of unread entries; reset value 0 (empty queue)"
+    },
+    {
+      "id": "p_level_le_depth",
+      "type": "assert",
+      "role": "contract",
+      "status": "proven",
+      "source": "SyncFIFO.level: Signal(range(depth + 1)), number of unread entries"
+    },
+    {
+      "id": "p_w_rdy_iff_space",
+      "type": "assert",
+      "role": "contract",
+      "status": "proven",
+      "source": "FIFOInterface.w_rdy: asserted if there is space in the queue"
+    },
+    {
+      "id": "p_r_rdy_iff_entry",
+      "type": "assert",
+      "role": "contract",
+      "status": "proven",
+      "source": "FIFOInterface.r_rdy: asserted if there is an entry in the queue"
+    },
+    {
+      "id": "p_levels_agree",
+      "type": "assert",
+      "role": "contract",
+      "status": "proven",
+      "source": "SyncFIFO: level is the same between read and write for synchronous FIFOs"
+    },
+    {
+      "id": "p_level_accounting",
+      "type": "assert_next",
+      "role": "contract",
+      "status": "proven",
+      "source": "w_en latches w_data, does nothing if w_rdy is low; r_en pops, does nothing if r_rdy is low"
+    },
+    {
+      "id": "s_ptr_vs_level",
+      "type": "assert",
+      "role": "strengthening",
+      "status": "proven",
+      "source": "induction helper over generated internals produce/consume (not a contract)"
+    }
+  ],
+  "covers": [
+    {
+      "id": "c_full",
+      "status": "reached",
+      "step": 5,
+      "source": ""
+    },
+    {
+      "id": "c_read_write_same_cycle",
+      "status": "reached",
+      "step": 2,
+      "source": ""
+    },
+    {
+      "id": "c_drained_after_full",
+      "status": "reached",
+      "step": 9,
+      "source": ""
+    },
+    {
+      "id": "c_tracked_behind_three",
+      "status": "reached",
+      "step": 5,
+      "source": ""
+    },
+    {
+      "id": "c_tracked_delivered",
+      "status": "reached",
+      "step": 3,
+      "source": ""
+    }
+  ],
+  "counts": {
+    "asserts": 7,
+    "asserts_proven": 7,
+    "contract_asserts_proven": 6,
+    "assumes": 0,
+    "covers": 5,
+    "covers_reached": 5
+  },
+  "tools": {
+    "yosys": "Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0)",
+    "sby": "SymbiYosys bundled with YoWASP yosys (Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0))",
+    "solver": "Z3 version 4.15.4 - 64 bit",
+    "engine": "smtbmc z3"
+  },
+  "evidence": [
+    {
+      "file": "results/control_syncfifo_no_order/harness.sv",
+      "sha256": "d3da2e98acd359b4f34380dac9f7366a37b71a7d50f8bafc6ce45fdb61f9519e"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/structure_syncfifo_w8_d4.log",
+      "sha256": "e7465e6a961571ff254837720eec6a93ee4c2d71f81dcf9935d6207f573c6858"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/prove.sby",
+      "sha256": "5343a1bff1fb8d36045140c855e29f60a10b53124ae1cb6fd54a6035e48596d1"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/prove.log",
+      "sha256": "26f34483265ded6d4d4b36a07f6afd94f5624cae36f7bc55a9a6f11c9837fe4f"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/cover.sby",
+      "sha256": "5a4ab74137f6af95fb7b2106c98a1850482e3b2d5c82a31c4e2d040ac452e497"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/cover.log",
+      "sha256": "1040ff8a1a695d08eee9cb05cb0263f81911678036024b5101e1a94858cd11f4"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/traces/cover_trace0.vcd",
+      "sha256": "77dad080a3ef91dd213ae122d58b8d5baa3f8d4ec7690a211e229bc221689f01"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/traces/cover_trace1.vcd",
+      "sha256": "e49ef0b237059f50bcfc6a0df9d8462c81e58864e9fe587ad9371a350cba32ed"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/traces/cover_trace2.vcd",
+      "sha256": "3feafa3c75276b8024e80e3625a77b90664147b5c6b3858c5ce124abea0974d1"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/traces/cover_trace3.vcd",
+      "sha256": "c800456daf0b8620db2633a5cbf77a3c348ef24a6831984d48af747eb58198dd"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/traces/cover_trace4.vcd",
+      "sha256": "446eb97855dacdc6e1b841f20d1b6df2426b107240670be4b708d5de1aa5049a"
+    }
+  ]
+}

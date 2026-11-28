@@ -1,0 +1,40 @@
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $memory\storage[0]$100 -port Q -portbit 3 -ctrlbit 7 -wire storage[0] -wirebit 3
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$68 -port A -portbit 2 -ctrlbit 0 -src rtl0_syncfifo_w8_d4.v:115.9-115.12 -src rtl0_syncfifo_w8_d4.v:115.5-117.8
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage$wrmux[1][0][4]$177 -port A -portbit 0
+mutate -mode const0 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:79$and$24 -port B -portbit 0 -wire $7 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:45.8-45.11 -src rtl0_syncfifo_w8_d4.v:79.17-79.27
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$89 -port Y -portbit 0 -ctrlbit 1 -src rtl0_syncfifo_w8_d4.v:65.9-65.19 -src rtl0_syncfifo_w8_d4.v:65.5-66.39
+mutate -mode inv -module syncfifo_w8_d4 -cell $procmux$65 -port B -portbit 2 -wire $14 -wirebit 2 -src rtl0_syncfifo_w8_d4.v:118.9-118.13 -src rtl0_syncfifo_w8_d4.v:118.5-120.8
+mutate -mode const1 -module syncfifo_w8_d4 -cell $procmux$77 -port A -portbit 0 -src rtl0_syncfifo_w8_d4.v:98.9-98.12 -src rtl0_syncfifo_w8_d4.v:98.5-100.8
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$92 -port Q -portbit 0 -ctrlbit 1 -wire consume -wirebit 0 -src rtl0_syncfifo_w8_d4.v:49.14-49.21 -src rtl0_syncfifo_w8_d4.v:88.3-89.27
+mutate -mode inv -module syncfifo_w8_d4 -cell $memory\storage$wrmux[0][0][7]$153 -port B -portbit 0
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage$wren[2][0][3]$207 -port B -portbit 0
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage$wren[0][0][6]$147 -port A -portbit 0
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $memory\storage[2]$104 -port Q -portbit 4 -ctrlbit 3 -wire storage[2] -wirebit 4
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$91 -port Q -portbit 0 -ctrlbit 1 -wire w_level -wirebit 0 -src rtl0_syncfifo_w8_d4.v:17.16-17.23 -src rtl0_syncfifo_w8_d4.v:90.3-91.22
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$93 -port D -portbit 1 -ctrlbit 0 -wire $15 -wirebit 1 -src rtl0_syncfifo_w8_d4.v:37.13-37.17 -src rtl0_syncfifo_w8_d4.v:86.3-87.27
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:85$sub$30 -port Y -portbit 0 -ctrlbit 1 -wire $14 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:85.18-85.32
+mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$92 -port D -portbit 0 -wire $16 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:38.13-38.17 -src rtl0_syncfifo_w8_d4.v:88.3-89.27
+mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:73$add$18 -port B -portbit 0 -src rtl0_syncfifo_w8_d4.v:73.17-73.36
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$62 -port A -portbit 0 -ctrlbit 1 -src rtl0_syncfifo_w8_d4.v:121.9-121.12 -src rtl0_syncfifo_w8_d4.v:121.5-123.8
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage$wrmux[2][0][1]$201 -port Y -portbit 0
+mutate -mode const0 -module syncfifo_w8_d4 -cell $procmux$68 -port S -portbit 0 -wire $8 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:46.8-46.11 -src rtl0_syncfifo_w8_d4.v:115.9-115.12 -src rtl0_syncfifo_w8_d4.v:115.5-117.8
+mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:82$and$27 -port Y -portbit 0 -wire w_port__en -wirebit 0 -src rtl0_syncfifo_w8_d4.v:56.8-56.18 -src rtl0_syncfifo_w8_d4.v:82.18-82.30
+mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:80$add$25 -port Y -portbit 0 -wire $9 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:80.17-80.31
+mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:70$reduce_or$15 -port Y -portbit 0 -wire r_rdy -wirebit 0 -src rtl0_syncfifo_w8_d4.v:21.10-21.15 -src rtl0_syncfifo_w8_d4.v:70.18-70.27
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage$wren[1][0][1]$163 -port Y -portbit 0
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$68 -port B -portbit 1 -ctrlbit 2 -wire $9 -wirebit 1 -src rtl0_syncfifo_w8_d4.v:115.9-115.12 -src rtl0_syncfifo_w8_d4.v:115.5-117.8
+mutate -mode const0 -module syncfifo_w8_d4 -cell $procmux$77 -port Y -portbit 0 -wire $15 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:37.13-37.17 -src rtl0_syncfifo_w8_d4.v:98.9-98.12 -src rtl0_syncfifo_w8_d4.v:98.5-100.8
+mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:69$ne$14 -port B -portbit 2 -src rtl0_syncfifo_w8_d4.v:69.18-69.33
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$62 -port Y -portbit 0 -ctrlbit 1 -wire $17 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:39.13-39.17 -src rtl0_syncfifo_w8_d4.v:121.9-121.12 -src rtl0_syncfifo_w8_d4.v:121.5-123.8
+mutate -mode inv -module syncfifo_w8_d4 -cell $procmux$80 -port A -portbit 1 -src rtl0_syncfifo_w8_d4.v:95.9-95.12 -src rtl0_syncfifo_w8_d4.v:95.5-97.8
+mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:84$and$29 -port B -portbit 0 -wire $12 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:34.8-34.12 -src rtl0_syncfifo_w8_d4.v:84.18-84.30
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$74 -port Y -portbit 1 -ctrlbit 0 -src rtl0_syncfifo_w8_d4.v:105.9-105.12 -src rtl0_syncfifo_w8_d4.v:105.5-107.8
+mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$93 -port Q -portbit 1 -wire produce -wirebit 1 -src rtl0_syncfifo_w8_d4.v:51.14-51.21 -src rtl0_syncfifo_w8_d4.v:86.3-87.27
+mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$93 -port Q -portbit 0 -wire produce -wirebit 0 -src rtl0_syncfifo_w8_d4.v:51.14-51.21 -src rtl0_syncfifo_w8_d4.v:86.3-87.27
+mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\storage[2]$104 -port Q -portbit 3 -wire storage[2] -wirebit 3
+mutate -mode const0 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:81$and$26 -port A -portbit 0 -wire r_rdy -wirebit 0 -src rtl0_syncfifo_w8_d4.v:21.10-21.15 -src rtl0_syncfifo_w8_d4.v:81.18-81.30
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $memory\storage$rdmux[0][0][0]$108 -port Y -portbit 5 -ctrlbit 7 -wire r_data -wirebit 5 -src rtl0_syncfifo_w8_d4.v:19.16-19.22
+mutate -mode const1 -module syncfifo_w8_d4 -cell $auto$memory_map.cc:95:addr_decode$117 -port A -portbit 0
+mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$71 -port Y -portbit 0 -ctrlbit 1 -wire $16 -wirebit 0 -src rtl0_syncfifo_w8_d4.v:38.13-38.17 -src rtl0_syncfifo_w8_d4.v:108.9-108.12 -src rtl0_syncfifo_w8_d4.v:108.5-110.8
+mutate -mode inv -module syncfifo_w8_d4 -cell $auto$memory_map.cc:95:addr_decode$119 -port A -portbit 0
+mutate -mode cnot0 -module syncfifo_w8_d4 -cell $memory\storage$rdmux[0][0][0]$108 -port Y -portbit 4 -ctrlbit 6 -wire r_data -wirebit 4 -src rtl0_syncfifo_w8_d4.v:19.16-19.22

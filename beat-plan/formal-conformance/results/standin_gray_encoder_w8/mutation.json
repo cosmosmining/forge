@@ -1,0 +1,503 @@
+{
+  "schema": "forge.formal.mutation/v1",
+  "block": "standin_gray_encoder_w8",
+  "standin": true,
+  "control": false,
+  "kind": "measured",
+  "method": "yosys `mutate -list` mutants of module gray_encoder_w8; each mutant checked by sby bmc to depth 1 against the contract and environment properties only (no strengthening invariants, no covers); each survivor then put through yosys equiv_make/equiv_simple/equiv_induct against the original: proven equivalent -> 'equivalent', else 'survived'",
+  "module": "gray_encoder_w8",
+  "count_requested": 30,
+  "seed": 1,
+  "bmc_depth": 1,
+  "mutants": 30,
+  "killed": 30,
+  "survived": 0,
+  "equivalent": 0,
+  "inconclusive": 0,
+  "kill_rate": 1.0,
+  "kill_rate_formula": "killed / (killed + survived); mutants proven equivalent and inconclusive runs excluded",
+  "results": [
+    {
+      "id": 0,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port B -portbit 5",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary",
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.0
+    },
+    {
+      "id": 1,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.95
+    },
+    {
+      "id": 2,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.95
+    },
+    {
+      "id": 3,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.95
+    },
+    {
+      "id": 4,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.88
+    },
+    {
+      "id": 5,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -wire i -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary",
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.88
+    },
+    {
+      "id": 6,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -wire o -wirebit 7",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.92
+    },
+    {
+      "id": 7,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 0 -wire o -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary",
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.92
+    },
+    {
+      "id": 8,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.91
+    },
+    {
+      "id": 9,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -ctrlbit 5 -wire i -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary",
+        "p_unit_distance"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.91
+    },
+    {
+      "id": 10,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -wire o -wirebit 5",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.86
+    },
+    {
+      "id": 11,
+      "mutation": "mutate -mode cnot1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port A -portbit 0 -ctrlbit 7 -wire i -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.88
+    },
+    {
+      "id": 12,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -ctrlbit 0 -wire o -wirebit 4",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.87
+    },
+    {
+      "id": 13,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 3 -ctrlbit 2 -wire o -wirebit 3",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.87
+    },
+    {
+      "id": 14,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.92
+    },
+    {
+      "id": 15,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.97
+    },
+    {
+      "id": 16,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -ctrlbit 6 -wire o -wirebit 5",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.98
+    },
+    {
+      "id": 17,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.92
+    },
+    {
+      "id": 18,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -ctrlbit 0 -wire o -wirebit 2",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.87
+    },
+    {
+      "id": 19,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.97
+    },
+    {
+      "id": 20,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 2 -wire o -wirebit 2",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.19
+    },
+    {
+      "id": 21,
+      "mutation": "mutate -mode const1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 3 -wire o -wirebit 3",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.14
+    },
+    {
+      "id": 22,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 4 -wire o -wirebit 4",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.08
+    },
+    {
+      "id": 23,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -wire o -wirebit 5",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.04
+    },
+    {
+      "id": 24,
+      "mutation": "mutate -mode cnot0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -ctrlbit 4 -wire o -wirebit 7",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.01
+    },
+    {
+      "id": 25,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.06
+    },
+    {
+      "id": 26,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 1 -wire o -wirebit 1",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.08
+    },
+    {
+      "id": 27,
+      "mutation": "mutate -mode cnot1 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 5 -ctrlbit 6 -wire o -wirebit 5",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 1.06
+    },
+    {
+      "id": 28,
+      "mutation": "mutate -mode inv -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 6 -wire o -wirebit 6",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.97
+    },
+    {
+      "id": 29,
+      "mutation": "mutate -mode const0 -module gray_encoder_w8 -cell $rtl0_gray_encoder_w8.v:10$xor$1 -port Y -portbit 7 -wire o -wirebit 7",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_reflected_binary"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 0,
+      "elapsed_s": 0.97
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0)",
+    "sby": "SymbiYosys bundled with YoWASP yosys (Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0))",
+    "solver": "Z3 version 4.15.4 - 64 bit",
+    "engine": "smtbmc z3"
+  },
+  "inputs": {
+    "spec": {
+      "file": "formal/specs/standin_gray_encoder_w8.json",
+      "sha256": "35432b2c5e995b2fbbd9dc0c8991fe551bd1905bcba43a1906d2b4076e740c3f"
+    },
+    "rtl": [
+      {
+        "file": "standins/rtl/gray_encoder_w8.v",
+        "sha256": "4058774b492545fc7f0c5f73b0a83019da0ed79353cd1377f8a2436cb8ae97df"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "file": "results/standin_gray_encoder_w8/mutation_list.ys",
+      "sha256": "f610b9f0f938e31a8069a5fec92abeadd4d900dde121fddefbd5756ae45f3f8d"
+    },
+    {
+      "file": "results/standin_gray_encoder_w8/mutation_harness.sv",
+      "sha256": "1c73aa2e6925ea55af7d7e3b92e32e4af80f56dcc54ee3733569fbaa2bd40a80"
+    }
+  ]
+}

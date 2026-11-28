@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 1
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal -sv rtl0_gray_encoder_w8.v
+read_verilog -formal -sv forge_harness.sv
+prep -top forge_harness
+
+[files]
+src/rtl0_gray_encoder_w8.v
+src/forge_harness.sv

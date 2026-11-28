@@ -1,0 +1,50 @@
+{
+  "schema": "forge.standins.provenance/v1",
+  "what": "Stand-in generated blocks for exercising the formal tool. NOT Forge blocks.",
+  "generator": {
+    "amaranth": "0.5.10",
+    "amaranth-yosys": "0.71.0.0.post135",
+    "python": "3.13.18",
+    "call": "amaranth.back.verilog.convert(inst, name=..., ports=[...], emit_src=False)"
+  },
+  "hand_written_rtl": false,
+  "blocks": [
+    {
+      "module": "syncfifo_w8_d4",
+      "file": "standins/rtl/syncfifo_w8_d4.v",
+      "sha256": "1fe1e2aacae78ff90032e716b66c218eeb83266f9ef1a006aabc280c601648f9",
+      "generator": "amaranth.lib.fifo.SyncFIFO(width=8, depth=4)",
+      "ports_requested": [
+        "w_data",
+        "w_rdy",
+        "w_en",
+        "w_level",
+        "r_data",
+        "r_rdy",
+        "r_en",
+        "r_level",
+        "level"
+      ]
+    },
+    {
+      "module": "gray_encoder_w8",
+      "file": "standins/rtl/gray_encoder_w8.v",
+      "sha256": "4058774b492545fc7f0c5f73b0a83019da0ed79353cd1377f8a2436cb8ae97df",
+      "generator": "amaranth.lib.coding.GrayEncoder(width=8)",
+      "ports_requested": [
+        "i",
+        "o"
+      ]
+    },
+    {
+      "module": "gray_decoder_w8",
+      "file": "standins/rtl/gray_decoder_w8.v",
+      "sha256": "8f4ef3daca7664848feec0380cbc92e348a4a55c6d194b8db9a6a704541e11dd",
+      "generator": "amaranth.lib.coding.GrayDecoder(width=8)",
+      "ports_requested": [
+        "i",
+        "o"
+      ]
+    }
+  ]
+}

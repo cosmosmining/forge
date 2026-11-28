@@ -1,0 +1,7 @@
+# Open-source tools for the formal flow (used when OSS CAD Suite is not available)
+yowasp-yosys==0.71.0.0.post1285
+z3-solver==4.15.4.0
+# Only to regenerate the stand-in RTL
+amaranth[builtin-yosys]==0.5.10
+# Tests
+pytest==9.2.0

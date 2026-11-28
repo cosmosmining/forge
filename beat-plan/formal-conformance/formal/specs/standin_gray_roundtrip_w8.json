@@ -1,0 +1,24 @@
+{
+  "schema": "forge.formal.spec/v1",
+  "block": "standin_gray_roundtrip_w8",
+  "standin": true,
+  "description": "Two generated blocks composed: Amaranth GrayEncoder(8) feeding GrayDecoder(8) (stand-ins, not Forge blocks).",
+  "rtl": ["../../standins/rtl/gray_encoder_w8.v", "../../standins/rtl/gray_decoder_w8.v"],
+  "instances": [
+    {"name": "enc", "module": "gray_encoder_w8"},
+    {"name": "dec", "module": "gray_decoder_w8", "connect": {"i": "enc.o"}}
+  ],
+  "properties": [
+    {"id": "p_roundtrip", "type": "assert", "expr": "dec.o == enc.i",
+     "source": "GrayEncoder / GrayDecoder docs: decode(encode(n)) is the natural binary n"}
+  ],
+  "covers": [
+    {"id": "c_pattern_a5", "expr": "enc.i == 8'ha5"},
+    {"id": "c_max", "expr": "dec.o == 8'hff"}
+  ],
+  "bit_exact": {
+    "claim": "decode(encode(n)) == n for every 8-bit n",
+    "method": "formal: SMT proof over all 2^8 inputs"
+  },
+  "mutation": {"module": "gray_decoder_w8", "count": 30, "seed": 2, "depth": 1}
+}

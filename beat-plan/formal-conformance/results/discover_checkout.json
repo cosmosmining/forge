@@ -1,0 +1,141 @@
+{
+  "schema": "forge.formal.discover/v1",
+  "rtl_files_found": 3,
+  "files": [
+    {
+      "file": "standins/rtl/gray_decoder_w8.v",
+      "sha256": "8f4ef3daca7664848feec0380cbc92e348a4a55c6d194b8db9a6a704541e11dd",
+      "parsed": true,
+      "modules": [
+        {
+          "module": "gray_decoder_w8",
+          "ports": [
+            {
+              "name": "o",
+              "dir": "output",
+              "width": 8
+            },
+            {
+              "name": "i",
+              "dir": "input",
+              "width": 8
+            }
+          ],
+          "guess": {
+            "clock": null,
+            "reset": null
+          },
+          "handshake_candidates": []
+        }
+      ]
+    },
+    {
+      "file": "standins/rtl/gray_encoder_w8.v",
+      "sha256": "4058774b492545fc7f0c5f73b0a83019da0ed79353cd1377f8a2436cb8ae97df",
+      "parsed": true,
+      "modules": [
+        {
+          "module": "gray_encoder_w8",
+          "ports": [
+            {
+              "name": "o",
+              "dir": "output",
+              "width": 8
+            },
+            {
+              "name": "i",
+              "dir": "input",
+              "width": 8
+            }
+          ],
+          "guess": {
+            "clock": null,
+            "reset": null
+          },
+          "handshake_candidates": []
+        }
+      ]
+    },
+    {
+      "file": "standins/rtl/syncfifo_w8_d4.v",
+      "sha256": "1fe1e2aacae78ff90032e716b66c218eeb83266f9ef1a006aabc280c601648f9",
+      "parsed": true,
+      "modules": [
+        {
+          "module": "syncfifo_w8_d4",
+          "ports": [
+            {
+              "name": "w_en",
+              "dir": "input",
+              "width": 1
+            },
+            {
+              "name": "r_en",
+              "dir": "input",
+              "width": 1
+            },
+            {
+              "name": "clk",
+              "dir": "input",
+              "width": 1
+            },
+            {
+              "name": "rst",
+              "dir": "input",
+              "width": 1
+            },
+            {
+              "name": "w_rdy",
+              "dir": "output",
+              "width": 1
+            },
+            {
+              "name": "w_level",
+              "dir": "output",
+              "width": 3
+            },
+            {
+              "name": "r_data",
+              "dir": "output",
+              "width": 8
+            },
+            {
+              "name": "r_rdy",
+              "dir": "output",
+              "width": 1
+            },
+            {
+              "name": "r_level",
+              "dir": "output",
+              "width": 3
+            },
+            {
+              "name": "level",
+              "dir": "output",
+              "width": 3
+            },
+            {
+              "name": "w_data",
+              "dir": "input",
+              "width": 8
+            }
+          ],
+          "guess": {
+            "clock": "clk",
+            "reset": "rst"
+          },
+          "handshake_candidates": [
+            {
+              "valid": "r_en",
+              "ready": "r_rdy"
+            },
+            {
+              "valid": "w_en",
+              "ready": "w_rdy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

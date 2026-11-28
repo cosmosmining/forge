@@ -1,0 +1,8 @@
+{
+  "extends": "../specs/standin_syncfifo_w8_d4.json",
+  "drop_properties": ["p_fifo_order", "s_trk_ahead_lt_level", "s_trk_word"],
+  "block": "control_syncfifo_no_order",
+  "control": true,
+  "bit_exact": null,
+  "description": "CONTROL for the mutation method, not a result about any design: the stand-in FIFO spec with its ordering property (and that property's induction helpers) removed. Same RTL, same 40 mutants; its kill rate must come out below the full spec's."
+}

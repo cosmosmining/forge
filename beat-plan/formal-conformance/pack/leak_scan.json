@@ -1,0 +1,68 @@
+{
+  "schema": "forge.leakscan/v1",
+  "files_scanned": 61,
+  "rules": [
+    "private_key_block",
+    "aws_access_key_id",
+    "github_token",
+    "anthropic_api_key",
+    "openai_style_key",
+    "slack_token",
+    "google_api_key",
+    "jwt",
+    "secret_assignment",
+    "email_address",
+    "home_path",
+    "tilde_user_path",
+    "session_scratch_path",
+    "session_link",
+    "private_ipv4",
+    "binary_file",
+    "large_file"
+  ],
+  "findings": 0,
+  "items": [],
+  "suppressed": 5,
+  "suppressed_items": [
+    {
+      "rule": "email_address",
+      "file": "files/results/standin_gray_decoder_w8/structure_gray_decoder_w8.log",
+      "line": 4,
+      "col": 51,
+      "excerpt": "cl\u2026 (len 18)",
+      "allowed_because": "the Yosys author's public copyright line, printed in the banner at the top of every yosys log; not personal data of anyone on this project"
+    },
+    {
+      "rule": "email_address",
+      "file": "files/results/standin_gray_encoder_w8/structure_gray_encoder_w8.log",
+      "line": 4,
+      "col": 51,
+      "excerpt": "cl\u2026 (len 18)",
+      "allowed_because": "the Yosys author's public copyright line, printed in the banner at the top of every yosys log; not personal data of anyone on this project"
+    },
+    {
+      "rule": "email_address",
+      "file": "files/results/standin_gray_roundtrip_w8/structure_gray_decoder_w8.log",
+      "line": 4,
+      "col": 51,
+      "excerpt": "cl\u2026 (len 18)",
+      "allowed_because": "the Yosys author's public copyright line, printed in the banner at the top of every yosys log; not personal data of anyone on this project"
+    },
+    {
+      "rule": "email_address",
+      "file": "files/results/standin_gray_roundtrip_w8/structure_gray_encoder_w8.log",
+      "line": 4,
+      "col": 51,
+      "excerpt": "cl\u2026 (len 18)",
+      "allowed_because": "the Yosys author's public copyright line, printed in the banner at the top of every yosys log; not personal data of anyone on this project"
+    },
+    {
+      "rule": "email_address",
+      "file": "files/results/standin_syncfifo_w8_d4/structure_syncfifo_w8_d4.log",
+      "line": 4,
+      "col": 51,
+      "excerpt": "cl\u2026 (len 18)",
+      "allowed_because": "the Yosys author's public copyright line, printed in the banner at the top of every yosys log; not personal data of anyone on this project"
+    }
+  ]
+}

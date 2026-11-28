@@ -1,0 +1,31 @@
+SBY  0:25:36 [prove] Removing directory '<work>/prove'.
+SBY  0:25:36 [prove] Copy '<work>/src/rtl0_gray_decoder_w8.v' to '<work>/prove/src/rtl0_gray_decoder_w8.v'.
+SBY  0:25:36 [prove] Copy '<work>/src/forge_harness.sv' to '<work>/prove/src/forge_harness.sv'.
+SBY  0:25:36 [prove] engine_0: smtbmc z3
+SBY  0:25:36 [prove] base: starting process "cd prove/src; /opt/forge-oss-eda/bin/yowasp-yosys -ql ../model/design.log ../model/design.ys"
+SBY  0:25:36 [prove] base: finished (returncode=0)
+SBY  0:25:36 [prove] prep: starting process "cd prove/model; /opt/forge-oss-eda/bin/yowasp-yosys -ql design_prep.log design_prep.ys"
+SBY  0:25:36 [prove] prep: finished (returncode=0)
+SBY  0:25:36 [prove] smt2: starting process "cd prove/model; /opt/forge-oss-eda/bin/yowasp-yosys -ql design_smt2.log design_smt2.ys"
+SBY  0:25:36 [prove] smt2: finished (returncode=0)
+SBY  0:25:36 [prove] engine_0.basecase: starting process "cd prove; /opt/forge-oss-eda/bin/yowasp-yosys-smtbmc -s z3 --presat --noprogress -t 1  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  0:25:36 [prove] engine_0.induction: starting process "cd prove; /opt/forge-oss-eda/bin/yowasp-yosys-smtbmc -s z3 --presat -i --noprogress -t 1  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2"
+SBY  0:25:36 [prove] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  0:25:36 [prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY  0:25:36 [prove] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  0:25:36 [prove] engine_0.induction: ##   0:00:00  Trying induction in step 1..
+SBY  0:25:36 [prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  0:25:36 [prove] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY  0:25:36 [prove] engine_0.induction: ##   0:00:00  Status: passed
+SBY  0:25:36 [prove] engine_0.basecase: ##   0:00:00  Status: passed
+SBY  0:25:36 [prove] engine_0.induction: finished (returncode=0)
+SBY  0:25:36 [prove] engine_0.induction: Status returned by engine for induction: pass
+SBY  0:25:36 [prove] engine_0.basecase: finished (returncode=0)
+SBY  0:25:36 [prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  0:25:36 [prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  0:25:36 [prove] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  0:25:36 [prove] summary: engine_0 (smtbmc z3) returned pass for basecase
+SBY  0:25:36 [prove] summary: engine_0 (smtbmc z3) returned pass for induction
+SBY  0:25:36 [prove] summary: engine_0 did not produce any traces
+SBY  0:25:36 [prove] summary: successful proof by k-induction.
+SBY  0:25:36 [prove] DONE (PASS, rc=0)

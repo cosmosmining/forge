@@ -1,0 +1,173 @@
+{
+  "schema": "forge.formal.summary/v1",
+  "blocks": [
+    {
+      "block": "control_syncfifo_no_order",
+      "verdict": "PASS",
+      "standin": true,
+      "control": true,
+      "reasons": [
+        "all assertions proven by k-induction; all covers reached"
+      ],
+      "asserts": 7,
+      "proven": 7,
+      "covers": 5,
+      "covers_reached": 5,
+      "prove_depth": 8,
+      "bit_exact": null,
+      "verdict_file": "results/control_syncfifo_no_order/verdict.json",
+      "verdict_sha256": "79222a7d147fbe8d7f899db47956e0b23ace6b18bffb9f3cecf12c7379698733",
+      "mutation": {
+        "mutants": 40,
+        "killed": 14,
+        "survived": 24,
+        "equivalent": 2,
+        "inconclusive": 0,
+        "kill_rate": 0.3684,
+        "bmc_depth": 12,
+        "file": "results/control_syncfifo_no_order/mutation.json",
+        "sha256": "150a27e3f1f52dbb7c24e9bb9f89918c26ddc7e7cf5bde76c4b70eb1a2995594"
+      }
+    },
+    {
+      "block": "standin_gray_decoder_w8",
+      "verdict": "PASS",
+      "standin": true,
+      "control": false,
+      "reasons": [
+        "all assertions proven by k-induction; all covers reached"
+      ],
+      "asserts": 1,
+      "proven": 1,
+      "covers": 2,
+      "covers_reached": 2,
+      "prove_depth": 1,
+      "bit_exact": {
+        "claim": "decoded output re-encodes to the input for every 8-bit Gray code input",
+        "method": "formal: SMT proof over all 2^8 inputs",
+        "status": "proven",
+        "counterexamples": 0
+      },
+      "verdict_file": "results/standin_gray_decoder_w8/verdict.json",
+      "verdict_sha256": "58e743d763ad5d65bd1bf3d8192b6b13a84351c2e91a3c4b1fedea6e5c840961",
+      "mutation": {
+        "mutants": 30,
+        "killed": 30,
+        "survived": 0,
+        "equivalent": 0,
+        "inconclusive": 0,
+        "kill_rate": 1.0,
+        "bmc_depth": 1,
+        "file": "results/standin_gray_decoder_w8/mutation.json",
+        "sha256": "3f8227f1efee4240667b0c0e1d49831db9a7efd3739bfda930540d12522cece8"
+      }
+    },
+    {
+      "block": "standin_gray_encoder_w8",
+      "verdict": "PASS",
+      "standin": true,
+      "control": false,
+      "reasons": [
+        "all assertions proven by k-induction; all covers reached"
+      ],
+      "asserts": 2,
+      "proven": 2,
+      "covers": 2,
+      "covers_reached": 2,
+      "prove_depth": 1,
+      "bit_exact": {
+        "claim": "output equals n XOR (n >> 1) for every 8-bit input n",
+        "method": "formal: SMT proof over all 2^8 inputs",
+        "status": "proven",
+        "counterexamples": 0
+      },
+      "verdict_file": "results/standin_gray_encoder_w8/verdict.json",
+      "verdict_sha256": "8cf19ab677cf731ec9b50e8c44e8f75c2d28a6aa1e912d020a58ccb497cc4ac1",
+      "mutation": {
+        "mutants": 30,
+        "killed": 30,
+        "survived": 0,
+        "equivalent": 0,
+        "inconclusive": 0,
+        "kill_rate": 1.0,
+        "bmc_depth": 1,
+        "file": "results/standin_gray_encoder_w8/mutation.json",
+        "sha256": "7b11ff13dedba382bd81fb9adc1352e4bfb83d40739f24792b3df02bbf18ef5a"
+      }
+    },
+    {
+      "block": "standin_gray_roundtrip_w8",
+      "verdict": "PASS",
+      "standin": true,
+      "control": false,
+      "reasons": [
+        "all assertions proven by k-induction; all covers reached"
+      ],
+      "asserts": 1,
+      "proven": 1,
+      "covers": 2,
+      "covers_reached": 2,
+      "prove_depth": 1,
+      "bit_exact": {
+        "claim": "decode(encode(n)) == n for every 8-bit n",
+        "method": "formal: SMT proof over all 2^8 inputs",
+        "status": "proven",
+        "counterexamples": 0
+      },
+      "verdict_file": "results/standin_gray_roundtrip_w8/verdict.json",
+      "verdict_sha256": "d924b73b57a8679c50e3f8521217527df7398bac38b5c93c7c495904a446bbb6",
+      "mutation": {
+        "mutants": 30,
+        "killed": 30,
+        "survived": 0,
+        "equivalent": 0,
+        "inconclusive": 0,
+        "kill_rate": 1.0,
+        "bmc_depth": 1,
+        "file": "results/standin_gray_roundtrip_w8/mutation.json",
+        "sha256": "b3e0aa8131e754ab9ee03cd3e5adbd02a7da4bb9bb2ed5c912c83808cbf868c6"
+      }
+    },
+    {
+      "block": "standin_syncfifo_w8_d4",
+      "verdict": "PASS",
+      "standin": true,
+      "control": false,
+      "reasons": [
+        "all assertions proven by k-induction; all covers reached"
+      ],
+      "asserts": 10,
+      "proven": 10,
+      "covers": 5,
+      "covers_reached": 5,
+      "prove_depth": 8,
+      "bit_exact": {
+        "claim": "every entry read out equals the entry written, in write order (data path bit-exact)",
+        "method": "formal: unbounded proof by k-induction, arbitrary write tracked, all 8-bit data values",
+        "status": "proven",
+        "counterexamples": 0
+      },
+      "verdict_file": "results/standin_syncfifo_w8_d4/verdict.json",
+      "verdict_sha256": "dbe9af6e9f173a46c69fbaaceb40d6d1bf751a84e9046f3fd2305a8b605b16d8",
+      "mutation": {
+        "mutants": 40,
+        "killed": 38,
+        "survived": 0,
+        "equivalent": 2,
+        "inconclusive": 0,
+        "kill_rate": 1.0,
+        "bmc_depth": 12,
+        "file": "results/standin_syncfifo_w8_d4/mutation.json",
+        "sha256": "e9512eb10592bed98ec8e5faff40e4dc407674b0a93ec63ff2faf516fcfc4a01"
+      }
+    }
+  ],
+  "discover": {
+    "rtl_files_found": 3,
+    "files": [
+      "standins/rtl/gray_decoder_w8.v",
+      "standins/rtl/gray_encoder_w8.v",
+      "standins/rtl/syncfifo_w8_d4.v"
+    ]
+  }
+}

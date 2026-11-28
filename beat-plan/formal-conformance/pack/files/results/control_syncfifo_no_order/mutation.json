@@ -1,0 +1,555 @@
+{
+  "schema": "forge.formal.mutation/v1",
+  "block": "control_syncfifo_no_order",
+  "standin": true,
+  "control": true,
+  "kind": "measured",
+  "method": "yosys `mutate -list` mutants of module syncfifo_w8_d4; each mutant checked by sby bmc to depth 12 against the contract and environment properties only (no strengthening invariants, no covers); each survivor then put through yosys equiv_make/equiv_simple/equiv_induct against the original: proven equivalent -> 'equivalent', else 'survived'",
+  "module": "syncfifo_w8_d4",
+  "count_requested": 40,
+  "seed": 1,
+  "bmc_depth": 12,
+  "mutants": 40,
+  "killed": 14,
+  "survived": 24,
+  "equivalent": 2,
+  "inconclusive": 0,
+  "kill_rate": 0.3684,
+  "kill_rate_formula": "killed / (killed + survived); mutants proven equivalent and inconclusive runs excluded",
+  "results": [
+    {
+      "id": 0,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $memory\\storage[0]$100 -port Q -portbit 3 -ctrlbit 7 -wire storage[0] -wirebit 3",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.09
+    },
+    {
+      "id": 1,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$68 -port A -portbit 2 -ctrlbit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 3,
+      "elapsed_s": 0.94
+    },
+    {
+      "id": 2,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage$wrmux[1][0][4]$177 -port A -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 3,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:79$and$24 -port B -portbit 0 -wire $7 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 3,
+      "elapsed_s": 0.94
+    },
+    {
+      "id": 4,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$89 -port Y -portbit 0 -ctrlbit 1",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.01
+    },
+    {
+      "id": 5,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $procmux$65 -port B -portbit 2 -wire $14 -wirebit 2",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_le_depth",
+        "p_w_rdy_iff_space"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 0.93
+    },
+    {
+      "id": 6,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $procmux$77 -port A -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 7,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$92 -port Q -portbit 0 -ctrlbit 1 -wire consume -wirebit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.98
+    },
+    {
+      "id": 8,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $memory\\storage$wrmux[0][0][7]$153 -port B -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.98
+    },
+    {
+      "id": 9,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage$wren[2][0][3]$207 -port B -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.05
+    },
+    {
+      "id": 10,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage$wren[0][0][6]$147 -port A -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.03
+    },
+    {
+      "id": 11,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $memory\\storage[2]$104 -port Q -portbit 4 -ctrlbit 3 -wire storage[2] -wirebit 4",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.06
+    },
+    {
+      "id": 12,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$91 -port Q -portbit 0 -ctrlbit 1 -wire w_level -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 1.09
+    },
+    {
+      "id": 13,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procdff$93 -port D -portbit 1 -ctrlbit 0 -wire $15 -wirebit 1",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.07
+    },
+    {
+      "id": 14,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:85$sub$30 -port Y -portbit 0 -ctrlbit 1 -wire $14 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 6,
+      "elapsed_s": 0.93
+    },
+    {
+      "id": 15,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$92 -port D -portbit 0 -wire $16 -wirebit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.05
+    },
+    {
+      "id": 16,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:73$add$18 -port B -portbit 0",
+      "bmc_status": "PASS",
+      "class": "equivalent",
+      "equivalence_check": "proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 17,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$62 -port A -portbit 0 -ctrlbit 1",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 0.95
+    },
+    {
+      "id": 18,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage$wrmux[2][0][1]$201 -port Y -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.03
+    },
+    {
+      "id": 19,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $procmux$68 -port S -portbit 0 -wire $8 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 3,
+      "elapsed_s": 0.96
+    },
+    {
+      "id": 20,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:82$and$27 -port Y -portbit 0 -wire w_port__en -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 3,
+      "elapsed_s": 1.03
+    },
+    {
+      "id": 21,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:80$add$25 -port Y -portbit 0 -wire $9 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 0.92
+    },
+    {
+      "id": 22,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:70$reduce_or$15 -port Y -portbit 0 -wire r_rdy -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_r_rdy_iff_entry"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 1,
+      "elapsed_s": 0.98
+    },
+    {
+      "id": 23,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage$wren[1][0][1]$163 -port Y -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.02
+    },
+    {
+      "id": 24,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$68 -port B -portbit 1 -ctrlbit 2 -wire $9 -wirebit 1",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 3,
+      "elapsed_s": 1.02
+    },
+    {
+      "id": 25,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $procmux$77 -port Y -portbit 0 -wire $15 -wirebit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.05
+    },
+    {
+      "id": 26,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:69$ne$14 -port B -portbit 2",
+      "bmc_status": "PASS",
+      "class": "equivalent",
+      "equivalence_check": "proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.05
+    },
+    {
+      "id": 27,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$62 -port Y -portbit 0 -ctrlbit 1 -wire $17 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 0.95
+    },
+    {
+      "id": 28,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $procmux$80 -port A -portbit 1",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 29,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:84$and$29 -port B -portbit 0 -wire $12 -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 0.93
+    },
+    {
+      "id": 30,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $procmux$74 -port Y -portbit 1 -ctrlbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.06
+    },
+    {
+      "id": 31,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$93 -port Q -portbit 1 -wire produce -wirebit 1",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.15
+    },
+    {
+      "id": 32,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $procdff$93 -port Q -portbit 0 -wire produce -wirebit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 1.11
+    },
+    {
+      "id": 33,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $memory\\storage[2]$104 -port Q -portbit 3 -wire storage[2] -wirebit 3",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.98
+    },
+    {
+      "id": 34,
+      "mutation": "mutate -mode const0 -module syncfifo_w8_d4 -cell $rtl0_syncfifo_w8_d4.v:81$and$26 -port A -portbit 0 -wire r_rdy -wirebit 0",
+      "bmc_status": "FAIL",
+      "class": "killed",
+      "equivalence_check": null,
+      "killed_by": [
+        "p_level_accounting"
+      ],
+      "killed_by_roles": [
+        "contract"
+      ],
+      "first_fail_step": 4,
+      "elapsed_s": 1.02
+    },
+    {
+      "id": 35,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $memory\\storage$rdmux[0][0][0]$108 -port Y -portbit 5 -ctrlbit 7 -wire r_data -wirebit 5",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 36,
+      "mutation": "mutate -mode const1 -module syncfifo_w8_d4 -cell $auto$memory_map.cc:95:addr_decode$117 -port A -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 37,
+      "mutation": "mutate -mode cnot1 -module syncfifo_w8_d4 -cell $procmux$71 -port Y -portbit 0 -ctrlbit 1 -wire $16 -wirebit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.99
+    },
+    {
+      "id": 38,
+      "mutation": "mutate -mode inv -module syncfifo_w8_d4 -cell $auto$memory_map.cc:95:addr_decode$119 -port A -portbit 0",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.97
+    },
+    {
+      "id": 39,
+      "mutation": "mutate -mode cnot0 -module syncfifo_w8_d4 -cell $memory\\storage$rdmux[0][0][0]$108 -port Y -portbit 4 -ctrlbit 6 -wire r_data -wirebit 4",
+      "bmc_status": "PASS",
+      "class": "survived",
+      "equivalence_check": "not proven equivalent",
+      "killed_by": [],
+      "killed_by_roles": [],
+      "first_fail_step": null,
+      "elapsed_s": 0.97
+    }
+  ],
+  "tools": {
+    "yosys": "Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0)",
+    "sby": "SymbiYosys bundled with YoWASP yosys (Yosys 0.71 (git sha1 b4c586fd3, Release, Clang <path> 22.1.0))",
+    "solver": "Z3 version 4.15.4 - 64 bit",
+    "engine": "smtbmc z3"
+  },
+  "inputs": {
+    "spec": {
+      "file": "formal/controls/control_syncfifo_no_order.json",
+      "sha256": "b681daa21abdecb3816de7b58044952de0a17928044d244b560c454157542428"
+    },
+    "rtl": [
+      {
+        "file": "standins/rtl/syncfifo_w8_d4.v",
+        "sha256": "1fe1e2aacae78ff90032e716b66c218eeb83266f9ef1a006aabc280c601648f9"
+      }
+    ],
+    "spec_base": {
+      "file": "formal/specs/standin_syncfifo_w8_d4.json",
+      "sha256": "81ae5076910180cb9da26526466c2ae5e9a57164af40b2e1fe210fca229b133a",
+      "dropped_properties": [
+        "p_fifo_order",
+        "s_trk_ahead_lt_level",
+        "s_trk_word"
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "file": "results/control_syncfifo_no_order/mutation_list.ys",
+      "sha256": "a2abdd9bb5a98c0f4213f2d10f7bf441955e478f5d3102c8f5a05634bbf2580d"
+    },
+    {
+      "file": "results/control_syncfifo_no_order/mutation_harness.sv",
+      "sha256": "0479f536bae3c72a97fd7413acc8b02930e1696faea016c492cb2bedaca732eb"
+    }
+  ]
+}
